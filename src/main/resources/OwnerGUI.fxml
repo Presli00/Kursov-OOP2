@@ -130,7 +130,7 @@
                                     <Image url="@Images/Лог-оут.png" />
                                  </image>
                               </ImageView>
-                              <Label text="Лог аут">
+                              <Label text="Log out">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font></Label>
