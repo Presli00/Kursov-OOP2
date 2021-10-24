@@ -6,11 +6,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AdminGUI">
+<AnchorPane prefHeight="650.0" prefWidth="1200.0" style="-fx-background-color: #4a4a4a;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AdminGUI">
    <children>
       <GridPane layoutX="344.0" layoutY="144.0" prefHeight="650.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
@@ -23,13 +23,18 @@
          <children>
             <VBox prefHeight="650.0" prefWidth="200.0" spacing="30.0">
                <children>
-                  <Button alignment="CENTER" mnemonicParsing="false" prefHeight="63.0" prefWidth="220.0" style="-fx-background-color: transparent;">
+                  <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="24.0" prefWidth="197.0" style="-fx-background-color: transparent;">
                      <graphic>
                         <ImageView fitHeight="32.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@Images/BELLPNG.png" />
                            </image>
                         </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button mnemonicParsing="false" text="Button">
+                     <graphic>
+                        <HBox prefHeight="52.0" prefWidth="182.0" />
                      </graphic>
                   </Button>
                </children>

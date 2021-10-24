@@ -38,16 +38,26 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <MenuButton mnemonicParsing="false" prefHeight="24.0" prefWidth="154.0" text="Собствени Складове">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="Добавяне на помещение" />
-                      <MenuItem mnemonicParsing="false" text="Отдаване под наем" />
-                        <MenuItem mnemonicParsing="false" text="Всички складове" />
-                    </items>
-                     <font>
-                        <Font size="11.0" />
-                     </font>
-                  </MenuButton>
+                  <GridPane>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <MenuButton mnemonicParsing="false" prefHeight="24.0" prefWidth="154.0" text="Собствени Складове">
+                          <items>
+                            <MenuItem mnemonicParsing="false" text="Добавяне на помещение" />
+                            <MenuItem mnemonicParsing="false" text="Отдаване под наем" />
+                              <MenuItem mnemonicParsing="false" text="Всички складове" />
+                          </items>
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </MenuButton>
+                     </children>
+                  </GridPane>
                   <Button alignment="TOP_CENTER" mnemonicParsing="false" style="-fx-background-radius: 25;" textAlignment="CENTER" VBox.vgrow="NEVER">
                      <graphic>
                         <HBox prefHeight="35.0" prefWidth="142.0">
