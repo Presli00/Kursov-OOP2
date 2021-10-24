@@ -31,9 +31,9 @@
                <children>
                   <Button alignment="CENTER" mnemonicParsing="false" prefHeight="63.0" prefWidth="220.0" style="-fx-background-color: transparent;">
                      <graphic>
-                        <ImageView fitHeight="32.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@Images/BELLPNG.png" />
+                              <Image url="@Images/Известия.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -71,6 +71,27 @@
                                  </viewport>
                               </ImageView>
                               <Label prefHeight="42.0" prefWidth="135.0" text="Списък със складови агенти" wrapText="true">
+                                 <font>
+                                    <Font size="11.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </graphic>
+                  </Button>
+                  <Button alignment="TOP_CENTER" mnemonicParsing="false" style="-fx-background-radius: 25;" textAlignment="CENTER">
+                     <graphic>
+                        <HBox prefHeight="35.0" prefWidth="142.0">
+                           <children>
+                              <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Images/CIRCLEPNG.png" />
+                                 </image>
+                                 <viewport>
+                                    <Rectangle2D />
+                                 </viewport>
+                              </ImageView>
+                              <Label prefHeight="42.0" prefWidth="135.0" text="Справки" wrapText="true">
                                  <font>
                                     <Font size="11.0" />
                                  </font>
