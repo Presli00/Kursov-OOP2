@@ -16,6 +16,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("OwnerGUI.fxml"));
         Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("Styles/SpravkiStyles.css").toExternalForm()); // ADD CSS TO SCENE
         primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/Images/PR Warehouses.png")));
         primaryStage.setScene(scene);
         primaryStage.show();

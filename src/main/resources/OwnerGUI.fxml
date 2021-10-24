@@ -40,7 +40,10 @@
                                     <Image url="@Images/Известия.png" />
                                  </image>
                               </ImageView>
-                              <Label text="Известия" />
+                              <Label text="Известия">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font></Label>
                            </children>
                         </HBox>
                      </graphic>
@@ -69,7 +72,7 @@
                               </ImageView>
                               <Label prefHeight="42.0" prefWidth="135.0" text="Списък със складови агенти" wrapText="true">
                                  <font>
-                                    <Font name="System Bold" size="11.0" />
+                                    <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
                            </children>
@@ -90,7 +93,7 @@
                               </ImageView>
                               <Label prefHeight="42.0" prefWidth="135.0" text="Справки" wrapText="true">
                                  <font>
-                                    <Font name="System Bold" size="11.0" />
+                                    <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
                            </children>
@@ -110,7 +113,10 @@
                                     <Image url="@Images/Настройки.png" />
                                  </image>
                               </ImageView>
-                              <Label text="Настройки" />
+                              <Label text="Настройки">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font></Label>
                            </children>
                         </HBox>
                      </graphic>
@@ -124,7 +130,10 @@
                                     <Image url="@Images/Лог-оут.png" />
                                  </image>
                               </ImageView>
-                              <Label text="Лог аут" />
+                              <Label text="Лог аут">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font></Label>
                            </children>
                         </HBox>
                      </graphic>
