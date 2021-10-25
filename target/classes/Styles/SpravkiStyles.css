@@ -1,0 +1,7 @@
+.SpravkiButtons {
+    -fx-background-image: url('/Images/warehousesWithLogo.png');
+    -fx-font-size: 28;
+    -fx-font-weight: bold;
+    -fx-alignment: center-right;
+}
+

@@ -59,11 +59,4 @@ public class OwnerGUI {
         }
     }
 
-    public AnchorPane getContentAnchorPane() {
-        return ContentAnchorPane;
-    }
-
-    public AnchorPane getScrollAnchorPane() {
-        return ScrollAnchorPane;
-    }
 }
