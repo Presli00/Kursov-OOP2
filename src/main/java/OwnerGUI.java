@@ -24,6 +24,19 @@ public class OwnerGUI {
 
     @FXML
     public void SpravkiOnAction(ActionEvent event) throws IOException, IllegalAccessException, InvocationTargetException, NoSuchMethodException {
+        // create Scroll Pane
+        ScrollPane SpravkiScrollPane = new ScrollPane();
+        // add it to MAIN Anchor Pane and stretch it to fit parent
+        ContentAnchorPane.getChildren().add(SpravkiScrollPane);
+        SpravkiScrollPane.prefHeightProperty().bind(ContentAnchorPane.heightProperty());
+        SpravkiScrollPane.prefWidthProperty().bind(ContentAnchorPane.widthProperty());
+        SpravkiScrollPane.setFitToWidth(true);
+        SpravkiScrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // disable horizontal bar
+
+        // add new Anchor Pane for content and stretch to fit Scroll Pane
+        SpravkiScrollPane.setContent(ScrollAnchorPane);
+        ScrollAnchorPane.prefWidthProperty().bind(SpravkiScrollPane.widthProperty());
+        ScrollAnchorPane.prefHeightProperty().bind(SpravkiScrollPane.heightProperty());
         SpravkiButtons obj = new SpravkiButtons();
         obj.loadController("OwnerGUI", 3);
         ArrayList<Button> btns = obj.getButtons();

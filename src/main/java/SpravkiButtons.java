@@ -22,7 +22,6 @@ public class SpravkiButtons {
                 loader = new FXMLLoader(getClass().getResource("OwnerGUI.fxml"));
                 loader.load();
                 OwnerGuiController = loader.getController();
-                createPanes(OwnerGuiController);
                 CreateButtons(numOfButtons);
                 break;
             case "AdminGUI":
@@ -39,25 +38,6 @@ public class SpravkiButtons {
                 break;
         }
 
-    }
-
-    public void createPanes(Object controller) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        // create Scroll Pane
-        ScrollPane SpravkiScrollPane = new ScrollPane();
-        // add it to MAIN Anchor Pane and stretch it to fit parent
-        AnchorPane ContentAnchorPane = (AnchorPane) controller.getClass().getMethod("getContentAnchorPane").invoke(controller);
-        AnchorPane ScrollAnchorPane = (AnchorPane) controller.getClass().getMethod("getScrollAnchorPane").invoke(controller);
-        System.out.println("ass");
-        ContentAnchorPane.getChildren().add(SpravkiScrollPane);
-        ScrollAnchorPane.prefWidthProperty().bind(ContentAnchorPane.widthProperty());
-        SpravkiScrollPane.prefHeightProperty().bind(ContentAnchorPane.heightProperty());
-        SpravkiScrollPane.setFitToWidth(true);
-        SpravkiScrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // disable horizontal bar
-
-        // add new Anchor Pane for content and stretch to fit Scroll Pane
-        SpravkiScrollPane.setContent(ScrollAnchorPane);
-        ScrollAnchorPane.prefWidthProperty().bind(SpravkiScrollPane.widthProperty());
-        ScrollAnchorPane.prefHeightProperty().bind(SpravkiScrollPane.heightProperty());
     }
 
     public void CreateButtons(int numOfButtons) {
