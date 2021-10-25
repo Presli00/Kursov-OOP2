@@ -100,7 +100,7 @@
                         </HBox>
                      </graphic>
                      <cursor>
-                        <Cursor fx:constant="NONE" />
+                        <Cursor fx:constant="DEFAULT" />
                      </cursor>
                   </Button>
                   <Region prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
