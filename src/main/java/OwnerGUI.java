@@ -5,6 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.*;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
 
@@ -22,7 +23,7 @@ public class OwnerGUI {
     // Functions
 
     @FXML
-    public void SpravkiOnAction(ActionEvent event) throws IOException, NoSuchFieldException, IllegalAccessException {
+    public void SpravkiOnAction(ActionEvent event) throws IOException, IllegalAccessException, InvocationTargetException, NoSuchMethodException {
         SpravkiButtons obj = new SpravkiButtons();
         obj.loadController("OwnerGUI", 3);
         ArrayList<Button> btns = obj.getButtons();
@@ -43,5 +44,13 @@ public class OwnerGUI {
             btns.get(i).setPadding(new Insets(0));
             btns.get(i).setText(Text[i]);
         }
+    }
+
+    public AnchorPane getContentAnchorPane() {
+        return ContentAnchorPane;
+    }
+
+    public AnchorPane getScrollAnchorPane() {
+        return ScrollAnchorPane;
     }
 }
