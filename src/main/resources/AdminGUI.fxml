@@ -80,7 +80,7 @@
                         </HBox>
                      </graphic>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="24.0" prefWidth="197.0" style="-fx-background-color: transparent;">
+                  <Button fx:id="SpravkiButton" mnemonicParsing="false" onAction="#SpravkiOnAction" prefHeight="24.0" prefWidth="197.0" style="-fx-background-color: transparent;">
                      <graphic>
                         <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                            <children>
@@ -136,7 +136,7 @@
                      </graphic></Button>
                </children>
             </VBox>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
+            <AnchorPane fx:id="ContentAnchorPane" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
          </children>
       </GridPane>
    </children>
