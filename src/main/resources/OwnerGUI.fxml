@@ -31,24 +31,24 @@
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="650.0" prefWidth="290.0" spacing="30.0">
                <children>
-                  <Button alignment="CENTER" mnemonicParsing="false" prefHeight="63.0" prefWidth="220.0" style="-fx-background-color: transparent;">
+                  <Button mnemonicParsing="false" prefHeight="24.0" prefWidth="197.0" style="-fx-background-color: transparent;">
                      <graphic>
-                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                            <children>
                               <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@Images/Известия.png" />
                                  </image>
                               </ImageView>
-                              <Label text="Известия">
+                              <Label alignment="BOTTOM_LEFT" prefHeight="27.0" prefWidth="138.0" text="Известия">
                                  <font>
-                                    <Font name="System Bold" size="12.0" />
+                                    <Font name="System Bold" size="14.0" />
                                  </font></Label>
                            </children>
                         </HBox>
                      </graphic>
                   </Button>
-                  <MenuButton mnemonicParsing="false" prefHeight="24.0" prefWidth="154.0" text="Собствени Складове">
+                  <MenuButton mnemonicParsing="false" prefHeight="35.0" prefWidth="197.0" style="-fx-background-color: transperant;" text="Собствени Складове">
                     <items>
                       <MenuItem mnemonicParsing="false" text="Добавяне на помещение" />
                       <MenuItem mnemonicParsing="false" text="Отдаване под наем" />
@@ -57,10 +57,17 @@
                      <font>
                         <Font name="System Bold" size="11.0" />
                      </font>
-                  </MenuButton>
-                  <Button alignment="TOP_CENTER" blendMode="SRC_ATOP" mnemonicParsing="false" style="-fx-background-color: transparent;" textAlignment="CENTER" VBox.vgrow="NEVER">
                      <graphic>
-                        <HBox prefHeight="35.0" prefWidth="142.0" spacing="5.0">
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Images/Cubes-Складове.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </MenuButton>
+                  <Button alignment="TOP_CENTER" blendMode="SRC_ATOP" mnemonicParsing="false" prefHeight="24.0" prefWidth="197.0" style="-fx-background-color: transparent;" textAlignment="CENTER" VBox.vgrow="NEVER">
+                     <graphic>
+                        <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="142.0" spacing="5.0">
                            <children>
                               <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -79,9 +86,9 @@
                         </HBox>
                      </graphic>
                   </Button>
-                  <Button fx:id="SpravkiButton" alignment="TOP_CENTER" blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#SpravkiOnAction" style="-fx-background-color: transparent;" textAlignment="CENTER">
+                  <Button fx:id="SpravkiButton" alignment="TOP_CENTER" blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#SpravkiOnAction" prefHeight="24.0" prefWidth="197.0" style="-fx-background-color: transparent;" textAlignment="CENTER">
                      <graphic>
-                        <HBox prefHeight="35.0" prefWidth="142.0" spacing="5.0">
+                        <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="142.0" spacing="5.0">
                            <children>
                               <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -104,9 +111,9 @@
                      </cursor>
                   </Button>
                   <Region prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
-                  <Button blendMode="SRC_ATOP" mnemonicParsing="false" style="-fx-background-color: transparent;">
+                  <Button blendMode="SRC_ATOP" mnemonicParsing="false" prefHeight="24.0" prefWidth="197.0" style="-fx-background-color: transparent;">
                      <graphic>
-                        <HBox alignment="CENTER" prefHeight="35.0" prefWidth="142.0" spacing="5.0">
+                        <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="142.0" spacing="5.0">
                            <children>
                               <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -121,9 +128,9 @@
                         </HBox>
                      </graphic>
                   </Button>
-                  <Button alignment="CENTER" blendMode="SRC_ATOP" mnemonicParsing="false" style="-fx-background-color: transparent;">
+                  <Button alignment="CENTER" blendMode="SRC_ATOP" mnemonicParsing="false" prefHeight="24.0" prefWidth="197.0" style="-fx-background-color: transparent;">
                      <graphic>
-                        <HBox alignment="CENTER" prefHeight="35.0" prefWidth="142.0" spacing="5.0">
+                        <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="142.0" spacing="5.0">
                            <children>
                               <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
