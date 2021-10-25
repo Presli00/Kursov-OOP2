@@ -79,7 +79,7 @@
                         </HBox>
                      </graphic>
                   </Button>
-                  <Button fx:id="SpravkiButton" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#SpravkiOnAction" style="-fx-background-color: transparent;" textAlignment="CENTER">
+                  <Button fx:id="SpravkiButton" alignment="TOP_CENTER" blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#SpravkiOnAction" style="-fx-background-color: transparent;" textAlignment="CENTER">
                      <graphic>
                         <HBox prefHeight="35.0" prefWidth="142.0" spacing="5.0">
                            <children>
@@ -100,7 +100,7 @@
                         </HBox>
                      </graphic>
                      <cursor>
-                        <Cursor fx:constant="DEFAULT" />
+                        <Cursor fx:constant="NONE" />
                      </cursor>
                   </Button>
                   <Region prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
