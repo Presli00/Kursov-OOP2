@@ -103,7 +103,7 @@
                         <Cursor fx:constant="DEFAULT" />
                      </cursor>
                   </Button>
-                  <Region prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                  <Region prefHeight="342.0" prefWidth="197.0" VBox.vgrow="ALWAYS" />
                   <Button blendMode="SRC_ATOP" mnemonicParsing="false" style="-fx-background-color: transparent;">
                      <graphic>
                         <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="142.0" spacing="5.0">

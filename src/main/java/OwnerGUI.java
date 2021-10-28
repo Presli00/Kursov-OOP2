@@ -4,10 +4,10 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.*;
+
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
-
 
 
 public class OwnerGUI {
@@ -49,7 +49,7 @@ public class OwnerGUI {
         ScrollVbox.setSpacing(30);
     }
 
-    public void StyleButtons(ArrayList<Button> btns){
+    public void StyleButtons(ArrayList<Button> btns) {
         // Stretch buttons to fit width of scroll pane and add background image
         String[] Text = {"Собствени налични складове за отдаване под наем", "Складови агенти", "Складове на чужди собственици"};
         for (int i = 0; i < btns.size(); i++) {
