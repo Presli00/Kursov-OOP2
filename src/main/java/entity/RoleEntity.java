@@ -4,12 +4,13 @@ import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
-public class Role {
+@Table(name = "role", schema = "warehouse", catalog = "")
+public class RoleEntity {
     private int roleId;
     private int subroleId;
     private String roleName;
-    private SubRole subRoleBySubroleId;
-    private Collection<User> usersByRoleId;
+    private SubRoleEntity subRoleBySubroleId;
+    private Collection<UserEntity> usersByRoleId;
 
     @Id
     @Column(name = "role_id")
@@ -46,11 +47,11 @@ public class Role {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Role role = (Role) o;
+        RoleEntity that = (RoleEntity) o;
 
-        if (roleId != role.roleId) return false;
-        if (subroleId != role.subroleId) return false;
-        if (roleName != null ? !roleName.equals(role.roleName) : role.roleName != null) return false;
+        if (roleId != that.roleId) return false;
+        if (subroleId != that.subroleId) return false;
+        if (roleName != null ? !roleName.equals(that.roleName) : that.roleName != null) return false;
 
         return true;
     }
@@ -65,20 +66,20 @@ public class Role {
 
     @ManyToOne
     @JoinColumn(name = "subrole_id", referencedColumnName = "Subrole_id", nullable = false)
-    public SubRole getSubRoleBySubroleId() {
+    public SubRoleEntity getSubRoleBySubroleId() {
         return subRoleBySubroleId;
     }
 
-    public void setSubRoleBySubroleId(SubRole subRoleBySubroleId) {
+    public void setSubRoleBySubroleId(SubRoleEntity subRoleBySubroleId) {
         this.subRoleBySubroleId = subRoleBySubroleId;
     }
 
     @OneToMany(mappedBy = "roleByRoleId")
-    public Collection<User> getUsersByRoleId() {
+    public Collection<UserEntity> getUsersByRoleId() {
         return usersByRoleId;
     }
 
-    public void setUsersByRoleId(Collection<User> usersByRoleId) {
+    public void setUsersByRoleId(Collection<UserEntity> usersByRoleId) {
         this.usersByRoleId = usersByRoleId;
     }
 }

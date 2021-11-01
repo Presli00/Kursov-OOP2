@@ -5,7 +5,8 @@ import java.sql.Timestamp;
 import java.util.Collection;
 
 @Entity
-public class User {
+@Table(name = "user", schema = "warehouse", catalog = "")
+public class UserEntity {
     private int userId;
     private String username;
     private String password;
@@ -14,8 +15,8 @@ public class User {
     private int roleId;
     private Timestamp createdDate;
     private Timestamp updatedDate;
-    private Collection<AgentsList> agentsListsByUserId;
-    private Role roleByRoleId;
+    private Collection<AgentsListEntity> agentsListsByUserId;
+    private RoleEntity roleByRoleId;
 
     @Id
     @Column(name = "User_id")
@@ -102,16 +103,16 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        User user = (User) o;
+        UserEntity that = (UserEntity) o;
 
-        if (userId != user.userId) return false;
-        if (roleId != user.roleId) return false;
-        if (username != null ? !username.equals(user.username) : user.username != null) return false;
-        if (password != null ? !password.equals(user.password) : user.password != null) return false;
-        if (firstName != null ? !firstName.equals(user.firstName) : user.firstName != null) return false;
-        if (lastName != null ? !lastName.equals(user.lastName) : user.lastName != null) return false;
-        if (createdDate != null ? !createdDate.equals(user.createdDate) : user.createdDate != null) return false;
-        if (updatedDate != null ? !updatedDate.equals(user.updatedDate) : user.updatedDate != null) return false;
+        if (userId != that.userId) return false;
+        if (roleId != that.roleId) return false;
+        if (username != null ? !username.equals(that.username) : that.username != null) return false;
+        if (password != null ? !password.equals(that.password) : that.password != null) return false;
+        if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
+        if (lastName != null ? !lastName.equals(that.lastName) : that.lastName != null) return false;
+        if (createdDate != null ? !createdDate.equals(that.createdDate) : that.createdDate != null) return false;
+        if (updatedDate != null ? !updatedDate.equals(that.updatedDate) : that.updatedDate != null) return false;
 
         return true;
     }
@@ -129,22 +130,22 @@ public class User {
         return result;
     }
 
-    @OneToMany(mappedBy = "userByUserId")
-    public Collection<AgentsList> getAgentsListsByUserId() {
+    @OneToMany(mappedBy = "userByAgentId")
+    public Collection<AgentsListEntity> getAgentsListsByUserId() {
         return agentsListsByUserId;
     }
 
-    public void setAgentsListsByUserId(Collection<AgentsList> agentsListsByUserId) {
+    public void setAgentsListsByUserId(Collection<AgentsListEntity> agentsListsByUserId) {
         this.agentsListsByUserId = agentsListsByUserId;
     }
 
     @ManyToOne
     @JoinColumn(name = "role_id", referencedColumnName = "role_id", nullable = false)
-    public Role getRoleByRoleId() {
+    public RoleEntity getRoleByRoleId() {
         return roleByRoleId;
     }
 
-    public void setRoleByRoleId(Role roleByRoleId) {
+    public void setRoleByRoleId(RoleEntity roleByRoleId) {
         this.roleByRoleId = roleByRoleId;
     }
 }

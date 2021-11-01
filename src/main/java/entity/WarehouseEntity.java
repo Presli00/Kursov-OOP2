@@ -4,7 +4,8 @@ import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
-public class Warehouse {
+@Table(name = "warehouse", schema = "warehouse", catalog = "")
+public class WarehouseEntity {
     private int warehouseId;
     private String warehouseName;
     private int cityId;
@@ -13,12 +14,11 @@ public class Warehouse {
     private int roomsId;
     private int maintanenceId;
     private int agentSId;
-    private Collection<AgentsList> agentsListsByWarehouseId;
-    private City cityByCityId;
-    private WarehouseHasRooms warehouseHasRoomsByRoomsId;
-    private Maintenance maintenanceByMaintanenceId;
-    private AgentsList agentsListByAgentSId;
-    private Collection<WarehouseHasRooms> warehouseHasRoomsByWarehouseId;
+    private Collection<AgentsListEntity> agentsListsByWarehouseId;
+    private CityEntity cityByCityId;
+    private WarehouseHasRoomsEntity warehouseHasRoomsByRoomsId;
+    private AgentsListEntity agentsListByAgentSId;
+    private Collection<WarehouseHasRoomsEntity> warehouseHasRoomsByWarehouseId;
 
     @Id
     @Column(name = "Warehouse_id")
@@ -31,7 +31,7 @@ public class Warehouse {
     }
 
     @Basic
-    @Column(name = "Warehouse_name")
+    @Column(name = "warehouse_name")
     public String getWarehouseName() {
         return warehouseName;
     }
@@ -41,7 +41,7 @@ public class Warehouse {
     }
 
     @Basic
-    @Column(name = "City_id")
+    @Column(name = "city_id")
     public int getCityId() {
         return cityId;
     }
@@ -71,7 +71,7 @@ public class Warehouse {
     }
 
     @Basic
-    @Column(name = "Rooms_id")
+    @Column(name = "rooms_id")
     public int getRoomsId() {
         return roomsId;
     }
@@ -81,7 +81,7 @@ public class Warehouse {
     }
 
     @Basic
-    @Column(name = "Maintanence_id")
+    @Column(name = "maintanence_id")
     public int getMaintanenceId() {
         return maintanenceId;
     }
@@ -105,17 +105,17 @@ public class Warehouse {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Warehouse warehouse = (Warehouse) o;
+        WarehouseEntity that = (WarehouseEntity) o;
 
-        if (warehouseId != warehouse.warehouseId) return false;
-        if (cityId != warehouse.cityId) return false;
-        if (numberOfStorageRooms != warehouse.numberOfStorageRooms) return false;
-        if (roomsId != warehouse.roomsId) return false;
-        if (maintanenceId != warehouse.maintanenceId) return false;
-        if (agentSId != warehouse.agentSId) return false;
-        if (warehouseName != null ? !warehouseName.equals(warehouse.warehouseName) : warehouse.warehouseName != null)
+        if (warehouseId != that.warehouseId) return false;
+        if (cityId != that.cityId) return false;
+        if (numberOfStorageRooms != that.numberOfStorageRooms) return false;
+        if (roomsId != that.roomsId) return false;
+        if (maintanenceId != that.maintanenceId) return false;
+        if (agentSId != that.agentSId) return false;
+        if (warehouseName != null ? !warehouseName.equals(that.warehouseName) : that.warehouseName != null)
             return false;
-        if (street != null ? !street.equals(warehouse.street) : warehouse.street != null) return false;
+        if (street != null ? !street.equals(that.street) : that.street != null) return false;
 
         return true;
     }
@@ -134,60 +134,50 @@ public class Warehouse {
     }
 
     @OneToMany(mappedBy = "warehouseByWarehouseId")
-    public Collection<AgentsList> getAgentsListsByWarehouseId() {
+    public Collection<AgentsListEntity> getAgentsListsByWarehouseId() {
         return agentsListsByWarehouseId;
     }
 
-    public void setAgentsListsByWarehouseId(Collection<AgentsList> agentsListsByWarehouseId) {
+    public void setAgentsListsByWarehouseId(Collection<AgentsListEntity> agentsListsByWarehouseId) {
         this.agentsListsByWarehouseId = agentsListsByWarehouseId;
     }
 
     @ManyToOne
-    @JoinColumn(name = "City_id", referencedColumnName = "City_id", nullable = false)
-    public City getCityByCityId() {
+    @JoinColumn(name = "city_id", referencedColumnName = "City_id", nullable = false)
+    public CityEntity getCityByCityId() {
         return cityByCityId;
     }
 
-    public void setCityByCityId(City cityByCityId) {
+    public void setCityByCityId(CityEntity cityByCityId) {
         this.cityByCityId = cityByCityId;
     }
 
     @ManyToOne
-    @JoinColumn(name = "Rooms_id", referencedColumnName = "WarehouseHasRooms_id", nullable = false)
-    public WarehouseHasRooms getWarehouseHasRoomsByRoomsId() {
+    @JoinColumn(name = "rooms_id", referencedColumnName = "WarehouseHasRooms_id", nullable = false)
+    public WarehouseHasRoomsEntity getWarehouseHasRoomsByRoomsId() {
         return warehouseHasRoomsByRoomsId;
     }
 
-    public void setWarehouseHasRoomsByRoomsId(WarehouseHasRooms warehouseHasRoomsByRoomsId) {
+    public void setWarehouseHasRoomsByRoomsId(WarehouseHasRoomsEntity warehouseHasRoomsByRoomsId) {
         this.warehouseHasRoomsByRoomsId = warehouseHasRoomsByRoomsId;
     }
 
     @ManyToOne
-    @JoinColumn(name = "Maintanence_id", referencedColumnName = "Maintenance_id", nullable = false)
-    public Maintenance getMaintenanceByMaintanenceId() {
-        return maintenanceByMaintanenceId;
-    }
-
-    public void setMaintenanceByMaintanenceId(Maintenance maintenanceByMaintanenceId) {
-        this.maintenanceByMaintanenceId = maintenanceByMaintanenceId;
-    }
-
-    @ManyToOne
     @JoinColumn(name = "Agent/s_id", referencedColumnName = "AgentsList_id", nullable = false)
-    public AgentsList getAgentsListByAgentSId() {
+    public AgentsListEntity getAgentsListByAgentSId() {
         return agentsListByAgentSId;
     }
 
-    public void setAgentsListByAgentSId(AgentsList agentsListByAgentSId) {
+    public void setAgentsListByAgentSId(AgentsListEntity agentsListByAgentSId) {
         this.agentsListByAgentSId = agentsListByAgentSId;
     }
 
     @OneToMany(mappedBy = "warehouseByWarehouseId")
-    public Collection<WarehouseHasRooms> getWarehouseHasRoomsByWarehouseId() {
+    public Collection<WarehouseHasRoomsEntity> getWarehouseHasRoomsByWarehouseId() {
         return warehouseHasRoomsByWarehouseId;
     }
 
-    public void setWarehouseHasRoomsByWarehouseId(Collection<WarehouseHasRooms> warehouseHasRoomsByWarehouseId) {
+    public void setWarehouseHasRoomsByWarehouseId(Collection<WarehouseHasRoomsEntity> warehouseHasRoomsByWarehouseId) {
         this.warehouseHasRoomsByWarehouseId = warehouseHasRoomsByWarehouseId;
     }
 }
