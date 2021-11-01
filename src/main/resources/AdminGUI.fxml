@@ -26,7 +26,7 @@
          <children>
             <VBox prefHeight="650.0" prefWidth="217.0" spacing="30.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="24.0" prefWidth="197.0" style="-fx-background-color: transparent;">
+                  <Button blendMode="SRC_ATOP" mnemonicParsing="false" prefHeight="24.0" prefWidth="197.0" style="-fx-background-color: transparent;">
                      <graphic>
                         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                            <children>
@@ -44,7 +44,7 @@
                         </HBox>
                      </graphic>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="24.0" prefWidth="197.0" style="-fx-background-color: transparent;">
+                  <Button blendMode="SRC_ATOP" mnemonicParsing="false" prefHeight="24.0" prefWidth="197.0" style="-fx-background-color: transparent;">
                      <graphic>
                         <HBox prefHeight="52.0" prefWidth="182.0" spacing="5.0">
                            <children>
@@ -62,7 +62,7 @@
                         </HBox>
                      </graphic>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="24.0" prefWidth="197.0" style="-fx-background-color: transperatn;">
+                  <Button blendMode="SRC_ATOP" mnemonicParsing="false" prefHeight="24.0" prefWidth="197.0" style="-fx-background-color: transperatn;">
                      <graphic>
                         <HBox prefHeight="52.0" prefWidth="182.0" spacing="5.0">
                            <children>
@@ -80,7 +80,7 @@
                         </HBox>
                      </graphic>
                   </Button>
-                  <Button fx:id="SpravkiButton" mnemonicParsing="false" onAction="#SpravkiOnAction" prefHeight="24.0" prefWidth="197.0" style="-fx-background-color: transparent;">
+                  <Button fx:id="SpravkiButton" blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#SpravkiOnAction" prefHeight="24.0" prefWidth="197.0" style="-fx-background-color: transparent;">
                      <graphic>
                         <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                            <children>
@@ -99,7 +99,7 @@
                      </graphic>
                   </Button>
                   <Region prefHeight="245.0" prefWidth="197.0" VBox.vgrow="ALWAYS" />
-                  <Button mnemonicParsing="false" prefHeight="24.0" prefWidth="197.0" style="-fx-background-color: transparent;">
+                  <Button blendMode="SRC_ATOP" mnemonicParsing="false" prefHeight="24.0" prefWidth="197.0" style="-fx-background-color: transparent;">
                      <graphic>
                         <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                            <children>
@@ -117,7 +117,7 @@
                         </HBox>
                      </graphic>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="24.0" prefWidth="197.0" style="-fx-background-color: transparent;">
+                  <Button blendMode="SRC_ATOP" mnemonicParsing="false" prefHeight="24.0" prefWidth="197.0" style="-fx-background-color: transparent;">
                      <graphic>
                         <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                            <children>
