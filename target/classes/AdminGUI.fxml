@@ -62,7 +62,7 @@
                         </HBox>
                      </graphic>
                   </Button>
-                  <Button blendMode="SRC_ATOP" mnemonicParsing="false" prefHeight="24.0" prefWidth="197.0" style="-fx-background-color: transperatn;">
+                  <Button blendMode="SRC_ATOP" mnemonicParsing="false" prefHeight="24.0" prefWidth="197.0" style="-fx-background-color: transparent;">
                      <graphic>
                         <HBox prefHeight="52.0" prefWidth="182.0" spacing="5.0">
                            <children>

@@ -4,6 +4,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -12,6 +14,8 @@ import javax.persistence.Persistence;
 import java.io.IOException;
 
 public class Main extends Application {
+
+    private static final Logger log = Logger.getLogger(Main.class);
 
     public static void main(String[] args) {
         launch(args);
