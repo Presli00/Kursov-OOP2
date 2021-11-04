@@ -1,18 +1,18 @@
 package entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Collection;
-
+@Table(name = "rental_history", schema = "warehouse")
 @Entity
-@Table(name = "rental_history", schema = "warehouse", catalog = "")
-public class RentalHistory {
-    private int historyId;
-    private int formularId;
-    private Formular formularByFormularId;
-    private Collection<StorageRoom> storageRoomsByHistoryId;
-
+public class RentalHistory implements Serializable {
     @Id
-    @Column(name = "History_id")
+    @Column(name = "History_id", nullable = false)
+    private int historyId;
+    @OneToOne
+    @JoinColumn(name = "Formular_id", nullable = false)
+    private Formular formularId;
+
     public int getHistoryId() {
         return historyId;
     }
@@ -21,13 +21,11 @@ public class RentalHistory {
         this.historyId = historyId;
     }
 
-    @Basic
-    @Column(name = "Formular_id")
-    public int getFormularId() {
+    public Formular getFormularId() {
         return formularId;
     }
 
-    public void setFormularId(int formularId) {
+    public void setFormularId(Formular formularId) {
         this.formularId = formularId;
     }
 
@@ -45,28 +43,10 @@ public class RentalHistory {
     }
 
     @Override
-    public int hashCode() {
-        int result = historyId;
-        result = 31 * result + formularId;
-        return result;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "Formular_id", referencedColumnName = "Formular_id", nullable = false)
-    public Formular getFormularByFormularId() {
-        return formularByFormularId;
-    }
-
-    public void setFormularByFormularId(Formular formularByFormularId) {
-        this.formularByFormularId = formularByFormularId;
-    }
-
-    @OneToMany(mappedBy = "rentalHistoryByHistoryId")
-    public Collection<StorageRoom> getStorageRoomsByHistoryId() {
-        return storageRoomsByHistoryId;
-    }
-
-    public void setStorageRoomsByHistoryId(Collection<StorageRoom> storageRoomsByHistoryId) {
-        this.storageRoomsByHistoryId = storageRoomsByHistoryId;
+    public String toString() {
+        return "RentalHistory{" +
+                "historyId=" + historyId +
+                ", formularId=" + formularId +
+                '}';
     }
 }

@@ -1,20 +1,24 @@
 package entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Collection;
+import java.util.List;
+import java.util.Set;
 
+@Table(name="Agents_list", schema = "warehouse")
 @Entity
-@Table(name = "agents_list", schema = "warehouse", catalog = "")
-public class AgentsList {
-    private int agentsListId;
-    private int userId;
-    private int warehouseId;
-    private User userByUserId;
-    private Warehouse warehouseByWarehouseId;
-    private Collection<Warehouse> warehousesByAgentsListId;
-
+public class AgentsList implements Serializable {
     @Id
-    @Column(name = "AgentsList_id")
+    @Column(name = "AgentsList_id", nullable = false)
+    private int agentsListId;
+    @OneToOne
+    @JoinColumn(name = "User_id", nullable = false)
+    private User userId;
+    @OneToMany
+    @JoinColumn(name = "Warehouse_id", nullable = false)
+    private Set<Warehouse> warehouseId;
+
     public int getAgentsListId() {
         return agentsListId;
     }
@@ -23,23 +27,19 @@ public class AgentsList {
         this.agentsListId = agentsListId;
     }
 
-    @Basic
-    @Column(name = "User_id")
-    public int getUserId() {
+    public User getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(User userId) {
         this.userId = userId;
     }
 
-    @Basic
-    @Column(name = "Warehouse_id")
-    public int getWarehouseId() {
+    public Set<Warehouse> getWarehouseId() {
         return warehouseId;
     }
 
-    public void setWarehouseId(int warehouseId) {
+    public void setWarehouseId(Set<Warehouse> warehouseId) {
         this.warehouseId = warehouseId;
     }
 
@@ -53,44 +53,15 @@ public class AgentsList {
         if (agentsListId != that.agentsListId) return false;
         if (userId != that.userId) return false;
         if (warehouseId != that.warehouseId) return false;
-
         return true;
     }
 
     @Override
-    public int hashCode() {
-        int result = agentsListId;
-        result = 31 * result + userId;
-        result = 31 * result + warehouseId;
-        return result;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "User_id", referencedColumnName = "User_id", nullable = false)
-    public User getUserByUserId() {
-        return userByUserId;
-    }
-
-    public void setUserByUserId(User userByUserId) {
-        this.userByUserId = userByUserId;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "Warehouse_id", referencedColumnName = "Warehouse_id", nullable = false)
-    public Warehouse getWarehouseByWarehouseId() {
-        return warehouseByWarehouseId;
-    }
-
-    public void setWarehouseByWarehouseId(Warehouse warehouseByWarehouseId) {
-        this.warehouseByWarehouseId = warehouseByWarehouseId;
-    }
-
-    @OneToMany(mappedBy = "agentsListByAgentSId")
-    public Collection<Warehouse> getWarehousesByAgentsListId() {
-        return warehousesByAgentsListId;
-    }
-
-    public void setWarehousesByAgentsListId(Collection<Warehouse> warehousesByAgentsListId) {
-        this.warehousesByAgentsListId = warehousesByAgentsListId;
+    public String toString() {
+        return "AgentsList{" +
+                "agentsListId=" + agentsListId +
+                ", userId=" + userId +
+                ", warehouseId=" + warehouseId +
+                '}';
     }
 }

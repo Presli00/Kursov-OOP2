@@ -1,23 +1,28 @@
 package entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Collection;
+import java.util.Set;
 
+@Table(name = "storage_room", schema = "warehouse")
 @Entity
-@Table(name = "storage_room", schema = "warehouse", catalog = "")
-public class StorageRoom {
-    private int storageRoomId;
-    private double size;
-    private int climateId;
-    private int productId;
-    private int historyId;
-    private Climate climateByClimateId;
-    private ProductType productTypeByProductId;
-    private RentalHistory rentalHistoryByHistoryId;
-    private Collection<WarehouseHasRooms> warehouseHasRoomsByStorageRoomId;
-
+public class StorageRoom implements Serializable {
     @Id
-    @Column(name = "Storage_room_id")
+    @Column(name = "Storage_room_id", nullable = false)
+    private int storageRoomId;
+    @Column(name = "Size", nullable = false)
+    private double size;
+    @OneToOne
+    @JoinColumn(name = "Climate_id", nullable = false)
+    private Climate climateId;
+    @OneToMany
+    @JoinColumn(name = "Product_id", nullable = false)
+    private Set<ProductType> productId;
+    @OneToOne
+    @JoinColumn(name = "History_id", nullable = false)
+    private RentalHistory historyId;
+
     public int getStorageRoomId() {
         return storageRoomId;
     }
@@ -26,8 +31,7 @@ public class StorageRoom {
         this.storageRoomId = storageRoomId;
     }
 
-    @Basic
-    @Column(name = "Size")
+
     public double getSize() {
         return size;
     }
@@ -36,33 +40,27 @@ public class StorageRoom {
         this.size = size;
     }
 
-    @Basic
-    @Column(name = "Climate_id")
-    public int getClimateId() {
+    public Climate getClimateId() {
         return climateId;
     }
 
-    public void setClimateId(int climateId) {
+    public void setClimateId(Climate climateId) {
         this.climateId = climateId;
     }
 
-    @Basic
-    @Column(name = "Product_id")
-    public int getProductId() {
+    public Set<ProductType> getProductId() {
         return productId;
     }
 
-    public void setProductId(int productId) {
+    public void setProductId(Set<ProductType> productId) {
         this.productId = productId;
     }
 
-    @Basic
-    @Column(name = "History_id")
-    public int getHistoryId() {
+    public RentalHistory getHistoryId() {
         return historyId;
     }
 
-    public void setHistoryId(int historyId) {
+    public void setHistoryId(RentalHistory historyId) {
         this.historyId = historyId;
     }
 
@@ -83,54 +81,13 @@ public class StorageRoom {
     }
 
     @Override
-    public int hashCode() {
-        int result;
-        long temp;
-        result = storageRoomId;
-        temp = Double.doubleToLongBits(size);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        result = 31 * result + climateId;
-        result = 31 * result + productId;
-        result = 31 * result + historyId;
-        return result;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "Climate_id", referencedColumnName = "Climate_id", nullable = false)
-    public Climate getClimateByClimateId() {
-        return climateByClimateId;
-    }
-
-    public void setClimateByClimateId(Climate climateByClimateId) {
-        this.climateByClimateId = climateByClimateId;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "Product_id", referencedColumnName = "Product_id", nullable = false)
-    public ProductType getProductTypeByProductId() {
-        return productTypeByProductId;
-    }
-
-    public void setProductTypeByProductId(ProductType productTypeByProductId) {
-        this.productTypeByProductId = productTypeByProductId;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "History_id", referencedColumnName = "History_id", nullable = false)
-    public RentalHistory getRentalHistoryByHistoryId() {
-        return rentalHistoryByHistoryId;
-    }
-
-    public void setRentalHistoryByHistoryId(RentalHistory rentalHistoryByHistoryId) {
-        this.rentalHistoryByHistoryId = rentalHistoryByHistoryId;
-    }
-
-    @OneToMany(mappedBy = "storageRoomByRoomId")
-    public Collection<WarehouseHasRooms> getWarehouseHasRoomsByStorageRoomId() {
-        return warehouseHasRoomsByStorageRoomId;
-    }
-
-    public void setWarehouseHasRoomsByStorageRoomId(Collection<WarehouseHasRooms> warehouseHasRoomsByStorageRoomId) {
-        this.warehouseHasRoomsByStorageRoomId = warehouseHasRoomsByStorageRoomId;
+    public String toString() {
+        return "StorageRoom{" +
+                "storageRoomId=" + storageRoomId +
+                ", size=" + size +
+                ", climateId=" + climateId +
+                ", productId=" + productId +
+                ", historyId=" + historyId +
+                '}';
     }
 }

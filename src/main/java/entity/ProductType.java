@@ -1,17 +1,18 @@
 package entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Collection;
 
+@Table(name = "Product_type", schema = "warehouse")
 @Entity
-@Table(name = "product_type", schema = "warehouse", catalog = "")
-public class ProductType {
-    private int productId;
-    private String type;
-    private Collection<StorageRoom> storageRoomsByProductId;
-
+public class ProductType implements Serializable {
     @Id
-    @Column(name = "Product_id")
+    @Column(name = "Product_id", nullable = false)
+    private int productId;
+    @Column(name = "Type", nullable = false)
+    private String type;
+
     public int getProductId() {
         return productId;
     }
@@ -20,8 +21,6 @@ public class ProductType {
         this.productId = productId;
     }
 
-    @Basic
-    @Column(name = "Type")
     public String getType() {
         return type;
     }
@@ -44,18 +43,10 @@ public class ProductType {
     }
 
     @Override
-    public int hashCode() {
-        int result = productId;
-        result = 31 * result + (type != null ? type.hashCode() : 0);
-        return result;
-    }
-
-    @OneToMany(mappedBy = "productTypeByProductId")
-    public Collection<StorageRoom> getStorageRoomsByProductId() {
-        return storageRoomsByProductId;
-    }
-
-    public void setStorageRoomsByProductId(Collection<StorageRoom> storageRoomsByProductId) {
-        this.storageRoomsByProductId = storageRoomsByProductId;
+    public String toString() {
+        return "ProductType{" +
+                "productId=" + productId +
+                ", type='" + type + '\'' +
+                '}';
     }
 }

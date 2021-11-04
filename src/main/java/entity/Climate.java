@@ -1,16 +1,19 @@
 package entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Collection;
 
+@Table(name = "Climate", schema = "warehouse")
 @Entity
-public class Climate {
-    private int climateId;
-    private String climate;
-    private Collection<StorageRoom> storageRoomsByClimateId;
-
+public class Climate implements Serializable {
     @Id
-    @Column(name = "Climate_id")
+    @Column(name = "Climate_id", nullable = false)
+    private int climateId;
+    @Column(name = "Climate", nullable = false)
+    private String climate;
+
+
     public int getClimateId() {
         return climateId;
     }
@@ -19,8 +22,7 @@ public class Climate {
         this.climateId = climateId;
     }
 
-    @Basic
-    @Column(name = "Climate")
+
     public String getClimate() {
         return climate;
     }
@@ -43,18 +45,10 @@ public class Climate {
     }
 
     @Override
-    public int hashCode() {
-        int result = climateId;
-        result = 31 * result + (climate != null ? climate.hashCode() : 0);
-        return result;
-    }
-
-    @OneToMany(mappedBy = "climateByClimateId")
-    public Collection<StorageRoom> getStorageRoomsByClimateId() {
-        return storageRoomsByClimateId;
-    }
-
-    public void setStorageRoomsByClimateId(Collection<StorageRoom> storageRoomsByClimateId) {
-        this.storageRoomsByClimateId = storageRoomsByClimateId;
+    public String toString() {
+        return "Climate{" +
+                "climateId=" + climateId +
+                ", climate='" + climate + '\'' +
+                '}';
     }
 }

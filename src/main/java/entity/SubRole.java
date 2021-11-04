@@ -1,17 +1,19 @@
 package entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Collection;
 
+@Table(name = "Sub_Role", schema = "warehouse")
 @Entity
-@Table(name = "sub_role", schema = "warehouse", catalog = "")
-public class SubRole {
-    private int subroleId;
-    private String subroleName;
-    private Collection<Role> rolesBySubroleId;
-
+public class SubRole implements Serializable {
     @Id
-    @Column(name = "Subrole_id")
+    @Column(name = "Subrole_id", nullable = false)
+    private int subroleId;
+    @Column(name = "Subrole_name", nullable = false)
+    private String subroleName;
+
+
     public int getSubroleId() {
         return subroleId;
     }
@@ -20,8 +22,7 @@ public class SubRole {
         this.subroleId = subroleId;
     }
 
-    @Basic
-    @Column(name = "Subrole_name")
+
     public String getSubroleName() {
         return subroleName;
     }
@@ -44,18 +45,10 @@ public class SubRole {
     }
 
     @Override
-    public int hashCode() {
-        int result = subroleId;
-        result = 31 * result + (subroleName != null ? subroleName.hashCode() : 0);
-        return result;
-    }
-
-    @OneToMany(mappedBy = "subRoleBySubroleId")
-    public Collection<Role> getRolesBySubroleId() {
-        return rolesBySubroleId;
-    }
-
-    public void setRolesBySubroleId(Collection<Role> rolesBySubroleId) {
-        this.rolesBySubroleId = rolesBySubroleId;
+    public String toString() {
+        return "SubRole{" +
+                "subroleId=" + subroleId +
+                ", subroleName='" + subroleName + '\'' +
+                '}';
     }
 }

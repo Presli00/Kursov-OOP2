@@ -1,17 +1,18 @@
 package entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Collection;
 
+@Table(name="City", schema = "warehouse")
 @Entity
-public class City {
-    private int cityId;
-    private String city;
-    private Collection<RenterInformation> renterInformationsByCityId;
-    private Collection<Warehouse> warehousesByCityId;
-
+public class City implements Serializable {
     @Id
-    @Column(name = "City_id")
+    @Column(name = "City_id", nullable = false)
+    private int cityId;
+    @Column(name = "City", nullable = false)
+    private String city;
+
     public int getCityId() {
         return cityId;
     }
@@ -20,8 +21,6 @@ public class City {
         this.cityId = cityId;
     }
 
-    @Basic
-    @Column(name = "City")
     public String getCity() {
         return city;
     }
@@ -44,27 +43,10 @@ public class City {
     }
 
     @Override
-    public int hashCode() {
-        int result = cityId;
-        result = 31 * result + (city != null ? city.hashCode() : 0);
-        return result;
-    }
-
-    @OneToMany(mappedBy = "cityByCityId")
-    public Collection<RenterInformation> getRenterInformationsByCityId() {
-        return renterInformationsByCityId;
-    }
-
-    public void setRenterInformationsByCityId(Collection<RenterInformation> renterInformationsByCityId) {
-        this.renterInformationsByCityId = renterInformationsByCityId;
-    }
-
-    @OneToMany(mappedBy = "cityByCityId")
-    public Collection<Warehouse> getWarehousesByCityId() {
-        return warehousesByCityId;
-    }
-
-    public void setWarehousesByCityId(Collection<Warehouse> warehousesByCityId) {
-        this.warehousesByCityId = warehousesByCityId;
+    public String toString() {
+        return "City{" +
+                "cityId=" + cityId +
+                ", city='" + city + '\'' +
+                '}';
     }
 }

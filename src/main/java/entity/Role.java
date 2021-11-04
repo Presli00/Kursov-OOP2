@@ -1,18 +1,20 @@
 package entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Collection;
 
+@Table(name = "Role", schema = "warehouse")
 @Entity
-public class Role {
-    private int roleId;
-    private int subroleId;
-    private String roleName;
-    private SubRole subRoleBySubroleId;
-    private Collection<User> usersByRoleId;
-
+public class Role implements Serializable {
     @Id
-    @Column(name = "role_id")
+    @Column(name = "role_id", nullable = false)
+    private int roleId;
+    @OneToOne
+    @JoinColumn(name = "subrole_id", nullable = false)
+    private SubRole subroleId;
+    @Column(name = "role_name", nullable = false)
+    private String roleName;
     public int getRoleId() {
         return roleId;
     }
@@ -21,18 +23,15 @@ public class Role {
         this.roleId = roleId;
     }
 
-    @Basic
-    @Column(name = "subrole_id")
-    public int getSubroleId() {
+
+    public SubRole getSubroleId() {
         return subroleId;
     }
 
-    public void setSubroleId(int subroleId) {
+    public void setSubroleId(SubRole subroleId) {
         this.subroleId = subroleId;
     }
 
-    @Basic
-    @Column(name = "role_name")
     public String getRoleName() {
         return roleName;
     }
@@ -56,29 +55,11 @@ public class Role {
     }
 
     @Override
-    public int hashCode() {
-        int result = roleId;
-        result = 31 * result + subroleId;
-        result = 31 * result + (roleName != null ? roleName.hashCode() : 0);
-        return result;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "subrole_id", referencedColumnName = "Subrole_id", nullable = false)
-    public SubRole getSubRoleBySubroleId() {
-        return subRoleBySubroleId;
-    }
-
-    public void setSubRoleBySubroleId(SubRole subRoleBySubroleId) {
-        this.subRoleBySubroleId = subRoleBySubroleId;
-    }
-
-    @OneToMany(mappedBy = "roleByRoleId")
-    public Collection<User> getUsersByRoleId() {
-        return usersByRoleId;
-    }
-
-    public void setUsersByRoleId(Collection<User> usersByRoleId) {
-        this.usersByRoleId = usersByRoleId;
+    public String toString() {
+        return "Role{" +
+                "roleId=" + roleId +
+                ", subroleId=" + subroleId +
+                ", roleName='" + roleName + '\'' +
+                '}';
     }
 }

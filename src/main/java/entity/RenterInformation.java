@@ -1,19 +1,24 @@
 package entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
+@Table(name = "renter_information", schema = "warehouse")
 @Entity
-@Table(name = "renter_information", schema = "warehouse", catalog = "")
-public class RenterInformation {
-    private int renterId;
-    private String name;
-    private String phone;
-    private int cityId;
-    private String street;
-    private City cityByCityId;
-
+public class RenterInformation implements Serializable {
     @Id
-    @Column(name = "Renter_id")
+    @Column(name = "Renter_id", nullable = false)
+    private int renterId;
+    @Column(name = "Name", nullable = false)
+    private String name;
+    @Column(name = "Phone", nullable = false)
+    private String phone;
+    @OneToOne
+    @JoinColumn(name = "City_id", nullable = false)
+    private City cityId;
+    @Column(name = "Street", nullable = false)
+    private String street;
+
     public int getRenterId() {
         return renterId;
     }
@@ -22,8 +27,6 @@ public class RenterInformation {
         this.renterId = renterId;
     }
 
-    @Basic
-    @Column(name = "Name")
     public String getName() {
         return name;
     }
@@ -32,8 +35,6 @@ public class RenterInformation {
         this.name = name;
     }
 
-    @Basic
-    @Column(name = "Phone")
     public String getPhone() {
         return phone;
     }
@@ -42,18 +43,14 @@ public class RenterInformation {
         this.phone = phone;
     }
 
-    @Basic
-    @Column(name = "City_id")
-    public int getCityId() {
+    public City getCityId() {
         return cityId;
     }
 
-    public void setCityId(int cityId) {
+    public void setCityId(City cityId) {
         this.cityId = cityId;
     }
 
-    @Basic
-    @Column(name = "Street")
     public String getStreet() {
         return street;
     }
@@ -79,22 +76,13 @@ public class RenterInformation {
     }
 
     @Override
-    public int hashCode() {
-        int result = renterId;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (phone != null ? phone.hashCode() : 0);
-        result = 31 * result + cityId;
-        result = 31 * result + (street != null ? street.hashCode() : 0);
-        return result;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "City_id", referencedColumnName = "City_id", nullable = false)
-    public City getCityByCityId() {
-        return cityByCityId;
-    }
-
-    public void setCityByCityId(City cityByCityId) {
-        this.cityByCityId = cityByCityId;
+    public String toString() {
+        return "RenterInformation{" +
+                "renterId=" + renterId +
+                ", name='" + name + '\'' +
+                ", phone='" + phone + '\'' +
+                ", cityId=" + cityId +
+                ", street='" + street + '\'' +
+                '}';
     }
 }

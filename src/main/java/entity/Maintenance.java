@@ -1,17 +1,21 @@
 package entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Collection;
 
+@Table(name="Maintenance", schema = "warehouse")
 @Entity
-public class Maintenance {
-    private int maintenanceId;
-    private String name;
-    private String city;
-    private Collection<Warehouse> warehousesByMaintenanceId;
-
+public class Maintenance implements Serializable {
     @Id
-    @Column(name = "Maintenance_id")
+    @Column(name = "Maintenance_id", nullable = false)
+    private int maintenanceId;
+    @Column(name = "Name", nullable = false)
+    private String name;
+    @OneToOne
+    @JoinColumn(name = "City", nullable = false)
+    private City city;
+
     public int getMaintenanceId() {
         return maintenanceId;
     }
@@ -20,8 +24,6 @@ public class Maintenance {
         this.maintenanceId = maintenanceId;
     }
 
-    @Basic
-    @Column(name = "Name")
     public String getName() {
         return name;
     }
@@ -30,13 +32,11 @@ public class Maintenance {
         this.name = name;
     }
 
-    @Basic
-    @Column(name = "City")
-    public String getCity() {
+    public City getCity() {
         return city;
     }
 
-    public void setCity(String city) {
+    public void setCity(City city) {
         this.city = city;
     }
 
@@ -55,19 +55,11 @@ public class Maintenance {
     }
 
     @Override
-    public int hashCode() {
-        int result = maintenanceId;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (city != null ? city.hashCode() : 0);
-        return result;
-    }
-
-    @OneToMany(mappedBy = "maintenanceByMaintanenceId")
-    public Collection<Warehouse> getWarehousesByMaintenanceId() {
-        return warehousesByMaintenanceId;
-    }
-
-    public void setWarehousesByMaintenanceId(Collection<Warehouse> warehousesByMaintenanceId) {
-        this.warehousesByMaintenanceId = warehousesByMaintenanceId;
+    public String toString() {
+        return "Maintenance{" +
+                "maintenanceId=" + maintenanceId +
+                ", name='" + name + '\'' +
+                ", city=" + city +
+                '}';
     }
 }

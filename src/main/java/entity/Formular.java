@@ -1,20 +1,27 @@
 package entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Collection;
+import java.util.Set;
 
+@Table(name = "Formular", schema = "warehouse")
 @Entity
-public class Formular {
-    private int formularId;
-    private int renterId;
-    private Timestamp periodBegin;
-    private Timestamp periodEnd;
-    private double price;
-    private Collection<RentalHistory> rentalHistoriesByFormularId;
-
+public class Formular implements Serializable {
     @Id
-    @Column(name = "Formular_id")
+    @Column(name = "Formular_id", nullable = false)
+    private int formularId;
+    @OneToOne
+    @JoinColumn(name = "Renter_id", nullable = false)
+    private RenterInformation renterId;
+    @Column(name = "Period_begin", nullable = false)
+    private Timestamp periodBegin;
+    @Column(name = "Period_end", nullable = false)
+    private Timestamp periodEnd;
+    @Column(name = "Price", nullable = false)
+    private double price;
+
     public int getFormularId() {
         return formularId;
     }
@@ -23,18 +30,14 @@ public class Formular {
         this.formularId = formularId;
     }
 
-    @Basic
-    @Column(name = "Renter_id")
-    public int getRenterId() {
+    public RenterInformation getRenterId() {
         return renterId;
     }
 
-    public void setRenterId(int renterId) {
+    public void setRenterId(RenterInformation renterId) {
         this.renterId = renterId;
     }
 
-    @Basic
-    @Column(name = "Period_begin")
     public Timestamp getPeriodBegin() {
         return periodBegin;
     }
@@ -43,8 +46,7 @@ public class Formular {
         this.periodBegin = periodBegin;
     }
 
-    @Basic
-    @Column(name = "Period_end")
+
     public Timestamp getPeriodEnd() {
         return periodEnd;
     }
@@ -53,8 +55,7 @@ public class Formular {
         this.periodEnd = periodEnd;
     }
 
-    @Basic
-    @Column(name = "Price")
+
     public double getPrice() {
         return price;
     }
@@ -81,24 +82,13 @@ public class Formular {
     }
 
     @Override
-    public int hashCode() {
-        int result;
-        long temp;
-        result = formularId;
-        result = 31 * result + renterId;
-        result = 31 * result + (periodBegin != null ? periodBegin.hashCode() : 0);
-        result = 31 * result + (periodEnd != null ? periodEnd.hashCode() : 0);
-        temp = Double.doubleToLongBits(price);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        return result;
-    }
-
-    @OneToMany(mappedBy = "formularByFormularId")
-    public Collection<RentalHistory> getRentalHistoriesByFormularId() {
-        return rentalHistoriesByFormularId;
-    }
-
-    public void setRentalHistoriesByFormularId(Collection<RentalHistory> rentalHistoriesByFormularId) {
-        this.rentalHistoriesByFormularId = rentalHistoriesByFormularId;
+    public String toString() {
+        return "Formular{" +
+                "formularId=" + formularId +
+                ", renterId=" + renterId +
+                ", periodBegin=" + periodBegin +
+                ", periodEnd=" + periodEnd +
+                ", price=" + price +
+                '}';
     }
 }

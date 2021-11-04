@@ -1,27 +1,35 @@
 package entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Collection;
 
+@Table(name="Warehouse",schema = "warehouse")
 @Entity
-public class Warehouse {
-    private int warehouseId;
-    private String warehouseName;
-    private int cityId;
-    private String street;
-    private int numberOfStorageRooms;
-    private int roomsId;
-    private int maintanenceId;
-    private int agentSId;
-    private Collection<AgentsList> agentsListsByWarehouseId;
-    private City cityByCityId;
-    private WarehouseHasRooms warehouseHasRoomsByRoomsId;
-    private Maintenance maintenanceByMaintanenceId;
-    private AgentsList agentsListByAgentSId;
-    private Collection<WarehouseHasRooms> warehouseHasRoomsByWarehouseId;
-
+public class Warehouse implements Serializable {
     @Id
-    @Column(name = "Warehouse_id")
+    @Column(name = "Warehouse_id", nullable = false)
+    private int warehouseId;
+    @Column(name = "Warehouse_name", nullable = false)
+    private String warehouseName;
+    @OneToOne
+    @JoinColumn(name = "City_id", nullable = false)
+    private City cityId;
+    @Column(name = "Street", nullable = false)
+    private String street;
+    @Column(name = "Number_of_storage_rooms", nullable = false)
+    private int numberOfStorageRooms;
+    @ManyToOne
+    @JoinColumn(name = "Rooms_id", nullable = false)
+    private WarehouseHasRooms roomsId;
+    @OneToOne
+    @JoinColumn(name = "Maintanence_id", nullable = false)
+    private Maintenance maintanenceId;
+    @OneToOne
+    @JoinColumn(name = "Agent/s_id", nullable = false)
+    private AgentsList agentSId;
+
+
     public int getWarehouseId() {
         return warehouseId;
     }
@@ -30,8 +38,7 @@ public class Warehouse {
         this.warehouseId = warehouseId;
     }
 
-    @Basic
-    @Column(name = "Warehouse_name")
+
     public String getWarehouseName() {
         return warehouseName;
     }
@@ -40,18 +47,6 @@ public class Warehouse {
         this.warehouseName = warehouseName;
     }
 
-    @Basic
-    @Column(name = "City_id")
-    public int getCityId() {
-        return cityId;
-    }
-
-    public void setCityId(int cityId) {
-        this.cityId = cityId;
-    }
-
-    @Basic
-    @Column(name = "Street")
     public String getStreet() {
         return street;
     }
@@ -60,8 +55,6 @@ public class Warehouse {
         this.street = street;
     }
 
-    @Basic
-    @Column(name = "Number_of_storage_rooms")
     public int getNumberOfStorageRooms() {
         return numberOfStorageRooms;
     }
@@ -70,33 +63,35 @@ public class Warehouse {
         this.numberOfStorageRooms = numberOfStorageRooms;
     }
 
-    @Basic
-    @Column(name = "Rooms_id")
-    public int getRoomsId() {
+    public City getCityId() {
+        return cityId;
+    }
+
+    public void setCityId(City cityId) {
+        this.cityId = cityId;
+    }
+
+    public WarehouseHasRooms getRoomsId() {
         return roomsId;
     }
 
-    public void setRoomsId(int roomsId) {
+    public void setRoomsId(WarehouseHasRooms roomsId) {
         this.roomsId = roomsId;
     }
 
-    @Basic
-    @Column(name = "Maintanence_id")
-    public int getMaintanenceId() {
+    public Maintenance getMaintanenceId() {
         return maintanenceId;
     }
 
-    public void setMaintanenceId(int maintanenceId) {
+    public void setMaintanenceId(Maintenance maintanenceId) {
         this.maintanenceId = maintanenceId;
     }
 
-    @Basic
-    @Column(name = "Agent/s_id")
-    public int getAgentSId() {
+    public AgentsList getAgentSId() {
         return agentSId;
     }
 
-    public void setAgentSId(int agentSId) {
+    public void setAgentSId(AgentsList agentSId) {
         this.agentSId = agentSId;
     }
 
@@ -121,73 +116,16 @@ public class Warehouse {
     }
 
     @Override
-    public int hashCode() {
-        int result = warehouseId;
-        result = 31 * result + (warehouseName != null ? warehouseName.hashCode() : 0);
-        result = 31 * result + cityId;
-        result = 31 * result + (street != null ? street.hashCode() : 0);
-        result = 31 * result + numberOfStorageRooms;
-        result = 31 * result + roomsId;
-        result = 31 * result + maintanenceId;
-        result = 31 * result + agentSId;
-        return result;
-    }
-
-    @OneToMany(mappedBy = "warehouseByWarehouseId")
-    public Collection<AgentsList> getAgentsListsByWarehouseId() {
-        return agentsListsByWarehouseId;
-    }
-
-    public void setAgentsListsByWarehouseId(Collection<AgentsList> agentsListsByWarehouseId) {
-        this.agentsListsByWarehouseId = agentsListsByWarehouseId;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "City_id", referencedColumnName = "City_id", nullable = false)
-    public City getCityByCityId() {
-        return cityByCityId;
-    }
-
-    public void setCityByCityId(City cityByCityId) {
-        this.cityByCityId = cityByCityId;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "Rooms_id", referencedColumnName = "WarehouseHasRooms_id", nullable = false)
-    public WarehouseHasRooms getWarehouseHasRoomsByRoomsId() {
-        return warehouseHasRoomsByRoomsId;
-    }
-
-    public void setWarehouseHasRoomsByRoomsId(WarehouseHasRooms warehouseHasRoomsByRoomsId) {
-        this.warehouseHasRoomsByRoomsId = warehouseHasRoomsByRoomsId;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "Maintanence_id", referencedColumnName = "Maintenance_id", nullable = false)
-    public Maintenance getMaintenanceByMaintanenceId() {
-        return maintenanceByMaintanenceId;
-    }
-
-    public void setMaintenanceByMaintanenceId(Maintenance maintenanceByMaintanenceId) {
-        this.maintenanceByMaintanenceId = maintenanceByMaintanenceId;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "Agent/s_id", referencedColumnName = "AgentsList_id", nullable = false)
-    public AgentsList getAgentsListByAgentSId() {
-        return agentsListByAgentSId;
-    }
-
-    public void setAgentsListByAgentSId(AgentsList agentsListByAgentSId) {
-        this.agentsListByAgentSId = agentsListByAgentSId;
-    }
-
-    @OneToMany(mappedBy = "warehouseByWarehouseId")
-    public Collection<WarehouseHasRooms> getWarehouseHasRoomsByWarehouseId() {
-        return warehouseHasRoomsByWarehouseId;
-    }
-
-    public void setWarehouseHasRoomsByWarehouseId(Collection<WarehouseHasRooms> warehouseHasRoomsByWarehouseId) {
-        this.warehouseHasRoomsByWarehouseId = warehouseHasRoomsByWarehouseId;
+    public String toString() {
+        return "Warehouse{" +
+                "warehouseId=" + warehouseId +
+                ", warehouseName='" + warehouseName + '\'' +
+                ", cityId=" + cityId +
+                ", street='" + street + '\'' +
+                ", numberOfStorageRooms=" + numberOfStorageRooms +
+                ", roomsId=" + roomsId +
+                ", maintanenceId=" + maintanenceId +
+                ", agentSId=" + agentSId +
+                '}';
     }
 }

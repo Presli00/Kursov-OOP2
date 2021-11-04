@@ -1,20 +1,22 @@
 package entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Collection;
 
+@Table(name = "warehouse_has_rooms", schema = "warehouse")
 @Entity
-@Table(name = "warehouse_has_rooms", schema = "warehouse", catalog = "")
-public class WarehouseHasRooms {
-    private int warehouseHasRoomsId;
-    private int warehouseId;
-    private int roomId;
-    private Collection<Warehouse> warehousesByWarehouseHasRoomsId;
-    private Warehouse warehouseByWarehouseId;
-    private StorageRoom storageRoomByRoomId;
-
+public class WarehouseHasRooms implements Serializable {
     @Id
-    @Column(name = "WarehouseHasRooms_id")
+    @Column(name = "WarehouseHasRooms_id", nullable = false)
+    private int warehouseHasRoomsId;
+    @OneToOne
+    @JoinColumn(name = "Warehouse_id", nullable = false)
+    private Warehouse warehouseId;
+    @OneToOne
+    @JoinColumn(name = "Room_id", nullable = false)
+    private StorageRoom roomId;
+
     public int getWarehouseHasRoomsId() {
         return warehouseHasRoomsId;
     }
@@ -23,23 +25,19 @@ public class WarehouseHasRooms {
         this.warehouseHasRoomsId = warehouseHasRoomsId;
     }
 
-    @Basic
-    @Column(name = "Warehouse_id")
-    public int getWarehouseId() {
+    public Warehouse getWarehouseId() {
         return warehouseId;
     }
 
-    public void setWarehouseId(int warehouseId) {
+    public void setWarehouseId(Warehouse warehouseId) {
         this.warehouseId = warehouseId;
     }
 
-    @Basic
-    @Column(name = "Room_id")
-    public int getRoomId() {
+    public StorageRoom getRoomId() {
         return roomId;
     }
 
-    public void setRoomId(int roomId) {
+    public void setRoomId(StorageRoom roomId) {
         this.roomId = roomId;
     }
 
@@ -58,39 +56,11 @@ public class WarehouseHasRooms {
     }
 
     @Override
-    public int hashCode() {
-        int result = warehouseHasRoomsId;
-        result = 31 * result + warehouseId;
-        result = 31 * result + roomId;
-        return result;
-    }
-
-    @OneToMany(mappedBy = "warehouseHasRoomsByRoomsId")
-    public Collection<Warehouse> getWarehousesByWarehouseHasRoomsId() {
-        return warehousesByWarehouseHasRoomsId;
-    }
-
-    public void setWarehousesByWarehouseHasRoomsId(Collection<Warehouse> warehousesByWarehouseHasRoomsId) {
-        this.warehousesByWarehouseHasRoomsId = warehousesByWarehouseHasRoomsId;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "Warehouse_id", referencedColumnName = "Warehouse_id", nullable = false)
-    public Warehouse getWarehouseByWarehouseId() {
-        return warehouseByWarehouseId;
-    }
-
-    public void setWarehouseByWarehouseId(Warehouse warehouseByWarehouseId) {
-        this.warehouseByWarehouseId = warehouseByWarehouseId;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "Room_id", referencedColumnName = "Storage_room_id", nullable = false)
-    public StorageRoom getStorageRoomByRoomId() {
-        return storageRoomByRoomId;
-    }
-
-    public void setStorageRoomByRoomId(StorageRoom storageRoomByRoomId) {
-        this.storageRoomByRoomId = storageRoomByRoomId;
+    public String toString() {
+        return "WarehouseHasRooms{" +
+                "warehouseHasRoomsId=" + warehouseHasRoomsId +
+                ", warehouseId=" + warehouseId +
+                ", roomId=" + roomId +
+                '}';
     }
 }
