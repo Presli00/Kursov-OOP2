@@ -32,7 +32,7 @@ public class AdminGUI {
         ScrollAnchorPane.prefWidthProperty().bind(SpravkiScrollPane.widthProperty());
         ScrollAnchorPane.prefHeightProperty().bind(SpravkiScrollPane.heightProperty());
         SpravkiButtons obj = new SpravkiButtons();
-        obj.loadController("WarehouseAgentGUI", 5);
+        obj.loadController("AdminGUI", 5);
         ArrayList<Button> buttons = obj.getButtons();
         StyleButtons(buttons);
         VBox ScrollVbox = new VBox();
@@ -42,7 +42,7 @@ public class AdminGUI {
     }
 
     public void StyleButtons(ArrayList<Button> buttons) {
-        String[] Text = {"Сключени договори", "Уредници", "Рейтинги на агенти", "Налични складове за отдаване под наем", "Складове по даден собственик"};
+        String[] Text = {"Сключени договори", "Уредници", "Рейтинги на агенти", "Складове на чужди собственици", "Складове по даден собственик"};
         for (int i = 0; i < buttons.size(); i++) {
             buttons.get(i).prefWidthProperty().bind(ScrollAnchorPane.widthProperty());
             buttons.get(i).setPadding(new Insets(0));

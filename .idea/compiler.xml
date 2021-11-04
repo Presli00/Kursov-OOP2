@@ -20,7 +20,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Kursov_OOP2" target="1.8" />
+      <module name="Kursov_OOP2" target="9" />
     </bytecodeTargetLevel>
   </component>
 </project>

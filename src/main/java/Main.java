@@ -7,11 +7,8 @@ import javafx.stage.Stage;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
 import java.io.IOException;
+import java.net.URL;
 
 public class Main extends Application {
 
@@ -24,11 +21,22 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("AdminGUI.fxml"));
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("Styles/SpravkiStyles.css").toExternalForm()); // ADD CSS TO SCENE
-        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/Images/PR Warehouses.png")));
-        primaryStage.setScene(scene);
-        primaryStage.show();
+
+        PropertyConfigurator.configure(Main.class.getResource(Constants.Configuration.LOG4J_PROPERTIES));
+        URL path = getClass().getResource("AdminGUI.fxml");
+
+        if(path != null){
+            Parent root = FXMLLoader.load(path);
+
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add(getClass().getResource("Styles/SpravkiStyles.css").toExternalForm()); // ADD CSS TO SCENE
+            primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/Images/PR Warehouses.png")));
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        }else{
+            log.error("View couldn't be loaded");
+            System.exit(-1);
+        }
+
     }
 }
