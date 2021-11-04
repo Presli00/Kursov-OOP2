@@ -4,13 +4,13 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "renter_information", schema = "warehouse", catalog = "")
-public class RenterInformationEntity {
+public class RenterInformation {
     private int renterId;
     private String name;
     private String phone;
     private int cityId;
     private String street;
-    private CityEntity cityByCityId;
+    private City cityByCityId;
 
     @Id
     @Column(name = "Renter_id")
@@ -67,7 +67,7 @@ public class RenterInformationEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        RenterInformationEntity that = (RenterInformationEntity) o;
+        RenterInformation that = (RenterInformation) o;
 
         if (renterId != that.renterId) return false;
         if (cityId != that.cityId) return false;
@@ -90,11 +90,11 @@ public class RenterInformationEntity {
 
     @ManyToOne
     @JoinColumn(name = "City_id", referencedColumnName = "City_id", nullable = false)
-    public CityEntity getCityByCityId() {
+    public City getCityByCityId() {
         return cityByCityId;
     }
 
-    public void setCityByCityId(CityEntity cityByCityId) {
+    public void setCityByCityId(City cityByCityId) {
         this.cityByCityId = cityByCityId;
     }
 }

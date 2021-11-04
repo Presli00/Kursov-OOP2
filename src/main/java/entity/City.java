@@ -4,12 +4,11 @@ import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
-@Table(name = "city", schema = "warehouse", catalog = "")
-public class CityEntity {
+public class City {
     private int cityId;
     private String city;
-    private Collection<RenterInformationEntity> renterInformationsByCityId;
-    private Collection<WarehouseEntity> warehousesByCityId;
+    private Collection<RenterInformation> renterInformationsByCityId;
+    private Collection<Warehouse> warehousesByCityId;
 
     @Id
     @Column(name = "City_id")
@@ -36,10 +35,10 @@ public class CityEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        CityEntity that = (CityEntity) o;
+        City city1 = (City) o;
 
-        if (cityId != that.cityId) return false;
-        if (city != null ? !city.equals(that.city) : that.city != null) return false;
+        if (cityId != city1.cityId) return false;
+        if (city != null ? !city.equals(city1.city) : city1.city != null) return false;
 
         return true;
     }
@@ -52,20 +51,20 @@ public class CityEntity {
     }
 
     @OneToMany(mappedBy = "cityByCityId")
-    public Collection<RenterInformationEntity> getRenterInformationsByCityId() {
+    public Collection<RenterInformation> getRenterInformationsByCityId() {
         return renterInformationsByCityId;
     }
 
-    public void setRenterInformationsByCityId(Collection<RenterInformationEntity> renterInformationsByCityId) {
+    public void setRenterInformationsByCityId(Collection<RenterInformation> renterInformationsByCityId) {
         this.renterInformationsByCityId = renterInformationsByCityId;
     }
 
     @OneToMany(mappedBy = "cityByCityId")
-    public Collection<WarehouseEntity> getWarehousesByCityId() {
+    public Collection<Warehouse> getWarehousesByCityId() {
         return warehousesByCityId;
     }
 
-    public void setWarehousesByCityId(Collection<WarehouseEntity> warehousesByCityId) {
+    public void setWarehousesByCityId(Collection<Warehouse> warehousesByCityId) {
         this.warehousesByCityId = warehousesByCityId;
     }
 }

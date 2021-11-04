@@ -4,11 +4,10 @@ import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
-@Table(name = "climate", schema = "warehouse", catalog = "")
-public class ClimateEntity {
+public class Climate {
     private int climateId;
     private String climate;
-    private Collection<StorageRoomEntity> storageRoomsByClimateId;
+    private Collection<StorageRoom> storageRoomsByClimateId;
 
     @Id
     @Column(name = "Climate_id")
@@ -35,10 +34,10 @@ public class ClimateEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ClimateEntity that = (ClimateEntity) o;
+        Climate climate1 = (Climate) o;
 
-        if (climateId != that.climateId) return false;
-        if (climate != null ? !climate.equals(that.climate) : that.climate != null) return false;
+        if (climateId != climate1.climateId) return false;
+        if (climate != null ? !climate.equals(climate1.climate) : climate1.climate != null) return false;
 
         return true;
     }
@@ -51,11 +50,11 @@ public class ClimateEntity {
     }
 
     @OneToMany(mappedBy = "climateByClimateId")
-    public Collection<StorageRoomEntity> getStorageRoomsByClimateId() {
+    public Collection<StorageRoom> getStorageRoomsByClimateId() {
         return storageRoomsByClimateId;
     }
 
-    public void setStorageRoomsByClimateId(Collection<StorageRoomEntity> storageRoomsByClimateId) {
+    public void setStorageRoomsByClimateId(Collection<StorageRoom> storageRoomsByClimateId) {
         this.storageRoomsByClimateId = storageRoomsByClimateId;
     }
 }

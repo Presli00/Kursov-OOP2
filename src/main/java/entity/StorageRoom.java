@@ -5,16 +5,16 @@ import java.util.Collection;
 
 @Entity
 @Table(name = "storage_room", schema = "warehouse", catalog = "")
-public class StorageRoomEntity {
+public class StorageRoom {
     private int storageRoomId;
     private double size;
     private int climateId;
     private int productId;
     private int historyId;
-    private ClimateEntity climateByClimateId;
-    private ProductTypeEntity productTypeByProductId;
-    private RentalHistoryEntity rentalHistoryByHistoryId;
-    private Collection<WarehouseHasRoomsEntity> warehouseHasRoomsByStorageRoomId;
+    private Climate climateByClimateId;
+    private ProductType productTypeByProductId;
+    private RentalHistory rentalHistoryByHistoryId;
+    private Collection<WarehouseHasRooms> warehouseHasRoomsByStorageRoomId;
 
     @Id
     @Column(name = "Storage_room_id")
@@ -71,7 +71,7 @@ public class StorageRoomEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        StorageRoomEntity that = (StorageRoomEntity) o;
+        StorageRoom that = (StorageRoom) o;
 
         if (storageRoomId != that.storageRoomId) return false;
         if (Double.compare(that.size, size) != 0) return false;
@@ -97,40 +97,40 @@ public class StorageRoomEntity {
 
     @ManyToOne
     @JoinColumn(name = "Climate_id", referencedColumnName = "Climate_id", nullable = false)
-    public ClimateEntity getClimateByClimateId() {
+    public Climate getClimateByClimateId() {
         return climateByClimateId;
     }
 
-    public void setClimateByClimateId(ClimateEntity climateByClimateId) {
+    public void setClimateByClimateId(Climate climateByClimateId) {
         this.climateByClimateId = climateByClimateId;
     }
 
     @ManyToOne
     @JoinColumn(name = "Product_id", referencedColumnName = "Product_id", nullable = false)
-    public ProductTypeEntity getProductTypeByProductId() {
+    public ProductType getProductTypeByProductId() {
         return productTypeByProductId;
     }
 
-    public void setProductTypeByProductId(ProductTypeEntity productTypeByProductId) {
+    public void setProductTypeByProductId(ProductType productTypeByProductId) {
         this.productTypeByProductId = productTypeByProductId;
     }
 
     @ManyToOne
     @JoinColumn(name = "History_id", referencedColumnName = "History_id", nullable = false)
-    public RentalHistoryEntity getRentalHistoryByHistoryId() {
+    public RentalHistory getRentalHistoryByHistoryId() {
         return rentalHistoryByHistoryId;
     }
 
-    public void setRentalHistoryByHistoryId(RentalHistoryEntity rentalHistoryByHistoryId) {
+    public void setRentalHistoryByHistoryId(RentalHistory rentalHistoryByHistoryId) {
         this.rentalHistoryByHistoryId = rentalHistoryByHistoryId;
     }
 
     @OneToMany(mappedBy = "storageRoomByRoomId")
-    public Collection<WarehouseHasRoomsEntity> getWarehouseHasRoomsByStorageRoomId() {
+    public Collection<WarehouseHasRooms> getWarehouseHasRoomsByStorageRoomId() {
         return warehouseHasRoomsByStorageRoomId;
     }
 
-    public void setWarehouseHasRoomsByStorageRoomId(Collection<WarehouseHasRoomsEntity> warehouseHasRoomsByStorageRoomId) {
+    public void setWarehouseHasRoomsByStorageRoomId(Collection<WarehouseHasRooms> warehouseHasRoomsByStorageRoomId) {
         this.warehouseHasRoomsByStorageRoomId = warehouseHasRoomsByStorageRoomId;
     }
 }

@@ -5,14 +5,13 @@ import java.sql.Timestamp;
 import java.util.Collection;
 
 @Entity
-@Table(name = "formular", schema = "warehouse", catalog = "")
-public class FormularEntity {
+public class Formular {
     private int formularId;
     private int renterId;
     private Timestamp periodBegin;
     private Timestamp periodEnd;
     private double price;
-    private Collection<RentalHistoryEntity> rentalHistoriesByFormularId;
+    private Collection<RentalHistory> rentalHistoriesByFormularId;
 
     @Id
     @Column(name = "Formular_id")
@@ -69,13 +68,14 @@ public class FormularEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        FormularEntity that = (FormularEntity) o;
+        Formular formular = (Formular) o;
 
-        if (formularId != that.formularId) return false;
-        if (renterId != that.renterId) return false;
-        if (Double.compare(that.price, price) != 0) return false;
-        if (periodBegin != null ? !periodBegin.equals(that.periodBegin) : that.periodBegin != null) return false;
-        if (periodEnd != null ? !periodEnd.equals(that.periodEnd) : that.periodEnd != null) return false;
+        if (formularId != formular.formularId) return false;
+        if (renterId != formular.renterId) return false;
+        if (Double.compare(formular.price, price) != 0) return false;
+        if (periodBegin != null ? !periodBegin.equals(formular.periodBegin) : formular.periodBegin != null)
+            return false;
+        if (periodEnd != null ? !periodEnd.equals(formular.periodEnd) : formular.periodEnd != null) return false;
 
         return true;
     }
@@ -94,11 +94,11 @@ public class FormularEntity {
     }
 
     @OneToMany(mappedBy = "formularByFormularId")
-    public Collection<RentalHistoryEntity> getRentalHistoriesByFormularId() {
+    public Collection<RentalHistory> getRentalHistoriesByFormularId() {
         return rentalHistoriesByFormularId;
     }
 
-    public void setRentalHistoriesByFormularId(Collection<RentalHistoryEntity> rentalHistoriesByFormularId) {
+    public void setRentalHistoriesByFormularId(Collection<RentalHistory> rentalHistoriesByFormularId) {
         this.rentalHistoriesByFormularId = rentalHistoriesByFormularId;
     }
 }

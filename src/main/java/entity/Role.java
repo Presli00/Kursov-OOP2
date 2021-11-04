@@ -4,13 +4,12 @@ import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
-@Table(name = "role", schema = "warehouse", catalog = "")
-public class RoleEntity {
+public class Role {
     private int roleId;
     private int subroleId;
     private String roleName;
-    private SubRoleEntity subRoleBySubroleId;
-    private Collection<UserEntity> usersByRoleId;
+    private SubRole subRoleBySubroleId;
+    private Collection<User> usersByRoleId;
 
     @Id
     @Column(name = "role_id")
@@ -47,11 +46,11 @@ public class RoleEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        RoleEntity that = (RoleEntity) o;
+        Role role = (Role) o;
 
-        if (roleId != that.roleId) return false;
-        if (subroleId != that.subroleId) return false;
-        if (roleName != null ? !roleName.equals(that.roleName) : that.roleName != null) return false;
+        if (roleId != role.roleId) return false;
+        if (subroleId != role.subroleId) return false;
+        if (roleName != null ? !roleName.equals(role.roleName) : role.roleName != null) return false;
 
         return true;
     }
@@ -66,20 +65,20 @@ public class RoleEntity {
 
     @ManyToOne
     @JoinColumn(name = "subrole_id", referencedColumnName = "Subrole_id", nullable = false)
-    public SubRoleEntity getSubRoleBySubroleId() {
+    public SubRole getSubRoleBySubroleId() {
         return subRoleBySubroleId;
     }
 
-    public void setSubRoleBySubroleId(SubRoleEntity subRoleBySubroleId) {
+    public void setSubRoleBySubroleId(SubRole subRoleBySubroleId) {
         this.subRoleBySubroleId = subRoleBySubroleId;
     }
 
     @OneToMany(mappedBy = "roleByRoleId")
-    public Collection<UserEntity> getUsersByRoleId() {
+    public Collection<User> getUsersByRoleId() {
         return usersByRoleId;
     }
 
-    public void setUsersByRoleId(Collection<UserEntity> usersByRoleId) {
+    public void setUsersByRoleId(Collection<User> usersByRoleId) {
         this.usersByRoleId = usersByRoleId;
     }
 }

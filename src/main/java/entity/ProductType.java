@@ -5,10 +5,10 @@ import java.util.Collection;
 
 @Entity
 @Table(name = "product_type", schema = "warehouse", catalog = "")
-public class ProductTypeEntity {
+public class ProductType {
     private int productId;
     private String type;
-    private Collection<StorageRoomEntity> storageRoomsByProductId;
+    private Collection<StorageRoom> storageRoomsByProductId;
 
     @Id
     @Column(name = "Product_id")
@@ -35,7 +35,7 @@ public class ProductTypeEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ProductTypeEntity that = (ProductTypeEntity) o;
+        ProductType that = (ProductType) o;
 
         if (productId != that.productId) return false;
         if (type != null ? !type.equals(that.type) : that.type != null) return false;
@@ -51,11 +51,11 @@ public class ProductTypeEntity {
     }
 
     @OneToMany(mappedBy = "productTypeByProductId")
-    public Collection<StorageRoomEntity> getStorageRoomsByProductId() {
+    public Collection<StorageRoom> getStorageRoomsByProductId() {
         return storageRoomsByProductId;
     }
 
-    public void setStorageRoomsByProductId(Collection<StorageRoomEntity> storageRoomsByProductId) {
+    public void setStorageRoomsByProductId(Collection<StorageRoom> storageRoomsByProductId) {
         this.storageRoomsByProductId = storageRoomsByProductId;
     }
 }

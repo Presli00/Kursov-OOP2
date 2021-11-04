@@ -5,13 +5,13 @@ import java.util.Collection;
 
 @Entity
 @Table(name = "agents_list", schema = "warehouse", catalog = "")
-public class AgentsListEntity {
+public class AgentsList {
     private int agentsListId;
-    private int agentId;
+    private int userId;
     private int warehouseId;
-    private UserEntity userByAgentId;
-    private WarehouseEntity warehouseByWarehouseId;
-    private Collection<WarehouseEntity> warehousesByAgentsListId;
+    private User userByUserId;
+    private Warehouse warehouseByWarehouseId;
+    private Collection<Warehouse> warehousesByAgentsListId;
 
     @Id
     @Column(name = "AgentsList_id")
@@ -24,13 +24,13 @@ public class AgentsListEntity {
     }
 
     @Basic
-    @Column(name = "Agent_id")
-    public int getAgentId() {
-        return agentId;
+    @Column(name = "User_id")
+    public int getUserId() {
+        return userId;
     }
 
-    public void setAgentId(int agentId) {
-        this.agentId = agentId;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     @Basic
@@ -48,10 +48,10 @@ public class AgentsListEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        AgentsListEntity that = (AgentsListEntity) o;
+        AgentsList that = (AgentsList) o;
 
         if (agentsListId != that.agentsListId) return false;
-        if (agentId != that.agentId) return false;
+        if (userId != that.userId) return false;
         if (warehouseId != that.warehouseId) return false;
 
         return true;
@@ -60,37 +60,37 @@ public class AgentsListEntity {
     @Override
     public int hashCode() {
         int result = agentsListId;
-        result = 31 * result + agentId;
+        result = 31 * result + userId;
         result = 31 * result + warehouseId;
         return result;
     }
 
     @ManyToOne
-    @JoinColumn(name = "Agent_id", referencedColumnName = "User_id", nullable = false)
-    public UserEntity getUserByAgentId() {
-        return userByAgentId;
+    @JoinColumn(name = "User_id", referencedColumnName = "User_id", nullable = false)
+    public User getUserByUserId() {
+        return userByUserId;
     }
 
-    public void setUserByAgentId(UserEntity userByAgentId) {
-        this.userByAgentId = userByAgentId;
+    public void setUserByUserId(User userByUserId) {
+        this.userByUserId = userByUserId;
     }
 
     @ManyToOne
     @JoinColumn(name = "Warehouse_id", referencedColumnName = "Warehouse_id", nullable = false)
-    public WarehouseEntity getWarehouseByWarehouseId() {
+    public Warehouse getWarehouseByWarehouseId() {
         return warehouseByWarehouseId;
     }
 
-    public void setWarehouseByWarehouseId(WarehouseEntity warehouseByWarehouseId) {
+    public void setWarehouseByWarehouseId(Warehouse warehouseByWarehouseId) {
         this.warehouseByWarehouseId = warehouseByWarehouseId;
     }
 
     @OneToMany(mappedBy = "agentsListByAgentSId")
-    public Collection<WarehouseEntity> getWarehousesByAgentsListId() {
+    public Collection<Warehouse> getWarehousesByAgentsListId() {
         return warehousesByAgentsListId;
     }
 
-    public void setWarehousesByAgentsListId(Collection<WarehouseEntity> warehousesByAgentsListId) {
+    public void setWarehousesByAgentsListId(Collection<Warehouse> warehousesByAgentsListId) {
         this.warehousesByAgentsListId = warehousesByAgentsListId;
     }
 }

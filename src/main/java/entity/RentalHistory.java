@@ -5,11 +5,11 @@ import java.util.Collection;
 
 @Entity
 @Table(name = "rental_history", schema = "warehouse", catalog = "")
-public class RentalHistoryEntity {
+public class RentalHistory {
     private int historyId;
     private int formularId;
-    private FormularEntity formularByFormularId;
-    private Collection<StorageRoomEntity> storageRoomsByHistoryId;
+    private Formular formularByFormularId;
+    private Collection<StorageRoom> storageRoomsByHistoryId;
 
     @Id
     @Column(name = "History_id")
@@ -36,7 +36,7 @@ public class RentalHistoryEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        RentalHistoryEntity that = (RentalHistoryEntity) o;
+        RentalHistory that = (RentalHistory) o;
 
         if (historyId != that.historyId) return false;
         if (formularId != that.formularId) return false;
@@ -53,20 +53,20 @@ public class RentalHistoryEntity {
 
     @ManyToOne
     @JoinColumn(name = "Formular_id", referencedColumnName = "Formular_id", nullable = false)
-    public FormularEntity getFormularByFormularId() {
+    public Formular getFormularByFormularId() {
         return formularByFormularId;
     }
 
-    public void setFormularByFormularId(FormularEntity formularByFormularId) {
+    public void setFormularByFormularId(Formular formularByFormularId) {
         this.formularByFormularId = formularByFormularId;
     }
 
     @OneToMany(mappedBy = "rentalHistoryByHistoryId")
-    public Collection<StorageRoomEntity> getStorageRoomsByHistoryId() {
+    public Collection<StorageRoom> getStorageRoomsByHistoryId() {
         return storageRoomsByHistoryId;
     }
 
-    public void setStorageRoomsByHistoryId(Collection<StorageRoomEntity> storageRoomsByHistoryId) {
+    public void setStorageRoomsByHistoryId(Collection<StorageRoom> storageRoomsByHistoryId) {
         this.storageRoomsByHistoryId = storageRoomsByHistoryId;
     }
 }
