@@ -32,7 +32,7 @@
                            <children>
                               <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@Images/Известия.png" />
+                                    <Image url="@../Images/Известия.png" />
                                  </image>
                               </ImageView>
                               <Label prefHeight="72.0" prefWidth="138.0" text="Известия">
@@ -50,7 +50,7 @@
                            <children>
                               <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@Images/248804469_4670484273031812_3493646461513996044_n.png" />
+                                    <Image url="@../Images/248804469_4670484273031812_3493646461513996044_n.png" />
                                  </image></ImageView>
                               <Label prefHeight="55.0" prefWidth="158.0" text="Отдаване под наем">
                                  <font>
@@ -67,7 +67,7 @@
                            <children>
                               <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@Images/Справки.png" />
+                                    <Image url="@../Images/Справки.png" />
                                  </image>
                               </ImageView>
                               <Label prefHeight="77.0" prefWidth="136.0" text="Справки">
@@ -86,7 +86,7 @@
                            <children>
                               <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@Images/Настройки.png" />
+                                    <Image url="@../Images/Настройки.png" />
                                  </image>
                               </ImageView>
                               <Label text="Настройки">
@@ -104,7 +104,7 @@
                            <children>
                               <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@Images/Лог-оут.png" />
+                                    <Image url="@../Images/Лог-оут.png" />
                                  </image>
                               </ImageView>
                               <Label text="Log out">

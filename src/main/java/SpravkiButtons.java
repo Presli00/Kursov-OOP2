@@ -19,19 +19,19 @@ public class SpravkiButtons {
     public void loadController(String GUItoLoad, int numOfButtons) throws IOException, IllegalAccessException, InvocationTargetException, NoSuchMethodException {
         switch (GUItoLoad){
             case "OwnerGUI":
-                loader = new FXMLLoader(getClass().getResource("OwnerGUI.fxml"));
+                loader = new FXMLLoader(getClass().getResource("/Views/OwnerGUI.fxml"));
                 loader.load();
                 OwnerGuiController = loader.getController();
                 CreateButtons(numOfButtons);
                 break;
             case "AdminGUI":
-                loader = new FXMLLoader(getClass().getResource("AdminGUI.fxml"));
+                loader = new FXMLLoader(getClass().getResource("/Views/AdminGUI.fxml"));
                 loader.load();
                 AdminGuiController = loader.getController();
                 CreateButtons(numOfButtons);
                 break;
             case "WarehouseAgentGUI":
-                loader = new FXMLLoader(getClass().getResource("WarehouseAgentGUI.fxml"));
+                loader = new FXMLLoader(getClass().getResource("/Views/WarehouseAgentGUI.fxml"));
                 loader.load();
                 WarehouseAgentGuiController = loader.getController();
                 CreateButtons(numOfButtons);
