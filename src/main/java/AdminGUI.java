@@ -1,4 +1,3 @@
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -20,7 +19,7 @@ public class AdminGUI {
     Button SpravkiButton;
 
     @FXML
-    public void SpravkiOnAction() throws IOException, IllegalAccessException, InvocationTargetException, NoSuchMethodException {
+    public void SpravkiOnAction() throws IOException{
         ScrollPane SpravkiScrollPane = new ScrollPane();
         ContentAnchorPane.getChildren().add(SpravkiScrollPane);
         SpravkiScrollPane.prefHeightProperty().bind(ContentAnchorPane.heightProperty());

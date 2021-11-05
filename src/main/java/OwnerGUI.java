@@ -23,7 +23,7 @@ public class OwnerGUI {
     // Functions
 
     @FXML
-    public void SpravkiOnAction() throws IOException, IllegalAccessException, InvocationTargetException, NoSuchMethodException {
+    public void SpravkiOnAction() throws IOException{
         // create Scroll Pane
         ScrollPane SpravkiScrollPane = new ScrollPane();
         // add it to MAIN Anchor Pane and stretch it to fit parent
