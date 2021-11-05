@@ -16,7 +16,7 @@ public class SpravkiButtons {
     WarehouseAgentGUI WarehouseAgentGuiController;
     ArrayList<Button> buttons = new ArrayList<Button>();
 
-    public void loadController(String GUItoLoad, int numOfButtons) throws IOException, IllegalAccessException, InvocationTargetException, NoSuchMethodException {
+    public void loadController(String GUItoLoad, int numOfButtons) throws IOException{
         switch (GUItoLoad){
             case "OwnerGUI":
                 loader = new FXMLLoader(getClass().getResource("/Views/OwnerGUI.fxml"));

@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="Warehouse" uuid="0598b342-4382-4415-a9df-718c3c9a454d">
+    <data-source source="LOCAL" name="localhost" uuid="8ef1f807-86b6-45b7-a063-a479b0abe740">
       <driver-ref>mariadb</driver-ref>
       <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>Hibernate
+
+C:/Users/User/IdeaProjects/Kursov-OOP2/src/main/resources/META-INF/persistence.xml</remarks>
       <jdbc-driver>org.mariadb.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mariadb://localhost:3306/warehouse</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>

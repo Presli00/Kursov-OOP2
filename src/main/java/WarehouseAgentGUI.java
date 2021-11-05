@@ -17,7 +17,7 @@ public class WarehouseAgentGUI {
     Button SpravkiButton;
 
     @FXML
-    public void SpravkiOnAction(ActionEvent event) throws IOException, IllegalAccessException, InvocationTargetException, NoSuchMethodException {
+    public void SpravkiOnAction() throws IOException{
         ScrollPane SpravkiScrollPane = new ScrollPane();
         ContentAnchorPane.getChildren().add(SpravkiScrollPane);
         SpravkiScrollPane.prefHeightProperty().bind(ContentAnchorPane.heightProperty());
