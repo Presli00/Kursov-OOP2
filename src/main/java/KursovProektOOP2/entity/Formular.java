@@ -1,10 +1,8 @@
-package entity;
+package KursovProektOOP2.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
-import java.util.Collection;
-import java.util.Set;
 
 @Table(name = "Formular", schema = "warehouse")
 @Entity

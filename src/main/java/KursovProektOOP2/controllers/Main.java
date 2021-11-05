@@ -1,3 +1,5 @@
+package KursovProektOOP2.controllers;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -23,19 +25,22 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws IOException {
 
         PropertyConfigurator.configure(Main.class.getResource(Constants.Configuration.LOG4J_PROPERTIES));
-        URL path = getClass().getResource("Views/AdminGUI.fxml");
+        URL path = getClass().getResource("/Views/WarehouseAgentGUI.fxml");
 
         if(path != null){
             Parent root = FXMLLoader.load(path);
 
             Scene scene = new Scene(root);
-            scene.getStylesheets().add(getClass().getResource("Styles/SpravkiStyles.css").toExternalForm()); // ADD CSS TO SCENE
+            //scene.getStylesheets().add(getClass().getResource("/Styles/SpravkiStyles.css").toExternalForm()); // ADD CSS TO SCENE
             primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/Images/PR Warehouses.png")));
             primaryStage.setScene(scene);
+            primaryStage.setMinHeight(650);
+            primaryStage.setMinWidth(1200);
             primaryStage.show();
         }else{
             log.error("View couldn't be loaded");
             System.exit(-1);
+
         }
 
     }

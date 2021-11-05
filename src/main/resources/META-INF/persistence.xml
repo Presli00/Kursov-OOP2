@@ -4,20 +4,20 @@
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
              version="2.2">
     <persistence-unit name="default">
-        <class>entity.AgentsList</class>
-        <class>entity.City</class>
-        <class>entity.Climate</class>
-        <class>entity.Formular</class>
-        <class>entity.Maintenance</class>
-        <class>entity.ProductType</class>
-        <class>entity.RentalHistory</class>
-        <class>entity.RenterInformation</class>
-        <class>entity.Role</class>
-        <class>entity.StorageRoom</class>
-        <class>entity.SubRole</class>
-        <class>entity.User</class>
-        <class>entity.Warehouse</class>
-        <class>entity.WarehouseHasRooms</class>
+        <class>KursovProektOOP2.entity.AgentsList</class>
+        <class>KursovProektOOP2.entity.City</class>
+        <class>KursovProektOOP2.entity.Climate</class>
+        <class>KursovProektOOP2.entity.Formular</class>
+        <class>KursovProektOOP2.entity.Maintenance</class>
+        <class>KursovProektOOP2.entity.ProductType</class>
+        <class>KursovProektOOP2.entity.RentalHistory</class>
+        <class>KursovProektOOP2.entity.RenterInformation</class>
+        <class>KursovProektOOP2.entity.Role</class>
+        <class>KursovProektOOP2.entity.StorageRoom</class>
+        <class>KursovProektOOP2.entity.SubRole</class>
+        <class>KursovProektOOP2.entity.User</class>
+        <class>KursovProektOOP2.entity.Warehouse</class>
+        <class>KursovProektOOP2.entity.WarehouseHasRooms</class>
 
         <properties>
             <property name="hibernate.connection.url" value="jdbc:mariadb://localhost:3306/warehouse"/>

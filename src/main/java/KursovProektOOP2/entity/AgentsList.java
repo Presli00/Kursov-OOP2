@@ -1,9 +1,7 @@
-package entity;
+package KursovProektOOP2.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Collection;
-import java.util.List;
 import java.util.Set;
 
 @Table(name="Agents_list", schema = "warehouse")

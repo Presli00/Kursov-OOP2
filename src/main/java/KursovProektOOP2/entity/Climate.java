@@ -1,8 +1,7 @@
-package entity;
+package KursovProektOOP2.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Collection;
 
 @Table(name = "Climate", schema = "warehouse")
 @Entity
