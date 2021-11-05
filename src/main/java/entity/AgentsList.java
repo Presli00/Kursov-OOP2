@@ -13,7 +13,7 @@ public class AgentsList implements Serializable {
     @Column(name = "AgentsList_id", nullable = false)
     private int agentsListId;
     @OneToOne
-    @JoinColumn(name = "User_id", nullable = false)
+    @JoinColumn(name = "Agent_id", nullable = false)
     private User userId;
     @OneToMany
     @JoinColumn(name = "Warehouse_id", nullable = false)

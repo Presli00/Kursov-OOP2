@@ -11,7 +11,7 @@ public class Role implements Serializable {
     @Column(name = "role_id", nullable = false)
     private int roleId;
     @OneToOne
-    @JoinColumn(name = "subrole_id", nullable = false)
+    @JoinColumn(name = "Subrole_id", nullable = false)
     private SubRole subroleId;
     @Column(name = "role_name", nullable = false)
     private String roleName;
