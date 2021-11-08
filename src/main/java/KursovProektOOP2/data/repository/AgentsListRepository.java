@@ -1,27 +1,22 @@
 package KursovProektOOP2.data.repository;
 
 import KursovProektOOP2.data.access.Connection;
-import KursovProektOOP2.data.entity.User;
+import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
-
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Function;
 
-public class UserRepository implements DAORepository {
+public class AgentsListRepository implements DAORepository{
+    private static final Logger log = Logger.getLogger(AgentsListRepository.class);
 
-    private static final Logger log = Logger.getLogger(UserRepository.class);
-
-    private static UserRepository getInstance(){
-        return UserRepository.UserRepositoryHolder.INSTANCE;
+    private static AgentsListRepository getInstance(){
+        return AgentsListRepository.AgentsListRepositoryHolder.INSTANCE;
     }
 
-    private static class UserRepositoryHolder{
-        public static final UserRepository INSTANCE = new UserRepository();
+    private static class AgentsListRepositoryHolder{
+        public static final AgentsListRepository INSTANCE = new AgentsListRepository();
     }
 
     @Override
@@ -30,9 +25,9 @@ public class UserRepository implements DAORepository {
         Transaction transaction = session.beginTransaction();
         try {
             session.save(obj);
-            log.info("User saved successfully");
+            log.info("AgentsLists saved successfully");
         } catch (Exception ex) {
-            log.error("User save error" + ex.getMessage());
+            log.error("AgentsLists save error" + ex.getMessage());
         } finally {
             transaction.commit();
         }
@@ -44,9 +39,9 @@ public class UserRepository implements DAORepository {
         Transaction transaction = session.beginTransaction();
         try {
             session.update(obj);
-            log.info("User updated successfully");
+            log.info("AgentsLists updated successfully");
         } catch (Exception ex) {
-            log.error("User update error" + ex.getMessage());
+            log.error("AgentsLists update error" + ex.getMessage());
         } finally {
             transaction.commit();
         }
@@ -58,9 +53,9 @@ public class UserRepository implements DAORepository {
         Transaction transaction = session.beginTransaction();
         try {
             session.delete(obj);
-            log.info("User delete successfully");
+            log.info("AgentsLists delete successfully");
         } catch (Exception ex) {
-            log.error("User delete error" + ex.getMessage());
+            log.error("AgentsLists delete error" + ex.getMessage());
         } finally {
             transaction.commit();
         }
@@ -70,32 +65,32 @@ public class UserRepository implements DAORepository {
     public Optional getById(Long id) {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
-        Optional<User> foundUser = null;
+        Optional<AgentsListRepository> foundAgentsLists = null;
         try {
-            foundUser = session.byId(User.class).loadOptional(id);
-            log.info("User get by id successfully");
+            foundAgentsLists = session.byId(AgentsListRepository.class).loadOptional(id);
+            log.info("AgentsLists get by id successfully");
         } catch (Exception ex) {
-            log.error("User get by id error" + ex.getMessage());
+            log.error("AgentsLists get by id error" + ex.getMessage());
         } finally {
             transaction.commit();
         }
-        return foundUser;
+        return foundAgentsLists;
     }
 
     @Override
     public List getAll() {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
-        List<User> users = new LinkedList<>();
+        List<AgentsListRepository> agentsLists = new LinkedList<>();
         try{
-            String jpql = "SELECT u FROM User u";
-            users.addAll(session.createQuery(jpql, User.class).getResultList());
-            log.info("Got all users");
+            String jpql = "SELECT a FROM AgentsList a";
+            agentsLists.addAll(session.createQuery(jpql, AgentsListRepository.class).getResultList());
+            log.info("Got all AgentsLists");
         }catch(Exception ex){
-            log.error("Get users failed: " + ex.getMessage());
+            log.error("Get AgentsLists failed: " + ex.getMessage());
         }finally {
             transaction.commit();
         }
-        return users;
+        return agentsLists;
     }
 }
