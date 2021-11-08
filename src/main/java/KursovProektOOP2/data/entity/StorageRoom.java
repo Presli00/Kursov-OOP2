@@ -1,4 +1,4 @@
-package KursovProektOOP2.entity;
+package KursovProektOOP2.data.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
