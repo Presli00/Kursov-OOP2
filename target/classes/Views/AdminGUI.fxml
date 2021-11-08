@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1150.0" style="-fx-background-color: #4a4a4a;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="KursovProektOOP2.controllers.AdminGUI">
+   <children>
+      <GridPane fx:id="GridPane" layoutX="344.0" layoutY="144.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="NEVER" minWidth="-Infinity" />
+          <ColumnConstraints hgrow="ALWAYS" minWidth="-Infinity" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="-Infinity" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <VBox prefHeight="597.0" prefWidth="217.0" spacing="30.0">
+               <children>
+                  <Button blendMode="SRC_ATOP" mnemonicParsing="false" prefHeight="24.0" prefWidth="197.0" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+                           <children>
+                              <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/Известия.png" />
+                                 </image>
+                              </ImageView>
+                              <Label alignment="BOTTOM_LEFT" prefHeight="29.0" prefWidth="97.0" text="Известия">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </graphic>
+                  </Button>
+                  <Button blendMode="SRC_ATOP" mnemonicParsing="false" prefHeight="24.0" prefWidth="197.0" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <HBox prefHeight="52.0" prefWidth="182.0" spacing="5.0">
+                           <children>
+                              <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/Cubes-Складове.png" />
+                                 </image>
+                              </ImageView>
+                              <Label alignment="CENTER" prefHeight="62.0" prefWidth="141.0" text="Складове в системата" textOverrun="CLIP" wrapText="true">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </graphic>
+                  </Button>
+                  <Button blendMode="SRC_ATOP" mnemonicParsing="false" prefHeight="24.0" prefWidth="197.0" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <HBox prefHeight="52.0" prefWidth="182.0" spacing="5.0">
+                           <children>
+                              <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/Акаунти.png" />
+                                 </image>
+                              </ImageView>
+                              <Label prefHeight="52.0" prefWidth="63.0" text="Акаунти">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="SpravkiButton" blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#SpravkiOnAction" prefHeight="24.0" prefWidth="197.0" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+                           <children>
+                              <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/Справки.png" />
+                                 </image>
+                              </ImageView>
+                              <Label prefHeight="49.0" prefWidth="59.0" text="Справки">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </graphic>
+                  </Button>
+                  <Region prefHeight="245.0" prefWidth="197.0" VBox.vgrow="ALWAYS" />
+                  <Button blendMode="SRC_ATOP" mnemonicParsing="false" prefHeight="24.0" prefWidth="197.0" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+                           <children>
+                              <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/Настройки.png" />
+                                 </image>
+                              </ImageView>
+                              <Label prefHeight="41.0" prefWidth="74.0" text="Настройки">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </graphic>
+                  </Button>
+                  <Button blendMode="SRC_ATOP" mnemonicParsing="false" prefHeight="24.0" prefWidth="197.0" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+                           <children>
+                              <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/Лог-оут.png" />
+                                 </image>
+                              </ImageView>
+                              <Label prefHeight="41.0" prefWidth="51.0" text="Log out">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </graphic></Button>
+               </children>
+            </VBox>
+            <AnchorPane fx:id="ContentAnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" />
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>

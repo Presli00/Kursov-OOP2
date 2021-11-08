@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
+             version="2.2">
+    <persistence-unit name="default">
+        <class>KursovProektOOP2.entity.AgentsList</class>
+        <class>KursovProektOOP2.entity.City</class>
+        <class>KursovProektOOP2.entity.Climate</class>
+        <class>KursovProektOOP2.entity.Formular</class>
+        <class>KursovProektOOP2.entity.Maintenance</class>
+        <class>KursovProektOOP2.entity.ProductType</class>
+        <class>KursovProektOOP2.entity.RentalHistory</class>
+        <class>KursovProektOOP2.entity.RenterInformation</class>
+        <class>KursovProektOOP2.entity.Role</class>
+        <class>KursovProektOOP2.entity.StorageRoom</class>
+        <class>KursovProektOOP2.entity.SubRole</class>
+        <class>KursovProektOOP2.entity.User</class>
+        <class>KursovProektOOP2.entity.Warehouse</class>
+        <class>KursovProektOOP2.entity.WarehouseHasRooms</class>
+
+        <properties>
+            <property name="hibernate.connection.url" value="jdbc:mariadb://localhost:3306/warehouse"/>
+            <property name="hibernate.connection.driver_class" value="org.mariadb.jdbc.Driver"/>
+            <property name="hibarnate.connection,user" value="user"/>
+            <property name="hibernate.conecction.password" value="password"/>
+            <property name="hibernate.show_sql" value="true"/>
+        </properties>
+    </persistence-unit>
+</persistence>
