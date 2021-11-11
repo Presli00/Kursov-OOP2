@@ -16,7 +16,7 @@ public class UserRepository implements DAORepository {
 
     private static final Logger log = Logger.getLogger(UserRepository.class);
 
-    private static UserRepository getInstance(){
+    public static UserRepository getInstance(){
         return UserRepository.UserRepositoryHolder.INSTANCE;
     }
 

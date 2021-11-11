@@ -16,7 +16,7 @@ public class StorageRoom implements Serializable {
     @JoinColumn(name = "Climate_id", nullable = false)
     private Climate climateId;
     @OneToMany
-    @JoinColumn(name = "Product_id", nullable = false)
+    @JoinColumn(name = "product_id", nullable = false)
     private Set<ProductType> productId;
     @OneToOne
     @JoinColumn(name = "History_id", nullable = false)

@@ -23,7 +23,6 @@
         <mapping class="KursovProektOOP2.data.entity.RenterInformation" />
         <mapping class="KursovProektOOP2.data.entity.Role" />
         <mapping class="KursovProektOOP2.data.entity.StorageRoom" />
-        <mapping class="KursovProektOOP2.data.entity.SubRole" />
         <mapping class="KursovProektOOP2.data.entity.User" />
         <mapping class="KursovProektOOP2.data.entity.Warehouse" />
         <mapping class="KursovProektOOP2.data.entity.WarehouseHasRooms" />

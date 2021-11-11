@@ -6,8 +6,9 @@ import java.io.Serializable;
 @Table(name = "Product_type", schema = "warehouse")
 @Entity
 public class ProductType implements Serializable {
+
     @Id
-    @Column(name = "Product_id", nullable = false)
+    @Column(name = "Product_id", nullable = false, insertable = false,updatable = false)
     private int productId;
     @Column(name = "Type", nullable = false)
     private String type;
@@ -15,6 +16,7 @@ public class ProductType implements Serializable {
     public int getProductId() {
         return productId;
     }
+
 
     public void setProductId(int productId) {
         this.productId = productId;

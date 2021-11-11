@@ -10,7 +10,7 @@ public class WarehouseHasRooms implements Serializable {
     @Column(name = "WarehouseHasRooms_id", nullable = false)
     private int warehouseHasRoomsId;
     @OneToOne
-    @JoinColumn(name = "Warehouse_id", nullable = false)
+    @JoinColumn(name = "warehouse_id", nullable = false)
     private Warehouse warehouseId;
     @OneToOne
     @JoinColumn(name = "Room_id", nullable = false)

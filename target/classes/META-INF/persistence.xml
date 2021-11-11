@@ -14,7 +14,6 @@
         <class>KursovProektOOP2.data.entity.RenterInformation</class>
         <class>KursovProektOOP2.data.entity.Role</class>
         <class>KursovProektOOP2.data.entity.StorageRoom</class>
-        <class>KursovProektOOP2.data.entity.SubRole</class>
         <class>KursovProektOOP2.data.entity.User</class>
         <class>KursovProektOOP2.data.entity.Warehouse</class>
         <class>KursovProektOOP2.data.entity.WarehouseHasRooms</class>

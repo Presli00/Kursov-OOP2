@@ -22,9 +22,9 @@ public class User implements Serializable {
     @OneToOne
     @JoinColumn(name = "role_id", nullable = false)
     private Role roleId;
-    @Column(name = "created_date", nullable = false)
+    @Column(name = "created_date")
     private Timestamp createdDate;
-    @Column(name = "updated_date", nullable = false)
+    @Column(name = "updated_date")
     private Timestamp updatedDate;
 
     public int getUserId() {

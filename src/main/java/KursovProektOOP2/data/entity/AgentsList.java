@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
 
-@Table(name="Agents_list", schema = "warehouse")
+@Table(name="agents_list", schema = "warehouse")
 @Entity
 public class AgentsList implements Serializable {
     @Id
@@ -14,7 +14,7 @@ public class AgentsList implements Serializable {
     @JoinColumn(name = "User_id", nullable = false)
     private User userId;
     @OneToMany
-    @JoinColumn(name = "Warehouse_id", nullable = false)
+    @JoinColumn(name = "a_warehouse_id", nullable = false)
     private Set<Warehouse> warehouseId;
 
     public int getAgentsListId() {
