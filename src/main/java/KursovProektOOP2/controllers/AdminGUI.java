@@ -49,7 +49,6 @@ public class AdminGUI {
             sp.setPrefHeight(ContentAnchorPane.getHeight());
         });
 
-        AnchorPane a = FXMLLoader.load(getClass().getResource("/Views/AccountInfo.fxml"));
     }
 
 
