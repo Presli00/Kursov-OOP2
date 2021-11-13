@@ -1,5 +1,5 @@
 package KursovProektOOP2.controllers;
 
-public class OwnerSpravki {
+public class OwnerWarehousesOwned {
 
 }
