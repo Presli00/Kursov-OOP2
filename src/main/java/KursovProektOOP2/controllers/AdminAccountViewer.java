@@ -25,11 +25,25 @@ public class AdminAccountViewer {
 
     @FXML
     public void initialize() throws IOException {
-        System.out.println("s");
         List list = repository.getAll();
-        Label label = new Label(((User)list.get(0)).getFirstName());
-        Label label2 = new Label("s");
-        Vbox.getChildren().addAll(label, label2);
+        for(int i = 0; i < list.size(); i++){
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/AccountInfo.fxml"));
+            AnchorPane user = loader.load();
+            AccountInfo controller = loader.getController();
+            // Set data in the controller
+            controller.idLabel.setText(String.valueOf(((User)list.get(i)).getUserId()));
+            controller.usernameLabel.setText(((User) list.get(i)).getUsername());
+            controller.roleLabel.setText(((User) list.get(i)).getRoleId().getRoleName());
+            controller.firstnameLabel.setText(((User) list.get(i)).getFirstName());
+            controller.lastnameLabel.setText(((User) list.get(i)).getLastName());
+            controller.createdatLabel.setText(((User) list.get(i)).getCreatedDate().toString());
+            if(((User) list.get(i)).getUpdatedDate() == null){
+                controller.lastupdatedatLabel.setText("Never");
+            }else{
+                controller.lastupdatedatLabel.setText(((User) list.get(i)).getUpdatedDate().toString());
+            }
+            Vbox.getChildren().add(user);
+        }
 
         ScrollPane.widthProperty().addListener(event -> {
             AnchorPane.setPrefWidth(ScrollPane.getWidth());

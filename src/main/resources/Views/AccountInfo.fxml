@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="102.0" prefWidth="759.0" style="-fx-background-color: #61F1FF; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="KursovProektOOP2.controllers.AccountInfo">
+   <children>
+      <Label fx:id="idLabel" layoutX="14.0" layoutY="36.0" prefHeight="46.0" prefWidth="34.0" AnchorPane.bottomAnchor="36.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="711.0" AnchorPane.topAnchor="36.0">
+         <font>
+            <Font name="Tahoma Bold" size="36.0" />
+         </font>
+      </Label>
+      <Label fx:id="usernameLabel" layoutX="58.0" layoutY="6.0" AnchorPane.bottomAnchor="66.0" AnchorPane.leftAnchor="58.0" AnchorPane.rightAnchor="590.0" AnchorPane.topAnchor="6.0">
+         <font>
+            <Font name="Tahoma Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="roleLabel" layoutX="478.0" layoutY="58.0" prefHeight="46.0" prefWidth="249.0" AnchorPane.rightAnchor="32.0">
+         <font>
+            <Font name="Tahoma Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="478.0" layoutY="4.0" prefHeight="28.0" prefWidth="72.0" text="Created at:" AnchorPane.rightAnchor="209.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="478.0" layoutY="31.0" prefHeight="28.0" prefWidth="98.0" text="Last update at:" AnchorPane.rightAnchor="183.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="createdatLabel" layoutX="559.0" layoutY="8.0" prefHeight="20.0" prefWidth="177.0" AnchorPane.rightAnchor="23.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="lastupdatedatLabel" layoutX="579.0" layoutY="35.0" prefHeight="20.0" prefWidth="166.0" AnchorPane.rightAnchor="14.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <HBox alignment="CENTER_LEFT" layoutX="58.0" layoutY="59.0" prefHeight="46.0" prefWidth="283.0" spacing="10.0" AnchorPane.leftAnchor="58.0" AnchorPane.rightAnchor="418.0">
+         <children>
+            <Label fx:id="firstnameLabel" wrapText="true">
+               <font>
+                  <Font name="Tahoma Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="lastnameLabel" wrapText="true">
+               <font>
+                  <Font name="Tahoma Bold" size="22.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
