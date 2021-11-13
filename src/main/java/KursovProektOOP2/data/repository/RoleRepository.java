@@ -16,7 +16,7 @@ public class RoleRepository implements DAORepository {
 
     private static final Logger log = Logger.getLogger(RoleRepository.class);
 
-    private static RoleRepository getInstance() {
+    public static RoleRepository getInstance() {
         return RoleRepository.RoleRepositoryHolder.INSTANCE;
     }
 
