@@ -12,7 +12,7 @@ import java.util.Optional;
 public class ClimateRepository implements DAORepository{
     private static final Logger log = Logger.getLogger(ClimateRepository.class);
 
-    private static ClimateRepository getInstance(){
+    public static ClimateRepository getInstance(){
         return ClimateRepository.ClimateRepositoryHolder.INSTANCE;
     }
 

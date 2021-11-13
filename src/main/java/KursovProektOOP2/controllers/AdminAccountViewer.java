@@ -4,10 +4,14 @@ import KursovProektOOP2.data.entity.User;
 import KursovProektOOP2.data.repository.UserRepository;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.List;
@@ -19,6 +23,7 @@ public class AdminAccountViewer {
     ScrollPane ScrollPane;
     @FXML
     VBox Vbox;
+    Stage stage = new Stage();
 
     public final UserRepository repository = UserRepository.getInstance();
 
@@ -53,5 +58,14 @@ public class AdminAccountViewer {
             AnchorPane.setPrefHeight(ScrollPane.getHeight());
         });
 
+    }
+
+    public void addUser() throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("/Views/RegistrationForm.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setTitle("Registration Form");
+        stage.setResizable(false);
+        stage.show();
     }
 }
