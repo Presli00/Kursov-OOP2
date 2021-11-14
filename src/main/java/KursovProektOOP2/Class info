@@ -1,0 +1,14 @@
+AdminGUI - класа и fxml на админ GUI
+AdminAccountViewer - класа и fxml на визуализацията на акаунтите в AdminGUI
+AccountInfo - класа и fxml на информацията която се визуализира чрез AdminAccountViewer
+AdminSpravki - класа и fxml на справките в AdminGUI
+RegistrationForm - класа и fxml за регистрацията на нов user
+
+OwnerGUI - класа и fxml на собственик GUI
+OwnerWarehouseViewer - класа и fxml на визуализацията на складовете в OwnerGUI
+WarehouseInfo - класа и fxml на информацията която се визуализира чрез OwnerWarehouseViewer
+OwnerSpravki - класа и fxml на справките в OwnerGUI
+WarehouseAdder - класа и fxml за добавяне на нов склад
+
+WarehouseAgentGUI - класа и fxml на складов агент GUI
+WarehouseAgentSpravki - класа и fxml на справките в WarehouseAgentGUI

@@ -23,6 +23,9 @@ public class AdminGUI {
     @FXML
     public void SpravkiOnAction() throws IOException{
         AnchorPane ap = FXMLLoader.load(getClass().getResource("/Views/AdminSpravki.fxml")); //LOAD VIEW
+        if(!ContentAnchorPane.getChildren().isEmpty()) {
+            ContentAnchorPane.getChildren().clear();
+        }
         ContentAnchorPane.getChildren().add(ap);
         ap.setPrefWidth(ContentAnchorPane.getWidth()); // SET SIZE OF VIEW
         ap.setPrefHeight(ContentAnchorPane.getHeight());
@@ -38,6 +41,9 @@ public class AdminGUI {
 
     public void AccountsOnAction() throws IOException {
         ScrollPane sp = FXMLLoader.load(getClass().getResource("/Views/AdminAccountViewer.fxml")); //LOAD VIEW
+        if(!ContentAnchorPane.getChildren().isEmpty()) {
+            ContentAnchorPane.getChildren().clear();
+        }
         ContentAnchorPane.getChildren().add(sp);
         sp.setPrefWidth(ContentAnchorPane.getWidth()); // SET SIZE OF VIEW
         sp.setPrefHeight(ContentAnchorPane.getHeight());

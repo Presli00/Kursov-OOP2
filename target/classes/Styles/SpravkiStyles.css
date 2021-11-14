@@ -9,4 +9,15 @@
     -fx-alignment: center-right;
     -fx-text-alignment: right;
 }
+.WarehouseButtons {
+    -fx-background-image: url('/Images/warehousesWithLogo.png');
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+    -fx-opacity: 90%;
+    -fx-font-size: 26;
+    -fx-font-weight: bold;
+    -fx-alignment: center-right;
+    -fx-text-alignment: right;
+}
 

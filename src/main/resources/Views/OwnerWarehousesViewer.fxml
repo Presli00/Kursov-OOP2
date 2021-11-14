@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane fx:id="ScrollPane" hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FF6F61;" vbarPolicy="ALWAYS" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="KursovProektOOP2.controllers.OwnerWarehousesViewer">
+  <content>
+    <AnchorPane fx:id="AnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="399.0" prefWidth="585.0" style="-fx-background-color: #FF6F61;">
+         <children>
+            <VBox fx:id="Vbox" alignment="TOP_CENTER" prefHeight="399.0" prefWidth="585.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <padding>
+                  <Insets left="5.0" right="5.0" top="5.0" />
+               </padding>
+               <children>
+                  <ToolBar prefHeight="45.0" prefWidth="200.0" style="-fx-background-color: #FFBE61; -fx-background-radius: 20;" VBox.vgrow="SOMETIMES">
+                     <items>
+                        <GridPane alignment="CENTER" hgap="5.0" prefHeight="30.0" prefWidth="563.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints vgrow="ALWAYS" />
+                          </rowConstraints>
+                           <children>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <Button fx:id="addWarehouseButton" mnemonicParsing="false" onMouseClicked="#addWarehouse" style="-fx-background-radius: 70;" text="Добавяне на помещение" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font></Button>
+                                 </children></AnchorPane>
+                              <AnchorPane prefHeight="30.0" prefWidth="412.0" GridPane.columnIndex="1">
+                                 <children>
+                                    <Button fx:id="rentWarehouseButton" mnemonicParsing="false" style="-fx-background-radius: 70;" text="Отдаване под наем" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font></Button>
+                                 </children></AnchorPane>
+                           </children>
+                        </GridPane>
+                     </items>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </ToolBar>
+               </children>
+            </VBox>
+         </children></AnchorPane>
+  </content>
+</ScrollPane>

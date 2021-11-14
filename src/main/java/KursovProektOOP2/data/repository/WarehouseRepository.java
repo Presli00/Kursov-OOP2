@@ -15,7 +15,7 @@ public class WarehouseRepository implements DAORepository{
 
     private static final Logger log = Logger.getLogger(WarehouseRepository.class);
 
-    private static WarehouseRepository getInstance(){
+    public static WarehouseRepository getInstance(){
         return WarehouseRepository.WarehouseRepositoryHolder.INSTANCE;
     }
 
