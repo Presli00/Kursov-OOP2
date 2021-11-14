@@ -46,7 +46,7 @@
                         </HBox>
                      </graphic>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#WarehouseOnAction" prefHeight="63.0" prefWidth="220.0" style="-fx-background-color: transperant;">
+                  <Button mnemonicParsing="false" onAction="#WarehouseOnAction" prefHeight="63.0" prefWidth="220.0" style="-fx-background-color: transparent;">
                      <graphic>
                         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                            <children>
