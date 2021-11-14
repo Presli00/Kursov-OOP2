@@ -5,10 +5,7 @@ import KursovProektOOP2.data.entity.User;
 import KursovProektOOP2.data.repository.RoleRepository;
 import KursovProektOOP2.data.repository.UserRepository;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import org.apache.commons.lang3.RandomStringUtils;
 
@@ -27,13 +24,15 @@ public class RegistrationForm {
     @FXML
     PasswordField passwordTF;
     @FXML
-    TextField roleTF;
+    ComboBox roleTF;
     @FXML
     TextField passwordVisibleTF;
     @FXML
     Button registerButton;
     @FXML
     CheckBox passwordCheck;
+    @FXML
+    Label validationLabel;
 
     public final UserRepository repository = UserRepository.getInstance();
     public final RoleRepository roleRepository = RoleRepository.getInstance();
@@ -41,47 +40,69 @@ public class RegistrationForm {
 
     public void Register(){
         Stage stage = (Stage) registerButton.getScene().getWindow();
-        User user = new User();
-        user.setUserId(0);
-        user.setUsername(usernameTF.getText());
-        user.setFirstName(firstNameTF.getText());
-        user.setLastName(lastNameTF.getText());
-        if(passwordCheck.isSelected()){
-            user.setPassword(passwordVisibleTF.getText());
-        }else{
-            user.setPassword(passwordTF.getText());
-        }
-        switch (roleTF.getText()){
-            case "1":
-            case "Admin":
-            case "admin":
+        if(validate()){
+            User user = new User();
+            user.setUserId(0);
+            user.setUsername(usernameTF.getText());
+            user.setFirstName(firstNameTF.getText());
+            user.setLastName(lastNameTF.getText());
+            if(passwordCheck.isSelected()){
+                user.setPassword(passwordVisibleTF.getText());
+            }else{
+                user.setPassword(passwordTF.getText());
+            }
+            if(roleTF.getValue() == roleTF.getItems().get(0)){
                 user.setRoleId(roles.get(0));
-                break;
-            case "2":
-            case "Owner":
-            case "owner":
-            case "Warehouse Owner":
-            case "warehouse owner":
-            case "Warehouse owner":
-            case "warehouse Owner":
+            }else if(roleTF.getValue() == roleTF.getItems().get(1)){
                 user.setRoleId(roles.get(1));
-                break;
-            case "3":
-            case "Agent":
-            case "agent":
-            case "Warehouse Agent":
-            case "warehouse agent":
-            case "Warehouse agent":
-            case "warehouse Agent":
+            }else{
                 user.setRoleId(roles.get(2));
-                break;
+            }
+            Date date = new Date();
+            user.setCreatedDate(new Timestamp(date.getTime()));
+            user.setUpdatedDate(null);
+            repository.save(user);
+            stage.close();
         }
-        Date date = new Date();
-        user.setCreatedDate(new Timestamp(date.getTime()));
-        user.setUpdatedDate(null);
-        repository.save(user);
+    }
 
-        stage.close();
+    public boolean validate(){
+        boolean valid = true;
+        StringBuilder errorMessage = new StringBuilder();
+        if(firstNameTF.getText().matches(".*\\d.*") || firstNameTF.getText().length() < 2){ // Check if name contains numbers or is shorter than 2 characters
+            valid = false;
+            errorMessage.append("Invalid First Name! ");
+        }
+        if(lastNameTF.getText().matches(".*\\d.*") || lastNameTF.getText().length() < 2){
+            valid = false;
+            errorMessage.append("Invalid Last Name! ");
+        }
+        if(usernameTF.getText().isEmpty()){
+            valid = false;
+            errorMessage.append("Invalid Username! ");
+        }
+        if(passwordTF.getText().length() < 8 || passwordVisibleTF.getText().length() < 8){
+            valid = false;
+            errorMessage.append("Password must be at least 8 characters! ");
+        }
+        if(roleTF.getSelectionModel().isEmpty()){
+            valid = false;
+            errorMessage.append("Choose a role! ");
+        }
+
+        if(valid){
+            return true;
+        }else{
+            validationLabel.setText(errorMessage.toString());
+            return false;
+        }
+    }
+
+    @FXML
+    public void initialize(){ //Add items to combobox
+        roleTF.getItems().add("Admin");
+        roleTF.getItems().add("Warehouse Owner");
+        roleTF.getItems().add("Warehouse Agent");
     }
 
     public void check() {

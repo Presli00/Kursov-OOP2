@@ -30,8 +30,8 @@ public class AdminAccountViewer {
 
     @FXML
     public void initialize() throws IOException {
-        List list = repository.getAll();
-        for(int i = 0; i < list.size(); i++){
+        List list = repository.getAll(); //get all users from database
+        for(int i = 0; i < list.size(); i++){ //map info to labels and add to vbox
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/AccountInfo.fxml"));
             AnchorPane user = loader.load();
             AccountInfo controller = loader.getController();

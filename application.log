@@ -131,3 +131,6 @@
 [JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - (conn=70) Duplicate entry 'TestUser1' for key 'username_UNIQUE'
 [JavaFX Application Thread] ERROR KursovProektOOP2.data.repository.UserRepository  - User save errorcould not execute statement
 [JavaFX Application Thread] ERROR org.hibernate.AssertionFailure  - HHH000099: an assertion failure occurred (this may indicate a bug in Hibernate, but is more likely due to unsafe use of the session): org.hibernate.AssertionFailure: null id in KursovProektOOP2.data.entity.User entry (don't flush the Session after an exception occurs)
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - (conn=11) Duplicate entry '' for key 'username_UNIQUE'
+[JavaFX Application Thread] ERROR KursovProektOOP2.data.repository.UserRepository  - User save errorcould not execute statement
+[JavaFX Application Thread] ERROR org.hibernate.AssertionFailure  - HHH000099: an assertion failure occurred (this may indicate a bug in Hibernate, but is more likely due to unsafe use of the session): org.hibernate.AssertionFailure: null id in KursovProektOOP2.data.entity.User entry (don't flush the Session after an exception occurs)
