@@ -31,13 +31,12 @@ public class OwnerWarehousesViewer {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/WarehouseInfo.fxml"));
             AnchorPane warehouse = loader.load();
             WarehouseInfo controller = loader.getController();
-            controller.test.setText(String.valueOf(((Warehouse)list.get(i)).getWarehouseId()));
-            /* for the data
-
-
-
-
-             */
+            controller.idLabel.setText(String.valueOf(((Warehouse)list.get(i)).getWarehouseId()));
+            controller.cityLabel.setText(String.valueOf(((Warehouse)list.get(i)).getCityId()));
+            controller.streetLabel.setText(String.valueOf(((Warehouse)list.get(i)).getStreet()));
+            controller.numberOfStorageRoomsLabel.setText(String.valueOf(((Warehouse)list.get(i)).getNumberOfStorageRooms()));
+            controller.maintenanceLabel.setText(String.valueOf(((Warehouse)list.get(i)).getMaintanenceId()));
+            controller.agentLabel.setText(String.valueOf(((Warehouse)list.get(i)).getAgentSId()));
             Vbox.getChildren().add(warehouse);
         }
         ScrollPane.widthProperty().addListener(event -> {
