@@ -10,11 +10,11 @@ public class AgentsList implements Serializable {
     @Id
     @Column(name = "AgentsList_id", nullable = false)
     private int agentsListId;
-    @OneToOne
-    @JoinColumn(name = "User_id", nullable = false)
-    private User userId;
+    @ManyToOne
+    @JoinColumn(name = "Agent_id", nullable = false)
+    private Agent agentId;
     @OneToMany
-    @JoinColumn(name = "a_warehouse_id", nullable = false)
+    @JoinColumn(name = "warehouse_id", nullable = false)
     private Set<Warehouse> warehouseId;
 
     public int getAgentsListId() {
@@ -25,12 +25,12 @@ public class AgentsList implements Serializable {
         this.agentsListId = agentsListId;
     }
 
-    public User getUserId() {
-        return userId;
+    public Agent getAgentId() {
+        return agentId;
     }
 
-    public void setUserId(User userId) {
-        this.userId = userId;
+    public void setAgentId(Agent agentId) {
+        this.agentId = agentId;
     }
 
     public Set<Warehouse> getWarehouseId() {
@@ -49,7 +49,7 @@ public class AgentsList implements Serializable {
         AgentsList that = (AgentsList) o;
 
         if (agentsListId != that.agentsListId) return false;
-        if (userId != that.userId) return false;
+        if (agentId != that.agentId) return false;
         if (warehouseId != that.warehouseId) return false;
         return true;
     }
@@ -58,7 +58,7 @@ public class AgentsList implements Serializable {
     public String toString() {
         return "AgentsList{" +
                 "agentsListId=" + agentsListId +
-                ", userId=" + userId +
+                ", agentId=" + agentId +
                 ", warehouseId=" + warehouseId +
                 '}';
     }

@@ -11,20 +11,25 @@
         <property name="hibernate.hbm2ddl.auto">update</property>
 
         <!-- Specifying Session Context -->
-        <property name="hibernate.current_session_context_class">org.hibernate.context.internal.ThreadLocalSessionContext</property>
+        <property name="hibernate.current_session_context_class">
+            org.hibernate.context.internal.ThreadLocalSessionContext
+        </property>
         <!-- Mapping With Model Class Containing Annotations -->
-        <mapping class="KursovProektOOP2.data.entity.AgentsList" />
-        <mapping class="KursovProektOOP2.data.entity.City" />
-        <mapping class="KursovProektOOP2.data.entity.Climate" />
-        <mapping class="KursovProektOOP2.data.entity.Formular" />
-        <mapping class="KursovProektOOP2.data.entity.Maintenance" />
-        <mapping class="KursovProektOOP2.data.entity.ProductType" />
-        <mapping class="KursovProektOOP2.data.entity.RentalHistory" />
-        <mapping class="KursovProektOOP2.data.entity.RenterInformation" />
-        <mapping class="KursovProektOOP2.data.entity.Role" />
-        <mapping class="KursovProektOOP2.data.entity.StorageRoom" />
-        <mapping class="KursovProektOOP2.data.entity.User" />
-        <mapping class="KursovProektOOP2.data.entity.Warehouse" />
-        <mapping class="KursovProektOOP2.data.entity.WarehouseHasRooms" />
+        <mapping class="KursovProektOOP2.data.entity.AgentsList"/>
+        <mapping class="KursovProektOOP2.data.entity.Agent"/>
+        <mapping class="KursovProektOOP2.data.entity.Owner"/>
+        <mapping class="KursovProektOOP2.data.entity.OwnerHasWarehouses"/>
+        <mapping class="KursovProektOOP2.data.entity.City"/>
+        <mapping class="KursovProektOOP2.data.entity.Climate"/>
+        <mapping class="KursovProektOOP2.data.entity.Formular"/>
+        <mapping class="KursovProektOOP2.data.entity.Maintenance"/>
+        <mapping class="KursovProektOOP2.data.entity.ProductType"/>
+        <mapping class="KursovProektOOP2.data.entity.RentalHistory"/>
+        <mapping class="KursovProektOOP2.data.entity.RenterInformation"/>
+        <mapping class="KursovProektOOP2.data.entity.Role"/>
+        <mapping class="KursovProektOOP2.data.entity.StorageRoom"/>
+        <mapping class="KursovProektOOP2.data.entity.User"/>
+        <mapping class="KursovProektOOP2.data.entity.Warehouse"/>
+        <mapping class="KursovProektOOP2.data.entity.WarehouseHasRooms"/>
     </session-factory>
 </hibernate-configuration>
