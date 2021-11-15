@@ -146,3 +146,9 @@
 [JavaFX Application Thread] ERROR KursovProektOOP2.data.repository.WarehouseRepository  - Get warehouses failed: org.hibernate.exception.SQLGrammarException: could not extract ResultSet
 [JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - (conn=27) Unknown column 'warehouse0_.Agent' in 'field list'
 [JavaFX Application Thread] ERROR KursovProektOOP2.data.repository.WarehouseRepository  - Get warehouses failed: org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - (conn=10) Unknown column 'warehouse0_.Agent' in 'field list'
+[JavaFX Application Thread] ERROR KursovProektOOP2.data.repository.WarehouseRepository  - Get warehouses failed: org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - (conn=10) Unknown column 'warehouse0_.Agent' in 'field list'
+[JavaFX Application Thread] ERROR KursovProektOOP2.data.repository.WarehouseRepository  - Get warehouses failed: org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - (conn=45) Unknown column 'warehouse0_.Agent' in 'field list'
+[JavaFX Application Thread] ERROR KursovProektOOP2.data.repository.WarehouseRepository  - Get warehouses failed: org.hibernate.exception.SQLGrammarException: could not extract ResultSet
