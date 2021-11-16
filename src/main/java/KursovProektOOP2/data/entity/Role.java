@@ -2,6 +2,7 @@ package KursovProektOOP2.data.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Collection;
 
 @Table(name = "Role", schema = "warehouse")
 @Entity
@@ -11,6 +12,7 @@ public class Role implements Serializable {
     private int roleId;
     @Column(name = "role_name", nullable = false)
     private String roleName;
+
     public int getRoleId() {
         return roleId;
     }

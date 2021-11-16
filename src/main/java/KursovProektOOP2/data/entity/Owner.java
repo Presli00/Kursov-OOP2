@@ -1,18 +1,20 @@
 package KursovProektOOP2.data.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Collection;
 
 @Table(name = "Owner", schema = "warehouse")
 @Entity
-public class Owner {
+public class Owner implements Serializable {
     @Id
     @Column(name = "idOwner", nullable = false)
     private int idOwner;
-    @Column(name = "warehousesAmount", nullable = false)
-    private int warehousesAmount;
     @OneToOne
     @JoinColumn(name = "User_id", nullable = false)
     private User userId;
+    @Column(name = "warehousesAmount", nullable = false)
+    private int warehousesAmount;
 
     public int getIdOwner() {
         return idOwner;
@@ -22,20 +24,20 @@ public class Owner {
         this.idOwner = idOwner;
     }
 
-    public int getWarehousesAmount() {
-        return warehousesAmount;
-    }
-
-    public void setWarehousesAmount(int warehousesAmount) {
-        this.warehousesAmount = warehousesAmount;
-    }
-
     public User getUserId() {
         return userId;
     }
 
     public void setUserId(User userId) {
         this.userId = userId;
+    }
+
+    public int getWarehousesAmount() {
+        return warehousesAmount;
+    }
+
+    public void setWarehousesAmount(int warehousesAmount) {
+        this.warehousesAmount = warehousesAmount;
     }
 
     @Override
@@ -50,8 +52,8 @@ public class Owner {
     public String toString() {
         return "Owner{" +
                 "idOwner=" + idOwner +
-                ", warehousesAmount=" + warehousesAmount +
                 ", userId=" + userId +
+                ", warehousesAmount=" + warehousesAmount +
                 '}';
     }
 }

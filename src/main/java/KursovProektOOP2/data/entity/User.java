@@ -3,12 +3,12 @@ package KursovProektOOP2.data.entity;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.Collection;
 
 @Table(name = "User", schema = "warehouse")
 @Entity
 public class User implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "User_id", nullable = false)
     private int userId;
     @Column(name = "username", nullable = false)
@@ -19,12 +19,16 @@ public class User implements Serializable {
     private String firstName;
     @Column(name = "last_name", nullable = false)
     private String lastName;
+    @Column(name = "e-mail", nullable = false)
+    private String eMail;
+    @Column(name = "Phone", nullable = false)
+    private String phone;
     @OneToOne
     @JoinColumn(name = "role_id", nullable = false)
     private Role roleId;
-    @Column(name = "created_date")
+    @Column(name = "created_date", nullable = false)
     private Timestamp createdDate;
-    @Column(name = "updated_date")
+    @Column(name = "updated_date", nullable = false)
     private Timestamp updatedDate;
 
     public int getUserId() {
@@ -67,6 +71,22 @@ public class User implements Serializable {
         this.lastName = lastName;
     }
 
+    public String geteMail() {
+        return eMail;
+    }
+
+    public void seteMail(String eMail) {
+        this.eMail = eMail;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     public Role getRoleId() {
         return roleId;
     }
@@ -104,6 +124,8 @@ public class User implements Serializable {
         if (password != null ? !password.equals(user.password) : user.password != null) return false;
         if (firstName != null ? !firstName.equals(user.firstName) : user.firstName != null) return false;
         if (lastName != null ? !lastName.equals(user.lastName) : user.lastName != null) return false;
+        if (eMail != null ? !eMail.equals(user.eMail) : user.eMail != null) return false;
+        if (phone != null ? !phone.equals(user.phone) : user.phone != null) return false;
         if (createdDate != null ? !createdDate.equals(user.createdDate) : user.createdDate != null) return false;
         if (updatedDate != null ? !updatedDate.equals(user.updatedDate) : user.updatedDate != null) return false;
 
@@ -118,6 +140,8 @@ public class User implements Serializable {
                 ", password='" + password + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", eMail='" + eMail + '\'' +
+                ", phone='" + phone + '\'' +
                 ", roleId=" + roleId +
                 ", createdDate=" + createdDate +
                 ", updatedDate=" + updatedDate +

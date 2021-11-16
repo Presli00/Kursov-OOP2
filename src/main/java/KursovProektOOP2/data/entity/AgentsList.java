@@ -2,10 +2,11 @@ package KursovProektOOP2.data.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Set;
 
-@Table(name="agents_list", schema = "warehouse")
 @Entity
+@Table(name = "Agents_list", schema = "warehouse")
 public class AgentsList implements Serializable {
     @Id
     @Column(name = "AgentsList_id", nullable = false)
@@ -50,7 +51,8 @@ public class AgentsList implements Serializable {
 
         if (agentsListId != that.agentsListId) return false;
         if (agentId != that.agentId) return false;
-        if (warehouseId != that.warehouseId) return false;
+        if (warehouseId != null ? !warehouseId.equals(that.warehouseId) : that.warehouseId != null) return false;
+
         return true;
     }
 

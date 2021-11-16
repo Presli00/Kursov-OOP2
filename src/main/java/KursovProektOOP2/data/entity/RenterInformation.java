@@ -2,9 +2,10 @@ package KursovProektOOP2.data.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Collection;
 
-@Table(name = "renter_information", schema = "warehouse")
 @Entity
+@Table(name = "Renter_information", schema = "warehouse")
 public class RenterInformation implements Serializable {
     @Id
     @Column(name = "Renter_id", nullable = false)
@@ -13,7 +14,7 @@ public class RenterInformation implements Serializable {
     private String name;
     @Column(name = "Phone", nullable = false)
     private String phone;
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "City_id", nullable = false)
     private City cityId;
     @Column(name = "Street", nullable = false)

@@ -35,7 +35,7 @@ public class OwnerWarehousesViewer {
             controller.cityLabel.setText(String.valueOf(((Warehouse)list.get(i)).getCityId()));
             controller.streetLabel.setText(String.valueOf(((Warehouse)list.get(i)).getStreet()));
             controller.numberOfStorageRoomsLabel.setText(String.valueOf(((Warehouse)list.get(i)).getNumberOfStorageRooms()));
-            controller.maintenanceLabel.setText(String.valueOf(((Warehouse)list.get(i)).getMaintanenceId()));
+            controller.maintenanceLabel.setText(String.valueOf(((Warehouse)list.get(i)).getMaintenanceId()));
             controller.agentLabel.setText(String.valueOf(((Warehouse)list.get(i)).getAgentSId()));
             Vbox.getChildren().add(warehouse);
         }

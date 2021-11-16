@@ -2,17 +2,18 @@ package KursovProektOOP2.data.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Collection;
 
-@Table(name = "warehouse_has_rooms", schema = "warehouse")
 @Entity
+@Table(name = "Warehouse_has_rooms", schema = "warehouse")
 public class WarehouseHasRooms implements Serializable {
     @Id
     @Column(name = "WarehouseHasRooms_id", nullable = false)
     private int warehouseHasRoomsId;
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "warehouse_id", nullable = false)
     private Warehouse warehouseId;
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "Room_id", nullable = false)
     private StorageRoom roomId;
 
@@ -48,8 +49,8 @@ public class WarehouseHasRooms implements Serializable {
         WarehouseHasRooms that = (WarehouseHasRooms) o;
 
         if (warehouseHasRoomsId != that.warehouseHasRoomsId) return false;
-        if (warehouseId != that.warehouseId) return false;
         if (roomId != that.roomId) return false;
+        if (warehouseId != null ? !warehouseId.equals(that.warehouseId) : that.warehouseId != null) return false;
 
         return true;
     }

@@ -2,13 +2,13 @@ package KursovProektOOP2.data.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Collection;
 
-@Table(name = "Product_type", schema = "warehouse")
 @Entity
+@Table(name = "Product_type", schema = "warehouse")
 public class ProductType implements Serializable {
-
     @Id
-    @Column(name = "Product_id", nullable = false, insertable = false,updatable = false)
+    @Column(name = "Product_id", nullable = false)
     private int productId;
     @Column(name = "Type", nullable = false)
     private String type;
@@ -16,7 +16,6 @@ public class ProductType implements Serializable {
     public int getProductId() {
         return productId;
     }
-
 
     public void setProductId(int productId) {
         this.productId = productId;

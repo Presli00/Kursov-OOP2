@@ -2,6 +2,7 @@ package KursovProektOOP2.data.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Collection;
 
 @Table(name = "Climate", schema = "warehouse")
 @Entity
@@ -12,7 +13,6 @@ public class Climate implements Serializable {
     @Column(name = "Climate", nullable = false)
     private String climate;
 
-
     public int getClimateId() {
         return climateId;
     }
@@ -20,7 +20,6 @@ public class Climate implements Serializable {
     public void setClimateId(int climateId) {
         this.climateId = climateId;
     }
-
 
     public String getClimate() {
         return climate;

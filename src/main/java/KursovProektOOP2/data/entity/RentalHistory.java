@@ -2,9 +2,10 @@ package KursovProektOOP2.data.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Collection;
 
-@Table(name = "rental_history", schema = "warehouse")
 @Entity
+@Table(name = "Rental_history", schema = "warehouse")
 public class RentalHistory implements Serializable {
     @Id
     @Column(name = "History_id", nullable = false)

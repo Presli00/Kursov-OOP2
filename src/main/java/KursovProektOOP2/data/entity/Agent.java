@@ -1,21 +1,22 @@
 package KursovProektOOP2.data.entity;
 
 import javax.persistence.*;
-import java.util.Objects;
+import java.io.Serializable;
+import java.util.Collection;
 
-@Table(name="Agent",schema = "warehouse")
+@Table(name = "Agent", schema = "warehouse")
 @Entity
-public class Agent {
+public class Agent implements Serializable {
     @Id
     @Column(name = "idAgent", nullable = false)
     private int idAgent;
+    @OneToOne
+    @JoinColumn(name = "idFromUser", nullable = false)
+    private User idFromUser;
     @Column(name = "rating", nullable = false)
     private double rating;
     @Column(name = "dealAmount", nullable = false)
     private int dealAmount;
-    @OneToOne
-    @JoinColumn(name="idFromUser", nullable = false)
-    private User userId;
 
     public int getIdAgent() {
         return idAgent;
@@ -23,6 +24,14 @@ public class Agent {
 
     public void setIdAgent(int idAgent) {
         this.idAgent = idAgent;
+    }
+
+    public User getIdFromUser() {
+        return idFromUser;
+    }
+
+    public void setIdFromUser(User idFromUser) {
+        this.idFromUser = idFromUser;
     }
 
     public double getRating() {
@@ -41,29 +50,22 @@ public class Agent {
         this.dealAmount = dealAmount;
     }
 
-    public User getUserId() {
-        return userId;
-    }
-
-    public void setUserId(User userId) {
-        this.userId = userId;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Agent agent = (Agent) o;
-        return idAgent == agent.idAgent && Objects.equals(rating, agent.rating) && Objects.equals(dealAmount, agent.dealAmount) && userId.equals(agent.userId);
+        return idAgent == agent.idAgent && Double.compare(agent.rating, rating) == 0 && dealAmount == agent.dealAmount && idFromUser.equals(agent.idFromUser);
     }
 
     @Override
     public String toString() {
         return "Agent{" +
                 "idAgent=" + idAgent +
+                ", idFromUser=" + idFromUser +
                 ", rating=" + rating +
                 ", dealAmount=" + dealAmount +
-                ", userId=" + userId +
                 '}';
     }
 }
+

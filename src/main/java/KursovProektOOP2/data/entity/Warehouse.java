@@ -2,14 +2,17 @@ package KursovProektOOP2.data.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Collection;
 
-@Table(name="Warehouse",schema = "warehouse")
+@Table(name = "Warehouse", schema = "warehouse")
 @Entity
 public class Warehouse implements Serializable {
     @Id
     @Column(name = "Warehouse_id", nullable = false)
     private int warehouseId;
-    @OneToOne
+    @Column(name = "Warehouse_name", nullable = false)
+    private String warehouseName;
+    @ManyToOne
     @JoinColumn(name = "City_id", nullable = false)
     private City cityId;
     @Column(name = "Street", nullable = false)
@@ -23,13 +26,28 @@ public class Warehouse implements Serializable {
     @JoinColumn(name = "Agent/s_id", nullable = false)
     private AgentsList agentSId;
 
-
     public int getWarehouseId() {
         return warehouseId;
     }
 
     public void setWarehouseId(int warehouseId) {
         this.warehouseId = warehouseId;
+    }
+
+    public String getWarehouseName() {
+        return warehouseName;
+    }
+
+    public void setWarehouseName(String warehouseName) {
+        this.warehouseName = warehouseName;
+    }
+
+    public City getCityId() {
+        return cityId;
+    }
+
+    public void setCityId(City cityId) {
+        this.cityId = cityId;
     }
 
     public String getStreet() {
@@ -48,20 +66,12 @@ public class Warehouse implements Serializable {
         this.numberOfStorageRooms = numberOfStorageRooms;
     }
 
-    public City getCityId() {
-        return cityId;
-    }
-
-    public void setCityId(City cityId) {
-        this.cityId = cityId;
-    }
-
-    public Maintenance getMaintanenceId() {
+    public Maintenance getMaintenanceId() {
         return maintenanceId;
     }
 
-    public void setMaintanenceId(Maintenance maintanenceId) {
-        this.maintenanceId = maintanenceId;
+    public void setMaintenanceId(Maintenance maintenanceId) {
+        this.maintenanceId = maintenanceId;
     }
 
     public AgentsList getAgentSId() {
@@ -84,6 +94,8 @@ public class Warehouse implements Serializable {
         if (numberOfStorageRooms != warehouse.numberOfStorageRooms) return false;
         if (maintenanceId != warehouse.maintenanceId) return false;
         if (agentSId != warehouse.agentSId) return false;
+        if (warehouseName != null ? !warehouseName.equals(warehouse.warehouseName) : warehouse.warehouseName != null)
+            return false;
         if (street != null ? !street.equals(warehouse.street) : warehouse.street != null) return false;
 
         return true;
@@ -93,10 +105,11 @@ public class Warehouse implements Serializable {
     public String toString() {
         return "Warehouse{" +
                 "warehouseId=" + warehouseId +
+                ", warehouseName='" + warehouseName + '\'' +
                 ", cityId=" + cityId +
                 ", street='" + street + '\'' +
                 ", numberOfStorageRooms=" + numberOfStorageRooms +
-                ", maintanenceId=" + maintenanceId +
+                ", maintenanceId=" + maintenanceId +
                 ", agentSId=" + agentSId +
                 '}';
     }

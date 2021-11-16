@@ -2,8 +2,9 @@ package KursovProektOOP2.data.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Collection;
 
-@Table(name="Maintenance", schema = "warehouse")
+@Table(name = "Maintenance", schema = "warehouse")
 @Entity
 public class Maintenance implements Serializable {
     @Id
@@ -13,7 +14,7 @@ public class Maintenance implements Serializable {
     private String name;
     @ManyToOne
     @JoinColumn(name = "City_id", nullable = false)
-    private City city;
+    private City cityId;
 
     public int getMaintenanceId() {
         return maintenanceId;
@@ -31,12 +32,12 @@ public class Maintenance implements Serializable {
         this.name = name;
     }
 
-    public City getCity() {
-        return city;
+    public City getCityId() {
+        return cityId;
     }
 
-    public void setCity(City city) {
-        this.city = city;
+    public void setCityId(City cityId) {
+        this.cityId = cityId;
     }
 
     @Override
@@ -47,8 +48,8 @@ public class Maintenance implements Serializable {
         Maintenance that = (Maintenance) o;
 
         if (maintenanceId != that.maintenanceId) return false;
+        if (cityId != that.cityId) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
-        if (city != null ? !city.equals(that.city) : that.city != null) return false;
 
         return true;
     }
@@ -58,7 +59,7 @@ public class Maintenance implements Serializable {
         return "Maintenance{" +
                 "maintenanceId=" + maintenanceId +
                 ", name='" + name + '\'' +
-                ", city=" + city +
+                ", cityId=" + cityId +
                 '}';
     }
 }

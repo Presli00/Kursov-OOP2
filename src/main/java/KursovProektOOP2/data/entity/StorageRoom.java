@@ -2,17 +2,18 @@ package KursovProektOOP2.data.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Set;
 
-@Table(name = "storage_room", schema = "warehouse")
 @Entity
+@Table(name = "Storage_room", schema = "warehouse")
 public class StorageRoom implements Serializable {
     @Id
     @Column(name = "Storage_room_id", nullable = false)
     private int storageRoomId;
     @Column(name = "Size", nullable = false)
     private double size;
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "Climate_id", nullable = false)
     private Climate climateId;
     @OneToMany
@@ -29,7 +30,6 @@ public class StorageRoom implements Serializable {
     public void setStorageRoomId(int storageRoomId) {
         this.storageRoomId = storageRoomId;
     }
-
 
     public double getSize() {
         return size;
@@ -73,8 +73,8 @@ public class StorageRoom implements Serializable {
         if (storageRoomId != that.storageRoomId) return false;
         if (Double.compare(that.size, size) != 0) return false;
         if (climateId != that.climateId) return false;
-        if (productId != that.productId) return false;
         if (historyId != that.historyId) return false;
+        if (productId != null ? !productId.equals(that.productId) : that.productId != null) return false;
 
         return true;
     }

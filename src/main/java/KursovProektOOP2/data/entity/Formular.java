@@ -3,6 +3,7 @@ package KursovProektOOP2.data.entity;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.Collection;
 
 @Table(name = "Formular", schema = "warehouse")
 @Entity
@@ -44,7 +45,6 @@ public class Formular implements Serializable {
         this.periodBegin = periodBegin;
     }
 
-
     public Timestamp getPeriodEnd() {
         return periodEnd;
     }
@@ -52,7 +52,6 @@ public class Formular implements Serializable {
     public void setPeriodEnd(Timestamp periodEnd) {
         this.periodEnd = periodEnd;
     }
-
 
     public double getPrice() {
         return price;
