@@ -31,12 +31,12 @@ public class OwnerWarehousesViewer {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/WarehouseInfo.fxml"));
             AnchorPane warehouse = loader.load();
             WarehouseInfo controller = loader.getController();
-            controller.idLabel.setText(String.valueOf(((Warehouse)list.get(i)).getWarehouseId()));
-            controller.cityLabel.setText(String.valueOf(((Warehouse)list.get(i)).getCityId()));
-            controller.streetLabel.setText(String.valueOf(((Warehouse)list.get(i)).getStreet()));
-            controller.numberOfStorageRoomsLabel.setText(String.valueOf(((Warehouse)list.get(i)).getNumberOfStorageRooms()));
-            controller.maintenanceLabel.setText(String.valueOf(((Warehouse)list.get(i)).getMaintenanceId()));
-            controller.agentLabel.setText(String.valueOf(((Warehouse)list.get(i)).getAgentSId()));
+            controller.idLabel.setText(String.valueOf(((Warehouse) list.get(i)).getWarehouseId()));
+            controller.cityLabel.setText(String.valueOf(((Warehouse) list.get(i)).getCityId()));
+            controller.streetLabel.setText(String.valueOf(((Warehouse) list.get(i)).getStreet()));
+            controller.numberOfStorageRoomsLabel.setText(String.valueOf(((Warehouse) list.get(i)).getNumberOfStorageRooms()));
+            controller.maintenanceLabel.setText(String.valueOf(((Warehouse) list.get(i)).getMaintenanceId()));
+            controller.agentLabel.setText(String.valueOf(((Warehouse) list.get(i)).getAgentSId()));
             Vbox.getChildren().add(warehouse);
         }
         ScrollPane.widthProperty().addListener(event -> {
@@ -48,12 +48,13 @@ public class OwnerWarehousesViewer {
         });
     }
 
-    public void addWarehouse() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/Views/WarehouseAdder.fxml"));
+    public void addRoomsToWarehouse() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/Views/RoomAdder.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
-        stage.setTitle("Add Warehouse Form");
+        stage.setTitle("Add Room Form");
         stage.setResizable(false);
         stage.show();
     }
+
 }

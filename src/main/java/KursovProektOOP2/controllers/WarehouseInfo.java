@@ -1,6 +1,7 @@
 package KursovProektOOP2.controllers;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 public class WarehouseInfo {
@@ -16,4 +17,6 @@ public class WarehouseInfo {
     Label maintenanceLabel;
     @FXML
     Label agentLabel;
+    @FXML
+    Button checkButton;
 }

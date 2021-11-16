@@ -33,7 +33,7 @@
                            <children>
                               <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                  <children>
-                                    <Button fx:id="addWarehouseButton" mnemonicParsing="false" onMouseClicked="#addWarehouse" style="-fx-background-radius: 70;" text="Добавяне на помещение" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <Button fx:id="addRoomsToWarehouseButton" mnemonicParsing="false" onMouseClicked="#addRoomsToWarehouse" style="-fx-background-radius: 70;" text="Добавяне на помещение" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <font>
                                           <Font name="System Bold" size="14.0" />
                                        </font></Button>

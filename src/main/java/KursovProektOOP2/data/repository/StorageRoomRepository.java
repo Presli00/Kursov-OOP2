@@ -16,7 +16,7 @@ public class StorageRoomRepository implements DAORepository{
 
     private static final Logger log = Logger.getLogger(StorageRoomRepository.class);
 
-    private static StorageRoomRepository getInstance(){
+    public static StorageRoomRepository getInstance(){
         return StorageRoomRepository.StorageRoomRepositoryHolder.INSTANCE;
     }
 
