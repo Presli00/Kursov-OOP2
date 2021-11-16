@@ -33,11 +33,11 @@ public class Agent {
         this.rating = rating;
     }
 
-    public Integer getDealAmount() {
+    public int getDealAmount() {
         return dealAmount;
     }
 
-    public void setDealAmount(Integer dealAmount) {
+    public void setDealAmount(int dealAmount) {
         this.dealAmount = dealAmount;
     }
 
