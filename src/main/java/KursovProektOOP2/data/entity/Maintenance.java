@@ -11,8 +11,8 @@ public class Maintenance implements Serializable {
     private int maintenanceId;
     @Column(name = "Name", nullable = false)
     private String name;
-    @OneToOne
-    @JoinColumn(name = "City", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "City_id", nullable = false)
     private City city;
 
     public int getMaintenanceId() {
