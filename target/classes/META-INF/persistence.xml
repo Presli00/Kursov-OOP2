@@ -17,6 +17,9 @@
         <class>KursovProektOOP2.data.entity.User</class>
         <class>KursovProektOOP2.data.entity.Warehouse</class>
         <class>KursovProektOOP2.data.entity.WarehouseHasRooms</class>
+        <class>KursovProektOOP2.data.entity.Agent</class>
+        <class>KursovProektOOP2.data.entity.Owner</class>
+        <class>KursovProektOOP2.data.entity.OwnerHasWarehouses</class>
 
         <properties>
             <property name="hibernate.connection.url" value="jdbc:mariadb://localhost:3306/warehouse"/>
