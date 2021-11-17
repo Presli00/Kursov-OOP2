@@ -22,6 +22,10 @@ public class RegistrationForm {
     @FXML
     TextField usernameTF;
     @FXML
+    TextField emailTF;
+    @FXML
+    TextField phoneTF;
+    @FXML
     PasswordField passwordTF;
     @FXML
     ComboBox roleTF;
@@ -46,6 +50,8 @@ public class RegistrationForm {
             user.setUsername(usernameTF.getText());
             user.setFirstName(firstNameTF.getText());
             user.setLastName(lastNameTF.getText());
+            user.seteMail(emailTF.getText());
+            user.setPhone(phoneTF.getText());
             if(passwordCheck.isSelected()){
                 user.setPassword(passwordVisibleTF.getText());
             }else{
@@ -81,7 +87,15 @@ public class RegistrationForm {
             valid = false;
             errorMessage.append("Invalid Username! ");
         }
-        if(passwordTF.getText().length() < 8 || passwordVisibleTF.getText().length() < 8){
+        if(emailTF.getText().length() < 10){
+            valid = false;
+            errorMessage.append("Invalid E-Mail! ");
+        }
+        if(phoneTF.getText().length() < 10 || phoneTF.getText().length() > 12){
+            valid = false;
+            errorMessage.append("Invalid Phone! ");
+        }
+        if(passwordTF.getText().length() < 8 && passwordVisibleTF.getText().length() < 8){
             valid = false;
             errorMessage.append("Password must be at least 8 characters! ");
         }

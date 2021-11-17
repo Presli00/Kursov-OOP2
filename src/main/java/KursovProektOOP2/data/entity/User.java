@@ -3,7 +3,6 @@ package KursovProektOOP2.data.entity;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
-import java.util.Collection;
 
 @Table(name = "User", schema = "warehouse")
 @Entity
@@ -19,7 +18,7 @@ public class User implements Serializable {
     private String firstName;
     @Column(name = "last_name", nullable = false)
     private String lastName;
-    @Column(name = "e-mail", nullable = false)
+    @Column(name = "email", nullable = false)
     private String eMail;
     @Column(name = "Phone", nullable = false)
     private String phone;
@@ -28,7 +27,7 @@ public class User implements Serializable {
     private Role roleId;
     @Column(name = "created_date", nullable = false)
     private Timestamp createdDate;
-    @Column(name = "updated_date", nullable = false)
+    @Column(name = "updated_date")
     private Timestamp updatedDate;
 
     public int getUserId() {

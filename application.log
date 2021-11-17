@@ -176,3 +176,14 @@
 [JavaFX Application Thread] ERROR KursovProektOOP2.data.repository.WarehouseRepository  - Get warehouses failed: org.hibernate.exception.SQLGrammarException: could not extract ResultSet
 [JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - (conn=132) Unknown column 'warehouse0_.Agent' in 'field list'
 [JavaFX Application Thread] ERROR KursovProektOOP2.data.repository.WarehouseRepository  - Get warehouses failed: org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - (conn=130) Unknown column 'user0_.e' in 'field list'
+[JavaFX Application Thread] ERROR KursovProektOOP2.data.repository.UserRepository  - Get users failed: org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - (conn=132) Unknown column 'user0_.e' in 'field list'
+[JavaFX Application Thread] ERROR KursovProektOOP2.data.repository.UserRepository  - Get users failed: org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - (conn=133) Unknown column 'user0_.e' in 'field list'
+[JavaFX Application Thread] ERROR KursovProektOOP2.data.repository.UserRepository  - Get users failed: org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - (conn=141) Unknown column 'user0_.e' in 'field list'
+[JavaFX Application Thread] ERROR KursovProektOOP2.data.repository.UserRepository  - Get users failed: org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+[JavaFX Application Thread] ERROR KursovProektOOP2.data.repository.UserRepository  - User save errornot-null property references a null or transient value : KursovProektOOP2.data.entity.User.updatedDate
+[JavaFX Application Thread] ERROR KursovProektOOP2.data.repository.UserRepository  - User save errornot-null property references a null or transient value : KursovProektOOP2.data.entity.User.updatedDate
+[JavaFX Application Thread] ERROR KursovProektOOP2.data.repository.UserRepository  - User save errornot-null property references a null or transient value : KursovProektOOP2.data.entity.User.updatedDate

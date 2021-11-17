@@ -15,6 +15,18 @@ public class AccountInfo {
     @FXML
     Label lastnameLabel;
     @FXML
+    Label emailLabel;
+    @FXML
+    Label phoneLabel;
+    @FXML
+    Label WarehousesOrRatingLabel;
+    @FXML
+    Label WarehousesOrRatingNumLabel;
+    @FXML
+    Label successfulDealsLabel;
+    @FXML
+    Label successfulDealsNumLabel;
+    @FXML
     Label createdatLabel;
     @FXML
     Label lastupdatedatLabel;
