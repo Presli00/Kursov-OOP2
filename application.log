@@ -187,3 +187,17 @@
 [JavaFX Application Thread] ERROR KursovProektOOP2.data.repository.UserRepository  - User save errornot-null property references a null or transient value : KursovProektOOP2.data.entity.User.updatedDate
 [JavaFX Application Thread] ERROR KursovProektOOP2.data.repository.UserRepository  - User save errornot-null property references a null or transient value : KursovProektOOP2.data.entity.User.updatedDate
 [JavaFX Application Thread] ERROR KursovProektOOP2.data.repository.UserRepository  - User save errornot-null property references a null or transient value : KursovProektOOP2.data.entity.User.updatedDate
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - (conn=133) Unknown column 'user0_.email' in 'field list'
+[JavaFX Application Thread] ERROR KursovProektOOP2.data.repository.UserRepository  - Get users failed: org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+[Thread-4] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - (conn=133) Unknown column 'user0_.email' in 'field list'
+[Thread-4] ERROR KursovProektOOP2.data.repository.UserRepository  - Get owners failed: org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+[Thread-5] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - (conn=134) Unknown column 'user0_.email' in 'field list'
+[Thread-5] ERROR KursovProektOOP2.data.repository.UserRepository  - Get agents failed: org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - (conn=133) Unknown column 'user0_.email' in 'field list'
+[JavaFX Application Thread] ERROR KursovProektOOP2.data.repository.UserRepository  - Get users failed: org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+[Thread-6] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - (conn=134) Unknown column 'user0_.email' in 'field list'
+[Thread-6] ERROR KursovProektOOP2.data.repository.UserRepository  - Get owners failed: org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+[Thread-7] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - (conn=133) Unknown column 'user0_.email' in 'field list'
+[Thread-7] ERROR KursovProektOOP2.data.repository.UserRepository  - Get agents failed: org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - (conn=135) Unknown column 'warehouse0_.Agent' in 'field list'
+[JavaFX Application Thread] ERROR KursovProektOOP2.data.repository.WarehouseRepository  - Get warehouses failed: org.hibernate.exception.SQLGrammarException: could not extract ResultSet
