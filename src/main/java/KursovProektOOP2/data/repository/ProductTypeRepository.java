@@ -13,7 +13,7 @@ import java.util.Optional;
 public class ProductTypeRepository implements DAORepository{
     private static final Logger log = Logger.getLogger(ProductTypeRepository.class);
 
-    private static ProductTypeRepository getInstance(){
+    public static ProductTypeRepository getInstance(){
         return ProductTypeRepository.ProductTypeRepositoryHolder.INSTANCE;
     }
 
