@@ -5,6 +5,8 @@ import KursovProektOOP2.data.repository.StorageRoomRepository;
 import KursovProektOOP2.data.repository.WarehouseRepository;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
@@ -41,5 +43,13 @@ public class RoomsViewer {
         ScrollPane.heightProperty().addListener(event -> {
             AnchorPane.setPrefHeight(ScrollPane.getHeight());
         });
+    }
+    public void addRoomsToWarehouse() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/Views/RoomAdder.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setTitle("Add Room Form");
+        stage.setResizable(false);
+        stage.show();
     }
 }

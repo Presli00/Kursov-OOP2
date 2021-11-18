@@ -48,13 +48,4 @@ public class OwnerWarehousesViewer {
         });
     }
 
-    public void addRoomsToWarehouse() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/Views/RoomAdder.fxml"));
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setTitle("Add Room Form");
-        stage.setResizable(false);
-        stage.show();
-    }
-
 }

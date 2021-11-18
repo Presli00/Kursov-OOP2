@@ -5,9 +5,6 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -21,36 +18,16 @@
                </padding>
                <children>
                   <ToolBar prefHeight="45.0" prefWidth="200.0" style="-fx-background-color: #FFBE61; -fx-background-radius: 20;" VBox.vgrow="SOMETIMES">
-                     <items>
-                        <GridPane alignment="CENTER" hgap="5.0" prefHeight="30.0" prefWidth="563.0">
-                          <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                          </columnConstraints>
-                          <rowConstraints>
-                            <RowConstraints vgrow="ALWAYS" />
-                          </rowConstraints>
-                           <children>
-                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                                 <children>
-                                    <Button fx:id="addRoomsToWarehouseButton" mnemonicParsing="false" onMouseClicked="#addRoomsToWarehouse" style="-fx-background-radius: 70;" text="Добавяне на помещение" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                       <font>
-                                          <Font name="System Bold" size="14.0" />
-                                       </font></Button>
-                                 </children></AnchorPane>
-                              <AnchorPane prefHeight="30.0" prefWidth="412.0" GridPane.columnIndex="1">
-                                 <children>
-                                    <Button fx:id="rentWarehouseButton" mnemonicParsing="false" style="-fx-background-radius: 70;" text="Отдаване под наем" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                       <font>
-                                          <Font name="System Bold" size="14.0" />
-                                       </font></Button>
-                                 </children></AnchorPane>
-                           </children>
-                        </GridPane>
-                     </items>
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
+                     <items>
+                        <Button fx:id="rentWarehouse" mnemonicParsing="false" prefHeight="35.0" prefWidth="279.0" style="-fx-background-radius: 20;" text="Отдаване под наем">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Button>
+                     </items>
                   </ToolBar>
                </children>
             </VBox>
