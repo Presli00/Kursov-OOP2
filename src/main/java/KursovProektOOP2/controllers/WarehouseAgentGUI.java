@@ -14,7 +14,7 @@ public class WarehouseAgentGUI {
 
     @FXML
     public void SpravkiOnAction() throws IOException{
-        AnchorPane ap = FXMLLoader.load(getClass().getResource("/Views/WarehouseAgentSpravki.fxml")); //LOAD VIEW
+        AnchorPane ap = FXMLLoader.load(getClass().getResource("/Views/AgentViews/WarehouseAgentSpravki.fxml")); //LOAD VIEW
         if(!ContentAnchorPane.getChildren().isEmpty()) {
             ContentAnchorPane.getChildren().clear();
         }

@@ -28,7 +28,7 @@ public class OwnerWarehousesViewer {
     public void initialize() throws IOException {
         List list = repository.getAll();
         for (int i = 0; i < list.size(); i++) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/WarehouseInfo.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/OwnerViews/WarehouseInfo.fxml"));
             AnchorPane warehouse = loader.load();
             WarehouseInfo controller = loader.getController();
             controller.idLabel.setText(String.valueOf(((Warehouse) list.get(i)).getWarehouseId()));
@@ -49,7 +49,7 @@ public class OwnerWarehousesViewer {
     }
 
     public void addRoomsToWarehouse() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/Views/RoomAdder.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/Views/OwnerViews/RoomAdder.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setTitle("Add Room Form");

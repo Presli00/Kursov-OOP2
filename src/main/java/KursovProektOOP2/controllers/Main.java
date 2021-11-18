@@ -25,7 +25,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws IOException {
 
         PropertyConfigurator.configure(Main.class.getResource(Constants.Configuration.LOG4J_PROPERTIES));
-        URL path = getClass().getResource("/Views/OwnerGUI.fxml");
+        URL path = getClass().getResource("/Views/AdminViews/AdminGUI.fxml");
 
         if(path != null){
             Parent root = FXMLLoader.load(path);

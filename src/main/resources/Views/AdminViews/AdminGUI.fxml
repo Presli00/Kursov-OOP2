@@ -32,7 +32,7 @@
                            <children>
                               <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../Images/Известия.png" />
+                                    <Image url="@../../Images/Известия.png" />
                                  </image>
                               </ImageView>
                               <Label alignment="BOTTOM_LEFT" prefHeight="29.0" prefWidth="97.0" text="Известия">
@@ -50,7 +50,7 @@
                            <children>
                               <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../Images/Cubes-Складове.png" />
+                                    <Image url="@../../Images/Cubes-Складове.png" />
                                  </image>
                               </ImageView>
                               <Label alignment="CENTER" prefHeight="62.0" prefWidth="141.0" text="Складове в системата" textOverrun="CLIP" wrapText="true">
@@ -68,7 +68,7 @@
                            <children>
                               <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../Images/Акаунти.png" />
+                                    <Image url="@../../Images/Акаунти.png" />
                                  </image>
                               </ImageView>
                               <Label prefHeight="52.0" prefWidth="63.0" text="Акаунти">
@@ -86,7 +86,7 @@
                            <children>
                               <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../Images/Справки.png" />
+                                    <Image url="@../../Images/Справки.png" />
                                  </image>
                               </ImageView>
                               <Label prefHeight="49.0" prefWidth="59.0" text="Справки">
@@ -105,7 +105,7 @@
                            <children>
                               <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../Images/Настройки.png" />
+                                    <Image url="@../../Images/Настройки.png" />
                                  </image>
                               </ImageView>
                               <Label prefHeight="41.0" prefWidth="74.0" text="Настройки">
@@ -123,7 +123,7 @@
                            <children>
                               <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../Images/Лог-оут.png" />
+                                    <Image url="@../../Images/Лог-оут.png" />
                                  </image>
                               </ImageView>
                               <Label prefHeight="41.0" prefWidth="51.0" text="Log out">

@@ -6,7 +6,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 
@@ -22,7 +21,7 @@ public class AdminGUI {
 
     @FXML
     public void SpravkiOnAction() throws IOException{
-        AnchorPane ap = FXMLLoader.load(getClass().getResource("/Views/AdminSpravki.fxml")); //LOAD VIEW
+        AnchorPane ap = FXMLLoader.load(getClass().getResource("/Views/AdminViews/AdminSpravki.fxml")); //LOAD VIEW
         if(!ContentAnchorPane.getChildren().isEmpty()) {
             ContentAnchorPane.getChildren().clear();
         }
@@ -40,7 +39,7 @@ public class AdminGUI {
     }
 
     public void AccountsOnAction() throws IOException {
-        ScrollPane sp = FXMLLoader.load(getClass().getResource("/Views/AdminAccountViewer.fxml")); //LOAD VIEW
+        ScrollPane sp = FXMLLoader.load(getClass().getResource("/Views/AdminViews/AdminAccountViewer.fxml")); //LOAD VIEW
         if(!ContentAnchorPane.getChildren().isEmpty()) {
             ContentAnchorPane.getChildren().clear();
         }

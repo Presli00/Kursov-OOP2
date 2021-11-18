@@ -10,15 +10,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Collections;
 import java.util.List;
 
 public class AdminAccountViewer {
@@ -45,7 +42,7 @@ public class AdminAccountViewer {
         new Thread(() -> getAllOwners()).start();
         new Thread(() -> getAllAgents()).start();
         for(int i = 0; i < users.size(); i++){ //map info to labels and add to vbox
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/AccountInfo.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/AdminViews/AccountInfo.fxml"));
             AnchorPane user = loader.load();
             AccountInfo controller = loader.getController();
             // Set data in the controller
@@ -95,7 +92,7 @@ public class AdminAccountViewer {
     }
 
     public void addUser() throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("/Views/RegistrationForm.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/Views/AdminViews/RegistrationForm.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setTitle("Registration Form");

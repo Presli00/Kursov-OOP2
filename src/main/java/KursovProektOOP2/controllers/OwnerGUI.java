@@ -2,7 +2,6 @@ package KursovProektOOP2.controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.*;
 
@@ -18,7 +17,7 @@ public class OwnerGUI {
 
     @FXML
     public void SpravkiOnAction() throws IOException {
-        AnchorPane ap = FXMLLoader.load(getClass().getResource("/Views/OwnerSpravki.fxml")); //LOAD VIEW
+        AnchorPane ap = FXMLLoader.load(getClass().getResource("/Views/OwnerViews/OwnerSpravki.fxml")); //LOAD VIEW
         if(!ContentAnchorPane.getChildren().isEmpty()) {
             ContentAnchorPane.getChildren().clear();
         }
@@ -36,7 +35,7 @@ public class OwnerGUI {
 
     @FXML
     public void WarehouseOnAction() throws IOException {
-        ScrollPane sp = FXMLLoader.load(getClass().getResource("/Views/OwnerWarehousesViewer.fxml"));
+        ScrollPane sp = FXMLLoader.load(getClass().getResource("/Views/OwnerViews/OwnerWarehousesViewer.fxml"));
         if(!ContentAnchorPane.getChildren().isEmpty()) {
             ContentAnchorPane.getChildren().clear();
         }

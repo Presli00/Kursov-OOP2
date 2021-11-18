@@ -1,8 +1,6 @@
 package KursovProektOOP2.controllers;
 
-import KursovProektOOP2.data.entity.StorageRoom;
 import KursovProektOOP2.data.repository.StorageRoomRepository;
-import KursovProektOOP2.data.repository.WarehouseRepository;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ScrollPane;
@@ -27,7 +25,7 @@ public class RoomsViewer {
     public void initialize() throws IOException {
         List list=repository.getAll();
         for(int i=0;i< list.size();i++){
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/RoomsInfo.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/OwnerViews/RoomsInfo.fxml"));
             AnchorPane warehouse = loader.load();
             WarehouseInfo controller = loader.getController();
             /*for the data
