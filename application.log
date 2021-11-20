@@ -207,3 +207,8 @@
 [JavaFX Application Thread] ERROR KursovProektOOP2.data.repository.WarehouseRepository  - Get warehouses failed: org.hibernate.exception.SQLGrammarException: could not extract ResultSet
 [JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - (conn=139) Unknown column 'warehouse0_.Agent' in 'field list'
 [JavaFX Application Thread] ERROR KursovProektOOP2.data.repository.WarehouseRepository  - Get warehouses failed: org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - View couldn't be loaded
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - View couldn't be loaded
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - View couldn't be loaded
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - View couldn't be loaded
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - View couldn't be loaded
