@@ -44,18 +44,18 @@ public class LoginMenu {
     public void login() {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
-        String LOGIN_QUERY = "SELECT u FROM User u WHERE username = '" + usernameTF.getText() + "' AND password = '" + passwordTF.getText() + "'";
+        String LOGIN_QUERY = "SELECT u FROM User u WHERE username = '" + usernameTF.getText() + "' AND password = '" + passwordTF.getText() + "'"; // QUERY
         try {
             User result = (User) session.createQuery(LOGIN_QUERY).getSingleResult();
-            if(result.getRoleId().getRoleId() == 1){
+            if(result.getRoleId().getRoleId() == 1){ // LOAD ADMIN VIEW
                 closeLoginMenu();
                 openWindow("/Views/AdminViews/AdminGUI.fxml");
             }
-            if(result.getRoleId().getRoleId() == 2){
+            if(result.getRoleId().getRoleId() == 2){ // LOAD OWNER VIEW
                 closeLoginMenu();
                 openWindow("/Views/OwnerViews/OwnerGUI.fxml");
             }
-            if(result.getRoleId().getRoleId() == 3){
+            if(result.getRoleId().getRoleId() == 3){ // LOAD AGENT VIEW
                 closeLoginMenu();
                 openWindow("/Views/AgentViews/WarehouseAgentGUI.fxml");
             }
