@@ -21,6 +21,8 @@ public class WarehouseAgentGUI {
     Button SpravkiButton;
     @FXML
     Button logOutButton;
+    @FXML
+    Button SettingsButton;
 
     private static final Logger log = Logger.getLogger(Main.class);
 
@@ -41,8 +43,26 @@ public class WarehouseAgentGUI {
             ap.setPrefHeight(ContentAnchorPane.getHeight());
         });
     }
+    public void SettingOnAction() throws IOException {
+        AnchorPane ap = FXMLLoader.load(getClass().getResource("/Views/Settings.fxml")); //LOAD VIEW
+        if (!ContentAnchorPane.getChildren().isEmpty()) {
+            ContentAnchorPane.getChildren().clear();
+        }
+        ContentAnchorPane.getChildren().add(ap);
+        ap.setPrefWidth(ContentAnchorPane.getWidth()); // SET SIZE OF VIEW
+        ap.setPrefHeight(ContentAnchorPane.getHeight());
+        ContentAnchorPane.widthProperty().addListener(event -> {
+            ap.setPrefWidth(ContentAnchorPane.getWidth());
+        });
+
+        ContentAnchorPane.heightProperty().addListener(event -> {
+            ap.setPrefHeight(ContentAnchorPane.getHeight());
+        });
+
+    }
     public void logOutOnAction() throws IOException {
         closeWindow();
+        UserSession.cleanUserSession();
         openWindow("/Views/LoginViews/LoginMenu.fxml");
     }
 

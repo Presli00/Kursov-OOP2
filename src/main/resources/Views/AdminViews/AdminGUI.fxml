@@ -99,7 +99,7 @@
                      </graphic>
                   </Button>
                   <Region prefHeight="245.0" prefWidth="197.0" VBox.vgrow="ALWAYS" />
-                  <Button blendMode="SRC_ATOP" mnemonicParsing="false" prefHeight="24.0" prefWidth="197.0" style="-fx-background-color: transparent;">
+                  <Button fx:id="SettingsButton" blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#SettingOnAction" prefHeight="24.0" prefWidth="197.0" style="-fx-background-color: transparent;">
                      <graphic>
                         <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                            <children>

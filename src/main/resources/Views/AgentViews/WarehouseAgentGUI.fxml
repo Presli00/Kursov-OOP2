@@ -80,7 +80,7 @@
                      </graphic>
                   </Button>
                   <Region prefHeight="269.0" prefWidth="197.0" VBox.vgrow="ALWAYS" />
-                  <Button fx:id="SpravkiButton1" blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#SpravkiOnAction" prefHeight="63.0" prefWidth="220.0" style="-fx-background-color: transparent;">
+                  <Button fx:id="SettingsButton" blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#SettingOnAction" prefHeight="63.0" prefWidth="220.0" style="-fx-background-color: transparent;">
                      <graphic>
                         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                            <children>

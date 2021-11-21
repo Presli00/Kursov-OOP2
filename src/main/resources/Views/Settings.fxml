@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="AnchorPane" prefHeight="398.0" prefWidth="598.0" style="-fx-background-color: #FF6F61;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="KursovProektOOP2.controllers.Settings">
+   <children>
+      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="171.0" layoutY="137.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/UsernameIcon.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="175.0" layoutY="184.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/PasswordIcon.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="121.0" layoutY="97.0" text="Смяна на потребителско име и парола">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="usernameTF" layoutX="219.0" layoutY="144.0" promptText="Username" />
+      <TextField fx:id="passwordVisibleTF" layoutX="218.0" layoutY="192.0" promptText="Password" />
+      <Button fx:id="applyButton" layoutX="382.0" layoutY="346.0" mnemonicParsing="false" onAction="#apply" prefHeight="30.0" prefWidth="83.0" text="Apply">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="cancelButton" layoutX="478.0" layoutY="346.0" mnemonicParsing="false" onAction="#cancel" prefHeight="30.0" prefWidth="83.0" text="Cancel">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Label layoutX="134.0" layoutY="235.0" prefHeight="40.0" prefWidth="83.0" text="Повторете паролата:" textAlignment="RIGHT" wrapText="true">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="conPasswordVisibleTF" layoutX="218.0" layoutY="243.0" promptText="Confirm password" />
+      <CheckBox fx:id="passwordCheck" layoutX="219.0" layoutY="275.0" mnemonicParsing="false" onAction="#check" text="Show password">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </CheckBox>
+      <PasswordField fx:id="passwordTF" layoutX="218.0" layoutY="192.0" promptText="Password" />
+      <PasswordField fx:id="conPasswordTF" layoutX="218.0" layoutY="243.0" promptText="Confirm password" />
+      <Label fx:id="errorLabel" layoutX="185.0" layoutY="310.0" prefHeight="20.0" prefWidth="215.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
