@@ -8,29 +8,36 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="300.0" prefWidth="420.0" styleClass="Login" stylesheets="@../../Styles/loginMenu.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="KursovProektOOP2.controllers.LoginMenu">
    <children>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="110.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="110.0">
+      <Pane prefHeight="300.0" prefWidth="420.0" styleClass="pane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="120.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../Images/PR%20Warehouses.png" />
          </image>
       </ImageView>
-      <TextField fx:id="usernameTF" layoutX="136.0" layoutY="124.0" promptText="Username" />
-      <TextField fx:id="passwordVisibleTF" layoutX="136.0" layoutY="164.0" promptText="Password" />
-      <PasswordField fx:id="passwordTF" layoutX="136.0" layoutY="164.0" promptText="Password" />
-      <CheckBox fx:id="passwordCheck" layoutX="136.0" layoutY="200.0" mnemonicParsing="false" onAction="#check" text="Show Password" />
-      <Button fx:id="loginButton" layoutX="152.0" layoutY="231.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="116.0" text="Login" AnchorPane.bottomAnchor="44.0" AnchorPane.leftAnchor="152.0" AnchorPane.rightAnchor="152.0" AnchorPane.topAnchor="231.0" />
-      <ImageView fitHeight="17.0" fitWidth="21.0" layoutX="107.0" layoutY="128.0" pickOnBounds="true" preserveRatio="true">
+      <TextField fx:id="usernameTF" layoutX="146.0" layoutY="134.0" promptText="Username" />
+      <TextField fx:id="passwordVisibleTF" layoutX="146.0" layoutY="174.0" promptText="Password" />
+      <PasswordField fx:id="passwordTF" layoutX="146.0" layoutY="174.0" promptText="Password" />
+      <CheckBox fx:id="passwordCheck" layoutX="146.0" layoutY="210.0" mnemonicParsing="false" onAction="#check" text="Show Password">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </CheckBox>
+      <Button fx:id="loginButton" layoutX="162.0" layoutY="241.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="116.0" text="Login" />
+      <ImageView fitHeight="17.0" fitWidth="21.0" layoutX="117.0" layoutY="138.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../Images/UsernameIcon.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="17.0" fitWidth="17.0" layoutX="108.0" layoutY="168.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="17.0" fitWidth="17.0" layoutX="118.0" layoutY="178.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../Images/PasswordIcon.png" />
          </image>
       </ImageView>
-      <Label fx:id="errorLabel" alignment="TOP_CENTER" layoutX="113.0" layoutY="261.0" prefHeight="17.0" prefWidth="194.0" textFill="RED" />
+      <Label fx:id="errorLabel" alignment="TOP_CENTER" layoutX="123.0" layoutY="271.0" prefHeight="17.0" prefWidth="194.0" textFill="RED" />
    </children>
 </AnchorPane>
