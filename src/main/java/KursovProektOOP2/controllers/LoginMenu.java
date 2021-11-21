@@ -2,7 +2,6 @@ package KursovProektOOP2.controllers;
 
 import KursovProektOOP2.data.access.Connection;
 import KursovProektOOP2.data.entity.User;
-import KursovProektOOP2.data.repository.UserRepository;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,15 +13,9 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.query.Query;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.sql.Timestamp;
-import java.util.Date;
-import java.util.List;
 
 public class LoginMenu {
     @FXML

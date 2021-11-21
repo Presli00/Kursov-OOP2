@@ -127,7 +127,7 @@
                         </HBox>
                      </graphic>
                   </Button>
-                  <Button alignment="CENTER" blendMode="SRC_ATOP" mnemonicParsing="false" style="-fx-background-color: transparent;">
+                  <Button fx:id="logOutButton" alignment="CENTER" blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#logOutOnAction" style="-fx-background-color: transparent;">
                      <graphic>
                         <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="142.0" spacing="5.0">
                            <children>

@@ -98,7 +98,7 @@
                         </HBox>
                      </graphic>
                   </Button>
-                  <Button fx:id="SpravkiButton2" blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#SpravkiOnAction" prefHeight="63.0" prefWidth="220.0" style="-fx-background-color: transparent;">
+                  <Button fx:id="logOutButton" blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#logOutOnAction" prefHeight="63.0" prefWidth="220.0" style="-fx-background-color: transparent;">
                      <graphic>
                         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                            <children>

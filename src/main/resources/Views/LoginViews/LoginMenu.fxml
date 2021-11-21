@@ -9,7 +9,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="300.0" prefWidth="420.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="KursovProektOOP2.controllers.LoginMenu">
+<AnchorPane prefHeight="300.0" prefWidth="420.0" styleClass="Login" stylesheets="@../../Styles/loginMenu.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="KursovProektOOP2.controllers.LoginMenu">
    <children>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="110.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="110.0">
          <image>
@@ -20,7 +20,7 @@
       <TextField fx:id="passwordVisibleTF" layoutX="136.0" layoutY="164.0" promptText="Password" />
       <PasswordField fx:id="passwordTF" layoutX="136.0" layoutY="164.0" promptText="Password" />
       <CheckBox fx:id="passwordCheck" layoutX="136.0" layoutY="200.0" mnemonicParsing="false" onAction="#check" text="Show Password" />
-      <Button fx:id="loginButton" layoutX="152.0" layoutY="231.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="116.0" text="Login" />
+      <Button fx:id="loginButton" layoutX="152.0" layoutY="231.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="116.0" text="Login" AnchorPane.bottomAnchor="44.0" AnchorPane.leftAnchor="152.0" AnchorPane.rightAnchor="152.0" AnchorPane.topAnchor="231.0" />
       <ImageView fitHeight="17.0" fitWidth="21.0" layoutX="107.0" layoutY="128.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../Images/UsernameIcon.png" />

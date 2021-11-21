@@ -987,3 +987,9 @@ line 1:8: unexpected token: *
 [JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Login unsuccessfulNo entity found for query
 [JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Login unsuccessfulNo entity found for query
 [JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Login unsuccessfulNo entity found for query
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - (conn=11) Unknown column 'user0_.email' in 'field list'
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Login unsuccessfulorg.hibernate.exception.SQLGrammarException: could not extract ResultSet
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - (conn=13) Unknown column 'user0_.email' in 'field list'
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Login unsuccessfulorg.hibernate.exception.SQLGrammarException: could not extract ResultSet
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - (conn=34) Unknown column 'warehouse0_.Agent' in 'field list'
+[JavaFX Application Thread] ERROR KursovProektOOP2.data.repository.WarehouseRepository  - Get warehouses failed: org.hibernate.exception.SQLGrammarException: could not extract ResultSet
