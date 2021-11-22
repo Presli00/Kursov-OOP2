@@ -93,7 +93,8 @@ public class LoginMenu {
             Scene scene = new Scene(root);
             stage.getIcons().add(new Image(getClass().getResourceAsStream("/Images/PR Warehouses.png")));
             stage.setScene(scene);
-            stage.setResizable(false);
+            stage.setMinHeight(650);
+            stage.setMinWidth(1200);
             stage.show();
         }else{
             log.error("View couldn't be loaded");
