@@ -1,15 +1,22 @@
 package KursovProektOOP2.controllers;
 
+import KursovProektOOP2.data.access.Connection;
+import KursovProektOOP2.data.entity.User;
+import KursovProektOOP2.data.repository.StorageRoomRepository;
+import KursovProektOOP2.data.repository.UserNotificationRepository;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import java.io.IOException;
 import java.net.URL;
@@ -23,8 +30,28 @@ public class WarehouseAgentGUI {
     Button logOutButton;
     @FXML
     Button SettingsButton;
+    @FXML
+    ImageView exclamationMark;
 
     private static final Logger log = Logger.getLogger(Main.class);
+    public final UserNotificationRepository notifications = UserNotificationRepository.getInstance();
+
+
+    @FXML
+    public void initialize(){
+        Session session = Connection.openSession();
+        Transaction transaction = session.beginTransaction();
+        String LOGIN_QUERY = "SELECT u FROM UserNotification u WHERE idFromUser = '" + UserSession.getUserID() + "'"; // QUERY
+        try {
+            User result = (User) session.createQuery(LOGIN_QUERY).getSingleResult();
+
+
+        } catch (Exception ex) {
+            log.error("notifs retrieval unsuccessful" + ex.getMessage());
+        } finally {
+            transaction.commit();
+        }
+    }
 
     @FXML
     public void SpravkiOnAction() throws IOException{

@@ -38,6 +38,14 @@
                                     <Image url="@../../Images/Известия.png" />
                                  </image>
                               </ImageView>
+                              <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                 <image>
+                                    <Image url="@../../Images/exclamation.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets bottom="24.0" />
+                                 </HBox.margin>
+                              </ImageView>
                               <Label text="Известия">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
@@ -59,6 +67,9 @@
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>
+                                 <HBox.margin>
+                                    <Insets left="6.0" />
+                                 </HBox.margin>
                               </Label>
                            </children>
                         </HBox>
@@ -80,6 +91,9 @@
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
+                                 <HBox.margin>
+                                    <Insets left="6.0" />
+                                 </HBox.margin>
                               </Label>
                            </children>
                         </HBox>
@@ -101,6 +115,9 @@
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>
+                                 <HBox.margin>
+                                    <Insets left="6.0" />
+                                 </HBox.margin>
                               </Label>
                            </children>
                         </HBox>

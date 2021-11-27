@@ -11,12 +11,13 @@ public class UserSession {
         this.password = password;
     }
 
-    public static UserSession getInstace(int userID, String userName, String password) {
+    public static UserSession getInstance(int userID, String userName, String password) {
         if(instance == null) {
             instance = new UserSession(userID, userName, password);
         }
         return instance;
     }
+
 
     public static int getUserID() {
         return userID;

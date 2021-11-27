@@ -43,17 +43,17 @@ public class LoginMenu {
             if(result.getRoleId().getRoleId() == 1){ // LOAD ADMIN VIEW
                 closeLoginMenu();
                 openWindow("/Views/AdminViews/AdminGUI.fxml");
-                UserSession.getInstace(result.getUserId(), result.getUsername(), result.getPassword());
+                UserSession.getInstance(result.getUserId(), result.getUsername(), result.getPassword());
             }
             if(result.getRoleId().getRoleId() == 2){ // LOAD OWNER VIEW
                 closeLoginMenu();
                 openWindow("/Views/OwnerViews/OwnerGUI.fxml");
-                UserSession.getInstace(result.getUserId(), result.getUsername(), result.getPassword());
+                UserSession.getInstance(result.getUserId(), result.getUsername(), result.getPassword());
             }
             if(result.getRoleId().getRoleId() == 3){ // LOAD AGENT VIEW
                 closeLoginMenu();
                 openWindow("/Views/AgentViews/WarehouseAgentGUI.fxml");
-                UserSession.getInstace(result.getUserId(), result.getUsername(), result.getPassword());
+                UserSession.getInstance(result.getUserId(), result.getUsername(), result.getPassword());
             }
 
         } catch (Exception ex) {
