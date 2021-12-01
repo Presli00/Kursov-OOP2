@@ -75,30 +75,6 @@
                         </HBox>
                      </graphic>
                   </Button>
-                  <Button alignment="TOP_CENTER" blendMode="SRC_ATOP" mnemonicParsing="false" style="-fx-background-color: transparent;" textAlignment="CENTER" VBox.vgrow="NEVER">
-                     <graphic>
-                        <HBox prefHeight="35.0" prefWidth="142.0" spacing="5.0">
-                           <children>
-                              <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../Images/Акаунти.png" />
-                                 </image>
-                                 <viewport>
-                                    <Rectangle2D />
-                                 </viewport>
-                              </ImageView>
-                              <Label prefHeight="42.0" prefWidth="135.0" text="Списък със складови агенти" wrapText="true">
-                                 <font>
-                                    <Font name="System Bold" size="12.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets left="6.0" />
-                                 </HBox.margin>
-                              </Label>
-                           </children>
-                        </HBox>
-                     </graphic>
-                  </Button>
                   <Button alignment="TOP_CENTER" blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#SpravkiOnAction" style="-fx-background-color: transparent;" textAlignment="CENTER">
                      <graphic>
                         <HBox prefHeight="35.0" prefWidth="142.0" spacing="5.0">
@@ -127,6 +103,34 @@
                      </cursor>
                   </Button>
                   <Region prefHeight="342.0" prefWidth="197.0" VBox.vgrow="ALWAYS" />
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+                     <children>
+                        <Label text="Username:">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="usernameLabel" prefHeight="27.0" prefWidth="122.0">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+                     <children>
+                        <Label fx:id="firstNameLabel" prefHeight="27.0" prefWidth="108.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lastNameLabel" prefWidth="108.0">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
                   <Button fx:id="SettingsButton" blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#SettingOnAction" style="-fx-background-color: transparent;">
                      <graphic>
                         <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="142.0" spacing="5.0">

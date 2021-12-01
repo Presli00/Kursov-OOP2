@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
@@ -23,8 +24,13 @@ public class OwnerGUI {
     AnchorPane ContentAnchorPane;
     @FXML
     Button logOutButton;
+    @FXML
+    Label usernameLabel;
+    @FXML
+    Label firstNameLabel;
     // Functions
     private static final Logger log = Logger.getLogger(Main.class);
+
     @FXML
     public void SpravkiOnAction() throws IOException {
         AnchorPane ap = FXMLLoader.load(getClass().getResource("/Views/OwnerViews/OwnerSpravki.fxml")); //LOAD VIEW
