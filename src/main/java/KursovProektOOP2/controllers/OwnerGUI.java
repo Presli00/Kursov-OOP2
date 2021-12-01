@@ -28,6 +28,8 @@ public class OwnerGUI {
     Label usernameLabel;
     @FXML
     Label firstNameLabel;
+    @FXML
+    Label lastNameLabel;
     // Functions
     private static final Logger log = Logger.getLogger(Main.class);
 
