@@ -2,8 +2,7 @@ package KursovProektOOP2.controllers;
 
 import KursovProektOOP2.data.access.Connection;
 import KursovProektOOP2.data.entity.User;
-import KursovProektOOP2.data.repository.StorageRoomRepository;
-import KursovProektOOP2.data.repository.UserNotificationRepository;
+import KursovProektOOP2.data.entity.Usernotifications;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,8 +17,10 @@ import org.apache.log4j.PropertyConfigurator;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 
 public class WarehouseAgentGUI {
     @FXML
@@ -34,23 +35,27 @@ public class WarehouseAgentGUI {
     ImageView exclamationMark;
 
     private static final Logger log = Logger.getLogger(Main.class);
-    public final UserNotificationRepository notifications = UserNotificationRepository.getInstance();
 
 
     @FXML
     public void initialize(){
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
-        String LOGIN_QUERY = "SELECT u FROM UserNotification u WHERE idFromUser = '" + UserSession.getUserID() + "'"; // QUERY
-        try {
-            User result = (User) session.createQuery(LOGIN_QUERY).getSingleResult();
-
-
-        } catch (Exception ex) {
-            log.error("notifs retrieval unsuccessful" + ex.getMessage());
-        } finally {
+        String NOTIFICATION_QUERY = "SELECT u FROM Usernotifications u WHERE idFromUser.userId = :userID";
+        try{
+            List<Usernotifications> notifications = session.createQuery(NOTIFICATION_QUERY).setParameter("userID", UserSession.getUserID()).getResultList();
+            for (int i = 0; i < notifications.size();i++){
+                if(!notifications.get(i).isRead()){
+                    exclamationMark.setVisible(true);
+                }
+            }
+        }catch (Exception ex){
+            log.error("Notifications retrieval unsuccessful " + "\n" + ex.getMessage());
+        }finally {
             transaction.commit();
         }
+
+
     }
 
     @FXML

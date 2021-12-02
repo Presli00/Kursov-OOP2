@@ -1,13 +1,10 @@
 package KursovProektOOP2.data.repository;
 
 import KursovProektOOP2.data.access.Connection;
-import KursovProektOOP2.data.entity.Role;
-import KursovProektOOP2.data.entity.User;
-import KursovProektOOP2.data.entity.UserNotification;
+import KursovProektOOP2.data.entity.Usernotifications;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -71,9 +68,9 @@ public class UserNotificationRepository implements DAORepository {
     public Optional getById(Long id) {
         Session session=Connection.openSession();
         Transaction transaction=session.beginTransaction();
-        Optional<UserNotification> foundUserNotification=null;
+        Optional<Usernotifications> foundUserNotification=null;
         try {
-            foundUserNotification = session.byId(UserNotification.class).loadOptional(id);
+            foundUserNotification = session.byId(Usernotifications.class).loadOptional(id);
             log.info("UserNotification get by id successfully");
         } catch (Exception ex) {
             log.error("UserNotification get by id error" + ex.getMessage());
@@ -87,10 +84,10 @@ public class UserNotificationRepository implements DAORepository {
     public List getAll() {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
-        List<UserNotification> UserNotifications = new LinkedList<>();
+        List<Usernotifications> UserNotifications = new LinkedList<>();
         try{
-            String jpql = "SELECT u FROM UserNotification u";
-            UserNotifications.addAll(session.createQuery(jpql, UserNotification.class).getResultList());
+            String jpql = "SELECT u FROM Usernotifications u";
+            UserNotifications.addAll(session.createQuery(jpql, Usernotifications.class).getResultList());
             log.info("Got all UserNotifications");
         }catch(Exception ex){
             log.error("Get UserNotifications failed: " + ex.getMessage());

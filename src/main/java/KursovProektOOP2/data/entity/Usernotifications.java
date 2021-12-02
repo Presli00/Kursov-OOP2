@@ -2,20 +2,18 @@ package KursovProektOOP2.data.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Set;
 
-@Entity
 @Table(name = "usernotifications", schema = "warehouse")
-public class UserNotification implements Serializable {
+@Entity
+public class Usernotifications implements Serializable {
     @Id
     @Column(name = "idnotifications", nullable = false)
     private int idNotifications;
     @ManyToOne
     @JoinColumn(name = "idUser", nullable = false)
     private User idFromUser;
-    @OneToMany
-    @JoinColumn(name = "notificationNameID", nullable = false)
-    private Set<Notification> Notifications;
+    @Column(name = "notificationName", nullable = false)
+    private String notificationName;
     @Column(name = "isRead", nullable = false)
     private boolean isRead;
 
@@ -35,11 +33,11 @@ public class UserNotification implements Serializable {
         this.idFromUser = idFromUser;
     }
 
-    public Set<Notification> getNotifications() {
-        return Notifications;
+    public String getNotificationName() {
+        return notificationName;
     }
 
-    public void setNotifications(Set<Notification> Notifications) { this.Notifications = Notifications; }
+    public void setNotificationName(String notificationName) { this.notificationName = notificationName; }
 
     public boolean isRead() { return isRead; }
 
@@ -50,11 +48,11 @@ public class UserNotification implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        UserNotification that = (UserNotification) o;
+        Usernotifications that = (Usernotifications) o;
 
         if (idNotifications != that.idNotifications) return false;
         if (idFromUser != null ? !idFromUser.equals(that.idFromUser) : that.idFromUser != null) return false;
-        if (Notifications != null ? !Notifications.equals(that.Notifications) : that.Notifications != null)
+        if (notificationName != null ? !notificationName.equals(that.notificationName) : that.notificationName != null)
             return false;
         if(isRead != that.isRead) return false;
         return true;
@@ -65,7 +63,7 @@ public class UserNotification implements Serializable {
         return "UserNotification{" +
                 "idNotifications=" + idNotifications +
                 ", idFromUser=" + idFromUser +
-                ", Notifications=" + Notifications +
+                ", NotificationName=" + notificationName +
                 ", isRead=" + isRead +
                 '}';
     }

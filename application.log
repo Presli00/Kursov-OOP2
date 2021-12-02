@@ -1017,3 +1017,151 @@ line 1:8: unexpected token: *
 [JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Login unsuccessfulNo entity found for query
 [JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Login unsuccessfulNo entity found for query
 [JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Login unsuccessfulNo entity found for query
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Login unsuccessfulorg.hibernate.hql.internal.ast.QuerySyntaxException: UserNotification is not mapped [SELECT n FROM UserNotification n WHERE idFromUser = '5']
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Login unsuccessfulorg.hibernate.hql.internal.ast.QuerySyntaxException: UserNotification is not mapped [SELECT n FROM UserNotification n WHERE idFromUser = '5']
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Login unsuccessfulNo entity found for query
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Login unsuccessfulorg.hibernate.hql.internal.ast.QuerySyntaxException: UserNotification is not mapped [SELECT n FROM UserNotification n WHERE idFromUser = '1']
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Login unsuccessfulorg.hibernate.hql.internal.ast.QuerySyntaxException: UserNotification is not mapped [SELECT n FROM UserNotification n WHERE idFromUser = '1']
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Login unsuccessfulorg.hibernate.hql.internal.ast.QuerySyntaxException: UserNotification is not mapped [SELECT n FROM UserNotification n WHERE idFromUser = '1']
+[JavaFX Application Thread] ERROR org.hibernate.hql.internal.ast.ErrorTracker  - line 1:79: unexpected token: Grumboll
+[JavaFX Application Thread] ERROR org.hibernate.hql.internal.ast.ErrorTracker  - line 1:79: unexpected token: Grumboll
+line 1:79: unexpected token: Grumboll
+	at org.hibernate.hql.internal.antlr.HqlBaseParser.queryRule(HqlBaseParser.java:864)
+	at org.hibernate.hql.internal.antlr.HqlBaseParser.selectStatement(HqlBaseParser.java:336)
+	at org.hibernate.hql.internal.antlr.HqlBaseParser.statement(HqlBaseParser.java:200)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.parse(QueryTranslatorImpl.java:294)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.doCompile(QueryTranslatorImpl.java:189)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.compile(QueryTranslatorImpl.java:144)
+	at org.hibernate.engine.query.spi.HQLQueryPlan.<init>(HQLQueryPlan.java:113)
+	at org.hibernate.engine.query.spi.HQLQueryPlan.<init>(HQLQueryPlan.java:73)
+	at org.hibernate.engine.query.spi.QueryPlanCache.getHQLQueryPlan(QueryPlanCache.java:162)
+	at org.hibernate.internal.AbstractSharedSessionContract.getQueryPlan(AbstractSharedSessionContract.java:622)
+	at org.hibernate.internal.AbstractSharedSessionContract.createQuery(AbstractSharedSessionContract.java:734)
+	at org.hibernate.internal.AbstractSharedSessionContract.createQuery(AbstractSharedSessionContract.java:114)
+	at KursovProektOOP2.controllers.LoginMenu.login(LoginMenu.java:47)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at com.sun.javafx.reflect.Trampoline.invoke(MethodUtil.java:77)
+	at jdk.internal.reflect.GeneratedMethodAccessor2.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at javafx.base/com.sun.javafx.reflect.MethodUtil.invoke(MethodUtil.java:275)
+	at javafx.fxml/com.sun.javafx.fxml.MethodHelper.invoke(MethodHelper.java:84)
+	at javafx.fxml/javafx.fxml.FXMLLoader$MethodHandler.invoke(FXMLLoader.java:1854)
+	at javafx.fxml/javafx.fxml.FXMLLoader$ControllerMethodEventHandler.handle(FXMLLoader.java:1724)
+	at javafx.base/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)
+	at javafx.base/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49)
+	at javafx.base/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics/javafx.scene.Node.fireEvent(Node.java:8792)
+	at javafx.controls/javafx.scene.control.Button.fire(Button.java:203)
+	at javafx.controls/com.sun.javafx.scene.control.behavior.ButtonBehavior.mouseReleased(ButtonBehavior.java:208)
+	at javafx.controls/com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274)
+	at javafx.base/com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:247)
+	at javafx.base/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)
+	at javafx.base/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics/javafx.scene.Scene$MouseHandler.process(Scene.java:3897)
+	at javafx.graphics/javafx.scene.Scene.processMouseEvent(Scene.java:1878)
+	at javafx.graphics/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2623)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:424)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics/com.sun.glass.ui.View.handleMouseEvent(View.java:557)
+	at javafx.graphics/com.sun.glass.ui.View.notifyMouse(View.java:943)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Login unsuccessfulorg.hibernate.QueryException: unexpected char: '@' [SELECT n FROM UserNotification n WHERE idFromUser = 'User{userId=1, username='Grumboll', password='123', firstName='Rumen', lastName='Pavlov', eMail='rumen_pavlov35@abv.bg', phone='0892483322', roleId=Role{roleId=1, roleName='Admin'}, createdDate=2021-11-16 21:27:01.0, updatedDate=null}']
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Login unsuccessfulorg.hibernate.hql.internal.ast.QuerySyntaxException: UserNotification is not mapped [SELECT n FROM UserNotification n WHERE idFromUser = '1']
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Login unsuccessfulorg.hibernate.hql.internal.ast.QuerySyntaxException: UserNotification is not mapped [SELECT n FROM UserNotification n WHERE idFromUser = '1']
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Login unsuccessfulorg.hibernate.hql.internal.ast.QuerySyntaxException: UserNotification is not mapped [SELECT n FROM UserNotification n WHERE idFromUser = '1']
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Login unsuccessfulorg.hibernate.hql.internal.ast.QuerySyntaxException: UserNotification is not mapped [SELECT n FROM UserNotification n WHERE idFromUser = '1']
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Login unsuccessfulorg.hibernate.hql.internal.ast.QuerySyntaxException: UserNotification is not mapped [SELECT n FROM UserNotification n WHERE idFromUser.userId = '1']
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Login unsuccessfulorg.hibernate.hql.internal.ast.QuerySyntaxException: UserNotifications is not mapped [SELECT n FROM UserNotifications n WHERE idFromUser.userId = '1']
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Login unsuccessfulorg.hibernate.hql.internal.ast.QuerySyntaxException: UserNotifications is not mapped [SELECT n FROM UserNotifications n WHERE idFromUser.userId = '1']
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Login unsuccessfulorg.hibernate.hql.internal.ast.QuerySyntaxException: UserNotifications is not mapped [SELECT n FROM UserNotifications n]
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Login unsuccessfulorg.hibernate.hql.internal.ast.QuerySyntaxException: UserNotifications is not mapped [SELECT u FROM UserNotifications u WHERE idFromUser.userId = '1']
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Login unsuccessfulorg.hibernate.hql.internal.ast.QuerySyntaxException: UserNotifications is not mapped [SELECT u FROM UserNotifications u WHERE idFromUser.userId = '1']
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Login unsuccessfulorg.hibernate.hql.internal.ast.QuerySyntaxException: UserNotifications is not mapped [SELECT u FROM UserNotifications u WHERE idFromUser.userId = '1']
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Login unsuccessfulorg.hibernate.hql.internal.ast.QuerySyntaxException: UserNotifications is not mapped [SELECT u FROM UserNotifications u WHERE idFromUser.userId = '1']
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Notifications retrieval unsuccessfulorg.hibernate.hql.internal.ast.QuerySyntaxException: UserNotifications is not mapped [SELECT u FROM UserNotifications u WHERE idFromUser.userId = '0']
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Notifications retrieval unsuccessful 
+org.hibernate.hql.internal.ast.QuerySyntaxException: UserNotifications is not mapped [SELECT u FROM UserNotifications u WHERE idFromUser.userId = '0']
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Notifications retrieval unsuccessful 
+org.hibernate.hql.internal.ast.QuerySyntaxException: UserNotifications is not mapped [SELECT u FROM UserNotifications u WHERE idFromUser.userId = '0']
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Notifications retrieval unsuccessful 
+org.hibernate.hql.internal.ast.QuerySyntaxException: UserNotifications is not mapped [SELECT u FROM UserNotifications u WHERE idFromUser.userId = '0']
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Notifications retrieval unsuccessful 
+org.hibernate.hql.internal.ast.QuerySyntaxException: UserNotifications is not mapped [SELECT u FROM UserNotifications u WHERE idFromUser.userId = '0']
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Notifications retrieval unsuccessful 
+org.hibernate.hql.internal.ast.QuerySyntaxException: UserNotifications is not mapped [SELECT u FROM UserNotifications u WHERE idFromUser.userId = '0']
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Notifications retrieval unsuccessful 
+org.hibernate.hql.internal.ast.QuerySyntaxException: UserNotifications is not mapped [SELECT u FROM UserNotifications u WHERE idFromUser.userId = '3']
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Notifications retrieval unsuccessful 
+org.hibernate.hql.internal.ast.QuerySyntaxException: UserNotifications is not mapped [SELECT u FROM UserNotifications u WHERE idFromUser.userId = '3']
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Notifications retrieval unsuccessful 
+org.hibernate.hql.internal.ast.QuerySyntaxException: UserNotifications is not mapped [SELECT u FROM UserNotifications u WHERE idFromUser.userId = '3']
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Notifications retrieval unsuccessful 
+org.hibernate.hql.internal.ast.QuerySyntaxException: UserNotifications is not mapped [SELECT u FROM UserNotifications u WHERE idFromUser.userId = 3]
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Notifications retrieval unsuccessful 
+org.hibernate.hql.internal.ast.QuerySyntaxException: UserNotifications is not mapped [SELECT u FROM UserNotifications u WHERE idFromUser = 3]
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Notifications retrieval unsuccessful 
+org.hibernate.hql.internal.ast.QuerySyntaxException: UserNotifications is not mapped [SELECT u FROM UserNotifications u WHERE u.idFromUser.userId = 3]
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Notifications retrieval unsuccessful 
+org.hibernate.hql.internal.ast.QuerySyntaxException: UserNotifications is not mapped [SELECT u FROM UserNotifications u WHERE u.idFromUser = :userID]
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Notifications retrieval unsuccessful 
+org.hibernate.hql.internal.ast.QuerySyntaxException: Usernotifications is not mapped [SELECT u FROM Usernotifications u WHERE u.idFromUser = :userID]
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Notifications retrieval unsuccessful 
+org.hibernate.hql.internal.ast.QuerySyntaxException: Usernotifications is not mapped [SELECT u FROM Usernotifications u WHERE u.idFromUser = :userID]
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Notifications retrieval unsuccessful 
+org.hibernate.hql.internal.ast.QuerySyntaxException: Usernotifications is not mapped [SELECT u FROM Usernotifications u WHERE u.idFromUser = :userID]
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Notifications retrieval unsuccessful 
+org.hibernate.hql.internal.ast.QuerySyntaxException: Usernotifications is not mapped [SELECT u FROM Usernotifications u WHERE u.idFromUser = :userID]
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Notifications retrieval unsuccessful 
+org.hibernate.hql.internal.ast.QuerySyntaxException: Usernotifications is not mapped [SELECT u FROM Usernotifications u WHERE idFromUser =3]
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Notifications retrieval unsuccessful 
+org.hibernate.hql.internal.ast.QuerySyntaxException: Usernotifications is not mapped [SELECT u FROM Usernotifications u WHERE idFromUser =3]
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Login unsuccessful
+/C:/Users/User/IdeaProjects/Kursov-OOP2/target/classes/Views/AgentViews/WarehouseAgentGUI.fxml
+
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Login unsuccessful
+/C:/Users/User/IdeaProjects/Kursov-OOP2/target/classes/Views/AgentViews/WarehouseAgentGUI.fxml
+
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Login unsuccessful
+/C:/Users/User/IdeaProjects/Kursov-OOP2/target/classes/Views/AgentViews/WarehouseAgentGUI.fxml
+
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Login unsuccessful
+/C:/Users/User/IdeaProjects/Kursov-OOP2/target/classes/Views/AgentViews/WarehouseAgentGUI.fxml
+
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Login unsuccessfulNo entity found for query
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Notifications retrieval unsuccessful 
+org.hibernate.hql.internal.ast.QuerySyntaxException: Usernotifications is not mapped [SELECT u FROM Usernotifications u JOIN u.idFromUser t WHERE t.userId = :userID]
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Notifications retrieval unsuccessful 
+org.hibernate.hql.internal.ast.QuerySyntaxException: Usernotifications is not mapped [SELECT u FROM Usernotifications u JOIN u.idFromUser t WHERE t.userId = :userID]
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Notifications retrieval unsuccessful 
+org.hibernate.hql.internal.ast.QuerySyntaxException: Usernotifications is not mapped [SELECT u FROM Usernotifications u JOIN u.idFromUser t WHERE t.userId = :userID]

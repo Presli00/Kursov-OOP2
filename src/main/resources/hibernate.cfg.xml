@@ -31,5 +31,6 @@
         <mapping class="KursovProektOOP2.data.entity.User"/>
         <mapping class="KursovProektOOP2.data.entity.Warehouse"/>
         <mapping class="KursovProektOOP2.data.entity.WarehouseHasRooms"/>
+        <mapping class="KursovProektOOP2.data.entity.Usernotifications"/>
     </session-factory>
 </hibernate-configuration>
