@@ -3,6 +3,7 @@ package KursovProektOOP2.data.entity;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Set;
 
 @Entity
 @Table(name = "Warehouse_has_rooms", schema = "warehouse")
@@ -10,12 +11,12 @@ public class WarehouseHasRooms implements Serializable {
     @Id
     @Column(name = "WarehouseHasRooms_id", nullable = false)
     private int warehouseHasRoomsId;
-    @ManyToOne
+    @OneToMany
     @JoinColumn(name = "warehouse_id", nullable = false)
-    private Warehouse warehouseId;
-    @ManyToOne
+    private Set<StorageRoom> warehouseId;
+    @OneToMany
     @JoinColumn(name = "Room_id", nullable = false)
-    private StorageRoom roomId;
+    private Set<StorageRoom> roomId;
 
     public int getWarehouseHasRoomsId() {
         return warehouseHasRoomsId;
@@ -25,19 +26,19 @@ public class WarehouseHasRooms implements Serializable {
         this.warehouseHasRoomsId = warehouseHasRoomsId;
     }
 
-    public Warehouse getWarehouseId() {
+    public Set<StorageRoom> getWarehouseId() {
         return warehouseId;
     }
 
-    public void setWarehouseId(Warehouse warehouseId) {
+    public void setWarehouseId(Set<StorageRoom> warehouseId) {
         this.warehouseId = warehouseId;
     }
 
-    public StorageRoom getRoomId() {
+    public Set<StorageRoom> getRoomId() {
         return roomId;
     }
 
-    public void setRoomId(StorageRoom roomId) {
+    public void setRoomId(Set<StorageRoom> roomId) {
         this.roomId = roomId;
     }
 

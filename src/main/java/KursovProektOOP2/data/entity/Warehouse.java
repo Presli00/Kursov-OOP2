@@ -23,8 +23,8 @@ public class Warehouse implements Serializable {
     @JoinColumn(name = "Maintenance_id", nullable = false)
     private Maintenance maintenanceId;
     @OneToOne
-    @JoinColumn(name = "Agent/s_id", nullable = false)
-    private AgentsList agentSId;
+    @JoinColumn(name = "Agents_id")
+    private AgentsList agentsId;
 
     public int getWarehouseId() {
         return warehouseId;
@@ -75,11 +75,11 @@ public class Warehouse implements Serializable {
     }
 
     public AgentsList getAgentSId() {
-        return agentSId;
+        return agentsId;
     }
 
     public void setAgentSId(AgentsList agentSId) {
-        this.agentSId = agentSId;
+        this.agentsId = agentSId;
     }
 
     @Override
@@ -93,7 +93,7 @@ public class Warehouse implements Serializable {
         if (cityId != warehouse.cityId) return false;
         if (numberOfStorageRooms != warehouse.numberOfStorageRooms) return false;
         if (maintenanceId != warehouse.maintenanceId) return false;
-        if (agentSId != warehouse.agentSId) return false;
+        if (agentsId != warehouse.agentsId) return false;
         if (warehouseName != null ? !warehouseName.equals(warehouse.warehouseName) : warehouse.warehouseName != null)
             return false;
         if (street != null ? !street.equals(warehouse.street) : warehouse.street != null) return false;
@@ -110,7 +110,7 @@ public class Warehouse implements Serializable {
                 ", street='" + street + '\'' +
                 ", numberOfStorageRooms=" + numberOfStorageRooms +
                 ", maintenanceId=" + maintenanceId +
-                ", agentSId=" + agentSId +
+                ", agentsId=" + agentsId +
                 '}';
     }
 }
