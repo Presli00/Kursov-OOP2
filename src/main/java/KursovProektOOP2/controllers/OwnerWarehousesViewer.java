@@ -30,10 +30,10 @@ public class OwnerWarehousesViewer {
             AnchorPane warehouse = loader.load();
             WarehouseInfo controller = loader.getController();
             controller.idLabel.setText(String.valueOf(((Warehouse) warehouses.get(i)).getWarehouseId()));
-            controller.cityLabel.setText(String.valueOf(((Warehouse) warehouses.get(i)).getCityId()));
+            controller.cityLabel.setText(String.valueOf(((Warehouse) warehouses.get(i)).getCityId().getCity()));
             controller.streetLabel.setText(String.valueOf(((Warehouse) warehouses.get(i)).getStreet()));
             controller.numberOfStorageRoomsLabel.setText(String.valueOf(((Warehouse) warehouses.get(i)).getNumberOfStorageRooms()));
-            controller.maintenanceLabel.setText(String.valueOf(((Warehouse) warehouses.get(i)).getMaintenanceId()));
+            controller.maintenanceLabel.setText(String.valueOf(((Warehouse) warehouses.get(i)).getMaintenanceId().getName()));
             controller.agentLabel.setText(String.valueOf(((Warehouse) warehouses.get(i)).getAgentSId()));
             Vbox.getChildren().add(warehouse);
         }
