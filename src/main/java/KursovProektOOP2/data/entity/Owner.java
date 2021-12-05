@@ -3,6 +3,7 @@ package KursovProektOOP2.data.entity;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Set;
 
 @Table(name = "Owner", schema = "warehouse")
 @Entity
@@ -15,6 +16,9 @@ public class Owner implements Serializable {
     private User userId;
     @Column(name = "warehousesAmount", nullable = false)
     private int warehousesAmount;
+    @OneToMany
+    @JoinColumn(name = "Warehouses")
+    private Set<Warehouse> warehouses;
 
     public int getIdOwner() {
         return idOwner;
@@ -40,6 +44,14 @@ public class Owner implements Serializable {
         this.warehousesAmount = warehousesAmount;
     }
 
+    public Set<Warehouse> getWarehouses() {
+        return warehouses;
+    }
+
+    public void setWarehouses(Set<Warehouse> warehouses) {
+        this.warehouses = warehouses;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -54,6 +66,7 @@ public class Owner implements Serializable {
                 "idOwner=" + idOwner +
                 ", userId=" + userId +
                 ", warehousesAmount=" + warehousesAmount +
+                ", warehouses="+warehouses+
                 '}';
     }
 }

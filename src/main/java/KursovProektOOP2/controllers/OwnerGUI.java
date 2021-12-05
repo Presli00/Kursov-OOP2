@@ -37,8 +37,9 @@ public class OwnerGUI {
     // Functions
     private static final Logger log = Logger.getLogger(Main.class);
     int currentUser = UserSession.getUserID();
+
     @FXML
-    public void initialize(){
+    public void initialize() {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
         String CHANGE_QUERY = "SELECT u FROM User u WHERE userId='" + currentUser + "'"; //query to change the username
@@ -53,10 +54,11 @@ public class OwnerGUI {
             transaction.commit();
         }
     }
+
     @FXML
     public void SpravkiOnAction() throws IOException {
         AnchorPane ap = FXMLLoader.load(getClass().getResource("/Views/OwnerViews/OwnerSpravki.fxml")); //LOAD VIEW
-        if(!ContentAnchorPane.getChildren().isEmpty()) {
+        if (!ContentAnchorPane.getChildren().isEmpty()) {
             ContentAnchorPane.getChildren().clear();
         }
         ContentAnchorPane.getChildren().add(ap);
@@ -74,7 +76,7 @@ public class OwnerGUI {
     @FXML
     public void WarehouseOnAction() throws IOException {
         ScrollPane sp = FXMLLoader.load(getClass().getResource("/Views/OwnerViews/OwnerWarehousesViewer.fxml"));
-        if(!ContentAnchorPane.getChildren().isEmpty()) {
+        if (!ContentAnchorPane.getChildren().isEmpty()) {
             ContentAnchorPane.getChildren().clear();
         }
         ContentAnchorPane.getChildren().add(sp);
@@ -87,6 +89,7 @@ public class OwnerGUI {
             sp.setPrefHeight(ContentAnchorPane.getHeight());
         });
     }
+
     public void SettingOnAction() throws IOException {
         AnchorPane ap = FXMLLoader.load(getClass().getResource("/Views/Settings.fxml")); //LOAD VIEW
         if (!ContentAnchorPane.getChildren().isEmpty()) {
@@ -103,7 +106,6 @@ public class OwnerGUI {
             ap.setPrefHeight(ContentAnchorPane.getHeight());
         });
     }
-
     public void logOutOnAction() throws IOException {
         closeWindow();
         UserSession.cleanUserSession();
@@ -120,7 +122,7 @@ public class OwnerGUI {
         PropertyConfigurator.configure(Main.class.getResource(Constants.Configuration.LOG4J_PROPERTIES));
         URL path = getClass().getResource(pathToView);
 
-        if(path != null){
+        if (path != null) {
             Parent root = FXMLLoader.load(path);
 
             Scene scene = new Scene(root);
@@ -128,7 +130,7 @@ public class OwnerGUI {
             stage.setScene(scene);
             stage.setResizable(false);
             stage.show();
-        }else{
+        } else {
             log.error("View couldn't be loaded");
             System.exit(-1);
 

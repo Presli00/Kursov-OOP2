@@ -3,6 +3,7 @@ package KursovProektOOP2.data.entity;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Set;
 
 @Table(name = "Warehouse", schema = "warehouse")
 @Entity
@@ -25,6 +26,9 @@ public class Warehouse implements Serializable {
     @OneToOne
     @JoinColumn(name = "Agents_id")
     private AgentsList agentsId;
+    @OneToMany
+    @JoinColumn(name="Rooms")
+    private Set<StorageRoom> rooms;
 
     public int getWarehouseId() {
         return warehouseId;
@@ -74,12 +78,20 @@ public class Warehouse implements Serializable {
         this.maintenanceId = maintenanceId;
     }
 
-    public AgentsList getAgentSId() {
+    public AgentsList getAgentsId() {
         return agentsId;
     }
 
-    public void setAgentSId(AgentsList agentSId) {
-        this.agentsId = agentSId;
+    public void setAgentsId(AgentsList agentsId) {
+        this.agentsId = agentsId;
+    }
+
+    public Set<StorageRoom> getRooms() {
+        return rooms;
+    }
+
+    public void setRooms(Set<StorageRoom> rooms) {
+        this.rooms = rooms;
     }
 
     @Override
@@ -94,6 +106,7 @@ public class Warehouse implements Serializable {
         if (numberOfStorageRooms != warehouse.numberOfStorageRooms) return false;
         if (maintenanceId != warehouse.maintenanceId) return false;
         if (agentsId != warehouse.agentsId) return false;
+        if (rooms != warehouse.rooms) return false;
         if (warehouseName != null ? !warehouseName.equals(warehouse.warehouseName) : warehouse.warehouseName != null)
             return false;
         if (street != null ? !street.equals(warehouse.street) : warehouse.street != null) return false;
@@ -111,6 +124,7 @@ public class Warehouse implements Serializable {
                 ", numberOfStorageRooms=" + numberOfStorageRooms +
                 ", maintenanceId=" + maintenanceId +
                 ", agentsId=" + agentsId +
+                ", rooms="+rooms+
                 '}';
     }
 }

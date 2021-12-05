@@ -2,9 +2,10 @@ package KursovProektOOP2.controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
@@ -21,11 +22,24 @@ public class WarehouseInfo {
     Label maintenanceLabel;
     @FXML
     Label agentLabel;
+    @FXML
+    Button checkButton;
+    @FXML
+    AnchorPane ContentAnchorPane;
 
     public void checkButton() throws IOException {
-
-        Parent root = FXMLLoader.load(getClass().getResource("/Views/OwnerViews/RoomsViewer.fxml"));
-        Scene scene = new Scene(root);
-
+        ScrollPane sp = FXMLLoader.load(getClass().getResource("/Views/OwnerViews/RoomsViewer.fxml"));
+        if (!ContentAnchorPane.getChildren().isEmpty()) {
+            ContentAnchorPane.getChildren().clear();
+        }
+        ContentAnchorPane.getChildren().add(sp);
+        sp.setPrefWidth(ContentAnchorPane.getWidth());
+        sp.setPrefHeight(ContentAnchorPane.getHeight());
+        ContentAnchorPane.widthProperty().addListener(event -> {
+            sp.setPrefWidth(ContentAnchorPane.getWidth());
+        });
+        ContentAnchorPane.heightProperty().addListener(event -> {
+            sp.setPrefHeight(ContentAnchorPane.getHeight());
+        });
     }
 }
