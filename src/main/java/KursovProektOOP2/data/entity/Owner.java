@@ -17,7 +17,7 @@ public class Owner implements Serializable {
     @Column(name = "warehousesAmount", nullable = false)
     private int warehousesAmount;
     @OneToMany
-    @JoinColumn(name = "Warehouses")
+    @JoinColumn(name = "Warehouse_id")
     private Set<Warehouse> warehouses;
 
     public int getIdOwner() {

@@ -23,11 +23,11 @@ public class Warehouse implements Serializable {
     @OneToOne
     @JoinColumn(name = "Maintenance_id", nullable = false)
     private Maintenance maintenanceId;
-    @OneToOne
-    @JoinColumn(name = "Agents_id")
-    private AgentsList agentsId;
     @OneToMany
-    @JoinColumn(name="Rooms")
+    @JoinColumn(name = "idAgent")
+    private Set<Agent> agentsId;
+    @OneToMany
+    @JoinColumn(name="Storage_room_id")
     private Set<StorageRoom> rooms;
 
     public int getWarehouseId() {
@@ -78,11 +78,11 @@ public class Warehouse implements Serializable {
         this.maintenanceId = maintenanceId;
     }
 
-    public AgentsList getAgentsId() {
+    public Set<Agent> getAgentsId() {
         return agentsId;
     }
 
-    public void setAgentsId(AgentsList agentsId) {
+    public void setAgentsId(Set<Agent> agentsId) {
         this.agentsId = agentsId;
     }
 

@@ -18,7 +18,6 @@
         <mapping class="KursovProektOOP2.data.entity.AgentsList"/>
         <mapping class="KursovProektOOP2.data.entity.Agent"/>
         <mapping class="KursovProektOOP2.data.entity.Owner"/>
-        <mapping class="KursovProektOOP2.data.entity.OwnerHasWarehouses"/>
         <mapping class="KursovProektOOP2.data.entity.City"/>
         <mapping class="KursovProektOOP2.data.entity.Climate"/>
         <mapping class="KursovProektOOP2.data.entity.Formular"/>
@@ -30,7 +29,6 @@
         <mapping class="KursovProektOOP2.data.entity.StorageRoom"/>
         <mapping class="KursovProektOOP2.data.entity.User"/>
         <mapping class="KursovProektOOP2.data.entity.Warehouse"/>
-        <mapping class="KursovProektOOP2.data.entity.WarehouseHasRooms"/>
         <mapping class="KursovProektOOP2.data.entity.Usernotifications"/>
     </session-factory>
 </hibernate-configuration>
