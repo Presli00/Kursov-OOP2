@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -32,31 +33,21 @@ public class WarehouseAgentGUI {
     @FXML
     Button SettingsButton;
     @FXML
+    Label usernameLabel;
+    @FXML
+    Label firstNameLabel;
+    @FXML
+    Label lastNameLabel;
+    @FXML
     ImageView exclamationMark;
 
     private static final Logger log = Logger.getLogger(Main.class);
 
 
     @FXML
-    public void initialize(){
-        Session session = Connection.openSession();
-        Transaction transaction = session.beginTransaction();
-        String NOTIFICATION_QUERY = "SELECT u FROM Usernotifications u WHERE idFromUser.userId = :userID AND idFromUser.roleId.id = :roleID";
-        try{
-            List<Usernotifications> notifications = session.createQuery(NOTIFICATION_QUERY).setParameter("userID", UserSession.getUserID()).setParameter("roleID",3).getResultList();
-            for (int i = 0; i < notifications.size();i++){
-                if(!notifications.get(i).isRead()){
-                    exclamationMark.setVisible(true);
-                }
-            }
-            UserSession.setNotifications(notifications); // Setting it here since we can't execute another query in the login session
-        }catch (Exception ex){
-            log.error("Notifications retrieval unsuccessful " + "\n" + ex.getMessage());
-        }finally {
-            transaction.commit();
-        }
-
-
+    public void initialize() {
+        Panes.loadNotifications(exclamationMark, 2);
+        Panes.setNameLabels(usernameLabel,firstNameLabel,lastNameLabel);
     }
 
     @FXML

@@ -63,6 +63,7 @@ public class UserSession {
         password = "";// or null
         first_name="";
         last_name="";
+        notifications=null;
     }
 
     @Override

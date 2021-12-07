@@ -117,6 +117,40 @@
                      </graphic>
                   </Button>
                   <Region prefHeight="245.0" prefWidth="197.0" VBox.vgrow="ALWAYS" />
+                  <HBox alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="206.0" spacing="5.0">
+                     <children>
+                        <Label prefHeight="27.0" prefWidth="99.0" text="Username:" wrapText="true">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="usernameLabel" prefHeight="27.0" prefWidth="122.0" wrapText="true">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets left="2.0" />
+                     </padding>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+                     <children>
+                        <Label fx:id="firstNameLabel" prefHeight="27.0" prefWidth="108.0" wrapText="true">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lastNameLabel" prefWidth="108.0" wrapText="true">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets left="2.0" />
+                     </padding>
+                  </HBox>
                   <Button fx:id="SettingsButton" blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#SettingOnAction" prefHeight="24.0" prefWidth="197.0" style="-fx-background-color: transparent;">
                      <graphic>
                         <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">

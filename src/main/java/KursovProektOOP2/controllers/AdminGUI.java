@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -28,8 +29,23 @@ public class AdminGUI {
     Button logOutButton;
     @FXML
     Button SettingsButton;
+    @FXML
+    Label usernameLabel;
+    @FXML
+    Label firstNameLabel;
+    @FXML
+    Label lastNameLabel;
+    @FXML
+    ImageView exclamationMark;
 
     private static final Logger log = Logger.getLogger(Main.class);
+
+    @FXML
+    public void initialize() {
+        Panes.loadNotifications(exclamationMark, 2);
+        Panes.setNameLabels(usernameLabel,firstNameLabel,lastNameLabel);
+    }
+
     @FXML
     public void SpravkiOnAction() throws IOException {
         AnchorPane ap = FXMLLoader.load(getClass().getResource("/Views/AdminViews/AdminSpravki.fxml")); //LOAD VIEW

@@ -1,16 +1,24 @@
 package KursovProektOOP2.controllers;
 
+import KursovProektOOP2.data.access.Connection;
+import KursovProektOOP2.data.entity.User;
+import KursovProektOOP2.data.entity.Usernotifications;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 
 public class Panes {
 
@@ -50,6 +58,31 @@ public class Panes {
             System.exit(-1);
 
         }
+    }
+
+    static void loadNotifications(ImageView imgView, int roleID){
+        Session session = Connection.openSession();
+        Transaction transaction = session.beginTransaction();
+        String NOTIFICATION_QUERY = "SELECT u FROM Usernotifications u WHERE idFromUser.userId = :userID AND idFromUser.roleId.id = :roleID";
+        try{
+            List<Usernotifications> notifications = session.createQuery(NOTIFICATION_QUERY).setParameter("userID", UserSession.getUserID()).setParameter("roleID",roleID).getResultList();
+            for (int i = 0; i < notifications.size();i++){
+                if(!notifications.get(i).isRead()){
+                    imgView.setVisible(true);
+                }
+            }
+            UserSession.setNotifications(notifications); // Setting it here since we can't execute another query in the login session
+        }catch (Exception ex){
+            log.error("Notifications retrieval unsuccessful " + "\n" + ex.getMessage());
+        }finally {
+            transaction.commit();
+        }
+    }
+
+    static void setNameLabels(Label usernameLabel, Label firstNameLabel, Label lastNameLabel){
+        usernameLabel.setText(UserSession.getUserName());
+        firstNameLabel.setText(UserSession.getFirst_name());
+        lastNameLabel.setText(UserSession.getLast_name());
     }
 
 }
