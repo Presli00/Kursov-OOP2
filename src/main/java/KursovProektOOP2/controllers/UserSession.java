@@ -1,5 +1,9 @@
 package KursovProektOOP2.controllers;
 
+import KursovProektOOP2.data.entity.Usernotifications;
+
+import java.util.List;
+
 public class UserSession {
     private static UserSession instance;
     private static int userID;
@@ -7,6 +11,7 @@ public class UserSession {
     private static String password;
     private static String first_name;
     private static String last_name;
+    private static List<Usernotifications> notifications;
     public UserSession(int userID, String userName, String password, String first_name, String last_name) {
         this.userID=userID;
         this.userName = userName;
@@ -42,6 +47,14 @@ public class UserSession {
 
     public static String getLast_name() {
         return last_name;
+    }
+
+    public static List<Usernotifications> getNotifications() {
+        return notifications;
+    }
+
+    public static void setNotifications(List<Usernotifications> notifications) {
+        UserSession.notifications = notifications;
     }
 
     public static void cleanUserSession() {

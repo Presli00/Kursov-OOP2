@@ -43,17 +43,17 @@ public class LoginMenu {
             if(result.getRoleId().getRoleId() == 1){ // LOAD ADMIN VIEW
                 closeLoginMenu();
                 UserSession.getInstance(result.getUserId(), result.getUsername(), result.getPassword(),result.getFirstName(),result.getLastName());
-                openWindow("/Views/AdminViews/AdminGUI.fxml");
+                Panes.openWindow("/Views/AdminViews/AdminGUI.fxml", AdminGUI.class);
             }
             if(result.getRoleId().getRoleId() == 2){ // LOAD OWNER VIEW
                 closeLoginMenu();
                 UserSession.getInstance(result.getUserId(), result.getUsername(), result.getPassword(),result.getFirstName(),result.getLastName());
-                openWindow("/Views/OwnerViews/OwnerGUI.fxml");
+                Panes.openWindow("/Views/OwnerViews/OwnerGUI.fxml", OwnerGUI.class);
             }
             if(result.getRoleId().getRoleId() == 3){ // LOAD AGENT VIEW
                 closeLoginMenu();
                 UserSession.getInstance(result.getUserId(), result.getUsername(), result.getPassword(),result.getFirstName(),result.getLastName());
-                openWindow("/Views/AgentViews/WarehouseAgentGUI.fxml");
+                Panes.openWindow("/Views/AgentViews/WarehouseAgentGUI.fxml", WarehouseAgentGUI.class);
             }
 
         } catch (Exception ex) {
@@ -82,24 +82,4 @@ public class LoginMenu {
         passwordVisibleTF.setVisible(false);
     }
 
-    public void openWindow(String pathToView) throws IOException {
-        Stage stage = new Stage();
-        PropertyConfigurator.configure(Main.class.getResource(Constants.Configuration.LOG4J_PROPERTIES));
-        URL path = getClass().getResource(pathToView);
-
-        if(path != null){
-            Parent root = FXMLLoader.load(path);
-
-            Scene scene = new Scene(root);
-            stage.getIcons().add(new Image(getClass().getResourceAsStream("/Images/PR Warehouses.png")));
-            stage.setScene(scene);
-            stage.setMinHeight(650);
-            stage.setMinWidth(1200);
-            stage.show();
-        }else{
-            log.error("View couldn't be loaded");
-            System.exit(-1);
-
-        }
-    }
 }

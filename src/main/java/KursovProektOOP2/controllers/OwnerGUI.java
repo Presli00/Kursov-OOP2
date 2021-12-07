@@ -49,7 +49,7 @@ public class OwnerGUI {
             firstNameLabel.setText(result.getFirstName());
             lastNameLabel.setText(result.getLastName());
         } catch (Exception ex) {
-
+            log.error("Info retrieval unsuccessful " + "\n" + ex.getMessage());
         } finally {
             transaction.commit();
         }
@@ -58,19 +58,7 @@ public class OwnerGUI {
     @FXML
     public void SpravkiOnAction() throws IOException {
         AnchorPane ap = FXMLLoader.load(getClass().getResource("/Views/OwnerViews/OwnerSpravki.fxml")); //LOAD VIEW
-        if (!ContentAnchorPane.getChildren().isEmpty()) {
-            ContentAnchorPane.getChildren().clear();
-        }
-        ContentAnchorPane.getChildren().add(ap);
-        ap.setPrefWidth(ContentAnchorPane.getWidth()); // SET SIZE OF VIEW
-        ap.setPrefHeight(ContentAnchorPane.getHeight());
-        ContentAnchorPane.widthProperty().addListener(event -> {
-            ap.setPrefWidth(ContentAnchorPane.getWidth());
-        });
-
-        ContentAnchorPane.heightProperty().addListener(event -> {
-            ap.setPrefHeight(ContentAnchorPane.getHeight());
-        });
+        Panes.clearAnchorPane(ap, ContentAnchorPane);
     }
 
     @FXML
@@ -92,24 +80,12 @@ public class OwnerGUI {
 
     public void SettingOnAction() throws IOException {
         AnchorPane ap = FXMLLoader.load(getClass().getResource("/Views/Settings.fxml")); //LOAD VIEW
-        if (!ContentAnchorPane.getChildren().isEmpty()) {
-            ContentAnchorPane.getChildren().clear();
-        }
-        ContentAnchorPane.getChildren().add(ap);
-        ap.setPrefWidth(ContentAnchorPane.getWidth()); // SET SIZE OF VIEW
-        ap.setPrefHeight(ContentAnchorPane.getHeight());
-        ContentAnchorPane.widthProperty().addListener(event -> {
-            ap.setPrefWidth(ContentAnchorPane.getWidth());
-        });
-
-        ContentAnchorPane.heightProperty().addListener(event -> {
-            ap.setPrefHeight(ContentAnchorPane.getHeight());
-        });
+        Panes.clearAnchorPane(ap, ContentAnchorPane);
     }
     public void logOutOnAction() throws IOException {
         closeWindow();
         UserSession.cleanUserSession();
-        openWindow("/Views/LoginViews/LoginMenu.fxml");
+        Panes.openWindow("/Views/LoginViews/LoginMenu.fxml", LoginMenu.class);
     }
 
     public void closeWindow() {
@@ -117,23 +93,4 @@ public class OwnerGUI {
         stage.close();
     }
 
-    public void openWindow(String pathToView) throws IOException {
-        Stage stage = new Stage();
-        PropertyConfigurator.configure(Main.class.getResource(Constants.Configuration.LOG4J_PROPERTIES));
-        URL path = getClass().getResource(pathToView);
-
-        if (path != null) {
-            Parent root = FXMLLoader.load(path);
-
-            Scene scene = new Scene(root);
-            stage.getIcons().add(new Image(getClass().getResourceAsStream("/Images/PR Warehouses.png")));
-            stage.setScene(scene);
-            stage.setResizable(false);
-            stage.show();
-        } else {
-            log.error("View couldn't be loaded");
-            System.exit(-1);
-
-        }
-    }
 }
