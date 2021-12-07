@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane fx:id="ScrollPane" hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FF6F61;" vbarPolicy="ALWAYS" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="KursovProektOOP2.controllers.NotificationViewer">
+  <content>
+    <AnchorPane fx:id="AnchorPane" prefHeight="399.0" prefWidth="585.0" style="-fx-background-color: #FF6F61;">
+         <children>
+            <VBox fx:id="Vbox" prefHeight="399.0" prefWidth="585.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <ToolBar prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #FFBE61; -fx-background-radius: 20;">
+                     <items>
+                        <Button minWidth="23.0" mnemonicParsing="false" onAction="#MarkAsRead" prefHeight="35.0" prefWidth="40.0" style="-fx-background-radius: 70; -fx-background-color: #006400;">
+                           <font>
+                              <Font name="Tahoma Bold" size="12.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="26.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../Images/readNotification.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="Mark as Read" />
+                           </tooltip>
+                        </Button>
+                        <Button minWidth="23.0" mnemonicParsing="false" onAction="#DeleteNotification" prefHeight="35.0" prefWidth="40.0" style="-fx-background-radius: 70; -fx-background-color: #7D1201;">
+                           <font>
+                              <Font name="Tahoma Bold" size="12.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="26.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../Images/deleteNotification.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="Delete" />
+                           </tooltip>
+                        </Button>
+                     </items>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </ToolBar>
+               </children>
+               <padding>
+                  <Insets left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </VBox>
+         </children></AnchorPane>
+  </content>
+</ScrollPane>

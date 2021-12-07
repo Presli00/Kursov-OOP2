@@ -15,7 +15,7 @@
    <children>
       <ImageView fitHeight="102.0" fitWidth="200.0" layoutX="78.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="322.91566467285156" AnchorPane.leftAnchor="78.0" AnchorPane.rightAnchor="77.0" AnchorPane.topAnchor="27.0">
          <image>
-            <Image url="@../Images/PR%20Warehouses.png" />
+            <Image url="@../../Images/PR%20Warehouses.png" />
          </image>
       </ImageView>
       <TextField fx:id="firstNameTF" layoutX="24.0" layoutY="145.0" prefHeight="25.0" prefWidth="140.0" promptText="First Name" />

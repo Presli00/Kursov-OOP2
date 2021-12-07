@@ -29,17 +29,6 @@ public class WarehouseInfo {
 
     public void checkButton() throws IOException {
         ScrollPane sp = FXMLLoader.load(getClass().getResource("/Views/OwnerViews/RoomsViewer.fxml"));
-        if (!ContentAnchorPane.getChildren().isEmpty()) {
-            ContentAnchorPane.getChildren().clear();
-        }
-        ContentAnchorPane.getChildren().add(sp);
-        sp.setPrefWidth(ContentAnchorPane.getWidth());
-        sp.setPrefHeight(ContentAnchorPane.getHeight());
-        ContentAnchorPane.widthProperty().addListener(event -> {
-            sp.setPrefWidth(ContentAnchorPane.getWidth());
-        });
-        ContentAnchorPane.heightProperty().addListener(event -> {
-            sp.setPrefHeight(ContentAnchorPane.getHeight());
-        });
+        Panes.setAndClearScrollPane(sp, ContentAnchorPane);
     }
 }

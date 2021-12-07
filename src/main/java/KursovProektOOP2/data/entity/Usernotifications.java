@@ -2,6 +2,7 @@ package KursovProektOOP2.data.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 @Table(name = "usernotifications", schema = "warehouse")
 @Entity
@@ -16,6 +17,8 @@ public class Usernotifications implements Serializable {
     private String notificationName;
     @Column(name = "isRead", nullable = false)
     private boolean isRead;
+    @Column(name = "notifTimeStamp")
+    private Timestamp notifTimeStamp;
 
     public int getIdNotifications() {
         return idNotifications;
@@ -42,6 +45,14 @@ public class Usernotifications implements Serializable {
     public boolean isRead() { return isRead; }
 
     public void setRead(boolean read) { isRead = read; }
+
+    public Timestamp getNotifTimeStamp() {
+        return notifTimeStamp;
+    }
+
+    public void setNotifTimeStamp(Timestamp notifTimeStamp) {
+        this.notifTimeStamp = notifTimeStamp;
+    }
 
     @Override
     public boolean equals(Object o) {

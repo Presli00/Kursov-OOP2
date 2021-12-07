@@ -1192,3 +1192,20 @@ org.hibernate.hql.internal.ast.QuerySyntaxException: Usernotifications is not ma
 Cannot invoke "javafx.scene.image.ImageView.setVisible(boolean)" because "imgView" is null
 [JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Notifications retrieval unsuccessful 
 Cannot invoke "javafx.scene.image.ImageView.setVisible(boolean)" because "imgView" is null
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Login unsuccessfulNo entity found for query
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - (conn=94) Column count doesn't match value count at row 1
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - (conn=99) Column count doesn't match value count at row 1
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - (conn=100) Column count doesn't match value count at row 1
+[JavaFX Application Thread] ERROR KursovProektOOP2.data.access.Connection  - Initialization of sessionFactory failedorg.hibernate.internal.util.config.ConfigurationException: Unable to perform unmarshalling at line number 33 and column 23 in RESOURCE hibernate.cfg.xml. Message: cvc-complex-type.2.3: Element 'session-factory' cannot have character [children], because the type's content type is element-only.
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - (conn=102) Column count doesn't match value count at row 1
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - (conn=106) Column count doesn't match value count at row 1
+[JavaFX Application Thread] ERROR KursovProektOOP2.data.repository.UserRepository  - User save errorcould not execute statement
+[JavaFX Application Thread] ERROR org.hibernate.AssertionFailure  - HHH000099: an assertion failure occurred (this may indicate a bug in Hibernate, but is more likely due to unsafe use of the session): org.hibernate.AssertionFailure: null id in KursovProektOOP2.data.entity.User entry (don't flush the Session after an exception occurs)
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - (conn=108) Column count doesn't match value count at row 1
+[JavaFX Application Thread] ERROR KursovProektOOP2.data.repository.UserRepository  - User save errorcould not execute statement
+[JavaFX Application Thread] ERROR org.hibernate.AssertionFailure  - HHH000099: an assertion failure occurred (this may indicate a bug in Hibernate, but is more likely due to unsafe use of the session): org.hibernate.AssertionFailure: null id in KursovProektOOP2.data.entity.User entry (don't flush the Session after an exception occurs)
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - (conn=110) Column count doesn't match value count at row 1
+[JavaFX Application Thread] ERROR KursovProektOOP2.data.repository.UserNotificationRepository  - UserNotification update errorUnknown entity: KursovProektOOP2.controllers.NotificationInfo
+[JavaFX Application Thread] ERROR KursovProektOOP2.data.repository.UserNotificationRepository  - UserNotification update errorUnknown entity: KursovProektOOP2.controllers.NotificationInfo
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - (conn=165) Duplicate entry '3' for key 'idnotifications_UNIQUE'
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - (conn=167) Duplicate entry '3' for key 'idnotifications_UNIQUE'
