@@ -40,7 +40,9 @@ public class OwnerWarehousesViewer {
             controller.agentLabel.setText(String.valueOf(((Warehouse) warehouses.get(i)).getAgentsId()));
             Vbox.getChildren().add(warehouse);
             if (controller.checkButton.isPressed()) {
-                controller.checkButton();
+                ScrollPane sp = FXMLLoader.load(getClass().getResource("/Views/OwnerViews/RoomsViewer.fxml"));
+                Panes.setAndClearScrollPane(sp, AnchorPane);
+                System.out.println("sad");
             }
         }
         ScrollPane.widthProperty().addListener(event -> {
@@ -53,6 +55,6 @@ public class OwnerWarehousesViewer {
     }
 
     public void getAllWarehouses() {
-
+warehouses=repository.getAll();
     }
 }

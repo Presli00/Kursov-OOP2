@@ -24,11 +24,4 @@ public class WarehouseInfo {
     Label agentLabel;
     @FXML
     Button checkButton;
-    @FXML
-    AnchorPane ContentAnchorPane;
-
-    public void checkButton() throws IOException {
-        ScrollPane sp = FXMLLoader.load(getClass().getResource("/Views/OwnerViews/RoomsViewer.fxml"));
-        Panes.setAndClearScrollPane(sp, ContentAnchorPane);
-    }
 }

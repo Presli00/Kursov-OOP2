@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane prefHeight="398.0" prefWidth="598.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="398.0" prefWidth="598.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="KursovProektOOP2.controllers.OwnerSpravki">
     <children>
         <GridPane prefHeight="398.0" prefWidth="598.0" vgap="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <columnConstraints>
@@ -20,17 +20,17 @@
             <children>
                 <AnchorPane prefHeight="200.0" prefWidth="200.0">
                     <children>
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="80.0" prefWidth="598.0" styleClass="SpravkiButtons" stylesheets="@../../Styles/SpravkiStyles.css" text="Собствени налични складове за отдаване под наем" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <Button fx:id="ownWarehouses" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="80.0" prefWidth="598.0" styleClass="SpravkiButtons" stylesheets="@../../Styles/SpravkiStyles.css" text="Собствени налични складове за отдаване под наем" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                     </children>
                 </AnchorPane>
                 <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                     <children>
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="80.0" prefWidth="598.0" styleClass="SpravkiButtons" stylesheets="@../../Styles/SpravkiStyles.css" text="Складови агенти" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <Button fx:id="agents" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="80.0" prefWidth="598.0" styleClass="SpravkiButtons" stylesheets="@../../Styles/SpravkiStyles.css" text="Складови агенти" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                     </children>
                 </AnchorPane>
                 <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
                     <children>
-                        <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="585.0" styleClass="SpravkiButtons" stylesheets="@../../Styles/SpravkiStyles.css" text="Складове на чужди собственици" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <Button fx:id="otherWarehouses" mnemonicParsing="false" prefHeight="80.0" prefWidth="585.0" styleClass="SpravkiButtons" stylesheets="@../../Styles/SpravkiStyles.css" text="Складове на чужди собственици" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                     </children>
                 </AnchorPane>
             </children>
