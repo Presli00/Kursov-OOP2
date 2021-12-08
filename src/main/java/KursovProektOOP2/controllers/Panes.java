@@ -67,21 +67,21 @@ public class Panes {
         }
     }
 
-    static void loadNotifications(ImageView imgView, boolean out){
+    static void checkForNotifs(ImageView img){
+        for (int i = 0; i < UserSession.getNotifications().size();i++){
+            if(!UserSession.getNotifications().get(i).isRead()){
+                img.setVisible(true);
+                break;
+            }
+        }
+    }
+
+    static void loadNotifications(){
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
         String NOTIFICATION_QUERY = "SELECT u FROM Usernotifications u WHERE idFromUser.userId = :userID";
         try{
             List<Usernotifications> notifications = session.createQuery(NOTIFICATION_QUERY).setParameter("userID", UserSession.getUserID()).getResultList();
-            if(out){
-                for (int i = 0; i < notifications.size();i++){
-                    if(!notifications.get(i).isRead()){
-                        imgView.setVisible(true);
-                        break;
-                    }
-                }
-            }
-
             UserSession.setNotifications(notifications); // Setting it here since we can't execute another query in the login session (i think lol)
         }catch (Exception ex){
             log.error("Notifications retrieval unsuccessful " + "\n" + ex.getMessage());

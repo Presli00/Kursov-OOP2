@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
@@ -34,8 +35,15 @@ public class WarehouseAgentGUI {
 
     @FXML
     public void initialize() {
-        Panes.loadNotifications(exclamationMark, true);
+        Panes.loadNotifications();
+        Panes.checkForNotifs(exclamationMark);
         Panes.setNameLabels(usernameLabel,firstNameLabel,lastNameLabel);
+    }
+
+    @FXML
+    public void NotificationsOnAction() throws IOException {
+        ScrollPane sp = FXMLLoader.load(getClass().getResource("/Views/NotificationViews/NotificationViewer.fxml")); //LOAD VIEW
+        Panes.setAndClearScrollPane(sp, ContentAnchorPane);
     }
 
     @FXML
@@ -63,10 +71,4 @@ public class WarehouseAgentGUI {
         stage.close();
     }
 
-
-
-    @FXML
-    public void notificationsOnAction(){
-        System.out.println("lol");
-    }
 }

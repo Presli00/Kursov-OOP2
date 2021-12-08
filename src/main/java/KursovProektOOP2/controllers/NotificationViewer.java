@@ -4,6 +4,7 @@ import KursovProektOOP2.data.access.Connection;
 import KursovProektOOP2.data.entity.Usernotifications;
 import KursovProektOOP2.data.repository.UserNotificationRepository;
 import KursovProektOOP2.data.repository.UserRepository;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ScrollPane;
@@ -15,9 +16,7 @@ import org.hibernate.Transaction;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 public class NotificationViewer {
     @FXML
@@ -35,10 +34,8 @@ public class NotificationViewer {
 
     @FXML
     public void initialize() throws IOException {
-        Panes.loadNotifications(null, false);
         notifs = UserSession.getNotifications();
         buildNotifs();
-
         ScrollPane.widthProperty().addListener(event -> {
             AnchorPane.setPrefWidth(ScrollPane.getWidth());
         });
@@ -79,33 +76,68 @@ public class NotificationViewer {
             String UPDATE_QUERY = "UPDATE Usernotifications SET isRead = true WHERE idNotifications = :idNotif";
             try{
                 session.createQuery(UPDATE_QUERY).setParameter("idNotif", selected.get(i).id).executeUpdate();
-                selected.get(i).isReadDot.setVisible(false);
-                Panes.loadNotifications(null, false);
+                selected.get(i).notificationCheck.setSelected(false);
+                // RELOAD NOTIFICATIONS
+                selected.get(i).isReadDot.setVisible(false); // REMOVE DOT
             }catch (Exception ex){
                 log.error("Notifications marking unsuccessful " + "\n" + ex.getMessage());
             }finally {
                 transaction.commit();
             }
         }
+
+        new Thread(() -> { // UI LOCK DISPLAYS READ NOTIFICATION AS UNREAD UNTIL APP RESTART
+            try {
+                Thread.sleep(250); // Wait
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            Platform.runLater(() -> // run on fx thread
+                    {
+                        Panes.loadNotifications(); // RELOAD NOTIFICATIONS
+                        notifs = UserSession.getNotifications(); // SET NOTIFICATIONS
+                    }
+            );
+
+        }).start();
     }
 
     @FXML
     public void DeleteNotification(){
-        for(int i = 0; i < selected.size(); i++){
+        for(int i = 0; i < selected.size(); i++){ // DELETE QUERY FOR EVERY SELECTED NOTIFICATION
             Session session = Connection.openSession();
             Transaction transaction = session.beginTransaction();
             String DELETE_QUERY = "DELETE FROM Usernotifications WHERE idNotifications = :idNotif";
             try{
                 session.createQuery(DELETE_QUERY).setParameter("idNotif", selected.get(i).id).executeUpdate();
-                Panes.loadNotifications(null, false);
-                notifs = UserSession.getNotifications();// ??
-                buildNotifs();
+
             }catch (Exception ex){
                 log.error("Notifications marking unsuccessful " + "\n" + ex.getMessage());
             }finally {
                 transaction.commit();
             }
         }
+
+        Panes.loadNotifications(); // RELOAD NOTIFICATIONS
+        notifs = UserSession.getNotifications(); // SET NOTIFICATIONS
+        new Thread(() -> { // UI LOCKS IF NOT IN ANOTHER THREAD
+            try {
+                Thread.sleep(250); // Wait
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            Platform.runLater(() -> // run on fx thread
+                    {
+                        try {
+                            Vbox.getChildren().clear();
+                            buildNotifs();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+            );
+
+        }).start();
     }
 
 }

@@ -34,8 +34,15 @@ public class OwnerGUI {
 
     @FXML
     public void initialize() {
-        Panes.loadNotifications(exclamationMark, true);
+        Panes.loadNotifications();
+        Panes.checkForNotifs(exclamationMark);
         Panes.setNameLabels(usernameLabel,firstNameLabel,lastNameLabel);
+    }
+
+    @FXML
+    public void NotificationsOnAction() throws IOException {
+        ScrollPane sp = FXMLLoader.load(getClass().getResource("/Views/NotificationViews/NotificationViewer.fxml")); //LOAD VIEW
+        Panes.setAndClearScrollPane(sp, ContentAnchorPane);
     }
 
     @FXML

@@ -37,7 +37,8 @@ public class AdminGUI {
 
     @FXML
     public void initialize() {
-        Panes.loadNotifications(exclamationMark, true);
+        Panes.loadNotifications();
+        Panes.checkForNotifs(exclamationMark);
         Panes.setNameLabels(usernameLabel,firstNameLabel,lastNameLabel);
     }
 
