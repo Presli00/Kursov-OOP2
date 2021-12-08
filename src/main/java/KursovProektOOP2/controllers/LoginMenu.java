@@ -42,17 +42,17 @@ public class LoginMenu {
             User result = (User) session.createQuery(LOGIN_QUERY).getSingleResult();
             if(result.getRoleId().getRoleId() == 1){ // LOAD ADMIN VIEW
                 closeLoginMenu();
-                UserSession.getInstance(result.getUserId(), result.getUsername(), result.getPassword(),result.getFirstName(),result.getLastName());
+                UserSession.getInstance(result.getUserId(), result.getUsername(), result.getPassword(),result.getFirstName(),result.getLastName(), result.getRoleId());
                 Panes.openWindow("/Views/AdminViews/AdminGUI.fxml", AdminGUI.class);
             }
             if(result.getRoleId().getRoleId() == 2){ // LOAD OWNER VIEW
                 closeLoginMenu();
-                UserSession.getInstance(result.getUserId(), result.getUsername(), result.getPassword(),result.getFirstName(),result.getLastName());
+                UserSession.getInstance(result.getUserId(), result.getUsername(), result.getPassword(),result.getFirstName(),result.getLastName(), result.getRoleId());
                 Panes.openWindow("/Views/OwnerViews/OwnerGUI.fxml", OwnerGUI.class);
             }
             if(result.getRoleId().getRoleId() == 3){ // LOAD AGENT VIEW
                 closeLoginMenu();
-                UserSession.getInstance(result.getUserId(), result.getUsername(), result.getPassword(),result.getFirstName(),result.getLastName());
+                UserSession.getInstance(result.getUserId(), result.getUsername(), result.getPassword(),result.getFirstName(),result.getLastName(), result.getRoleId());
                 Panes.openWindow("/Views/AgentViews/WarehouseAgentGUI.fxml", WarehouseAgentGUI.class);
             }
 

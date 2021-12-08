@@ -1,5 +1,6 @@
 package KursovProektOOP2.controllers;
 
+import KursovProektOOP2.data.entity.Role;
 import KursovProektOOP2.data.entity.Usernotifications;
 
 import java.util.List;
@@ -11,18 +12,20 @@ public class UserSession {
     private static String password;
     private static String first_name;
     private static String last_name;
+    private static Role roleID;
     private static List<Usernotifications> notifications;
-    public UserSession(int userID, String userName, String password, String first_name, String last_name) {
+    public UserSession(int userID, String userName, String password, String first_name, String last_name, Role roleID) {
         this.userID=userID;
         this.userName = userName;
         this.password = password;
-        this.first_name=first_name;
-        this.last_name=last_name;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.roleID = roleID;
     }
 
-    public static UserSession getInstance(int userID, String userName, String password, String first_name, String last_name) {
+    public static UserSession getInstance(int userID, String userName, String password, String first_name, String last_name, Role roleID) {
         if(instance == null) {
-            instance = new UserSession(userID, userName, password, first_name,last_name);
+            instance = new UserSession(userID, userName, password, first_name,last_name, roleID);
         }
         return instance;
     }
@@ -55,6 +58,10 @@ public class UserSession {
 
     public static void setNotifications(List<Usernotifications> notifications) {
         UserSession.notifications = notifications;
+    }
+
+    public static Role getRoleID() {
+        return roleID;
     }
 
     public static void cleanUserSession() {
