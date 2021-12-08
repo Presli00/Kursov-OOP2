@@ -39,11 +39,16 @@ public class OwnerWarehousesViewer {
             controller.maintenanceLabel.setText(String.valueOf(((Warehouse) warehouses.get(i)).getMaintenanceId().getName()));
             controller.agentLabel.setText(String.valueOf(((Warehouse) warehouses.get(i)).getAgentsId()));
             Vbox.getChildren().add(warehouse);
-            if (controller.checkButton.isPressed()) {
-                ScrollPane sp = FXMLLoader.load(getClass().getResource("/Views/OwnerViews/RoomsViewer.fxml"));
+            controller.checkButton.setOnAction(e->{
+                ScrollPane sp = null;
+                try {
+                    sp = FXMLLoader.load(getClass().getResource("/Views/OwnerViews/RoomsViewer.fxml"));
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
                 Panes.setAndClearScrollPane(sp, AnchorPane);
-                System.out.println("sad");
-            }
+                    System.out.println("sad");
+            });
         }
         ScrollPane.widthProperty().addListener(event -> {
             AnchorPane.setPrefWidth(ScrollPane.getWidth());

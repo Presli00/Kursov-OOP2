@@ -1,11 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
-
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="118.0" prefWidth="905.0" style="-fx-background-color: #61F1FF; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="KursovProektOOP2.controllers.RoomsInfo">
    <children>
       <Label fx:id="idLabel" text="Label" AnchorPane.bottomAnchor="36.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="807.0" AnchorPane.topAnchor="36.0" />
+      <Label layoutX="201.0" layoutY="14.0" text="Size:" AnchorPane.bottomAnchor="76.0" AnchorPane.leftAnchor="201.0" AnchorPane.rightAnchor="667.0" AnchorPane.topAnchor="14.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="sizeLabel" layoutX="238.0" layoutY="14.0" text="Label" AnchorPane.bottomAnchor="76.0" AnchorPane.leftAnchor="238.0" AnchorPane.rightAnchor="583.0" AnchorPane.topAnchor="14.0" />
+      <Label layoutX="201.0" layoutY="53.0" prefHeight="28.0" prefWidth="60.0" text="Climate:">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="climateLabel" layoutX="261.0" layoutY="53.0" prefHeight="28.0" prefWidth="84.0" text="Label" />
+      <Label layoutX="345.0" layoutY="18.0" prefHeight="20.0" prefWidth="97.0" text="Product type:">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="productLabel" layoutX="442.0" layoutY="20.0" text="Label" />
+      <ListView fx:id="historyList" layoutX="691.0" prefHeight="118.0" prefWidth="200.0" />
+      <Button fx:id="removeButton" layoutX="345.0" layoutY="67.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="185.0" text="Премахни тази стая">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Label layoutX="584.0" layoutY="30.0" prefHeight="46.0" prefWidth="107.0" text="История на наемите:" wrapText="true">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
