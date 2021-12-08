@@ -67,13 +67,14 @@ public class Panes {
         }
     }
 
-    static void checkForNotifs(ImageView img){
+    static boolean checkForNotifs(ImageView img){
         for (int i = 0; i < UserSession.getNotifications().size();i++){
             if(!UserSession.getNotifications().get(i).isRead()){
                 img.setVisible(true);
-                break;
+                return true;
             }
         }
+        return false;
     }
 
     static void loadNotifications(){

@@ -7,6 +7,7 @@ import KursovProektOOP2.data.repository.UserRepository;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
@@ -98,8 +99,9 @@ public class NotificationViewer {
                         notifs = UserSession.getNotifications(); // SET NOTIFICATIONS
                     }
             );
-
         }).start();
+
+        allAreReadThreadCall();
     }
 
     @FXML
@@ -112,7 +114,7 @@ public class NotificationViewer {
                 session.createQuery(DELETE_QUERY).setParameter("idNotif", selected.get(i).id).executeUpdate();
 
             }catch (Exception ex){
-                log.error("Notifications marking unsuccessful " + "\n" + ex.getMessage());
+                log.error("Notifications deletion unsuccessful " + "\n" + ex.getMessage());
             }finally {
                 transaction.commit();
             }
@@ -136,8 +138,47 @@ public class NotificationViewer {
                         }
                     }
             );
-
         }).start();
+
+        allAreReadThreadCall();
+    }
+
+    private void allAreReadThreadCall() {
+        new Thread(() -> {
+            try { Thread.sleep(250); } catch (InterruptedException e) { e.printStackTrace();}
+            Platform.runLater(() -> {
+                try {
+                    allAreRead();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+        }).start();
+    }
+
+    private void allAreRead() throws IOException { // omega cringe
+        if(UserSession.getRoleID().getRoleId() == 1){
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/AdminViews/AdminGUI.fxml"));
+            Parent root = loader.load();
+            AdminGUI controller = loader.getController();
+            if(Panes.checkForNotifs(controller.exclamationMark)) return;
+            else controller.exclamationMark.setVisible(false);
+        }
+        if(UserSession.getRoleID().getRoleId() == 2){
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/OwnerViews/OwnerGUI.fxml"));
+            Parent root = loader.load();
+            OwnerGUI controller = loader.getController();
+            if(Panes.checkForNotifs(controller.exclamationMark)) return;
+            else controller.exclamationMark.setVisible(false);
+        }
+        if(UserSession.getRoleID().getRoleId() == 3){
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/AgentViews/WarehouseAgentGUI.fxml"));
+            Parent root = loader.load();
+            WarehouseAgentGUI controller = loader.getController();
+            if(Panes.checkForNotifs(controller.exclamationMark)) return;
+            else controller.exclamationMark.setVisible(false);
+        }
+
     }
 
 }
