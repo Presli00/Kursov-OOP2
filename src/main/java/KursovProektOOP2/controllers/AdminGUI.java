@@ -10,6 +10,8 @@ import javafx.stage.Stage;
 import org.apache.log4j.Logger;
 
 import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class AdminGUI {
     // Panes
@@ -37,8 +39,14 @@ public class AdminGUI {
 
     @FXML
     public void initialize() {
-        Panes.loadNotifications();
-        Panes.checkForNotifs(exclamationMark);
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                Panes.loadNotifications();
+                Panes.checkForNotifs(exclamationMark);
+            }
+        }, 0, 60000); // run check every minute
         Panes.setNameLabels(usernameLabel,firstNameLabel,lastNameLabel);
     }
 
