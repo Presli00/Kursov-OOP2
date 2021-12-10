@@ -1,5 +1,6 @@
 package KursovProektOOP2.controllers;
 
+import KursovProektOOP2.data.entity.ProductType;
 import KursovProektOOP2.data.entity.StorageRoom;
 import KursovProektOOP2.data.repository.StorageRoomRepository;
 import javafx.fxml.FXML;
@@ -13,6 +14,7 @@ import javafx.stage.Stage;
 import org.apache.log4j.Logger;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class RoomsViewer {
@@ -37,8 +39,13 @@ public class RoomsViewer {
             controller.idLabel.setText(String.valueOf(((StorageRoom) rooms.get(i)).getStorageRoomId()));
             controller.sizeLabel.setText(String.valueOf(((StorageRoom) rooms.get(i)).getSize()));
             controller.climateLabel.setText(String.valueOf(((StorageRoom) rooms.get(i)).getClimateId().getClimate()));
-            controller.productLabel.setText(String.valueOf(((StorageRoom) rooms.get(i)).getProductId()));
-            //controller.historyList.insert(i,String.valueOf(((StorageRoom) rooms.get(i)).getHistoryId()));
+            StringBuilder products=new StringBuilder();
+            for(int k = 0; k< ((StorageRoom) rooms.get(i)).getProductId().size(); k++){
+                List<ProductType> productsList = new ArrayList<>(((StorageRoom) rooms.get(i)).getProductId());
+                products.append(productsList.get(k).getType()+" ");
+            }
+            controller.productLabel.setText(String.valueOf(products));
+            //controller.historyTable.insert();
             Vbox.getChildren().add(room);
             controller.removeButton.setOnAction(e->{
 

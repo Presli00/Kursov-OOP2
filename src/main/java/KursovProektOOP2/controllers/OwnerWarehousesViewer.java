@@ -40,14 +40,14 @@ public class OwnerWarehousesViewer {
             controller.agentLabel.setText(String.valueOf(((Warehouse) warehouses.get(i)).getAgentsId()));
             Vbox.getChildren().add(warehouse);
             controller.checkButton.setOnAction(e->{
-                ScrollPane sp = null;
                 try {
-                    sp = FXMLLoader.load(getClass().getResource("/Views/OwnerViews/RoomsViewer.fxml"));
+                    FXMLLoader loader1=new FXMLLoader(getClass().getResource("/Views/OwnerViews/RoomsViewer.fxml"));
+                    ScrollPane sp=loader1.load();
+                    Panes.setAndClearScrollPane(sp, AnchorPane);
+                    System.out.println("sad");
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
-                Panes.setAndClearScrollPane(sp, AnchorPane);
-                    System.out.println("sad");
             });
         }
         ScrollPane.widthProperty().addListener(event -> {

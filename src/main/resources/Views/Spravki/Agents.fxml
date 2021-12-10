@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<ScrollPane fx:id="scrolPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FF6F61;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="KursovProektOOP2.controllers.Spravki.AgentsSpravki">
+<ScrollPane fx:id="scrolPane" fitToHeight="true" fitToWidth="true" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FF6F61;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="KursovProektOOP2.controllers.Spravki.AgentsSpravki">
   <content>
-    <AnchorPane fx:id="anchorPane" minHeight="0.0" minWidth="0.0" prefHeight="399.0" prefWidth="585.0" style="-fx-background-color: #FF6F61;">
+    <AnchorPane fx:id="anchorPane" prefHeight="399.0" prefWidth="585.0" style="-fx-background-color: #FF6F61;">
          <children>
-            <VBox fx:id="vBox" prefHeight="200.0" prefWidth="100.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <VBox fx:id="vBox" prefHeight="399.0" prefWidth="585.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <padding>
                   <Insets left="5.0" right="5.0" top="5.0" />
                </padding>
@@ -24,7 +24,7 @@
                         <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="143.75" style="-fx-background-radius: 15;" text="Сортиране по рейтинг" />
                         <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="144.0" style="-fx-background-radius: 15;" text="Сортиране по брой отдадени складове" wrapText="true" />
                      </items></ToolBar>
-                  <TableView prefHeight="336.0" prefWidth="0.0">
+                  <TableView prefHeight="336.0" prefWidth="588.0" VBox.vgrow="ALWAYS">
                     <columns>
                       <TableColumn fx:id="number" prefWidth="75.0" text="№" />
                       <TableColumn fx:id="name" prefWidth="75.0" text="Име" />

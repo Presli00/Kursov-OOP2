@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
+import javax.swing.text.TableView;
 import javax.swing.text.html.ListView;
 
 public class RoomsInfo {
@@ -16,7 +17,7 @@ public class RoomsInfo {
     @FXML
     Label productLabel;
     @FXML
-    ListView historyList;
+    TableView historyTable;
     @FXML
     Button removeButton;
 }
