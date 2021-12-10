@@ -144,16 +144,13 @@ public class NotificationViewer {
     }
 
     private void allAreReadThreadCall() {
-        new Thread(() -> {
-            try { Thread.sleep(250); } catch (InterruptedException e) { e.printStackTrace();}
-            Platform.runLater(() -> {
-                try {
-                    allAreRead();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            });
-        }).start();
+        Platform.runLater(() -> {
+            try {
+                allAreRead();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     private void allAreRead() throws IOException { // omega cringe
@@ -161,22 +158,31 @@ public class NotificationViewer {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/AdminViews/AdminGUI.fxml"));
             Parent root = loader.load();
             AdminGUI controller = loader.getController();
-            if(Panes.checkForNotifs(controller.exclamationMark)) return;
-            else controller.exclamationMark.setVisible(false);
+            if(Panes.checkForNotifs(controller.exclamationMark)) {
+                ScrollPane.getParent().getParent().lookup("#exclamationMark").setVisible(true); //double job
+                return;
+            }
+            else ScrollPane.getParent().getParent().lookup("#exclamationMark").setVisible(false);
         }
         if(UserSession.getRoleID().getRoleId() == 2){
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/OwnerViews/OwnerGUI.fxml"));
             Parent root = loader.load();
             OwnerGUI controller = loader.getController();
-            if(Panes.checkForNotifs(controller.exclamationMark)) return;
-            else controller.exclamationMark.setVisible(false);
+            if(Panes.checkForNotifs(controller.exclamationMark)) {
+                ScrollPane.getParent().getParent().lookup("#exclamationMark").setVisible(true);
+                return;
+            }
+            else ScrollPane.getParent().getParent().lookup("#exclamationMark").setVisible(false);
         }
         if(UserSession.getRoleID().getRoleId() == 3){
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/AgentViews/WarehouseAgentGUI.fxml"));
             Parent root = loader.load();
             WarehouseAgentGUI controller = loader.getController();
-            if(Panes.checkForNotifs(controller.exclamationMark)) return;
-            else controller.exclamationMark.setVisible(false);
+            if(Panes.checkForNotifs(controller.exclamationMark)) {
+                ScrollPane.getParent().getParent().lookup("#exclamationMark").setVisible(true);
+                return;
+            }
+            else ScrollPane.getParent().getParent().lookup("#exclamationMark").setVisible(false);
         }
 
     }

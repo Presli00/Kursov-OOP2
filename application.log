@@ -1209,3 +1209,5 @@ Cannot invoke "javafx.scene.image.ImageView.setVisible(boolean)" because "imgVie
 [JavaFX Application Thread] ERROR KursovProektOOP2.data.repository.UserNotificationRepository  - UserNotification update errorUnknown entity: KursovProektOOP2.controllers.NotificationInfo
 [JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - (conn=165) Duplicate entry '3' for key 'idnotifications_UNIQUE'
 [JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - (conn=167) Duplicate entry '3' for key 'idnotifications_UNIQUE'
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Login unsuccessfulNo entity found for query
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Login unsuccessfulNo entity found for query
