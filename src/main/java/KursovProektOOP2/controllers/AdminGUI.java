@@ -35,12 +35,11 @@ public class AdminGUI {
     Label lastNameLabel;
     @FXML
     ImageView exclamationMark;
-
+    Timer timer = new Timer();
     private static final Logger log = Logger.getLogger(Main.class);
 
     @FXML
     public void initialize() {
-        Timer timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
@@ -48,6 +47,7 @@ public class AdminGUI {
                 Panes.checkForNotifs(exclamationMark);
             }
         }, 0, 60000); // run check every minute
+        
         Panes.setNameLabels(usernameLabel,firstNameLabel,lastNameLabel);
     }
 

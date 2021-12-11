@@ -1,6 +1,7 @@
 package KursovProektOOP2.controllers;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -26,7 +27,6 @@ public class Main extends Application {
 
         PropertyConfigurator.configure(Main.class.getResource(Constants.Configuration.LOG4J_PROPERTIES));
         URL path = getClass().getResource("/Views/LoginViews/LoginMenu.fxml");
-
         if(path != null){
             Parent root = FXMLLoader.load(path);
 

@@ -3,7 +3,6 @@ package KursovProektOOP2.controllers;
 import KursovProektOOP2.data.access.Connection;
 import KursovProektOOP2.data.entity.Usernotifications;
 import KursovProektOOP2.data.repository.UserNotificationRepository;
-import KursovProektOOP2.data.repository.UserRepository;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -86,7 +85,8 @@ public class NotificationViewer {
                 transaction.commit();
             }
         }
-
+        Panes.loadNotifications(); // RELOAD NOTIFICATIONS
+        notifs = UserSession.getNotifications(); // SET NOTIFICATIONS
         new Thread(() -> { // UI LOCK DISPLAYS READ NOTIFICATION AS UNREAD UNTIL APP RESTART
             try {
                 Thread.sleep(250); // Wait
@@ -95,8 +95,12 @@ public class NotificationViewer {
             }
             Platform.runLater(() -> // run on fx thread
                     {
-                        Panes.loadNotifications(); // RELOAD NOTIFICATIONS
-                        notifs = UserSession.getNotifications(); // SET NOTIFICATIONS
+                        try {
+                            Vbox.getChildren().clear();
+                            buildNotifs();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
             );
         }).start();
