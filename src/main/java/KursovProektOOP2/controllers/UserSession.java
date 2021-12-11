@@ -65,12 +65,7 @@ public class UserSession {
     }
 
     public static void cleanUserSession() {
-        userID=0;
-        userName = "";// or null
-        password = "";// or null
-        first_name="";
-        last_name="";
-        notifications=null;
+        instance = null;
     }
 
     @Override

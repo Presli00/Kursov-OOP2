@@ -1,5 +1,6 @@
 package KursovProektOOP2.controllers;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -45,7 +46,7 @@ public class WarehouseAgentGUI {
                 Panes.checkForNotifs(exclamationMark);
             }
         }, 0, 60000); // run check every minute
-        Panes.setNameLabels(usernameLabel,firstNameLabel,lastNameLabel);
+        Platform.runLater(()->Panes.setNameLabels(usernameLabel,firstNameLabel,lastNameLabel));
     }
 
     @FXML
