@@ -12,9 +12,8 @@ public class Maintenance implements Serializable {
     private int maintenanceId;
     @Column(name = "Name", nullable = false)
     private String name;
-    @ManyToOne
-    @JoinColumn(name = "City_id", nullable = false)
-    private City cityId;
+    @Column(name = "isEmployed", nullable = false)
+    private boolean isEmployed;
 
     public int getMaintenanceId() {
         return maintenanceId;
@@ -32,12 +31,12 @@ public class Maintenance implements Serializable {
         this.name = name;
     }
 
-    public City getCityId() {
-        return cityId;
+    public boolean isEmployed() {
+        return isEmployed;
     }
 
-    public void setCityId(City cityId) {
-        this.cityId = cityId;
+    public void setEmployed(boolean employed) {
+        isEmployed = employed;
     }
 
     @Override
@@ -48,7 +47,7 @@ public class Maintenance implements Serializable {
         Maintenance that = (Maintenance) o;
 
         if (maintenanceId != that.maintenanceId) return false;
-        if (cityId != that.cityId) return false;
+        if (isEmployed != that.isEmployed) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
 
         return true;
@@ -59,7 +58,7 @@ public class Maintenance implements Serializable {
         return "Maintenance{" +
                 "maintenanceId=" + maintenanceId +
                 ", name='" + name + '\'' +
-                ", cityId=" + cityId +
+                ", cityId=" + isEmployed +
                 '}';
     }
 }

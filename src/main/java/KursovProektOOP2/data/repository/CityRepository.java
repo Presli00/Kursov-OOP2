@@ -13,7 +13,7 @@ import java.util.Optional;
 public class CityRepository implements DAORepository {
     private static final Logger log = Logger.getLogger(CityRepository.class);
 
-    private static CityRepository getInstance(){
+    public static CityRepository getInstance(){
         return CityRepository.CityRepositoryHolder.INSTANCE;
     }
 

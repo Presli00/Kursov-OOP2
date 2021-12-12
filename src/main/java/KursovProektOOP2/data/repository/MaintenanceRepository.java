@@ -13,7 +13,7 @@ import java.util.Optional;
 public class MaintenanceRepository implements DAORepository{
     private static final Logger log = Logger.getLogger(MaintenanceRepository.class);
 
-    private static MaintenanceRepository getInstance(){
+    public static MaintenanceRepository getInstance(){
         return MaintenanceRepository.MaintenanceRepositoryHolder.INSTANCE;
     }
 

@@ -64,6 +64,11 @@ public class AdminGUI {
         Panes.setAndClearScrollPane(sp, ContentAnchorPane);
     }
 
+    @FXML
+    public void warehousesOnAction(){
+
+    }
+
     public void AccountsOnAction() throws IOException {
         ScrollPane sp = FXMLLoader.load(getClass().getResource("/Views/AdminViews/AdminAccountViewer.fxml")); //LOAD VIEW
         Panes.setAndClearScrollPane(sp, ContentAnchorPane);
