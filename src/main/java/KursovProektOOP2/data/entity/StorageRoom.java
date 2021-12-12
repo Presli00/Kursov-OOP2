@@ -19,9 +19,9 @@ public class StorageRoom implements Serializable {
     @OneToMany
     @JoinColumn(name = "product_id", nullable = false)
     private Set<ProductType> productId;
-    @OneToOne
-    @JoinColumn(name = "History_id", nullable = false)
-    private RentalHistory historyId;
+    @OneToMany
+    @JoinColumn(name = "Formular_id", insertable = false, updatable = false)
+    private Set<Formular> formulars;
 
     public int getStorageRoomId() {
         return storageRoomId;
@@ -55,12 +55,12 @@ public class StorageRoom implements Serializable {
         this.productId = productId;
     }
 
-    public RentalHistory getHistoryId() {
-        return historyId;
+    public Set<Formular> getFormulars() {
+        return formulars;
     }
 
-    public void setHistoryId(RentalHistory historyId) {
-        this.historyId = historyId;
+    public void setFormulars(Set<Formular> formulars) {
+        this.formulars = formulars;
     }
 
     @Override
@@ -73,7 +73,7 @@ public class StorageRoom implements Serializable {
         if (storageRoomId != that.storageRoomId) return false;
         if (Double.compare(that.size, size) != 0) return false;
         if (climateId != that.climateId) return false;
-        if (historyId != that.historyId) return false;
+        if (formulars != that.formulars) return false;
         if (productId != null ? !productId.equals(that.productId) : that.productId != null) return false;
 
         return true;
@@ -86,7 +86,7 @@ public class StorageRoom implements Serializable {
                 ", size=" + size +
                 ", climateId=" + climateId +
                 ", productId=" + productId +
-                ", historyId=" + historyId +
+                ", historyId=" + formulars +
                 '}';
     }
 }

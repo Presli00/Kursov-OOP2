@@ -45,7 +45,7 @@ public class RoomsViewer {
                 products.append(productsList.get(k).getType()+" ");
             }
             controller.productLabel.setText(String.valueOf(products));
-            //controller.historyTable.insert();
+
             Vbox.getChildren().add(room);
             controller.removeButton.setOnAction(e->{
 

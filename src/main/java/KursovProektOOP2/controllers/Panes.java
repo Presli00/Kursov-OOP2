@@ -1,6 +1,7 @@
 package KursovProektOOP2.controllers;
 
 import KursovProektOOP2.data.access.Connection;
+import KursovProektOOP2.data.entity.Owner;
 import KursovProektOOP2.data.entity.User;
 import KursovProektOOP2.data.entity.Usernotifications;
 import javafx.fxml.FXMLLoader;
@@ -84,6 +85,30 @@ public class Panes {
         try{
             List<Usernotifications> notifications = session.createQuery(NOTIFICATION_QUERY).setParameter("userID", UserSession.getUserID()).getResultList();
             UserSession.setNotifications(notifications); // Setting it here since we can't execute another query in the login session (i think lol)
+        }catch (Exception ex){
+            log.error("Notifications retrieval unsuccessful " + "\n" + ex.getMessage());
+        }finally {
+            transaction.commit();
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+    static void loadWarehouses(){
+        Session session = Connection.openSession();
+        Transaction transaction = session.beginTransaction();
+        String OWNER_QUERY = "SELECT o FROM Owner o WHERE userId.userId = :userID";
+        try{
+            Owner result = (Owner) session.createQuery(OWNER_QUERY).setParameter("userID", UserSession.getUserID()).getSingleResult();
+            UserSession.setOwnerObject(result);
         }catch (Exception ex){
             log.error("Notifications retrieval unsuccessful " + "\n" + ex.getMessage());
         }finally {

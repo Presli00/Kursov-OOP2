@@ -1,5 +1,7 @@
 package KursovProektOOP2.controllers;
 
+import KursovProektOOP2.data.entity.ProductType;
+import KursovProektOOP2.data.entity.StorageRoom;
 import KursovProektOOP2.data.entity.Warehouse;
 import KursovProektOOP2.data.repository.WarehouseRepository;
 import javafx.fxml.FXML;
@@ -10,6 +12,7 @@ import javafx.scene.layout.VBox;
 import org.apache.log4j.Logger;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class OwnerWarehousesViewer {
@@ -21,13 +24,13 @@ public class OwnerWarehousesViewer {
     VBox Vbox;
     private static final Logger log = Logger.getLogger(Main.class);
     public final WarehouseRepository repository = WarehouseRepository.getInstance();
-    List warehouses;
+    List<Warehouse> warehouses;
     int currentUser = UserSession.getUserID();
 
     @FXML
     public void initialize() throws IOException {
-        getAllWarehouses();
-
+        Panes.loadWarehouses();
+        warehouses = new ArrayList<>(UserSession.getOwnerObject().getWarehouses());
         for (int i = 0; i < warehouses.size(); i++) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/OwnerViews/WarehouseInfo.fxml"));
             AnchorPane warehouse = loader.load();
@@ -39,10 +42,10 @@ public class OwnerWarehousesViewer {
             controller.maintenanceLabel.setText(String.valueOf(((Warehouse) warehouses.get(i)).getMaintenanceId().getName()));
             controller.agentLabel.setText(String.valueOf(((Warehouse) warehouses.get(i)).getAgentsId()));
             Vbox.getChildren().add(warehouse);
-            controller.checkButton.setOnAction(e->{
+            controller.checkButton.setOnAction(e -> {
                 try {
-                    FXMLLoader loader1=new FXMLLoader(getClass().getResource("/Views/OwnerViews/RoomsViewer.fxml"));
-                    ScrollPane sp=loader1.load();
+                    FXMLLoader loader1 = new FXMLLoader(getClass().getResource("/Views/OwnerViews/RoomsViewer.fxml"));
+                    ScrollPane sp = loader1.load();
                     Panes.setAndClearScrollPane(sp, AnchorPane);
                     System.out.println("sad");
                 } catch (IOException ex) {
@@ -57,9 +60,5 @@ public class OwnerWarehousesViewer {
         ScrollPane.heightProperty().addListener(event -> {
             AnchorPane.setPrefHeight(ScrollPane.getHeight());
         });
-    }
-
-    public void getAllWarehouses() {
-warehouses=repository.getAll();
     }
 }

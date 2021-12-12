@@ -1,5 +1,7 @@
 package KursovProektOOP2.controllers;
 
+import KursovProektOOP2.data.entity.Agent;
+import KursovProektOOP2.data.entity.Owner;
 import KursovProektOOP2.data.entity.Role;
 import KursovProektOOP2.data.entity.Usernotifications;
 
@@ -13,6 +15,8 @@ public class UserSession {
     private static String first_name;
     private static String last_name;
     private static Role roleID;
+    private static Owner owner;
+    private static Agent agent;
     private static List<Usernotifications> notifications;
     public UserSession(int userID, String userName, String password, String first_name, String last_name, Role roleID) {
         this.userID=userID;
@@ -54,6 +58,22 @@ public class UserSession {
 
     public static List<Usernotifications> getNotifications() {
         return notifications;
+    }
+
+    public static void setOwnerObject(Owner owner) {
+        UserSession.owner = owner;
+    }
+
+    public static void setAgentObject(Agent agent) {
+        UserSession.agent = agent;
+    }
+
+    public static Owner getOwnerObject() {
+        return owner;
+    }
+
+    public static Agent getAgentObject() {
+        return agent;
     }
 
     public static void setNotifications(List<Usernotifications> notifications) {
