@@ -1,18 +1,11 @@
 package KursovProektOOP2.controllers;
 
-import KursovProektOOP2.data.entity.City;
-import KursovProektOOP2.data.entity.Maintenance;
-import KursovProektOOP2.data.entity.User;
-import KursovProektOOP2.data.entity.Warehouse;
+import KursovProektOOP2.data.entity.*;
 import KursovProektOOP2.data.repository.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 import javafx.util.StringConverter;
-
-import java.sql.Timestamp;
-import java.util.Date;
 import java.util.List;
 
 public class WarehouseAdderForm {
@@ -28,21 +21,27 @@ public class WarehouseAdderForm {
     @FXML
     ComboBox maintenanceBox;
     @FXML
+    ComboBox ownerBox;
+    @FXML
     Button addWarehouseButton;
     @FXML
     Label errorLabel;
 
     List maintenance;
     List cities;
+    List owners;
 
     public final WarehouseRepository warehouseRepository = WarehouseRepository.getInstance();
     public final MaintenanceRepository maintenanceRepository = MaintenanceRepository.getInstance();
     public final CityRepository cityRepository = CityRepository.getInstance();
+    public final OwnerRepository ownerRepository = OwnerRepository.getInstance();
+
 
     @FXML
     public void initialize(){
         getAllMaintenance();
-        new Thread(() -> getAllCities()).start();
+        getAllCities();
+        getAllOwners();
         for (int i = 0; i < cities.size(); i++){
             cityBox.getItems().add(cities.get(i));
         }
@@ -50,6 +49,9 @@ public class WarehouseAdderForm {
             if(!((Maintenance)maintenance.get(i)).isEmployed()){
                 maintenanceBox.getItems().add(maintenance.get(i));
             }
+        }
+        for (int i = 0; i < owners.size(); i++){
+            ownerBox.getItems().add(owners.get(i));
         }
 
         // allow only numeric values in this text field, comrade!
@@ -77,7 +79,18 @@ public class WarehouseAdderForm {
             }
             @Override
             public Maintenance fromString(final String string) {
-                return (Maintenance) cityBox.getItems().stream().filter(maintenance -> ((Maintenance)maintenance).getName().equals(string)).findFirst().orElse(null);
+                return (Maintenance) maintenanceBox.getItems().stream().filter(maintenance -> ((Maintenance)maintenance).getName().equals(string)).findFirst().orElse(null);
+            }
+        });
+
+        ownerBox.setConverter(new StringConverter<Owner>() {
+            @Override
+            public String toString(Owner owner) {
+                return owner.getUserId().getUsername();
+            }
+            @Override
+            public Owner fromString(final String string) {
+                return (Owner) ownerBox.getItems().stream().filter(owner -> ((Owner)owner).getUserId().getUsername().equals(string)).findFirst().orElse(null);
             }
         });
     }
@@ -95,6 +108,9 @@ public class WarehouseAdderForm {
             warehouse.setMaintenanceId((Maintenance) maintenanceBox.getValue());
             warehouse.setAgentsId(null);
             warehouseRepository.save(warehouse);
+            Owner owner = (Owner) ownerBox.getValue();
+            owner.getWarehouses().add(warehouse);
+            ownerRepository.update(owner);
             stage.close();
         }
     }
@@ -122,6 +138,10 @@ public class WarehouseAdderForm {
             valid = false;
             errorMessage.append("Choose maintenance! ");
         }
+        if(ownerBox.getSelectionModel().isEmpty()){
+            valid = false;
+            errorMessage.append("Choose an owner! ");
+        }
 
         if(valid){
             return true;
@@ -136,6 +156,9 @@ public class WarehouseAdderForm {
     }
     public void getAllCities(){
         cities = cityRepository.getAll();
+    }
+    public void getAllOwners(){
+        owners = ownerRepository.getAll();
     }
 
 

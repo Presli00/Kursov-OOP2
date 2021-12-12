@@ -9,24 +9,24 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane prefHeight="393.0" prefWidth="371.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="KursovProektOOP2.controllers.WarehouseAdderForm">
+<AnchorPane prefHeight="426.0" prefWidth="371.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="KursovProektOOP2.controllers.WarehouseAdderForm">
    <children>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="86.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="86.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../Images/PR%20Warehouses.png" />
          </image>
       </ImageView>
-      <VBox alignment="TOP_CENTER" layoutX="86.0" layoutY="128.0" prefHeight="200.0" prefWidth="200.0" spacing="15.0">
+      <VBox alignment="TOP_CENTER" layoutX="86.0" layoutY="110.0" prefHeight="200.0" prefWidth="200.0" spacing="15.0">
          <children>
             <TextField fx:id="warehouseNameTF" promptText="Име на склад" />
             <ComboBox fx:id="cityBox" prefHeight="25.0" prefWidth="209.0" promptText="Град" />
             <TextField fx:id="streetTF" promptText="Улица" />
             <TextField fx:id="roomAmountTF" promptText="Брой на стаи" />
             <ComboBox fx:id="maintenanceBox" prefHeight="25.0" prefWidth="207.0" promptText="Поддръжка" />
+            <ComboBox fx:id="ownerBox" prefHeight="25.0" prefWidth="202.0" promptText="Потребител" />
          </children>
       </VBox>
-      <Button fx:id="addWarehouseButton" layoutX="86.0" layoutY="328.0" mnemonicParsing="false" onAction="#addWarehouse" prefHeight="25.0" prefWidth="200.0" text="Добави" />
-      <Label fx:id="errorLabel" alignment="TOP_CENTER" layoutX="9.0" layoutY="353.0" prefHeight="35.0" prefWidth="356.0" textFill="RED" wrapText="true" />
+      <Button fx:id="addWarehouseButton" layoutX="86.0" layoutY="352.0" mnemonicParsing="false" onAction="#addWarehouse" prefHeight="25.0" prefWidth="200.0" text="Добави" />
+      <Label fx:id="errorLabel" alignment="TOP_CENTER" layoutX="8.0" layoutY="383.0" prefHeight="35.0" prefWidth="356.0" textFill="RED" wrapText="true" />
    </children>
 </AnchorPane>

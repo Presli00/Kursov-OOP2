@@ -3,6 +3,7 @@ package KursovProektOOP2.data.entity;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Set;
 
 @Table(name = "Agent", schema = "warehouse")
 @Entity
@@ -17,6 +18,8 @@ public class Agent implements Serializable {
     private double rating;
     @Column(name = "dealAmount", nullable = false)
     private int dealAmount;
+    @ManyToMany
+    private Set<Warehouse> warehouses;
 
     public int getIdAgent() {
         return idAgent;

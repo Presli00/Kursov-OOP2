@@ -21,10 +21,9 @@ public class Warehouse implements Serializable {
     @Column(name = "Number_of_storage_rooms", nullable = false)
     private int numberOfStorageRooms;
     @OneToOne
-    @JoinColumn(name = "Maintenance_id", nullable = false)
+    @JoinColumn(name = "Maintenance_id")
     private Maintenance maintenanceId;
-    @OneToMany
-    @JoinColumn(name = "idAgent")
+    @ManyToMany
     private Set<Agent> agentsId;
     @OneToMany
     @JoinColumn(name="Storage_room_id")
