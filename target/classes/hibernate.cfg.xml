@@ -15,7 +15,6 @@
             org.hibernate.context.internal.ThreadLocalSessionContext
         </property>
         <!-- Mapping With Model Class Containing Annotations -->
-        <mapping class="KursovProektOOP2.data.entity.AgentsList"/>
         <mapping class="KursovProektOOP2.data.entity.Agent"/>
         <mapping class="KursovProektOOP2.data.entity.Owner"/>
         <mapping class="KursovProektOOP2.data.entity.City"/>
