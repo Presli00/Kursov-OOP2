@@ -4,6 +4,7 @@ import KursovProektOOP2.data.access.Connection;
 import KursovProektOOP2.data.entity.Owner;
 import KursovProektOOP2.data.entity.User;
 import KursovProektOOP2.data.entity.Usernotifications;
+import KursovProektOOP2.data.entity.Warehouse;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -100,7 +101,19 @@ public class Panes {
 
 
 
-
+/*static void loadRooms(){ this shit is work in progress
+    Session session = Connection.openSession();
+    Transaction transaction = session.beginTransaction();
+    String Warehouse_QUERY = "SELECT w FROM Warehouse w WHERE rooms.storageRoomId=:roomID";
+    try{
+        Warehouse result = (Warehouse) session.createQuery(Warehouse_QUERY).setParameter("roomID", UserSession.getUserID()).getSingleResult();
+        UserSession.setOwnerObject(result);
+    }catch (Exception ex){
+        log.error("Notifications retrieval unsuccessful " + "\n" + ex.getMessage());
+    }finally {
+        transaction.commit();
+    }
+}*/
 
     static void loadWarehouses(){
         Session session = Connection.openSession();

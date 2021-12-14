@@ -1,7 +1,5 @@
 package KursovProektOOP2.controllers;
 
-import KursovProektOOP2.data.entity.ProductType;
-import KursovProektOOP2.data.entity.StorageRoom;
 import KursovProektOOP2.data.entity.Warehouse;
 import KursovProektOOP2.data.repository.WarehouseRepository;
 import javafx.fxml.FXML;

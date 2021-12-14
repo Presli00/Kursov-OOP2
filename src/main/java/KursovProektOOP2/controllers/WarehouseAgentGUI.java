@@ -46,7 +46,7 @@ public class WarehouseAgentGUI {
                 Panes.checkForNotifs(exclamationMark);
             }
         }, 0, 60000); // run check every minute
-        Platform.runLater(()->Panes.setNameLabels(usernameLabel,firstNameLabel,lastNameLabel));
+        Platform.runLater(() -> Panes.setNameLabels(usernameLabel, firstNameLabel, lastNameLabel));
     }
 
     @FXML
@@ -56,8 +56,14 @@ public class WarehouseAgentGUI {
     }
 
     @FXML
-    public void SpravkiOnAction() throws IOException{
+    public void SpravkiOnAction() throws IOException {
         AnchorPane ap = FXMLLoader.load(getClass().getResource("/Views/AgentViews/WarehouseAgentSpravki.fxml")); //LOAD VIEW
+        Panes.setAndClearAnchorPane(ap, ContentAnchorPane);
+    }
+
+    @FXML
+    public void rentOnAction() throws IOException {
+        AnchorPane ap = FXMLLoader.load(getClass().getResource("/Views/AgentViews/rentViewer.fxml")); //LOAD VIEW
         Panes.setAndClearAnchorPane(ap, ContentAnchorPane);
     }
 

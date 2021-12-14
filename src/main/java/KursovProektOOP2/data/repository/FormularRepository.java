@@ -13,7 +13,7 @@ import java.util.Optional;
 public class FormularRepository implements DAORepository{
     private static final Logger log = Logger.getLogger(FormularRepository.class);
 
-    private static FormularRepository getInstance(){
+    public static FormularRepository getInstance(){
         return FormularRepository.FormularRepositoryHolder.INSTANCE;
     }
 
