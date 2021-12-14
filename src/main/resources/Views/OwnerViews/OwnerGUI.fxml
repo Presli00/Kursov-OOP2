@@ -28,9 +28,9 @@
           <RowConstraints minHeight="-Infinity" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <VBox alignment="CENTER_LEFT" prefHeight="597.0" prefWidth="217.0" spacing="30.0">
+            <VBox alignment="CENTER_LEFT" prefHeight="597.0" prefWidth="217.0" spacing="30.0" stylesheets="@../../Styles/buttonStyling.css">
                <children>
-                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#NotificationsOnAction" prefHeight="63.0" prefWidth="220.0" style="-fx-background-color: transparent;">
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#NotificationsOnAction" prefHeight="63.0" prefWidth="220.0" styleClass="btns">
                      <graphic>
                         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                            <children>
@@ -55,7 +55,7 @@
                         </HBox>
                      </graphic>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#WarehouseOnAction" prefHeight="63.0" prefWidth="220.0" style="-fx-background-color: transparent;">
+                  <Button mnemonicParsing="false" onAction="#WarehouseOnAction" prefHeight="63.0" prefWidth="220.0" styleClass="btns">
                      <graphic>
                         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                            <children>
@@ -76,7 +76,7 @@
                         </HBox>
                      </graphic>
                   </Button>
-                  <Button alignment="TOP_CENTER" blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#SpravkiOnAction" style="-fx-background-color: transparent;" textAlignment="CENTER">
+                  <Button alignment="TOP_CENTER" blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#SpravkiOnAction" styleClass="btns" textAlignment="CENTER">
                      <graphic>
                         <HBox prefHeight="35.0" prefWidth="142.0" spacing="5.0">
                            <children>
@@ -133,7 +133,7 @@
                         <Insets left="2.0" />
                      </padding>
                   </HBox>
-                  <Button fx:id="SettingsButton" blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#SettingOnAction" style="-fx-background-color: transparent;">
+                  <Button fx:id="SettingsButton" blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#SettingOnAction" styleClass="btns">
                      <graphic>
                         <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="142.0" spacing="5.0">
                            <children>
@@ -150,7 +150,7 @@
                         </HBox>
                      </graphic>
                   </Button>
-                  <Button fx:id="logOutButton" alignment="CENTER" blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#logOutOnAction" style="-fx-background-color: transparent;">
+                  <Button fx:id="logOutButton" alignment="CENTER" blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#logOutOnAction" styleClass="btns">
                      <graphic>
                         <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="142.0" spacing="5.0">
                            <children>
@@ -174,6 +174,9 @@
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
+               <padding>
+                  <Insets bottom="2.0" top="2.0" />
+               </padding>
             </VBox>
             <AnchorPane fx:id="ContentAnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
          </children>

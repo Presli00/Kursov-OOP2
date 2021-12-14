@@ -26,9 +26,9 @@
           <RowConstraints minHeight="-Infinity" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <VBox prefHeight="597.0" prefWidth="217.0" spacing="30.0">
+            <VBox prefHeight="597.0" prefWidth="217.0" spacing="30.0" stylesheets="@../../Styles/buttonStyling.css">
                <children>
-                  <Button blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#NotificationsOnAction" prefHeight="24.0" prefWidth="197.0" style="-fx-background-color: transparent;">
+                  <Button blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#NotificationsOnAction" prefHeight="24.0" prefWidth="197.0" styleClass="btns">
                      <graphic>
                         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                            <children>
@@ -54,7 +54,7 @@
                         </HBox>
                      </graphic>
                   </Button>
-                  <Button blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#warehousesOnAction" prefHeight="24.0" prefWidth="197.0" style="-fx-background-color: transparent;">
+                  <Button blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#warehousesOnAction" prefHeight="24.0" prefWidth="197.0" styleClass="btns">
                      <graphic>
                         <HBox prefHeight="52.0" prefWidth="182.0" spacing="5.0">
                            <children>
@@ -75,7 +75,7 @@
                         </HBox>
                      </graphic>
                   </Button>
-                  <Button blendMode="SRC_ATOP" mnemonicParsing="false" onMouseClicked="#AccountsOnAction" prefHeight="24.0" prefWidth="197.0" style="-fx-background-color: transparent;">
+                  <Button blendMode="SRC_ATOP" mnemonicParsing="false" onMouseClicked="#AccountsOnAction" prefHeight="24.0" prefWidth="197.0" styleClass="btns">
                      <graphic>
                         <HBox prefHeight="52.0" prefWidth="182.0" spacing="5.0">
                            <children>
@@ -96,7 +96,7 @@
                         </HBox>
                      </graphic>
                   </Button>
-                  <Button fx:id="SpravkiButton" blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#SpravkiOnAction" prefHeight="24.0" prefWidth="197.0" style="-fx-background-color: transparent;">
+                  <Button fx:id="SpravkiButton" blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#SpravkiOnAction" prefHeight="24.0" prefWidth="197.0" styleClass="btns">
                      <graphic>
                         <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                            <children>
@@ -147,7 +147,7 @@
                         <Insets left="2.0" />
                      </padding>
                   </HBox>
-                  <Button fx:id="SettingsButton" blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#SettingOnAction" prefHeight="24.0" prefWidth="197.0" style="-fx-background-color: transparent;">
+                  <Button fx:id="SettingsButton" blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#SettingOnAction" prefHeight="24.0" prefWidth="197.0" styleClass="btns">
                      <graphic>
                         <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                            <children>
@@ -165,7 +165,7 @@
                         </HBox>
                      </graphic>
                   </Button>
-                  <Button fx:id="logOutButton" blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#logOutOnAction" prefHeight="24.0" prefWidth="197.0" style="-fx-background-color: transparent;">
+                  <Button fx:id="logOutButton" blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#logOutOnAction" prefHeight="24.0" prefWidth="197.0" styleClass="btns">
                      <graphic>
                         <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                            <children>
@@ -183,6 +183,9 @@
                         </HBox>
                      </graphic></Button>
                </children>
+               <padding>
+                  <Insets bottom="2.0" top="2.0" />
+               </padding>
             </VBox>
             <AnchorPane fx:id="ContentAnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" />
          </children>
