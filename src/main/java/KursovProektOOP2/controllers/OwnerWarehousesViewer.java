@@ -2,6 +2,8 @@ package KursovProektOOP2.controllers;
 
 import KursovProektOOP2.data.entity.Warehouse;
 import KursovProektOOP2.data.repository.WarehouseRepository;
+import KursovProektOOP2.util.Panes;
+import KursovProektOOP2.util.UserSession;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ScrollPane;

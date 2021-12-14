@@ -1,4 +1,4 @@
-package KursovProektOOP2.controllers;
+package KursovProektOOP2.util;
 
 import KursovProektOOP2.data.entity.Agent;
 import KursovProektOOP2.data.entity.Owner;

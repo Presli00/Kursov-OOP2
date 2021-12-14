@@ -2,10 +2,10 @@ package KursovProektOOP2.controllers;
 
 import KursovProektOOP2.data.access.Connection;
 import KursovProektOOP2.data.entity.User;
+import KursovProektOOP2.util.UserSession;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;

@@ -1,5 +1,7 @@
 package KursovProektOOP2.controllers;
 
+import KursovProektOOP2.util.Panes;
+import KursovProektOOP2.util.UserSession;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.apache.log4j.Logger;
 
@@ -24,28 +27,29 @@ public class OwnerGUI {
     @FXML
     Button logOutButton;
     @FXML
-    Label usernameLabel;
+    Text usernameText;
     @FXML
-    Label firstNameLabel;
+    Text firstNameText;
     @FXML
-    Label lastNameLabel;
+    Text lastNameText;
     @FXML
     ImageView exclamationMark;
+    public Timer ownerTimer = new Timer();
     // Functions
     private static final Logger log = Logger.getLogger(Main.class);
     int currentUser = UserSession.getUserID();
 
     @FXML
     public void initialize() {
-        Timer timer = new Timer();
-        timer.schedule(new TimerTask() {
+
+        ownerTimer.schedule(new TimerTask() {
             @Override
             public void run() {
                 Panes.loadNotifications();
                 Panes.checkForNotifs(exclamationMark);
             }
         }, 0, 60000); // run check every minute
-        Platform.runLater(()->Panes.setNameLabels(usernameLabel,firstNameLabel,lastNameLabel));
+        Platform.runLater(()->Panes.setNameLabels(usernameText,firstNameText,lastNameText));
     }
 
     @FXML

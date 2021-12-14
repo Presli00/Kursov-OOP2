@@ -1,10 +1,10 @@
-package KursovProektOOP2.controllers;
+package KursovProektOOP2.util;
 
+import KursovProektOOP2.controllers.*;
 import KursovProektOOP2.data.access.Connection;
 import KursovProektOOP2.data.entity.Owner;
-import KursovProektOOP2.data.entity.User;
 import KursovProektOOP2.data.entity.Usernotifications;
-import KursovProektOOP2.data.entity.Warehouse;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -13,6 +13,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
@@ -27,7 +28,7 @@ public class Panes {
 
     private static final Logger log = Logger.getLogger(Main.class);
 
-    static void setAndClearAnchorPane(AnchorPane ap, AnchorPane contentAnchorPane) {
+    public static void setAndClearAnchorPane(AnchorPane ap, AnchorPane contentAnchorPane) {
         if(!contentAnchorPane.getChildren().isEmpty()) {
             contentAnchorPane.getChildren().clear();
         }
@@ -43,7 +44,7 @@ public class Panes {
         });
     }
 
-    static void openWindow(String pathToView, Class c) throws IOException {
+    public static void openWindow(String pathToView, Class c) throws IOException {
         Stage stage = new Stage();
         PropertyConfigurator.configure(Main.class.getResource(Constants.Configuration.LOG4J_PROPERTIES));
         URL path = c.getResource(pathToView);
@@ -61,6 +62,11 @@ public class Panes {
             }else {
                 stage.setResizable(false);
             }
+            stage.setOnCloseRequest(e -> {
+                System.out.println("close");
+                Platform.exit();
+                System.exit(1);
+            });
             stage.show();
         }else{
             log.error("View couldn't be loaded");
@@ -69,8 +75,8 @@ public class Panes {
         }
     }
 
-    static boolean checkForNotifs(ImageView img){
-        for (int i = 0; i < UserSession.getNotifications().size();i++){
+    public static boolean checkForNotifs(ImageView img){
+        for (int i = 0; i < UserSession.getNotifications().size(); i++){
             if(!UserSession.getNotifications().get(i).isRead()){
                 img.setVisible(true);
                 return true;
@@ -79,7 +85,7 @@ public class Panes {
         return false;
     }
 
-    static void loadNotifications(){
+    public static void loadNotifications(){
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
         String NOTIFICATION_QUERY = "SELECT u FROM Usernotifications u WHERE idFromUser.userId = :userID";
@@ -115,7 +121,7 @@ public class Panes {
     }
 }*/
 
-    static void loadWarehouses(){
+    public static void loadWarehouses(){
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
         String OWNER_QUERY = "SELECT o FROM Owner o WHERE userId.userId = :userID";
@@ -129,13 +135,13 @@ public class Panes {
         }
     }
 
-    static void setNameLabels(Label usernameLabel, Label firstNameLabel, Label lastNameLabel){
-        usernameLabel.setText(UserSession.getUserName());
-        firstNameLabel.setText(UserSession.getFirst_name());
-        lastNameLabel.setText(UserSession.getLast_name());
+    public static void setNameLabels(Text usernameText, Text firstNameText, Text lastNameText){
+        usernameText.setText(UserSession.getUserName());
+        firstNameText.setText(UserSession.getFirst_name());
+        lastNameText.setText(UserSession.getLast_name());
     }
 
-    static void setAndClearScrollPane(ScrollPane sp, AnchorPane contentAnchorPane) {
+    public static void setAndClearScrollPane(ScrollPane sp, AnchorPane contentAnchorPane) {
         if (!contentAnchorPane.getChildren().isEmpty()) {
             contentAnchorPane.getChildren().clear();
         }

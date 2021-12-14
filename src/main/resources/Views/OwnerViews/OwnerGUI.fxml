@@ -15,6 +15,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1150.0" style="-fx-background-color: #4a4a4a;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="KursovProektOOP2.controllers.OwnerGUI">
    <children>
@@ -105,37 +106,29 @@
                   <Region prefHeight="342.0" prefWidth="197.0" VBox.vgrow="ALWAYS" />
                   <HBox alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="206.0" spacing="5.0">
                      <children>
-                        <Label prefHeight="27.0" prefWidth="99.0" text="Username:" wrapText="true">
+                        <Text fx:id="usernameText" strokeType="OUTSIDE" strokeWidth="0.0">
                            <font>
-                              <Font name="System Bold" size="18.0" />
+                              <Font name="Tahoma" size="36.0" />
                            </font>
-                        </Label>
-                        <Label fx:id="usernameLabel" prefHeight="27.0" prefWidth="122.0" wrapText="true">
-                           <font>
-                              <Font name="System Bold" size="18.0" />
-                           </font>
-                        </Label>
+                        </Text>
                      </children>
                      <padding>
                         <Insets left="2.0" />
                      </padding>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                      <children>
-                        <Label fx:id="firstNameLabel" prefHeight="27.0" prefWidth="108.0" wrapText="true">
+                        <Text fx:id="firstNameText" strokeType="OUTSIDE" strokeWidth="0.0">
                            <font>
-                              <Font name="System Bold" size="18.0" />
+                              <Font name="Tahoma" size="24.0" />
                            </font>
-                        </Label>
-                        <Label fx:id="lastNameLabel" prefWidth="108.0" wrapText="true">
+                        </Text>
+                        <Text fx:id="lastNameText" strokeType="OUTSIDE" strokeWidth="0.0">
                            <font>
-                              <Font name="System Bold" size="18.0" />
+                              <Font name="Tahoma" size="24.0" />
                            </font>
-                        </Label>
+                        </Text>
                      </children>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
                      <padding>
                         <Insets left="2.0" />
                      </padding>

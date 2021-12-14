@@ -1,5 +1,6 @@
 package KursovProektOOP2.controllers;
 
+import KursovProektOOP2.util.Panes;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

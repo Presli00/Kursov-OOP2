@@ -2,22 +2,22 @@ package KursovProektOOP2.controllers;
 
 import KursovProektOOP2.data.access.Connection;
 import KursovProektOOP2.data.entity.User;
+import KursovProektOOP2.util.Panes;
+import KursovProektOOP2.util.UserSession;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import java.io.IOException;
-import java.net.URL;
-
 public class LoginMenu {
+    @FXML
+    AnchorPane AnchorPane;
     @FXML
     TextField usernameTF;
     @FXML
@@ -33,6 +33,15 @@ public class LoginMenu {
 
     private static final Logger log = Logger.getLogger(Main.class);
 
+    @FXML
+    private void initialize(){
+        AnchorPane.addEventHandler(KeyEvent.KEY_PRESSED, ev -> {
+            if (ev.getCode() == KeyCode.ENTER) {
+                loginButton.fire();
+                ev.consume();
+            }
+        });
+    }
 
     public void login() {
         Session session = Connection.openSession();

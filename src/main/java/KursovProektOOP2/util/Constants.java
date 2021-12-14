@@ -1,4 +1,4 @@
-package KursovProektOOP2.controllers;
+package KursovProektOOP2.util;
 
 public class Constants {
     public static class Configuration{
