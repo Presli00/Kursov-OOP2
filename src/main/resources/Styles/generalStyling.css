@@ -1,0 +1,17 @@
+.text-field
+{
+    -fx-background-color: transparent, white, transparent, white;
+    -fx-background-radius: 5px;
+}
+
+.text-field:hover
+{
+    -fx-background-color: transparent, #909090, transparent, white;
+    -fx-background-radius: 5px;
+}
+
+.text-field:focused
+{
+    -fx-background-color: transparent, #0099ef, transparent, white;
+    -fx-background-radius: 5px;
+}

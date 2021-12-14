@@ -1,6 +1,7 @@
 package KursovProektOOP2.controllers;
 
 import KursovProektOOP2.util.Constants;
+import com.sun.javafx.css.StyleManager;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
@@ -35,6 +36,8 @@ public class Main extends Application {
 
             Scene scene = new Scene(root);
             primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/Images/PR Warehouses.png")));
+            Application.setUserAgentStylesheet(Application.STYLESHEET_MODENA);
+            StyleManager.getInstance().addUserAgentStylesheet(getClass().getResource("/Styles/generalStyling.css").toString());
             primaryStage.setScene(scene);
             primaryStage.setResizable(false);
             primaryStage.show();

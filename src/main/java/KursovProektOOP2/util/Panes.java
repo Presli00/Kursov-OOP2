@@ -63,7 +63,6 @@ public class Panes {
                 stage.setResizable(false);
             }
             stage.setOnCloseRequest(e -> {
-                System.out.println("close");
                 Platform.exit();
                 System.exit(1);
             });
