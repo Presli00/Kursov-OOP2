@@ -9,16 +9,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<ScrollPane fx:id="scrolPane" fitToHeight="true" fitToWidth="true" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FF6F61;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="KursovProektOOP2.controllers.Spravki.AgentsSpravki">
+<ScrollPane fx:id="scrolPane" fitToHeight="true" fitToWidth="true" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #D9DDDC;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="KursovProektOOP2.controllers.Spravki.AgentsSpravki">
   <content>
-    <AnchorPane fx:id="anchorPane" prefHeight="399.0" prefWidth="585.0" style="-fx-background-color: #FF6F61;">
+    <AnchorPane fx:id="anchorPane" prefHeight="399.0" prefWidth="585.0" style="-fx-background-color: #D9DDDC;">
          <children>
             <VBox fx:id="vBox" prefHeight="399.0" prefWidth="585.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <padding>
                   <Insets left="5.0" right="5.0" top="5.0" />
                </padding>
                <children>
-                  <ToolBar prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #FFBE61; -fx-background-radius: 20;" VBox.vgrow="SOMETIMES">
+                  <ToolBar prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #4E97D1; -fx-background-radius: 20;" VBox.vgrow="SOMETIMES">
                      <items>
                         <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="143.75" style="-fx-background-radius: 15;" text="Сортиране по име" />
                         <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="143.75" style="-fx-background-radius: 15;" text="Сортиране по рейтинг" />

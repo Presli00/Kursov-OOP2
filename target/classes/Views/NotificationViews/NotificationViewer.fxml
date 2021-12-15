@@ -11,13 +11,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane fx:id="ScrollPane" hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FF6F61;" vbarPolicy="ALWAYS" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="KursovProektOOP2.controllers.NotificationViewer">
+<ScrollPane fx:id="ScrollPane" hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #D9DDDC;" vbarPolicy="ALWAYS" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="KursovProektOOP2.controllers.NotificationViewer">
   <content>
-    <AnchorPane fx:id="AnchorPane" prefHeight="399.0" prefWidth="585.0" style="-fx-background-color: #FF6F61;">
+    <AnchorPane fx:id="AnchorPane" prefHeight="399.0" prefWidth="585.0" style="-fx-background-color: #D9DDDC;">
          <children>
             <VBox prefHeight="399.0" prefWidth="585.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <ToolBar prefHeight="32.0" prefWidth="585.0" style="-fx-background-color: #FFBE61; -fx-background-radius: 20;">
+                  <ToolBar prefHeight="32.0" prefWidth="585.0" style="-fx-background-color: #4E97D1; -fx-background-radius: 20;">
                      <items>
                         <Button minWidth="23.0" mnemonicParsing="false" onAction="#MarkAsRead" prefHeight="35.0" prefWidth="40.0" style="-fx-background-radius: 70; -fx-background-color: #006400;">
                            <font>

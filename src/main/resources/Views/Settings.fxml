@@ -12,9 +12,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="AnchorPane" prefHeight="435.0" prefWidth="606.0" style="-fx-background-color: #FF6F61;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="KursovProektOOP2.controllers.Settings">
+<AnchorPane fx:id="AnchorPane" prefHeight="435.0" prefWidth="606.0" style="-fx-background-color: #D9DDDC;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="KursovProektOOP2.controllers.Settings">
    <children>
-      <TabPane prefHeight="472.0" prefWidth="657.0" style="-fx-background-color: #FF6F61;" stylesheets="@../Styles/TabPaneStyling.css" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <TabPane prefHeight="472.0" prefWidth="657.0" style="-fx-background-color: #D9DDDC;" stylesheets="@../Styles/TabPaneStyling.css" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
           <Tab text="Смяна на данни">
             <content>

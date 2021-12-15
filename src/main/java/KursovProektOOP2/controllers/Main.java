@@ -31,7 +31,7 @@ public class Main extends Application {
 
         PropertyConfigurator.configure(Main.class.getResource(Constants.Configuration.LOG4J_PROPERTIES));
         URL path = getClass().getResource("/Views/LoginViews/LoginMenu.fxml");
-        if(path != null){
+        if (path != null) {
             Parent root = FXMLLoader.load(path);
 
             Scene scene = new Scene(root);
@@ -41,7 +41,7 @@ public class Main extends Application {
             primaryStage.setScene(scene);
             primaryStage.setResizable(false);
             primaryStage.show();
-        }else{
+        } else {
             log.error("View couldn't be loaded");
             System.exit(-1);
 
