@@ -38,7 +38,7 @@ public class AdminWarehouseViewer {
         Parent root = FXMLLoader.load(getClass().getResource("/Views/AdminViews/WarehouseAdderForm.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
-        stage.setTitle("Registration Form");
+        stage.setTitle("Add Warehouse");
         stage.setResizable(false);
         stage.show();
     }

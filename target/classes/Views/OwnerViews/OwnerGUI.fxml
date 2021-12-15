@@ -30,7 +30,7 @@
          <children>
             <VBox alignment="CENTER_LEFT" prefHeight="597.0" prefWidth="217.0" spacing="30.0" stylesheets="@../../Styles/buttonStyling.css">
                <children>
-                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#NotificationsOnAction" prefHeight="63.0" prefWidth="220.0" styleClass="btns">
+                  <Button fx:id="notificationsButton" alignment="CENTER" mnemonicParsing="false" onAction="#NotificationsOnAction" prefHeight="63.0" prefWidth="220.0" styleClass="btns">
                      <graphic>
                         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                            <children>
@@ -76,7 +76,7 @@
                         </HBox>
                      </graphic>
                   </Button>
-                  <Button alignment="TOP_CENTER" blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#SpravkiOnAction" styleClass="btns" textAlignment="CENTER">
+                  <Button alignment="TOP_CENTER" blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#SpravkiOnAction" prefHeight="48.0" prefWidth="215.0" styleClass="btns" textAlignment="CENTER">
                      <graphic>
                         <HBox prefHeight="35.0" prefWidth="142.0" spacing="5.0">
                            <children>
@@ -133,7 +133,7 @@
                         <Insets left="2.0" />
                      </padding>
                   </HBox>
-                  <Button fx:id="SettingsButton" blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#SettingOnAction" styleClass="btns">
+                  <Button fx:id="SettingsButton" blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#SettingOnAction" prefHeight="38.0" prefWidth="243.0" styleClass="btns">
                      <graphic>
                         <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="142.0" spacing="5.0">
                            <children>
@@ -150,7 +150,7 @@
                         </HBox>
                      </graphic>
                   </Button>
-                  <Button fx:id="logOutButton" alignment="CENTER" blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#logOutOnAction" styleClass="btns">
+                  <Button fx:id="logOutButton" alignment="CENTER" blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#logOutOnAction" prefHeight="40.0" prefWidth="238.0" styleClass="btns">
                      <graphic>
                         <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="142.0" spacing="5.0">
                            <children>

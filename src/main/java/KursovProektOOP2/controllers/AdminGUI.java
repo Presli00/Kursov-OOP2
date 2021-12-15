@@ -28,6 +28,8 @@ public class AdminGUI {
     @FXML
     Button SpravkiButton;
     @FXML
+    Button notificationsButton;
+    @FXML
     Button logOutButton;
     @FXML
     Button SettingsButton;

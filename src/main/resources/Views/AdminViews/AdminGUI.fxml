@@ -28,7 +28,7 @@
          <children>
             <VBox prefHeight="597.0" prefWidth="217.0" spacing="30.0" stylesheets="@../../Styles/buttonStyling.css">
                <children>
-                  <Button blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#NotificationsOnAction" prefHeight="24.0" prefWidth="197.0" styleClass="btns">
+                  <Button fx:id="notificationsButton" blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#NotificationsOnAction" prefHeight="24.0" prefWidth="197.0" styleClass="btns">
                      <graphic>
                         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                            <children>

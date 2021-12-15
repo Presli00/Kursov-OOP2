@@ -28,6 +28,8 @@ public class WarehouseAgentGUI {
     @FXML
     Button SettingsButton;
     @FXML
+    Button notificationsButton;
+    @FXML
     Text usernameText;
     @FXML
     Text firstNameText;

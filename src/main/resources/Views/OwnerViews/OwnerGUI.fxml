@@ -30,7 +30,7 @@
          <children>
             <VBox alignment="CENTER_LEFT" prefHeight="597.0" prefWidth="217.0" spacing="30.0" stylesheets="@../../Styles/buttonStyling.css">
                <children>
-                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#NotificationsOnAction" prefHeight="63.0" prefWidth="220.0" styleClass="btns">
+                  <Button fx:id="notificationsButton" alignment="CENTER" mnemonicParsing="false" onAction="#NotificationsOnAction" prefHeight="63.0" prefWidth="220.0" styleClass="btns">
                      <graphic>
                         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                            <children>

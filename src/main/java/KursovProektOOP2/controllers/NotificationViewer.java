@@ -9,6 +9,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
@@ -72,60 +73,59 @@ public class NotificationViewer {
 
     @FXML
     public void MarkAsRead(){
-        for(int i = 0; i < selected.size(); i++){
-            Session session = Connection.openSession();
-            Transaction transaction = session.beginTransaction();
-            String UPDATE_QUERY = "UPDATE Usernotifications SET isRead = true WHERE idNotifications = :idNotif";
-            try{
-                session.createQuery(UPDATE_QUERY).setParameter("idNotif", selected.get(i).id).executeUpdate();
-                selected.get(i).notificationCheck.setSelected(false);
-                // RELOAD NOTIFICATIONS
-                selected.get(i).isReadDot.setVisible(false); // REMOVE DOT
-            }catch (Exception ex){
-                log.error("Notifications marking unsuccessful " + "\n" + ex.getMessage());
-            }finally {
-                transaction.commit();
+        if(selected.size() > 0){ // if size is 0, do nothing
+            for(int i = 0; i < selected.size(); i++){
+                Session session = Connection.openSession();
+                Transaction transaction = session.beginTransaction();
+                String UPDATE_QUERY = "UPDATE Usernotifications SET isRead = true WHERE idNotifications = :idNotif";
+                try{
+                    session.createQuery(UPDATE_QUERY).setParameter("idNotif", selected.get(i).id).executeUpdate();
+                    selected.get(i).notificationCheck.setSelected(false);
+                    selected.get(i).isReadDot.setVisible(false); // REMOVE DOT
+                }catch (Exception ex){
+                    log.error("Notifications marking unsuccessful " + "\n" + ex.getMessage());
+                }finally {
+                    transaction.commit();
+                }
             }
-        }
-        Panes.loadNotifications(); // RELOAD NOTIFICATIONS
-        notifs = UserSession.getNotifications(); // SET NOTIFICATIONS
-        new Thread(() -> { // UI LOCK DISPLAYS READ NOTIFICATION AS UNREAD UNTIL APP RESTART
-            try {
-                Thread.sleep(250); // Wait
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            Platform.runLater(() -> // run on fx thread
-                    {
-                        try {
-                            Vbox.getChildren().clear();
-                            buildNotifs();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-            );
-        }).start();
 
-        allAreReadThreadCall();
+            reload();
+            selected.clear();
+        }
+
+
     }
 
     @FXML
     public void DeleteNotification(){
-        for(int i = 0; i < selected.size(); i++){ // DELETE QUERY FOR EVERY SELECTED NOTIFICATION
-            Session session = Connection.openSession();
-            Transaction transaction = session.beginTransaction();
-            String DELETE_QUERY = "DELETE FROM Usernotifications WHERE idNotifications = :idNotif";
-            try{
-                session.createQuery(DELETE_QUERY).setParameter("idNotif", selected.get(i).id).executeUpdate();
+        if(selected.size() > 0){
+            for(int i = 0; i < selected.size(); i++){ // DELETE QUERY FOR EVERY SELECTED NOTIFICATION
+                Session session = Connection.openSession();
+                Transaction transaction = session.beginTransaction();
+                String DELETE_QUERY = "DELETE FROM Usernotifications WHERE idNotifications = :idNotif";
+                try{
+                    session.createQuery(DELETE_QUERY).setParameter("idNotif", selected.get(i).id).executeUpdate();
 
-            }catch (Exception ex){
-                log.error("Notifications deletion unsuccessful " + "\n" + ex.getMessage());
-            }finally {
-                transaction.commit();
+                }catch (Exception ex){
+                    log.error("Notifications deletion unsuccessful " + "\n" + ex.getMessage());
+                }finally {
+                    transaction.commit();
+                }
             }
+
+            reload();
+            selected.clear();
         }
 
+
+    }
+
+    @FXML
+    private void RefreshNotification(){
+        reload();
+    }
+
+    private void reload() {
         Panes.loadNotifications(); // RELOAD NOTIFICATIONS
         notifs = UserSession.getNotifications(); // SET NOTIFICATIONS
         new Thread(() -> { // UI LOCKS IF NOT IN ANOTHER THREAD

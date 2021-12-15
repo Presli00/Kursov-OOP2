@@ -12,23 +12,23 @@
    <children>
       <AnchorPane prefHeight="91.0" prefWidth="923.0" style="-fx-background-color: #61F1FF; -fx-background-radius: 20;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <CheckBox fx:id="notificationCheck" layoutX="889.0" layoutY="37.0" mnemonicParsing="false" AnchorPane.bottomAnchor="37.0" AnchorPane.leftAnchor="889.0" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="37.0" />
-            <Text fx:id="notificationText" layoutX="30.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="592.13671875">
+            <CheckBox fx:id="notificationCheck" layoutX="837.0" layoutY="33.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="28.0" AnchorPane.bottomAnchor="32.0" AnchorPane.leftAnchor="837.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="33.0" />
+            <Text fx:id="notificationText" layoutX="37.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Сменете паролата си!" wrappingWidth="592.13671875">
                <font>
                   <Font name="Tahoma Bold" size="30.0" />
                </font>
             </Text>
-            <Label fx:id="timestampLabel" layoutX="657.0" layoutY="6.0" prefHeight="17.0" prefWidth="240.0">
+            <Label fx:id="timestampLabel" layoutX="37.0" layoutY="3.0" prefHeight="17.0" prefWidth="240.0" text="12/10/2021">
                <font>
                   <Font name="Tahoma" size="18.0" />
                </font>
             </Label>
+            <ImageView fx:id="isReadDot" fitHeight="30.0" fitWidth="28.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Images/redDot.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
-      <ImageView fx:id="isReadDot" fitHeight="30.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../Images/redDot.png" />
-         </image>
-      </ImageView>
    </children>
 </AnchorPane>

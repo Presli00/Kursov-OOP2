@@ -29,6 +29,8 @@ public class OwnerGUI {
     @FXML
     Text usernameText;
     @FXML
+    Button notificationsButton;
+    @FXML
     Text firstNameText;
     @FXML
     Text lastNameText;
