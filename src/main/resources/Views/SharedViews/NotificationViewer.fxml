@@ -68,10 +68,13 @@
                   </ToolBar>
                   <VBox fx:id="Vbox" prefHeight="354.0" prefWidth="585.0" spacing="10.0">
                      <padding>
-                        <Insets left="5.0" right="5.0" top="5.0" />
+                        <Insets left="5.0" right="15.0" top="5.0" />
                      </padding>
                   </VBox>
                </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="15.0" top="5.0" />
+               </padding>
             </VBox>
          </children></AnchorPane>
   </content>

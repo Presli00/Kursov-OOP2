@@ -67,13 +67,13 @@ public class AdminGUI {
 
     @FXML
     public void NotificationsOnAction() throws IOException {
-        ScrollPane sp = FXMLLoader.load(getClass().getResource("/Views/NotificationViews/NotificationViewer.fxml")); //LOAD VIEW
+        ScrollPane sp = FXMLLoader.load(getClass().getResource("/Views/SharedViews/NotificationViewer.fxml")); //LOAD VIEW
         Panes.setAndClearScrollPane(sp, ContentAnchorPane);
     }
 
     @FXML
     public void warehousesOnAction() throws IOException {
-        ScrollPane sp = FXMLLoader.load(getClass().getResource("/Views/AdminViews/AdminWarehouseViewer.fxml")); //LOAD VIEW
+        ScrollPane sp = FXMLLoader.load(getClass().getResource("/Views/SharedViews/WarehouseViewer.fxml")); //LOAD VIEW
         Panes.setAndClearScrollPane(sp, ContentAnchorPane);
     }
 
@@ -83,7 +83,7 @@ public class AdminGUI {
     }
 
     public void SettingOnAction() throws IOException {
-        AnchorPane ap = FXMLLoader.load(getClass().getResource("/Views/Settings.fxml")); //LOAD VIEW
+        AnchorPane ap = FXMLLoader.load(getClass().getResource("/Views/SharedViews/Settings.fxml")); //LOAD VIEW
         Panes.setAndClearAnchorPane(ap, ContentAnchorPane);
 
     }

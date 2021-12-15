@@ -16,9 +16,9 @@ public class StorageRoom implements Serializable {
     @ManyToOne
     @JoinColumn(name = "Climate_id", nullable = false)
     private Climate climateId;
-    @OneToMany
+    @OneToOne
     @JoinColumn(name = "product_id", nullable = false)
-    private Set<ProductType> productId;
+    private ProductType productId;
     @OneToMany
     @JoinColumn(name = "Formular_id", insertable = false, updatable = false)
     private Set<Formular> formulars;
@@ -47,11 +47,11 @@ public class StorageRoom implements Serializable {
         this.climateId = climateId;
     }
 
-    public Set<ProductType> getProductId() {
+    public ProductType getProductId() {
         return productId;
     }
 
-    public void setProductId(Set<ProductType> productId) {
+    public void setProductId(ProductType productId) {
         this.productId = productId;
     }
 

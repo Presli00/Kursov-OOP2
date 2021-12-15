@@ -14,7 +14,7 @@
 
 <AnchorPane fx:id="AnchorPane" prefHeight="435.0" prefWidth="606.0" style="-fx-background-color: #D9DDDC;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="KursovProektOOP2.controllers.Settings">
    <children>
-      <TabPane prefHeight="472.0" prefWidth="657.0" style="-fx-background-color: #D9DDDC;" stylesheets="@../Styles/TabPaneStyling.css" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <TabPane prefHeight="472.0" prefWidth="657.0" style="-fx-background-color: #D9DDDC;" stylesheets="@../../Styles/TabPaneStyling.css" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
           <Tab text="Смяна на данни">
             <content>
@@ -22,12 +22,12 @@
                      <children>
                         <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="167.0" layoutY="87.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../Images/UsernameIcon.png" />
+                              <Image url="@../../Images/UsernameIcon.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="171.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../Images/PasswordIcon.png" />
+                              <Image url="@../../Images/PasswordIcon.png" />
                            </image>
                         </ImageView>
                         <Label layoutX="154.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="350.0" text="Смяна на потребителско име и парола">

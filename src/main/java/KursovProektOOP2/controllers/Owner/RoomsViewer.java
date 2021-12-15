@@ -42,10 +42,10 @@ public class RoomsViewer {
             controller.sizeLabel.setText(String.valueOf(((StorageRoom) rooms.get(i)).getSize()));
             controller.climateLabel.setText(String.valueOf(((StorageRoom) rooms.get(i)).getClimateId().getClimate()));
             StringBuilder products=new StringBuilder();
-            for(int k = 0; k< ((StorageRoom) rooms.get(i)).getProductId().size(); k++){
-                List<ProductType> productsList = new ArrayList<>(((StorageRoom) rooms.get(i)).getProductId());
-                products.append(productsList.get(k).getType()+" ");
-            }
+//            for(int k = 0; k< ((StorageRoom) rooms.get(i)).getProductId().size(); k++){
+//                List<ProductType> productsList = new ArrayList<>(((StorageRoom) rooms.get(i)).getProductId());
+//                products.append(productsList.get(k).getType()+" ");
+//            }
             controller.productLabel.setText(String.valueOf(products));
 
             Vbox.getChildren().add(room);

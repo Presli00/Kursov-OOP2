@@ -1,11 +1,14 @@
-package KursovProektOOP2.controllers.Owner;
+package KursovProektOOP2.controllers;
 
 import KursovProektOOP2.data.entity.*;
 import KursovProektOOP2.data.repository.*;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
+import org.hibernate.Session;
+
 import java.util.List;
 
 public class WarehouseAdderForm {
@@ -107,9 +110,10 @@ public class WarehouseAdderForm {
             warehouse.setNumberOfStorageRooms(Integer.parseInt(roomAmountTF.getText()));
             warehouse.setMaintenanceId((Maintenance) maintenanceBox.getValue());
             warehouse.setAgentsId(null);
-            warehouseRepository.save(warehouse);
+            //warehouseRepository.save(warehouse);
             Owner owner = (Owner) ownerBox.getValue();
             owner.getWarehouses().add(warehouse);
+            owner.setWarehousesAmount(owner.getWarehousesAmount() + 1);
             ownerRepository.update(owner);
             stage.close();
         }

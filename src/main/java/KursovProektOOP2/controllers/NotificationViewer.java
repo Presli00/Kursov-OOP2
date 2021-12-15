@@ -52,7 +52,7 @@ public class NotificationViewer {
 
     private void buildNotifs() throws IOException {
         for(int i = 0; i < notifs.size(); i++){
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/NotificationViews/NotificationInfo.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/SharedViews/NotificationInfo.fxml"));
             AnchorPane notification = loader.load();
             NotificationInfo controller = loader.getController();
             controller.notificationText.setText(notifs.get(i).getNotificationName());

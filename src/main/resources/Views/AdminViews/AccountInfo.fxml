@@ -19,7 +19,7 @@
             <Font name="Arial" size="30.0" />
          </font>
       </Text>
-      <Text fx:id="roleText" layoutX="688.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Admin">
+      <Text fx:id="roleText" layoutX="688.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Admin" AnchorPane.rightAnchor="131.9658203125">
          <font>
             <Font name="Arial" size="30.0" />
          </font>
@@ -29,6 +29,6 @@
             <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
          </padding>
       </VBox>
-      <ToggleButton fx:id="moreInfoButton" layoutX="821.0" layoutY="15.0" mnemonicParsing="false" prefHeight="14.0" prefWidth="47.0" style="-fx-border-color: black;" styleClass="accbtns" stylesheets="@../../Styles/buttonStyling.css" text="▼" />
+      <ToggleButton fx:id="moreInfoButton" layoutX="821.0" layoutY="15.0" mnemonicParsing="false" prefHeight="14.0" prefWidth="47.0" style="-fx-border-color: black;" styleClass="accbtns" stylesheets="@../../Styles/buttonStyling.css" text="▼" AnchorPane.rightAnchor="37.0" />
    </children>
 </AnchorPane>

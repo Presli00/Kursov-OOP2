@@ -8,7 +8,6 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -58,7 +57,7 @@ public class OwnerGUI {
 
     @FXML
     public void NotificationsOnAction() throws IOException {
-        ScrollPane sp = FXMLLoader.load(getClass().getResource("/Views/NotificationViews/NotificationViewer.fxml")); //LOAD VIEW
+        ScrollPane sp = FXMLLoader.load(getClass().getResource("/Views/SharedViews/NotificationViewer.fxml")); //LOAD VIEW
         Panes.setAndClearScrollPane(sp, ContentAnchorPane);
     }
 
@@ -70,12 +69,12 @@ public class OwnerGUI {
 
     @FXML
     public void WarehouseOnAction() throws IOException {
-        ScrollPane sp = FXMLLoader.load(getClass().getResource("/Views/OwnerViews/OwnerWarehousesViewer.fxml"));
+        ScrollPane sp = FXMLLoader.load(getClass().getResource("/Views/SharedViews/WarehouseViewer.fxml"));
         Panes.setAndClearScrollPane(sp, ContentAnchorPane);
     }
 
     public void SettingOnAction() throws IOException {
-        AnchorPane ap = FXMLLoader.load(getClass().getResource("/Views/Settings.fxml")); //LOAD VIEW
+        AnchorPane ap = FXMLLoader.load(getClass().getResource("/Views/SharedViews/Settings.fxml")); //LOAD VIEW
         Panes.setAndClearAnchorPane(ap, ContentAnchorPane);
     }
     public void logOutOnAction() throws IOException {

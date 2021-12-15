@@ -1233,3 +1233,13 @@ Cannot invoke "javafx.scene.image.ImageView.setVisible(boolean)" because "imgVie
 [JavaFX Application Thread] ERROR KursovProektOOP2.data.access.Connection  - Initialization of sessionFactory failedorg.hibernate.boot.registry.classloading.spi.ClassLoadingException: Unable to load class [KursovProektOOP2.data.entity.AgentsList]
 [JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Login unsuccessfulNo entity found for query
 [JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Login unsuccessfulNo entity found for query
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Login unsuccessfulNo entity found for query
+[JavaFX Application Thread] ERROR KursovProektOOP2.data.repository.UserRepository  - Owner update errorIllegal attempt to associate a collection with two open sessions. Collection : [KursovProektOOP2.data.entity.Owner.warehouses#1]
+[JavaFX Application Thread] ERROR KursovProektOOP2.data.repository.UserRepository  - Owner update errorIllegal attempt to associate a collection with two open sessions. Collection : [KursovProektOOP2.data.entity.Owner.warehouses#1]
+[JavaFX Application Thread] ERROR KursovProektOOP2.data.repository.UserRepository  - Owner update errorIllegal attempt to associate a collection with two open sessions. Collection : [KursovProektOOP2.data.entity.Owner.warehouses#1]
+[JavaFX Application Thread] ERROR KursovProektOOP2.data.repository.UserRepository  - Owner save errorIllegal attempt to associate a collection with two open sessions. Collection : [KursovProektOOP2.data.entity.Owner.warehouses#1]
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - (conn=169) Field 'owner_id' doesn't have a default value
+[JavaFX Application Thread] ERROR KursovProektOOP2.data.repository.UserRepository  - Owner update errorIllegal attempt to associate a collection with two open sessions. Collection : [KursovProektOOP2.data.entity.Owner.warehouses#1]
+[JavaFX Application Thread] ERROR KursovProektOOP2.data.repository.UserRepository  - Owner update error Illegal attempt to associate a collection with two open sessions. Collection : [KursovProektOOP2.data.entity.Owner.warehouses#1]
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - (conn=175) Field 'owner_id' doesn't have a default value
+[JavaFX Application Thread] ERROR KursovProektOOP2.data.repository.UserRepository  - Owner update errorIllegal attempt to associate a collection with two open sessions. Collection : [KursovProektOOP2.data.entity.Owner.warehouses#1]
