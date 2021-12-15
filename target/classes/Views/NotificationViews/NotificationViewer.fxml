@@ -17,7 +17,7 @@
          <children>
             <VBox prefHeight="399.0" prefWidth="585.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <ToolBar prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #FFBE61; -fx-background-radius: 20;">
+                  <ToolBar prefHeight="32.0" prefWidth="585.0" style="-fx-background-color: #FFBE61; -fx-background-radius: 20;">
                      <items>
                         <Button minWidth="23.0" mnemonicParsing="false" onAction="#MarkAsRead" prefHeight="35.0" prefWidth="40.0" style="-fx-background-radius: 70; -fx-background-color: #006400;">
                            <font>
@@ -47,6 +47,21 @@
                            </graphic>
                            <tooltip>
                               <Tooltip text="Delete" />
+                           </tooltip>
+                        </Button>
+                        <Button minWidth="23.0" mnemonicParsing="false" onAction="#RefreshNotification" prefHeight="35.0" prefWidth="40.0" style="-fx-background-radius: 70; -fx-background-color: #2986cc;">
+                           <font>
+                              <Font name="Tahoma Bold" size="12.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="22.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../Images/refreshIcon.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="Refresh" />
                            </tooltip>
                         </Button>
                      </items>

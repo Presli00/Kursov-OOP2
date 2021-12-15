@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane fx:id="ScrollPane" hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="480.0" prefWidth="900.0" style="-fx-background-color: #FF6F61;" vbarPolicy="ALWAYS" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="KursovProektOOP2.controllers.AdminAccountViewer">
+<ScrollPane fx:id="ScrollPane" hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="480.0" prefWidth="900.0" style="-fx-background-color: #FF6F61;" vbarPolicy="ALWAYS" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="KursovProektOOP2.controllers.Admin.AdminAccountViewer">
    <content>
       <AnchorPane fx:id="AnchorPane" prefHeight="478.0" prefWidth="886.0" style="-fx-background-color: #FF6F61;">
          <children>

@@ -1,5 +1,7 @@
-package KursovProektOOP2.controllers;
+package KursovProektOOP2.controllers.Admin;
 
+import KursovProektOOP2.controllers.LoginMenu;
+import KursovProektOOP2.controllers.Main;
 import KursovProektOOP2.util.Panes;
 import KursovProektOOP2.util.UserSession;
 import javafx.application.Platform;
@@ -40,7 +42,7 @@ public class AdminGUI {
     @FXML
     Text lastNameText;
     @FXML
-    ImageView exclamationMark;
+    public ImageView exclamationMark;
     public Timer adminTimer = new Timer();
     private static final Logger log = Logger.getLogger(Main.class);
 

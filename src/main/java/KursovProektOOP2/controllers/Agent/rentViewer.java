@@ -1,5 +1,6 @@
-package KursovProektOOP2.controllers;
+package KursovProektOOP2.controllers.Agent;
 
+import KursovProektOOP2.controllers.Main;
 import KursovProektOOP2.data.entity.Formular;
 import KursovProektOOP2.data.repository.FormularRepository;
 import javafx.fxml.FXML;

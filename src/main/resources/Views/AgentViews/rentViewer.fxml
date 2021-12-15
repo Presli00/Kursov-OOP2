@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane fx:id="ScrollPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FF6F61;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="KursovProektOOP2.controllers.rentViewer">
+<ScrollPane fx:id="ScrollPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FF6F61;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="KursovProektOOP2.controllers.Agent.rentViewer">
   <content>
     <AnchorPane fx:id="AnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="399.0" prefWidth="585.0" style="-fx-background-color: #FF6F61;">
          <children>

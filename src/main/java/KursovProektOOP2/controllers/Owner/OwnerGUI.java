@@ -1,5 +1,7 @@
-package KursovProektOOP2.controllers;
+package KursovProektOOP2.controllers.Owner;
 
+import KursovProektOOP2.controllers.LoginMenu;
+import KursovProektOOP2.controllers.Main;
 import KursovProektOOP2.util.Panes;
 import KursovProektOOP2.util.UserSession;
 import javafx.application.Platform;
@@ -35,7 +37,7 @@ public class OwnerGUI {
     @FXML
     Text lastNameText;
     @FXML
-    ImageView exclamationMark;
+    public ImageView exclamationMark;
     public Timer ownerTimer = new Timer();
     // Functions
     private static final Logger log = Logger.getLogger(Main.class);

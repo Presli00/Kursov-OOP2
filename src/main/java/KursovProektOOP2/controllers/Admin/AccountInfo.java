@@ -1,4 +1,4 @@
-package KursovProektOOP2.controllers;
+package KursovProektOOP2.controllers.Admin;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

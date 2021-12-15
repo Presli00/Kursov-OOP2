@@ -1,5 +1,6 @@
-package KursovProektOOP2.controllers;
+package KursovProektOOP2.controllers.Owner;
 
+import KursovProektOOP2.controllers.Main;
 import KursovProektOOP2.data.entity.Warehouse;
 import KursovProektOOP2.data.repository.WarehouseRepository;
 import KursovProektOOP2.util.Panes;

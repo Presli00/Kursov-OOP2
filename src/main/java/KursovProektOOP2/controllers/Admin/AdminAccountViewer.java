@@ -1,5 +1,6 @@
-package KursovProektOOP2.controllers;
+package KursovProektOOP2.controllers.Admin;
 
+import KursovProektOOP2.controllers.Admin.AccountInfo;
 import KursovProektOOP2.data.entity.Agent;
 import KursovProektOOP2.data.entity.Owner;
 import KursovProektOOP2.data.entity.User;

@@ -1,5 +1,7 @@
-package KursovProektOOP2.controllers;
+package KursovProektOOP2.controllers.Owner;
 
+import KursovProektOOP2.controllers.Main;
+import KursovProektOOP2.controllers.Owner.RoomsInfo;
 import KursovProektOOP2.data.entity.ProductType;
 import KursovProektOOP2.data.entity.StorageRoom;
 import KursovProektOOP2.data.repository.StorageRoomRepository;

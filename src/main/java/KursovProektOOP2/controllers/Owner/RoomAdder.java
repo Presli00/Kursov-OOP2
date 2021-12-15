@@ -1,4 +1,4 @@
-package KursovProektOOP2.controllers;
+package KursovProektOOP2.controllers.Owner;
 
 import KursovProektOOP2.data.entity.Climate;
 import KursovProektOOP2.data.entity.ProductType;

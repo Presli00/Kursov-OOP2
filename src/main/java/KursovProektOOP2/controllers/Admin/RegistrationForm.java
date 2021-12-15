@@ -1,4 +1,4 @@
-package KursovProektOOP2.controllers;
+package KursovProektOOP2.controllers.Admin;
 
 import KursovProektOOP2.data.entity.Role;
 import KursovProektOOP2.data.entity.User;

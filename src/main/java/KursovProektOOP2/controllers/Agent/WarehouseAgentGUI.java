@@ -1,5 +1,7 @@
-package KursovProektOOP2.controllers;
+package KursovProektOOP2.controllers.Agent;
 
+import KursovProektOOP2.controllers.LoginMenu;
+import KursovProektOOP2.controllers.Main;
 import KursovProektOOP2.util.Panes;
 import KursovProektOOP2.util.UserSession;
 import javafx.application.Platform;
@@ -36,7 +38,7 @@ public class WarehouseAgentGUI {
     @FXML
     Text lastNameText;
     @FXML
-    ImageView exclamationMark;
+    public ImageView exclamationMark;
     public Timer agentTimer = new Timer();
     private static final Logger log = Logger.getLogger(Main.class);
 
@@ -67,8 +69,8 @@ public class WarehouseAgentGUI {
 
     @FXML
     public void rentOnAction() throws IOException {
-        AnchorPane ap = FXMLLoader.load(getClass().getResource("/Views/AgentViews/rentViewer.fxml")); //LOAD VIEW
-        Panes.setAndClearAnchorPane(ap, ContentAnchorPane);
+        ScrollPane sp = FXMLLoader.load(getClass().getResource("/Views/AgentViews/rentViewer.fxml")); //LOAD VIEW
+        Panes.setAndClearScrollPane(sp, ContentAnchorPane);
     }
 
     @FXML

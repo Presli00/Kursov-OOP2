@@ -1,4 +1,4 @@
-package KursovProektOOP2.controllers;
+package KursovProektOOP2.controllers.Owner;
 
 import KursovProektOOP2.data.entity.*;
 import KursovProektOOP2.data.repository.*;
