@@ -1232,3 +1232,4 @@ Cannot invoke "javafx.scene.image.ImageView.setVisible(boolean)" because "imgVie
 [JavaFX Application Thread] ERROR KursovProektOOP2.data.access.Connection  - Initialization of sessionFactory failedorg.hibernate.boot.registry.classloading.spi.ClassLoadingException: Unable to load class [KursovProektOOP2.data.entity.AgentsList]
 [JavaFX Application Thread] ERROR KursovProektOOP2.data.access.Connection  - Initialization of sessionFactory failedorg.hibernate.boot.registry.classloading.spi.ClassLoadingException: Unable to load class [KursovProektOOP2.data.entity.AgentsList]
 [JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Login unsuccessfulNo entity found for query
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Login unsuccessfulNo entity found for query

@@ -1,34 +1,22 @@
 package KursovProektOOP2.controllers;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 
 public class AccountInfo {
     @FXML
-    Label idLabel;
+    Text idText;
     @FXML
-    Label usernameLabel;
+    Text usernameText;
     @FXML
-    Label roleLabel;
+    Text roleText;
     @FXML
-    Label firstnameLabel;
+    ToggleButton moreInfoButton;
     @FXML
-    Label lastnameLabel;
-    @FXML
-    Label emailLabel;
-    @FXML
-    Label phoneLabel;
-    @FXML
-    Label WarehousesOrRatingLabel;
-    @FXML
-    Label WarehousesOrRatingNumLabel;
-    @FXML
-    Label successfulDealsLabel;
-    @FXML
-    Label successfulDealsNumLabel;
-    @FXML
-    Label createdatLabel;
-    @FXML
-    Label lastupdatedatLabel;
+    VBox additionalInfoVbox;
 
 }

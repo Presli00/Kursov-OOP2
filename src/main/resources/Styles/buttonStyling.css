@@ -13,3 +13,19 @@
 .btns:focused {
     -fx-background-color: #8a8a8a;
 }
+
+
+.accbtns {
+    -fx-background-color: transparent;
+}
+
+.accbtns:hover {
+    -fx-background-color: #e8e8e8;
+}
+
+.accbtns:pressed {
+    -fx-background-color: #e3e3e3;
+}
+.accbtns:selected{
+    -fx-background-color: #d4d4d4;
+}
