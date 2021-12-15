@@ -28,6 +28,9 @@ public class Warehouse implements Serializable {
     @OneToMany
     @JoinColumn(name="Storage_room_id")
     private Set<StorageRoom> rooms;
+    @ManyToOne
+    @JoinColumn(name="Owner_id")
+    private Owner ownerId;
 
     public int getWarehouseId() {
         return warehouseId;
@@ -93,6 +96,14 @@ public class Warehouse implements Serializable {
         this.rooms = rooms;
     }
 
+    public Owner getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(Owner ownerId) {
+        this.ownerId = ownerId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -106,6 +117,7 @@ public class Warehouse implements Serializable {
         if (maintenanceId != warehouse.maintenanceId) return false;
         if (agentsId != warehouse.agentsId) return false;
         if (rooms != warehouse.rooms) return false;
+        if(ownerId!=warehouse.ownerId)return false;
         if (warehouseName != null ? !warehouseName.equals(warehouse.warehouseName) : warehouse.warehouseName != null)
             return false;
         if (street != null ? !street.equals(warehouse.street) : warehouse.street != null) return false;
@@ -124,6 +136,7 @@ public class Warehouse implements Serializable {
                 ", maintenanceId=" + maintenanceId +
                 ", agentsId=" + agentsId +
                 ", rooms="+rooms+
+                ", ownerId="+ownerId+
                 '}';
     }
 }

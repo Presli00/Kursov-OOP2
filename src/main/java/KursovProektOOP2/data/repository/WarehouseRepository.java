@@ -34,6 +34,7 @@ public class WarehouseRepository implements DAORepository{
             log.error("Warehouse save error" + ex.getMessage());
         } finally {
             transaction.commit();
+            session.merge(obj);
         }
     }
 
@@ -48,6 +49,7 @@ public class WarehouseRepository implements DAORepository{
             log.error("Warehouse update error" + ex.getMessage());
         } finally {
             transaction.commit();
+            session.merge(obj);
         }
     }
 

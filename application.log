@@ -1243,3 +1243,18 @@ Cannot invoke "javafx.scene.image.ImageView.setVisible(boolean)" because "imgVie
 [JavaFX Application Thread] ERROR KursovProektOOP2.data.repository.UserRepository  - Owner update error Illegal attempt to associate a collection with two open sessions. Collection : [KursovProektOOP2.data.entity.Owner.warehouses#1]
 [JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - (conn=175) Field 'owner_id' doesn't have a default value
 [JavaFX Application Thread] ERROR KursovProektOOP2.data.repository.UserRepository  - Owner update errorIllegal attempt to associate a collection with two open sessions. Collection : [KursovProektOOP2.data.entity.Owner.warehouses#1]
+[JavaFX Application Thread] ERROR KursovProektOOP2.data.repository.UserRepository  - Owner update errorIllegal attempt to associate a collection with two open sessions. Collection : [KursovProektOOP2.data.entity.Owner.warehouses#1]
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - (conn=40) Column 'owner_id' cannot be null
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - (conn=42) Column 'owner_id' cannot be null
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - (conn=44) Column 'owner_id' cannot be null
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - (conn=47) Column 'owner_id' cannot be null
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - (conn=49) Column 'owner_id' cannot be null
+[JavaFX Application Thread] ERROR KursovProektOOP2.data.repository.UserRepository  - Owner update errorIllegal attempt to associate a collection with two open sessions. Collection : [KursovProektOOP2.data.entity.Owner.warehouses#1]
+[JavaFX Application Thread] ERROR KursovProektOOP2.data.repository.UserRepository  - Owner update errorIllegal attempt to associate a collection with two open sessions. Collection : [KursovProektOOP2.data.entity.Owner.warehouses#1]
+[JavaFX Application Thread] ERROR KursovProektOOP2.data.repository.UserRepository  - Owner save errorIllegal attempt to associate a collection with two open sessions. Collection : [KursovProektOOP2.data.entity.Owner.warehouses#1]
+[JavaFX Application Thread] ERROR KursovProektOOP2.data.repository.UserRepository  - Owner update errorIllegal attempt to associate a collection with two open sessions. Collection : [KursovProektOOP2.data.entity.Owner.warehouses#1]
+[JavaFX Application Thread] ERROR KursovProektOOP2.data.repository.UserRepository  - Owner update errorIllegal attempt to associate a collection with two open sessions. Collection : [KursovProektOOP2.data.entity.Owner.warehouses#1]
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - (conn=84) Unknown column 'w.owner_id' in 'where clause'
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - (conn=87) Unknown column 'owner_id' in 'where clause'
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - (conn=90) Unknown column 'owner_id' in 'where clause'
+[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - (conn=92) Unknown column 'warehouseAmount' in 'field list'

@@ -22,6 +22,9 @@ public class StorageRoom implements Serializable {
     @OneToMany
     @JoinColumn(name = "Formular_id", insertable = false, updatable = false)
     private Set<Formular> formulars;
+    @ManyToOne
+    @JoinColumn(name="WarehouseId")
+    private Warehouse warehouse;
 
     public int getStorageRoomId() {
         return storageRoomId;
@@ -61,6 +64,14 @@ public class StorageRoom implements Serializable {
 
     public void setFormulars(Set<Formular> formulars) {
         this.formulars = formulars;
+    }
+
+    public Warehouse getwarehouse() {
+        return warehouse;
+    }
+
+    public void setwarehouse(Warehouse warehouse) {
+        this.warehouse = warehouse;
     }
 
     @Override

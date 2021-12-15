@@ -20,6 +20,9 @@ public class Formular implements Serializable {
     private Timestamp periodEnd;
     @Column(name = "Price", nullable = false)
     private double price;
+    @ManyToOne
+    @JoinColumn(name="StorageRoom_id")
+    private StorageRoom storageRoom;
 
     public int getFormularId() {
         return formularId;
@@ -59,6 +62,14 @@ public class Formular implements Serializable {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public StorageRoom getStorageRoom() {
+        return storageRoom;
+    }
+
+    public void setStorageRoom(StorageRoom storageRoom) {
+        this.storageRoom = storageRoom;
     }
 
     @Override
