@@ -32,3 +32,8 @@
     -fx-alignment: CENTER;
     -fx-text-fill: #96b946;
 }
+
+.backgroundColor{
+    -fx-background-color: linear-gradient(to right bottom,#00807A,#006A89);
+    -fx-opacity: 0.7;
+}
