@@ -32,6 +32,11 @@ public class Warehouse implements Serializable {
     @JoinColumn(name="Owner_id")
     private Owner ownerId;
 
+    public void addRoom(StorageRoom room) {
+        rooms.add(room);
+        room.setwarehouse(this);
+    }
+
     public int getWarehouseId() {
         return warehouseId;
     }

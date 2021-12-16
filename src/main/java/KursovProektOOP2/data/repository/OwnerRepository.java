@@ -32,7 +32,19 @@ public class OwnerRepository implements DAORepository {
             log.error("Owner save error" + ex.getMessage());
         } finally {
             transaction.commit();
+        }
+    }
+
+    public void merge(Object obj) {
+        Session session = Connection.openSession();
+        Transaction transaction = session.beginTransaction();
+        try {
             session.merge(obj);
+            log.info("Owner merged successfully");
+        } catch (Exception ex) {
+            log.error("Owner merge error" + ex.getMessage());
+        } finally {
+            transaction.commit();
         }
     }
 
@@ -47,7 +59,6 @@ public class OwnerRepository implements DAORepository {
             log.error("Owner update error" + ex.getMessage());
         } finally {
             transaction.commit();
-            session.merge(obj);
         }
     }
 

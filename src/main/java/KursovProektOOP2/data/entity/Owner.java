@@ -20,6 +20,12 @@ public class Owner implements Serializable {
     @JoinColumn(name = "Warehouse_id")
     private Set<Warehouse> warehouses;
 
+    public void addWarehouse(Warehouse warehouse) {
+        warehouses.add(warehouse);
+        warehouse.setOwnerId(this);
+        setWarehousesAmount(getWarehousesAmount() + 1);
+    }
+
     public int getIdOwner() {
         return idOwner;
     }

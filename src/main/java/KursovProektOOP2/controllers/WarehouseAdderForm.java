@@ -112,13 +112,12 @@ public class WarehouseAdderForm {
             warehouse.setStreet(streetTF.getText());
             warehouse.setNumberOfStorageRooms(Integer.parseInt(roomAmountTF.getText()));
             warehouse.setMaintenanceId((Maintenance) maintenanceBox.getValue());
-            warehouse.setOwnerId((Owner) ownerBox.getValue());
             warehouse.setAgentsId(null);
-            warehouseRepository.save(warehouse);
-            /*Owner owner = (Owner) ownerBox.getValue();
-            owner.getWarehouses().add(warehouse);
-            owner.setWarehousesAmount(owner.getWarehousesAmount() + 1);
-            ownerRepository.update(owner);*/
+            //warehouse.setOwnerId((Owner) ownerBox.getValue());
+            //warehouseRepository.save(warehouse);
+            Owner owner = (Owner) ownerBox.getValue();
+            owner.addWarehouse(warehouse);
+            ownerRepository.merge(owner);
             stage.close();
         }
     }
