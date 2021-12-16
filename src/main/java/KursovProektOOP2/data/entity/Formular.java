@@ -24,6 +24,7 @@ public class Formular implements Serializable {
     @JoinColumn(name="StorageRoom_id")
     private StorageRoom storageRoom;
 
+
     public int getFormularId() {
         return formularId;
     }

@@ -13,7 +13,7 @@ public class StorageRoom implements Serializable {
     private int storageRoomId;
     @Column(name = "Size", nullable = false)
     private double size;
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "Climate_id", nullable = false)
     private Climate climateId;
     @OneToOne
@@ -25,6 +25,11 @@ public class StorageRoom implements Serializable {
     @ManyToOne
     @JoinColumn(name="WarehouseId")
     private Warehouse warehouse;
+
+    public void addFormular(Formular formular) {
+        formulars.add(formular);
+        formular.setStorageRoom(this);
+    }
 
     public int getStorageRoomId() {
         return storageRoomId;

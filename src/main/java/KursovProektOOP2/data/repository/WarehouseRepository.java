@@ -53,6 +53,19 @@ public class WarehouseRepository implements DAORepository{
         }
     }
 
+    public void merge(Object obj) {
+        Session session = Connection.openSession();
+        Transaction transaction = session.beginTransaction();
+        try {
+            session.merge(obj);
+            log.info("Warehouse merged successfully");
+        } catch (Exception ex) {
+            log.error("Warehouse merge error" + ex.getMessage());
+        } finally {
+            transaction.commit();
+        }
+    }
+
     @Override
     public void delete(Object obj) {
         Session session = Connection.openSession();
