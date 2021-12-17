@@ -5,7 +5,6 @@ import KursovProektOOP2.controllers.Agent.WarehouseAgentGUI;
 import KursovProektOOP2.controllers.Owner.OwnerGUI;
 import KursovProektOOP2.data.access.Connection;
 import KursovProektOOP2.data.entity.Usernotifications;
-import KursovProektOOP2.data.repository.UserNotificationRepository;
 import KursovProektOOP2.util.Panes;
 import KursovProektOOP2.util.UserSession;
 import javafx.application.Platform;
@@ -33,7 +32,6 @@ public class NotificationViewer {
 
     List<Usernotifications> notifs;
     List<NotificationInfo> selected = new ArrayList<>();
-    public final UserNotificationRepository repository = UserNotificationRepository.getInstance();
     private static final Logger log = Logger.getLogger(Main.class);
 
 

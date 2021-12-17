@@ -56,10 +56,6 @@ public class UserSession {
         return last_name;
     }
 
-    public static List<Usernotifications> getNotifications() {
-        return notifications;
-    }
-
     public static void setOwnerObject(Owner owner) {
         UserSession.owner = owner;
     }
@@ -78,6 +74,10 @@ public class UserSession {
 
     public static void setNotifications(List<Usernotifications> notifications) {
         UserSession.notifications = notifications;
+    }
+
+    public static List<Usernotifications> getNotifications() {
+        return notifications;
     }
 
     public static Role getRoleID() {

@@ -1,5 +1,7 @@
 package KursovProektOOP2.controllers;
 
+import KursovProektOOP2.data.entity.Owner;
+import KursovProektOOP2.data.repository.OwnerRepository;
 import KursovProektOOP2.util.UserSession;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +15,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.List;
 
 public class WarehouseViewer {
     @FXML
@@ -22,6 +25,7 @@ public class WarehouseViewer {
     @FXML
     VBox Vbox;
     Stage stage = new Stage();
+    public final OwnerRepository ownerRepository = OwnerRepository.getInstance();
 
     @FXML
     private void initialize(){
@@ -48,6 +52,11 @@ public class WarehouseViewer {
             toolBar.getItems().add(addWarehouse);
             Vbox.getChildren().add(toolBar);
         }
+//        List<Owner> owners = ownerRepository.getAll();
+//        for(int i = 0; i < owners.size(); i++){
+//            System.out.println(owners.get(i).toString());
+//        }
+
         
         ScrollPane.widthProperty().addListener(event -> {
             AnchorPane.setPrefWidth(ScrollPane.getWidth());

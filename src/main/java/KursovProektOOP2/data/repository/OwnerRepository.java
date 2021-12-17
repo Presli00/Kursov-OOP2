@@ -35,19 +35,6 @@ public class OwnerRepository implements DAORepository {
         }
     }
 
-    public void merge(Object obj) {
-        Session session = Connection.openSession();
-        Transaction transaction = session.beginTransaction();
-        try {
-            session.merge(obj);
-            log.info("Owner merged successfully");
-        } catch (Exception ex) {
-            log.error("Owner merge error" + ex.getMessage());
-        } finally {
-            transaction.commit();
-        }
-    }
-
     @Override
     public void update(Object obj) {
         Session session = Connection.openSession();
@@ -59,6 +46,7 @@ public class OwnerRepository implements DAORepository {
             log.error("Owner update error" + ex.getMessage());
         } finally {
             transaction.commit();
+            session.close();
         }
     }
 
@@ -77,7 +65,7 @@ public class OwnerRepository implements DAORepository {
     }
 
     @Override
-    public Optional getById(Long id) {
+    public Optional getById(int id) {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
         Optional<Owner> foundOwner = null;
@@ -88,6 +76,7 @@ public class OwnerRepository implements DAORepository {
             log.error("Owner get by id error" + ex.getMessage());
         } finally {
             transaction.commit();
+            session.close();
         }
         return foundOwner;
     }
