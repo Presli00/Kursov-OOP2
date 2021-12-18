@@ -24,7 +24,7 @@
             <Font name="Arial" size="30.0" />
          </font>
       </Text>
-      <VBox fx:id="additionalInfoVbox" alignment="CENTER_LEFT" layoutX="59.0" layoutY="42.0" prefHeight="1.0" prefWidth="815.0" spacing="10.0" style="-fx-border-color: black;" visible="false" AnchorPane.leftAnchor="59.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="42.0">
+      <VBox fx:id="additionalInfoVbox" alignment="CENTER_LEFT" layoutX="59.0" layoutY="42.0" prefHeight="1.0" prefWidth="815.0" spacing="10.0" visible="false" AnchorPane.leftAnchor="59.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="42.0">
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
          </padding>

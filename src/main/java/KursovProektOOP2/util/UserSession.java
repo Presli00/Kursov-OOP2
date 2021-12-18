@@ -1,35 +1,22 @@
 package KursovProektOOP2.util;
 
-import KursovProektOOP2.data.entity.Agent;
-import KursovProektOOP2.data.entity.Owner;
-import KursovProektOOP2.data.entity.Role;
-import KursovProektOOP2.data.entity.Usernotifications;
+import KursovProektOOP2.data.entity.*;
 
 import java.util.List;
 
 public class UserSession {
+    private static User user;
     private static UserSession instance;
-    private static int userID;
-    private static String userName;
-    private static String password;
-    private static String first_name;
-    private static String last_name;
-    private static Role roleID;
     private static Owner owner;
     private static Agent agent;
     private static List<Usernotifications> notifications;
-    public UserSession(int userID, String userName, String password, String first_name, String last_name, Role roleID) {
-        this.userID=userID;
-        this.userName = userName;
-        this.password = password;
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.roleID = roleID;
+    public UserSession(User user) {
+        this.user = user;
     }
 
-    public static UserSession getInstance(int userID, String userName, String password, String first_name, String last_name, Role roleID) {
+    public static UserSession getInstance(User user) {
         if(instance == null) {
-            instance = new UserSession(userID, userName, password, first_name,last_name, roleID);
+            instance = new UserSession(user);
         }
         return instance;
     }
@@ -37,39 +24,39 @@ public class UserSession {
     public static UserSession getInstance(){ return instance;}
 
     public static int getUserID() {
-        return userID;
+        return user.getUserId();
     }
 
     public static String getUserName() {
-        return userName;
+        return user.getUsername();
     }
 
-    public static String getpassword() {
-        return password;
-    }
-
-    public static String getFirst_name() {
-        return first_name;
-    }
-
-    public static String getLast_name() {
-        return last_name;
-    }
-
-    public static void setOwnerObject(Owner owner) {
-        UserSession.owner = owner;
-    }
-
-    public static void setAgentObject(Agent agent) {
-        UserSession.agent = agent;
-    }
-
-    public static Owner getOwnerObject() {
+    public static Owner getOwner() {
         return owner;
     }
 
-    public static Agent getAgentObject() {
+    public static void setOwner(Owner owner) {
+        UserSession.owner = owner;
+    }
+
+    public static Agent getAgent() {
         return agent;
+    }
+
+    public static void setAgent(Agent agent) {
+        UserSession.agent = agent;
+    }
+
+    public static String getpassword() {
+        return user.getPassword();
+    }
+
+    public static String getFirst_name() {
+        return user.getFirstName();
+    }
+
+    public static String getLast_name() {
+        return user.getLastName();
     }
 
     public static void setNotifications(List<Usernotifications> notifications) {
@@ -81,7 +68,7 @@ public class UserSession {
     }
 
     public static Role getRoleID() {
-        return roleID;
+        return user.getRoleId();
     }
 
     public static void cleanUserSession() {
@@ -91,11 +78,11 @@ public class UserSession {
     @Override
     public String toString() {
         return "UserSession{" +
-                "userName='" + userName + '\'' +
-                ", privileges='" + password + '\'' +
-                ", userID=" + userID +
-                ", firstName="+first_name+
-                ", lastName="+last_name+
+                "userName='" + user.getUsername() + '\'' +
+                ", privileges='" + user.getPassword() + '\'' +
+                ", userID=" + user.getUserId() +
+                ", firstName="+user.getFirstName()+
+                ", lastName="+user.getLastName()+
                 '}';
     }
 }

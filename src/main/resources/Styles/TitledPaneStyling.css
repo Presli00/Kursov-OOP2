@@ -1,0 +1,12 @@
+.titled-pane .title
+{
+    -fx-background-color: #cccfce;
+}
+.titled-pane > .title > .arrow-button .arrow
+{
+    -fx-shape: "M 4 7";
+}
+.titled-pane:collapsed > .title > .arrow-button .arrow
+{
+    -fx-rotate: -180;
+}

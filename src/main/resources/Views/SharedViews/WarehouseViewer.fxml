@@ -9,7 +9,7 @@
   <content>
     <AnchorPane fx:id="AnchorPane" prefHeight="399.0" prefWidth="585.0" style="-fx-background-color: #D9DDDC;">
          <children>
-            <VBox fx:id="Vbox" layoutX="243.0" layoutY="136.0" prefHeight="399.0" prefWidth="585.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <VBox fx:id="Vbox" layoutX="243.0" layoutY="136.0" prefHeight="399.0" prefWidth="585.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="15.0" top="5.0" />
                </padding></VBox>
