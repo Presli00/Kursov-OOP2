@@ -1300,3 +1300,6 @@ Cannot read field "value" because "s1" is null
 [JavaFX Application Thread] ERROR KursovProektOOP2.data.repository.UserRepository  - Owner update errorIllegal attempt to associate a collection with two open sessions. Collection : [KursovProektOOP2.data.entity.Owner.warehouses#1]
 [JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Login unsuccessfulNo entity found for query
 [JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Login unsuccessfulNo entity found for query
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - User not found
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - User not found
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - User not found
