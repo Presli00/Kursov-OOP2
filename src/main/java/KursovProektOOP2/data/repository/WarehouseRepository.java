@@ -1,6 +1,7 @@
 package KursovProektOOP2.data.repository;
 
 import KursovProektOOP2.data.access.Connection;
+import KursovProektOOP2.data.entity.Owner;
 import KursovProektOOP2.data.entity.User;
 import KursovProektOOP2.data.entity.Warehouse;
 import org.apache.log4j.Logger;
@@ -14,6 +15,7 @@ import java.util.Optional;
 public class WarehouseRepository implements DAORepository{
 
     private static final Logger log = Logger.getLogger(WarehouseRepository.class);
+    public final OwnerRepository ownerRepository = OwnerRepository.getInstance();
 
     public static WarehouseRepository getInstance(){
         return WarehouseRepository.WarehouseRepositoryHolder.INSTANCE;
@@ -28,13 +30,14 @@ public class WarehouseRepository implements DAORepository{
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
         try {
+            //((Warehouse) obj).getOwnerId().setWarehousesAmount(((Warehouse) obj).getOwnerId().getWarehousesAmount() + 1);
             session.save(obj);
             log.info("Warehouse saved successfully");
         } catch (Exception ex) {
             log.error("Warehouse save error" + ex.getMessage());
         } finally {
             transaction.commit();
-            session.merge(obj);
+            session.close();
         }
     }
 
@@ -47,20 +50,6 @@ public class WarehouseRepository implements DAORepository{
             log.info("Warehouse updated successfully");
         } catch (Exception ex) {
             log.error("Warehouse update error" + ex.getMessage());
-        } finally {
-            transaction.commit();
-            session.merge(obj);
-        }
-    }
-
-    public void merge(Object obj) {
-        Session session = Connection.openSession();
-        Transaction transaction = session.beginTransaction();
-        try {
-            session.merge(obj);
-            log.info("Warehouse merged successfully");
-        } catch (Exception ex) {
-            log.error("Warehouse merge error" + ex.getMessage());
         } finally {
             transaction.commit();
         }
@@ -81,7 +70,7 @@ public class WarehouseRepository implements DAORepository{
     }
 
     @Override
-    public Optional getById(Long id) {
+    public Optional getById(int id) {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
         Optional<Warehouse> foundWarehouse = null;
@@ -112,4 +101,5 @@ public class WarehouseRepository implements DAORepository{
         }
         return warehouses;
     }
+
 }

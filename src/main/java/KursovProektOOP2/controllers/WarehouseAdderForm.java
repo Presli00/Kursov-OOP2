@@ -104,7 +104,10 @@ public class WarehouseAdderForm {
     @FXML
     public void addWarehouse() {
         Stage stage = (Stage) addWarehouseButton.getScene().getWindow();
-        if (validate()) {
+        if (validate()) { // if input is valid
+            Owner obj = (Owner) ownerBox.getValue();
+            Owner owner = ((Owner) ownerRepository.getById(obj.getIdOwner()).get());
+
             Warehouse warehouse = new Warehouse();
             warehouse.setWarehouseId(0);
             warehouse.setWarehouseName(warehouseNameTF.getText());
@@ -112,12 +115,12 @@ public class WarehouseAdderForm {
             warehouse.setStreet(streetTF.getText());
             warehouse.setNumberOfStorageRooms(Integer.parseInt(roomAmountTF.getText()));
             warehouse.setMaintenanceId((Maintenance) maintenanceBox.getValue());
+            warehouse.setOwnerId(owner);
             warehouse.setAgentsId(null);
-            //warehouse.setOwnerId((Owner) ownerBox.getValue());
-            //warehouseRepository.save(warehouse);
-            Owner owner = (Owner) ownerBox.getValue();
-            owner.addWarehouse(warehouse);
-            ownerRepository.merge(owner);
+            warehouseRepository.save(warehouse);
+
+            owner.setWarehousesAmount(owner.getWarehousesAmount() + 1);
+            ownerRepository.update(owner);
             stage.close();
         }
     }

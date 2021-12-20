@@ -5,6 +5,7 @@ import KursovProektOOP2.controllers.Agent.WarehouseAgentGUI;
 import KursovProektOOP2.controllers.Owner.OwnerGUI;
 import KursovProektOOP2.data.access.Connection;
 import KursovProektOOP2.data.entity.User;
+import KursovProektOOP2.data.entity.Usernotifications;
 import KursovProektOOP2.util.Panes;
 import KursovProektOOP2.util.UserSession;
 import javafx.fxml.FXML;
@@ -16,6 +17,8 @@ import javafx.stage.Stage;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+
+import java.util.List;
 
 public class LoginMenu {
     @FXML
@@ -53,17 +56,19 @@ public class LoginMenu {
             User result = (User) session.createQuery(LOGIN_QUERY).getSingleResult();
             if(result.getRoleId().getRoleId() == 1){ // LOAD ADMIN VIEW
                 closeLoginMenu();
-                UserSession.getInstance(result.getUserId(), result.getUsername(), result.getPassword(),result.getFirstName(),result.getLastName(), result.getRoleId());
+                UserSession.getInstance(result);
                 Panes.openWindow("/Views/AdminViews/AdminGUI.fxml", AdminGUI.class);
             }
             if(result.getRoleId().getRoleId() == 2){ // LOAD OWNER VIEW
                 closeLoginMenu();
-                UserSession.getInstance(result.getUserId(), result.getUsername(), result.getPassword(),result.getFirstName(),result.getLastName(), result.getRoleId());
+                UserSession.getInstance(result);
+                Panes.loadOwner();
                 Panes.openWindow("/Views/OwnerViews/OwnerGUI.fxml", OwnerGUI.class);
             }
             if(result.getRoleId().getRoleId() == 3){ // LOAD AGENT VIEW
                 closeLoginMenu();
-                UserSession.getInstance(result.getUserId(), result.getUsername(), result.getPassword(),result.getFirstName(),result.getLastName(), result.getRoleId());
+                UserSession.getInstance(result);
+                Panes.loadAgent();
                 Panes.openWindow("/Views/AgentViews/WarehouseAgentGUI.fxml", WarehouseAgentGUI.class);
             }
 

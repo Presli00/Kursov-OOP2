@@ -64,7 +64,7 @@ public class ProductTypeRepository implements DAORepository{
     }
 
     @Override
-    public Optional getById(Long id) {
+    public Optional getById(int id) {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
         Optional<ProductType> foundProductType = null;

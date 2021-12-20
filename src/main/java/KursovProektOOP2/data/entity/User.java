@@ -3,6 +3,8 @@ package KursovProektOOP2.data.entity;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.List;
+import java.util.Set;
 
 @Table(name = "User", schema = "warehouse")
 @Entity
@@ -29,6 +31,8 @@ public class User implements Serializable {
     private Timestamp createdDate;
     @Column(name = "updated_date")
     private Timestamp updatedDate;
+    @OneToMany(mappedBy = "idFromUser")
+    private List<Usernotifications> usernotifications;
 
     public int getUserId() {
         return userId;
@@ -108,6 +112,14 @@ public class User implements Serializable {
 
     public void setUpdatedDate(Timestamp updatedDate) {
         this.updatedDate = updatedDate;
+    }
+
+    public List<Usernotifications> getUsernotifications() {
+        return usernotifications;
+    }
+
+    public void setUsernotifications(List<Usernotifications> usernotifications) {
+        this.usernotifications = usernotifications;
     }
 
     @Override

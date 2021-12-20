@@ -16,8 +16,7 @@ public class Owner implements Serializable {
     private User userId;
     @Column(name = "warehousesAmount", nullable = false)
     private int warehousesAmount;
-    @OneToMany(cascade = { CascadeType.ALL })
-    @JoinColumn(name = "Warehouse_id")
+    @OneToMany(mappedBy = "ownerId", fetch = FetchType.EAGER)
     private Set<Warehouse> warehouses;
 
     public void addWarehouse(Warehouse warehouse) {

@@ -67,7 +67,7 @@ public class StorageRoomRepository implements DAORepository{
     }
 
     @Override
-    public Optional getById(Long id) {
+    public Optional getById(int id) {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
         Optional<StorageRoom> foundStorageRoom = null;

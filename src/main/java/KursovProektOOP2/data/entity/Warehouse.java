@@ -24,12 +24,16 @@ public class Warehouse implements Serializable {
     @JoinColumn(name = "Maintenance_id")
     private Maintenance maintenanceId;
     @ManyToMany
+    @JoinTable(
+            name = "warehouse_agent",
+            joinColumns = @JoinColumn(name = "warehouse_id"),
+            inverseJoinColumns = @JoinColumn(name = "agent_id")
+    )
     private Set<Agent> agentsId;
-    @OneToMany
-    @JoinColumn(name="Storage_room_id")
+    @OneToMany(mappedBy = "warehouse")
     private Set<StorageRoom> rooms;
     @ManyToOne
-    @JoinColumn(name="Owner_id")
+    @JoinColumn(name="owner_id")
     private Owner ownerId;
 
     public void addRoom(StorageRoom room) {

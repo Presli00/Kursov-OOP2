@@ -19,11 +19,10 @@ public class StorageRoom implements Serializable {
     @OneToOne
     @JoinColumn(name = "product_id", nullable = false)
     private ProductType productId;
-    @OneToMany
-    @JoinColumn(name = "Formular_id", insertable = false, updatable = false)
+    @OneToMany(mappedBy = "storageRoom")
     private Set<Formular> formulars;
     @ManyToOne
-    @JoinColumn(name="WarehouseId")
+    @JoinColumn(name="WarehouseID")
     private Warehouse warehouse;
 
     public void addFormular(Formular formular) {

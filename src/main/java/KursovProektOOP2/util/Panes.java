@@ -5,6 +5,7 @@ import KursovProektOOP2.controllers.Admin.AdminGUI;
 import KursovProektOOP2.controllers.Agent.WarehouseAgentGUI;
 import KursovProektOOP2.controllers.Owner.OwnerGUI;
 import KursovProektOOP2.data.access.Connection;
+import KursovProektOOP2.data.entity.Agent;
 import KursovProektOOP2.data.entity.Owner;
 import KursovProektOOP2.data.entity.Usernotifications;
 import javafx.application.Platform;
@@ -125,7 +126,7 @@ public class Panes {
         String OWNER_QUERY = "SELECT o FROM Owner o WHERE userId.userId = :userID";
         try {
             Owner result = (Owner) session.createQuery(OWNER_QUERY).setParameter("userID", UserSession.getUserID()).getSingleResult();
-            UserSession.setOwnerObject(result);
+            //UserSession.setOwnerObject(result);
         } catch (Exception ex) {
             log.error("Notifications retrieval unsuccessful " + "\n" + ex.getMessage());
         } finally {
@@ -133,6 +134,33 @@ public class Panes {
         }
     }
 
+    public static void loadOwner(){
+        Session session = Connection.openSession();
+        Transaction transaction = session.beginTransaction();
+        String OWNER_QUERY = "SELECT o FROM Owner o WHERE userId.userId = :userID";
+        try {
+            Owner result = (Owner) session.createQuery(OWNER_QUERY).setParameter("userID", UserSession.getUserID()).getSingleResult();
+            UserSession.setOwner(result);
+        } catch (Exception ex) {
+            log.error("Owner load unsuccessful " + "\n" + ex.getMessage());
+        } finally {
+            transaction.commit();
+        }
+    }
+
+    public static void loadAgent(){
+        Session session = Connection.openSession();
+        Transaction transaction = session.beginTransaction();
+        String AGENT_QUERY = "SELECT a FROM Agent a WHERE idFromUser.userId = :userID";
+        try {
+            Agent result = (Agent) session.createQuery(AGENT_QUERY).setParameter("userID", UserSession.getUserID()).getSingleResult();
+            UserSession.setAgent(result);
+        } catch (Exception ex) {
+            log.error("Agent load unsuccessful " + "\n" + ex.getMessage());
+        } finally {
+            transaction.commit();
+        }
+    }
     public static void setNameLabels(Text usernameText, Text firstNameText, Text lastNameText) {
         usernameText.setText(UserSession.getUserName());
         firstNameText.setText(UserSession.getFirst_name());
