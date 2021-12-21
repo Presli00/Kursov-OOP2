@@ -81,6 +81,7 @@ public class WarehouseRepository implements DAORepository{
             log.error("Warehouse get by id error" + ex.getMessage());
         } finally {
             transaction.commit();
+            session.close();
         }
         return foundWarehouse;
     }

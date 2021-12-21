@@ -74,6 +74,7 @@ public class ClimateRepository implements DAORepository{
             log.error("Climate get by id error" + ex.getMessage());
         } finally {
             transaction.commit();
+            session.close();
         }
         return Climate;
     }

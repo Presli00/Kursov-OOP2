@@ -35,6 +35,7 @@ public class StorageRoomRepository implements DAORepository{
             log.error("Storage room save error" + ex.getMessage());
         } finally {
             transaction.commit();
+            session.close();
         }
     }
 

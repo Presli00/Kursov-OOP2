@@ -30,7 +30,7 @@ public class Warehouse implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "agent_id")
     )
     private Set<Agent> agentsId;
-    @OneToMany(mappedBy = "warehouse")
+    @OneToMany(mappedBy = "warehouse", fetch = FetchType.EAGER)
     private Set<StorageRoom> rooms;
     @ManyToOne
     @JoinColumn(name="owner_id")

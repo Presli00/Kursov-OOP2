@@ -1303,3 +1303,4 @@ Cannot read field "value" because "s1" is null
 [JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - User not found
 [JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - User not found
 [JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - User not found
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Login unsuccessfulNo entity found for query

@@ -75,6 +75,7 @@ public class ProductTypeRepository implements DAORepository{
             log.error("ProductType get by id error" + ex.getMessage());
         } finally {
             transaction.commit();
+            session.close();
         }
         return foundProductType;
     }

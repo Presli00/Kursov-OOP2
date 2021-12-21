@@ -19,7 +19,9 @@ public class StorageRoom implements Serializable {
     @OneToOne
     @JoinColumn(name = "product_id", nullable = false)
     private ProductType productId;
-    @OneToMany(mappedBy = "storageRoom")
+    @Column(name = "Rented", nullable = false)
+    private boolean Rented;
+    @OneToMany(mappedBy = "storageRoom", fetch = FetchType.EAGER)
     private Set<Formular> formulars;
     @ManyToOne
     @JoinColumn(name="WarehouseID")
@@ -28,6 +30,14 @@ public class StorageRoom implements Serializable {
     public void addFormular(Formular formular) {
         formulars.add(formular);
         formular.setStorageRoom(this);
+    }
+
+    public boolean isRented() {
+        return Rented;
+    }
+
+    public void setRented(boolean rented) {
+        Rented = rented;
     }
 
     public int getStorageRoomId() {

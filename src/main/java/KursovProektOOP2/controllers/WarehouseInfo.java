@@ -1,5 +1,6 @@
 package KursovProektOOP2.controllers;
 
+import KursovProektOOP2.data.entity.Warehouse;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.TitledPane;
@@ -32,6 +33,7 @@ public class WarehouseInfo {
     TitledPane roomGridPane;
     @FXML
     VBox roomVbox;
+    Warehouse warehouse;
 
     @FXML
     private void initialize(){
