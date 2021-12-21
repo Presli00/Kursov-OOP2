@@ -223,7 +223,7 @@ public class WarehouseViewer {
         tooltip.setText(String.format( "\nSize: %1$s\n" +
                 "%2$s\n"+
                 "%3$s\n"+
-                "%4$s\n", warehouseRooms.get(i).getSize(), warehouseRooms.get(i).getClimateId().getClimate(), warehouseRooms.get(i).getProductId().getType(), warehouseRooms.get(i).isRented() ? "Rented" : "Free")
+                "%4$s\n", warehouseRooms.get(i).getSize()+" кубични метра", warehouseRooms.get(i).getClimateId().getClimate(), warehouseRooms.get(i).getProductId().getType(), warehouseRooms.get(i).isRented() ? "Rented" : "Free")
         );
         room.setTooltip(tooltip);
         if(warehouseRooms.get(i).getClimateId().getClimate().equals("Dry")){
