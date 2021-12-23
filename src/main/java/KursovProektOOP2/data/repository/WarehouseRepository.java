@@ -52,6 +52,7 @@ public class WarehouseRepository implements DAORepository{
             log.error("Warehouse update error" + ex.getMessage());
         } finally {
             transaction.commit();
+            session.close();
         }
     }
 

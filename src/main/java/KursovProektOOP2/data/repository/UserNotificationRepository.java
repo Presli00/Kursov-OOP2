@@ -33,6 +33,7 @@ public class UserNotificationRepository implements DAORepository {
             log.error("UserNotification save error" + ex.getMessage());
         } finally {
             transaction.commit();
+            session.close();
         }
     }
 

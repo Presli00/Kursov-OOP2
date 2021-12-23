@@ -1,13 +1,21 @@
 package KursovProektOOP2.controllers;
 
+import KursovProektOOP2.controllers.Owner.AgentAdder;
 import KursovProektOOP2.data.entity.Warehouse;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class WarehouseInfo {
 
@@ -33,7 +41,12 @@ public class WarehouseInfo {
     TitledPane roomGridPane;
     @FXML
     VBox roomVbox;
+    @FXML
+    VBox agentsVbox;
+    @FXML
+    Button addAgentButton;
     Warehouse warehouse;
+    Stage stage = new Stage();
 
     @FXML
     private void initialize(){
@@ -55,6 +68,24 @@ public class WarehouseInfo {
         }
         warehouseInfoPane.setExpanded(true);
         roomGridPane.setExpanded(true);
+    }
+
+    @FXML
+    private void assignAgents(){
+        Parent root = null;
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/OwnerViews/AgentAdder.fxml"));
+            root = loader.load();
+            AgentAdder controller = loader.getController();
+            controller.setWarehouseID(warehouse.getWarehouseId());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setTitle("Add Agent");
+        stage.setResizable(false);
+        stage.show();
     }
 
 }

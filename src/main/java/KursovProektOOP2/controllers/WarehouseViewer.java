@@ -85,6 +85,7 @@ public class WarehouseViewer {
                 controller.ownerNameText.setText(list.get(i).getOwnerId().getUserId().getUsername());
                 controller.cityText.setText(list.get(i).getCityId().getCity());
                 controller.streetText.setText(list.get(i).getStreet());
+                controller.agentsVbox.getChildren().remove(controller.addAgentButton);
                 HBox row = new HBox();
                 row.setSpacing(10);
                 List<StorageRoom> roomList = new ArrayList<>(list.get(i).getRooms());

@@ -23,7 +23,7 @@ public class Warehouse implements Serializable {
     @OneToOne
     @JoinColumn(name = "Maintenance_id")
     private Maintenance maintenanceId;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "warehouse_agent",
             joinColumns = @JoinColumn(name = "warehouse_id"),

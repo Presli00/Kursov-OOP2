@@ -31,7 +31,7 @@ public class User implements Serializable {
     private Timestamp createdDate;
     @Column(name = "updated_date")
     private Timestamp updatedDate;
-    @OneToMany(mappedBy = "idFromUser")
+    @OneToMany(mappedBy = "idFromUser", fetch = FetchType.EAGER)
     private List<Usernotifications> usernotifications;
 
     public int getUserId() {

@@ -13,7 +13,7 @@
       <AnchorPane prefHeight="91.0" prefWidth="923.0" style="-fx-background-color: #61F1FF; -fx-background-radius: 20;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <CheckBox fx:id="notificationCheck" layoutX="837.0" layoutY="33.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="28.0" AnchorPane.bottomAnchor="32.0" AnchorPane.leftAnchor="837.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="33.0" />
-            <Text fx:id="notificationText" layoutX="37.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Сменете паролата си!" wrappingWidth="592.13671875">
+            <Text fx:id="notificationText" layoutX="37.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Сменете паролата си!" wrappingWidth="761.13671875">
                <font>
                   <Font name="Tahoma Bold" size="30.0" />
                </font>

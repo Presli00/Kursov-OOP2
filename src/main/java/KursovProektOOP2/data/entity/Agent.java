@@ -18,7 +18,7 @@ public class Agent implements Serializable {
     private double rating;
     @Column(name = "dealAmount", nullable = false)
     private int dealAmount;
-    @ManyToMany(mappedBy = "agentsId")
+    @ManyToMany(mappedBy = "agentsId", fetch = FetchType.EAGER)
     private Set<Warehouse> warehouses;
 
     public int getIdAgent() {

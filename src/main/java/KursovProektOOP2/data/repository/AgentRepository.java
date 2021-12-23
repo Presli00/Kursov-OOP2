@@ -46,6 +46,7 @@ public class AgentRepository implements DAORepository {
             log.error("Agent update error" + ex.getMessage());
         } finally {
             transaction.commit();
+            session.close();
         }
     }
 
@@ -75,6 +76,7 @@ public class AgentRepository implements DAORepository {
             log.error("Agent get by id error" + ex.getMessage());
         } finally {
             transaction.commit();
+            session.close();
         }
         return foundAgent;
     }
