@@ -88,7 +88,6 @@ public class NotificationViewer {
                     transaction.commit();
                 }
             }
-
             reload();
             selected.clear();
         }

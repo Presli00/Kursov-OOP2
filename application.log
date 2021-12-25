@@ -1307,3 +1307,9 @@ Cannot read field "value" because "s1" is null
 [JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Login unsuccessfulNo entity found for query
 [JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - (conn=18) Data too long for column 'notificationName' at row 1
 [JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - (conn=37) Duplicate entry '1-1' for key 'PRIMARY'
+[main] ERROR KursovProektOOP2.controllers.Main  - View couldn't be loaded
+[main] ERROR KursovProektOOP2.controllers.Main  - View couldn't be loaded
+[main] ERROR KursovProektOOP2.controllers.Main  - View couldn't be loaded
+[main] ERROR KursovProektOOP2.controllers.Main  - View couldn't be loaded
+[main] ERROR KursovProektOOP2.controllers.Main  - View couldn't be loaded
+[main] ERROR KursovProektOOP2.controllers.Main  - View couldn't be loaded

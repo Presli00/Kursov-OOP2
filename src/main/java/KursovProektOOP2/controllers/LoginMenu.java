@@ -5,7 +5,6 @@ import KursovProektOOP2.controllers.Agent.WarehouseAgentGUI;
 import KursovProektOOP2.controllers.Owner.OwnerGUI;
 import KursovProektOOP2.data.access.Connection;
 import KursovProektOOP2.data.entity.User;
-import KursovProektOOP2.data.entity.Usernotifications;
 import KursovProektOOP2.util.Panes;
 import KursovProektOOP2.util.UserSession;
 import javafx.fxml.FXML;
@@ -17,8 +16,6 @@ import javafx.stage.Stage;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-
-import java.util.List;
 
 public class LoginMenu {
     @FXML
