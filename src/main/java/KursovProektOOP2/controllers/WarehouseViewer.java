@@ -302,7 +302,7 @@ public class WarehouseViewer {
         tooltip.setText(String.format( "\nSize: %1$s\n" +
                 "%2$s\n"+
                 "%3$s\n"+
-                "%4$s\n", warehouseRooms.get(i).getSize()+" м3", warehouseRooms.get(i).getClimateId().getClimate(), warehouseRooms.get(i).getProductId().getType(), warehouseRooms.get(i).isRented() ? "Rented" : "Free")
+                "%4$s\n", warehouseRooms.get(i).getSize()+" м3", warehouseRooms.get(i).getClimateId().getClimate(), warehouseRooms.get(i).getProductId().getType(), warehouseRooms.get(i).isRented() ? "Rented until " + warehouseRooms.get(i).getFormulars().get(warehouseRooms.get(i).getFormulars().size()-1).getPeriodEnd().toString() : "Free")
         );
         room.setTooltip(tooltip);
         if(UserSession.getRoleID().getRoleName().equals("Agent")){
