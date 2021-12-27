@@ -32,6 +32,7 @@ public class FormularRepository implements DAORepository{
             log.error("Formulars save error" + ex.getMessage());
         } finally {
             transaction.commit();
+            session.close();
         }
     }
 
@@ -46,6 +47,7 @@ public class FormularRepository implements DAORepository{
             log.error("Formulars update error" + ex.getMessage());
         } finally {
             transaction.commit();
+            session.close();
         }
     }
 
@@ -60,6 +62,7 @@ public class FormularRepository implements DAORepository{
             log.error("Formulars delete error" + ex.getMessage());
         } finally {
             transaction.commit();
+            session.close();
         }
     }
 
@@ -75,6 +78,7 @@ public class FormularRepository implements DAORepository{
             log.error("Formulars get by id error" + ex.getMessage());
         } finally {
             transaction.commit();
+            session.close();
         }
         return foundFormular;
     }
@@ -92,6 +96,7 @@ public class FormularRepository implements DAORepository{
             log.error("Get formulars failed: " + ex.getMessage());
         }finally {
             transaction.commit();
+            session.close();
         }
         return formulars;
     }

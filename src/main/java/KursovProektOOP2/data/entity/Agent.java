@@ -52,6 +52,14 @@ public class Agent implements Serializable {
         this.receivedRatings = receivedRatings;
     }
 
+    public Set<Warehouse> getWarehouses() {
+        return warehouses;
+    }
+
+    public void setWarehouses(Set<Warehouse> warehouses) {
+        this.warehouses = warehouses;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

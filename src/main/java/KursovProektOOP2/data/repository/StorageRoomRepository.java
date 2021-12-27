@@ -50,6 +50,7 @@ public class StorageRoomRepository implements DAORepository{
             log.error("Storage room update error" + ex.getMessage());
         } finally {
             transaction.commit();
+            session.close();
         }
     }
 
@@ -79,6 +80,7 @@ public class StorageRoomRepository implements DAORepository{
             log.error("Storage room get by id error" + ex.getMessage());
         } finally {
             transaction.commit();
+            session.close();
         }
         return foundStorageRoom;
     }

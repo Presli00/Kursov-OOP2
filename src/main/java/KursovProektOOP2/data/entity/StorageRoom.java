@@ -3,6 +3,7 @@ package KursovProektOOP2.data.entity;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -22,7 +23,7 @@ public class StorageRoom implements Serializable {
     @Column(name = "Rented", nullable = false)
     private boolean Rented;
     @OneToMany(mappedBy = "storageRoom", fetch = FetchType.EAGER)
-    private Set<Formular> formulars;
+    private List<Formular> formulars; // list because it's an ordered collection and we know that the last element of type formular will always be the active one
     @ManyToOne
     @JoinColumn(name="WarehouseID")
     private Warehouse warehouse;
@@ -72,11 +73,11 @@ public class StorageRoom implements Serializable {
         this.productId = productId;
     }
 
-    public Set<Formular> getFormulars() {
+    public List<Formular> getFormulars() {
         return formulars;
     }
 
-    public void setFormulars(Set<Formular> formulars) {
+    public void setFormulars(List<Formular> formulars) {
         this.formulars = formulars;
     }
 

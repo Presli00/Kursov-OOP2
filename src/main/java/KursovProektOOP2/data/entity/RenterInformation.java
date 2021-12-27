@@ -8,6 +8,7 @@ import java.util.Collection;
 @Table(name = "Renter_information", schema = "warehouse")
 public class RenterInformation implements Serializable {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Renter_id", nullable = false)
     private int renterId;
     @Column(name = "Name", nullable = false)

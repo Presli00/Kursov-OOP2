@@ -68,7 +68,7 @@ public class WarehouseAgentGUI {
 
     @FXML
     public void rentOnAction() throws IOException {
-        ScrollPane sp = FXMLLoader.load(getClass().getResource("/Views/AgentViews/rentViewer.fxml")); //LOAD VIEW
+        ScrollPane sp = FXMLLoader.load(getClass().getResource("/Views/SharedViews/WarehouseViewer.fxml")); //LOAD VIEW
         Panes.setAndClearScrollPane(sp, ContentAnchorPane);
     }
 
