@@ -46,6 +46,7 @@ public class MaintenanceRepository implements DAORepository{
             log.error("Maintenance update error" + ex.getMessage());
         } finally {
             transaction.commit();
+            session.close();
         }
     }
 
@@ -75,6 +76,7 @@ public class MaintenanceRepository implements DAORepository{
             log.error("Maintenance get by id error" + ex.getMessage());
         } finally {
             transaction.commit();
+            session.close();
         }
         return foundMaintenance;
     }

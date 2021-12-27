@@ -107,6 +107,7 @@ public class WarehouseAdderForm {
         if (validate()) { // if input is valid
             Owner obj = (Owner) ownerBox.getValue();
             Owner owner = ((Owner) ownerRepository.getById(obj.getIdOwner()).get());
+            Maintenance maintenance = (Maintenance) maintenanceRepository.getById(((Maintenance) maintenanceBox.getValue()).getMaintenanceId()).get();
 
             Warehouse warehouse = new Warehouse();
             warehouse.setWarehouseId(0);
@@ -114,13 +115,15 @@ public class WarehouseAdderForm {
             warehouse.setCityId((City) cityBox.getValue());
             warehouse.setStreet(streetTF.getText());
             warehouse.setNumberOfStorageRooms(Integer.parseInt(roomAmountTF.getText()));
-            warehouse.setMaintenanceId((Maintenance) maintenanceBox.getValue());
+            warehouse.setMaintenanceId(maintenance);
             warehouse.setOwnerId(owner);
             warehouse.setAgentsId(null);
             warehouseRepository.save(warehouse);
 
             owner.setWarehousesAmount(owner.getWarehousesAmount() + 1);
             ownerRepository.update(owner);
+            maintenance.setEmployed(true);
+            maintenanceRepository.update(maintenance);
             stage.close();
         }
     }
