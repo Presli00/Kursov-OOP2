@@ -1,8 +1,10 @@
 package KursovProektOOP2.controllers;
 
 import KursovProektOOP2.controllers.Admin.AccountInfo;
+import KursovProektOOP2.controllers.Agent.AgentFormular;
 import KursovProektOOP2.controllers.Owner.AgentRating;
 import KursovProektOOP2.data.entity.*;
+import KursovProektOOP2.data.repository.AgentRepository;
 import KursovProektOOP2.data.repository.OwnerRepository;
 import KursovProektOOP2.data.repository.RatingRepository;
 import KursovProektOOP2.data.repository.WarehouseRepository;
@@ -12,10 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.ToolBar;
-import javafx.scene.control.Tooltip;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -23,6 +22,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class WarehouseViewer {
     @FXML
@@ -34,6 +34,7 @@ public class WarehouseViewer {
     Stage stage = new Stage();
     public final OwnerRepository ownerRepository = OwnerRepository.getInstance();
     public final WarehouseRepository warehouseRepository = WarehouseRepository.getInstance();
+    public final AgentRepository agentRepository = AgentRepository.getInstance();
 
     @FXML
     private void initialize() throws IOException {
