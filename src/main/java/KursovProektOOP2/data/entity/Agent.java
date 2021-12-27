@@ -2,7 +2,6 @@ package KursovProektOOP2.data.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Set;
 
 @Table(name = "Agent", schema = "warehouse")
@@ -14,12 +13,12 @@ public class Agent implements Serializable {
     @OneToOne
     @JoinColumn(name = "idFromUser", nullable = false)
     private User idFromUser;
-    @Column(name = "rating", nullable = false)
-    private double rating;
     @Column(name = "dealAmount", nullable = false)
     private int dealAmount;
     @ManyToMany(mappedBy = "agentsId", fetch = FetchType.EAGER)
     private Set<Warehouse> warehouses;
+    @OneToMany(mappedBy = "Agentobj", fetch = FetchType.EAGER)
+    private Set<Rating> receivedRatings;
 
     public int getIdAgent() {
         return idAgent;
@@ -37,14 +36,6 @@ public class Agent implements Serializable {
         this.idFromUser = idFromUser;
     }
 
-    public double getRating() {
-        return rating;
-    }
-
-    public void setRating(double rating) {
-        this.rating = rating;
-    }
-
     public int getDealAmount() {
         return dealAmount;
     }
@@ -53,12 +44,20 @@ public class Agent implements Serializable {
         this.dealAmount = dealAmount;
     }
 
+    public Set<Rating> getReceivedRatings() {
+        return receivedRatings;
+    }
+
+    public void setReceivedRatings(Set<Rating> receivedRatings) {
+        this.receivedRatings = receivedRatings;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Agent agent = (Agent) o;
-        return idAgent == agent.idAgent && Double.compare(agent.rating, rating) == 0 && dealAmount == agent.dealAmount && idFromUser.equals(agent.idFromUser);
+        return idAgent == agent.idAgent && dealAmount == agent.dealAmount && idFromUser.equals(agent.idFromUser);
     }
 
     @Override
@@ -66,7 +65,6 @@ public class Agent implements Serializable {
         return "Agent{" +
                 "idAgent=" + idAgent +
                 ", idFromUser=" + idFromUser +
-                ", rating=" + rating +
                 ", dealAmount=" + dealAmount +
                 '}';
     }

@@ -1,11 +1,12 @@
 package KursovProektOOP2.controllers;
 
 import KursovProektOOP2.controllers.Admin.AccountInfo;
-import KursovProektOOP2.data.entity.Owner;
-import KursovProektOOP2.data.entity.StorageRoom;
-import KursovProektOOP2.data.entity.Warehouse;
+import KursovProektOOP2.controllers.Owner.AgentRating;
+import KursovProektOOP2.data.entity.*;
 import KursovProektOOP2.data.repository.OwnerRepository;
+import KursovProektOOP2.data.repository.RatingRepository;
 import KursovProektOOP2.data.repository.WarehouseRepository;
+import KursovProektOOP2.util.Panes;
 import KursovProektOOP2.util.UserSession;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -164,6 +165,52 @@ public class WarehouseViewer {
                 }
                 controller.roomVbox.getChildren().add(row); // ADD ROW TO VBOX
 
+                HBox agentRow = new HBox();
+                agentRow.setSpacing(10);
+                List<Agent> agentList = new ArrayList<>(list.get(i).getAgentsId());
+                for(int j = 0; j < agentList.size(); j++){
+                    if(j % 3 == 0){
+                        if(agentList.size() % 3 == 0 && j == list.get(i).getAgentsId().size()-1){
+                            break;
+                        }
+                        controller.agentsVbox.getChildren().add(agentRow);
+                        agentRow = new HBox();
+                        agentRow.setSpacing(10);
+                    }
+                    Button agent = new Button(String.format("%s", agentList.get(j).getIdFromUser().getUsername()));
+                    agent.setPrefHeight(50);
+                    agent.setPrefWidth(100);
+                    Tooltip tooltip = new Tooltip();
+                    List<Rating> agentRating = new ArrayList<>(agentList.get(j).getReceivedRatings());
+                    tooltip.setText(String.format( "Rating: %1$s\n", agentRating.size() == 0 ? "No rating" : Panes.getRating(agentRating))
+                    );
+                    agent.setTooltip(tooltip);
+                    agent.setStyle("-fx-font-family: Tahoma; -fx-font-size: 15px;");
+                    int finalJ = j;
+                    agent.setOnMouseClicked(e->{
+                        if(e.getClickCount() == 2){
+                            Parent root = null;
+                            try {
+                                FXMLLoader loader1 = new FXMLLoader(getClass().getResource("/Views/OwnerViews/AgentRating.fxml"));
+                                root = loader1.load();
+                                AgentRating agentRatingController = loader1.getController();
+                                agentRatingController.rateText.setText("Rate " + agent.getText());
+                                agentRatingController.agentID = agentList.get(finalJ).getIdAgent();
+                                agentRatingController.ownerID = owner.getIdOwner();
+                            } catch (IOException ex) {
+                                ex.printStackTrace();
+                            }
+                            Scene scene = new Scene(root);
+                            stage.setScene(scene);
+                            stage.setTitle("Rate Agent");
+                            stage.setResizable(false);
+                            stage.show();
+                        }
+                    });
+
+                    agentRow.getChildren().add(agent);
+                }
+                controller.agentsVbox.getChildren().add(agentRow); // ADD AGENTROW TO VBOX
                 Vbox.getChildren().add(warehouse);
             }
         }
@@ -224,7 +271,7 @@ public class WarehouseViewer {
         tooltip.setText(String.format( "\nSize: %1$s\n" +
                 "%2$s\n"+
                 "%3$s\n"+
-                "%4$s\n", warehouseRooms.get(i).getSize()+" кубични метра", warehouseRooms.get(i).getClimateId().getClimate(), warehouseRooms.get(i).getProductId().getType(), warehouseRooms.get(i).isRented() ? "Rented" : "Free")
+                "%4$s\n", warehouseRooms.get(i).getSize()+" м3", warehouseRooms.get(i).getClimateId().getClimate(), warehouseRooms.get(i).getProductId().getType(), warehouseRooms.get(i).isRented() ? "Rented" : "Free")
         );
         room.setTooltip(tooltip);
         if(warehouseRooms.get(i).getClimateId().getClimate().equals("Dry")){

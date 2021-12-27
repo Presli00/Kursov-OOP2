@@ -18,11 +18,21 @@ public class Owner implements Serializable {
     private int warehousesAmount;
     @OneToMany(mappedBy = "ownerId", fetch = FetchType.EAGER)
     private Set<Warehouse> warehouses;
+    @OneToMany(mappedBy = "idOwner", fetch = FetchType.EAGER)
+    private Set<Rating> ratedAgents;
 
     public void addWarehouse(Warehouse warehouse) {
         warehouses.add(warehouse);
         warehouse.setOwnerId(this);
         setWarehousesAmount(getWarehousesAmount() + 1);
+    }
+
+    public Set<Rating> getRatedAgents() {
+        return ratedAgents;
+    }
+
+    public void setRatedAgents(Set<Rating> ratedAgents) {
+        this.ratedAgents = ratedAgents;
     }
 
     public int getIdOwner() {

@@ -35,6 +35,7 @@ public class UserRepository implements DAORepository {
             log.error("User save error" + ex.getMessage());
         } finally {
             transaction.commit();
+            session.close();
         }
     }
 
@@ -49,6 +50,7 @@ public class UserRepository implements DAORepository {
             log.error("User update error" + ex.getMessage());
         } finally {
             transaction.commit();
+            session.close();
         }
     }
 
@@ -63,6 +65,7 @@ public class UserRepository implements DAORepository {
             log.error("User delete error" + ex.getMessage());
         } finally {
             transaction.commit();
+            session.close();
         }
     }
 
@@ -78,6 +81,7 @@ public class UserRepository implements DAORepository {
             log.error("User get by id error" + ex.getMessage());
         } finally {
             transaction.commit();
+            session.close();
         }
         return foundUser;
     }
@@ -95,6 +99,7 @@ public class UserRepository implements DAORepository {
             log.error("Get users failed: " + ex.getMessage());
         }finally {
             transaction.commit();
+            session.close();
         }
         return users;
     }

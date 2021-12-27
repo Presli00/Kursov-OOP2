@@ -28,5 +28,6 @@
         <mapping class="KursovProektOOP2.data.entity.User"/>
         <mapping class="KursovProektOOP2.data.entity.Warehouse"/>
         <mapping class="KursovProektOOP2.data.entity.Usernotifications"/>
+        <mapping class="KursovProektOOP2.data.entity.Rating"/>
     </session-factory>
 </hibernate-configuration>

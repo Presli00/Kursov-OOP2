@@ -3,10 +3,12 @@ package KursovProektOOP2.controllers.Admin;
 import KursovProektOOP2.controllers.Admin.AccountInfo;
 import KursovProektOOP2.data.entity.Agent;
 import KursovProektOOP2.data.entity.Owner;
+import KursovProektOOP2.data.entity.Rating;
 import KursovProektOOP2.data.entity.User;
 import KursovProektOOP2.data.repository.AgentRepository;
 import KursovProektOOP2.data.repository.OwnerRepository;
 import KursovProektOOP2.data.repository.UserRepository;
+import KursovProektOOP2.util.Panes;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -98,7 +100,7 @@ public class AdminAccountViewer {
                 if(((User) users.get(finalI)).getRoleId().getRoleId() == 3 ){
                     for(int j = 0; j < agents.size(); j++){
                         if(String.valueOf(((User)users.get(finalI)).getUserId()).equals(String.valueOf(((Agent)agents.get(j)).getIdFromUser().getUserId())) ){
-                            Text rating = new Text("Rated: " + ((Agent) agents.get(j)).getRating());
+                            Text rating = new Text("Rated: " + Panes.getRating((List<Rating>) ((Agent) agents.get(j)).getReceivedRatings()));
                             rating.setFont(Font.font("Arial", 18));
                             Text deals = new Text("Successful Deals: " + ((Agent) agents.get(j)).getDealAmount());
                             deals.setFont(Font.font("Arial", 18));

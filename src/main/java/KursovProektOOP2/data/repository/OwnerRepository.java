@@ -32,6 +32,7 @@ public class OwnerRepository implements DAORepository {
             log.error("Owner save error" + ex.getMessage());
         } finally {
             transaction.commit();
+            session.close();
         }
     }
 
@@ -61,6 +62,7 @@ public class OwnerRepository implements DAORepository {
             log.error("Owner delete error" + ex.getMessage());
         } finally {
             transaction.commit();
+            session.close();
         }
     }
 
@@ -94,6 +96,7 @@ public class OwnerRepository implements DAORepository {
             log.error("Get owners failed: " + ex.getMessage());
         } finally {
             transaction.commit();
+            session.close();
         }
         return owners;
     }

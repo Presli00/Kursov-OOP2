@@ -32,6 +32,7 @@ public class AgentRepository implements DAORepository {
             log.error("Agent save error" + ex.getMessage());
         } finally {
             transaction.commit();
+            session.close();
         }
     }
 
@@ -61,6 +62,7 @@ public class AgentRepository implements DAORepository {
             log.error("Agent delete error" + ex.getMessage());
         } finally {
             transaction.commit();
+            session.close();
         }
     }
 
@@ -94,6 +96,7 @@ public class AgentRepository implements DAORepository {
             log.error("Get agents failed: " + ex.getMessage());
         } finally {
             transaction.commit();
+            session.close();
         }
         return agents;
     }

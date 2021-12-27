@@ -15,3 +15,18 @@
     -fx-background-color: transparent, #0099ef, transparent, white;
     -fx-background-radius: 5px;
 }
+
+.star{
+    -fx-fill: white;
+    -fx-stroke: darkorange;
+}
+
+.star:hover{
+    -fx-fill: orange;
+    -fx-stroke: darkorange;
+}
+
+.star:pressed{
+    -fx-fill: darkorange;
+    -fx-stroke: darkorange;
+}

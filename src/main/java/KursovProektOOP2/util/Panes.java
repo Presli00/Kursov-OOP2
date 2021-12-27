@@ -7,6 +7,7 @@ import KursovProektOOP2.controllers.Owner.OwnerGUI;
 import KursovProektOOP2.data.access.Connection;
 import KursovProektOOP2.data.entity.Agent;
 import KursovProektOOP2.data.entity.Owner;
+import KursovProektOOP2.data.entity.Rating;
 import KursovProektOOP2.data.entity.Usernotifications;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -45,6 +46,14 @@ public class Panes {
         contentAnchorPane.heightProperty().addListener(event -> {
             ap.setPrefHeight(contentAnchorPane.getHeight());
         });
+    }
+
+    public static double getRating(List<Rating> list){
+        double sum = 0;
+        for (int i = 0; i < list.size(); i++) {
+            sum += list.get(i).getRating();
+        }
+        return sum/ list.size();
     }
 
     public static void openWindow(String pathToView, Class c) throws IOException {
