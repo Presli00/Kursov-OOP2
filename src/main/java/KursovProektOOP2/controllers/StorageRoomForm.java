@@ -77,7 +77,7 @@ public class StorageRoomForm {
     }
 
     @FXML
-    private void addRoom(){
+    public void addRoom(){
         Stage stage = (Stage) addRoomButton.getScene().getWindow();
         if (validate()) { // if input is valid
             StorageRoom room = new StorageRoom();

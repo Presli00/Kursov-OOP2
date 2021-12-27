@@ -1,6 +1,7 @@
 package KursovProektOOP2.controllers;
 
 import javafx.stage.Stage;
+import org.apache.log4j.Logger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -10,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MainTest {
 
+    private static final Logger log = Logger.getLogger(Main.class);
     private Main main;
     Stage primaryStage;
     @BeforeEach
@@ -19,7 +21,12 @@ class MainTest {
 
     @Test
     void start() throws IOException {
-        main.start(primaryStage);
-
+        try {
+            main.start(primaryStage);
+        }catch (Exception ex) {
+            log.error("View couldn't be loaded");
+        }finally {
+            assertEquals("View couldn't be loaded",log);
+        }
     }
 }

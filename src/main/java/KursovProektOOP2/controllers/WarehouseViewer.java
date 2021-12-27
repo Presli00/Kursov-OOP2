@@ -1,10 +1,8 @@
 package KursovProektOOP2.controllers;
 
-import KursovProektOOP2.controllers.Admin.AccountInfo;
 import KursovProektOOP2.controllers.Owner.AgentRating;
 import KursovProektOOP2.data.entity.*;
 import KursovProektOOP2.data.repository.OwnerRepository;
-import KursovProektOOP2.data.repository.RatingRepository;
 import KursovProektOOP2.data.repository.WarehouseRepository;
 import KursovProektOOP2.util.Panes;
 import KursovProektOOP2.util.UserSession;
