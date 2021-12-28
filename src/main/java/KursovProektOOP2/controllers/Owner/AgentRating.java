@@ -5,22 +5,18 @@ import KursovProektOOP2.data.access.Connection;
 import KursovProektOOP2.data.entity.Agent;
 import KursovProektOOP2.data.entity.Owner;
 import KursovProektOOP2.data.entity.Rating;
-import KursovProektOOP2.data.entity.Usernotifications;
 import KursovProektOOP2.data.repository.AgentRepository;
 import KursovProektOOP2.data.repository.OwnerRepository;
 import KursovProektOOP2.data.repository.RatingRepository;
-import KursovProektOOP2.data.repository.WarehouseRepository;
-import KursovProektOOP2.util.UserSession;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.layout.HBox;
 import javafx.scene.shape.*;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-
-import java.util.List;
 
 public class AgentRating {
 
@@ -53,30 +49,27 @@ public class AgentRating {
             star.setId(String.format("%s", i+1));
             star.getStyleClass().add("star");
             star.setOnMouseClicked(e->{
+                Stage stage = (Stage) star.getScene().getWindow();
                 Owner owner = (Owner) ownerRepository.getById(ownerID).get();
                 Agent agent = (Agent) agentRepository.getById(agentID).get();
 
                 Session session = Connection.openSession();
                 Transaction transaction = session.beginTransaction();
                 String RATING_QUERY = "SELECT u FROM Rating u WHERE idOwner = " + ownerID + " AND Agentobj = " + agentID;
-                Rating rating = null;
+                Rating rating;
                 try {
                     rating = (Rating) session.createQuery(RATING_QUERY).getSingleResult();
-                    if(rating == null){
-                        rating = new Rating();
-                    }
-                    rating.setRating(Double.parseDouble(star.getId()));
-                    rating.setIdAgent(agent);
-                    rating.setIdOwner(owner);
-
-                    ratingRepository.save(rating);
                 } catch (Exception ex) {
-                    log.error("Rating update unsuccessful " + "\n" + ex.getMessage());
+                    rating = new Rating();
                 } finally {
                     transaction.commit();
                     session.close();
                 }
-
+                rating.setRating(Double.parseDouble(star.getId()));
+                rating.setIdAgent(agent);
+                rating.setIdOwner(owner);
+                ratingRepository.save(rating);
+                stage.close();
             });
             Group root = new Group(star);
             starHbox.getChildren().add(root);

@@ -37,26 +37,26 @@ public class MaintenanceAdder {
             List<Maintenance> allMaintenance = maintenanceRepository.getAll();
             Maintenance currentMaintenance = warehouse.getMaintenanceId();
             for (int i = 0; i < allMaintenance.size(); i++) {
-                try {
-                    if (warehouse.getMaintenanceId().isEmployed()) {
+                    if (allMaintenance.get(i).isEmployed()) {
                         allMaintenance.remove(i);
                     }
-                }catch (Exception ex){
-
-                }
-                availableMaintenanceBox.setConverter(new StringConverter<Maintenance>() {
-                    @Override
-                    public String toString(Maintenance maintenance) {
-                        return maintenance.getName();
-                    }
-
-                    @Override
-                    public Maintenance fromString(final String string) {
-                        return (Maintenance) availableMaintenanceBox.getItems().stream().filter(maintenance -> ((Maintenance) maintenance).getName().equals(string)).findFirst().orElse(null);
-                    }
-                });
-                currentMaintenanceList.setCellFactory(new MaintenanceListViewCellFactory());
+            }
+            for (int i = 0; i < allMaintenance.size(); i++) {
                 availableMaintenanceBox.getItems().add(allMaintenance.get(i));
+            }
+            availableMaintenanceBox.setConverter(new StringConverter<Maintenance>() {
+                @Override
+                public String toString(Maintenance maintenance) {
+                    return maintenance.getName();
+                }
+
+                @Override
+                public Maintenance fromString(final String string) {
+                    return (Maintenance) availableMaintenanceBox.getItems().stream().filter(maintenance -> ((Maintenance) maintenance).getName().equals(string)).findFirst().orElse(null);
+                }
+            });
+            currentMaintenanceList.setCellFactory(new MaintenanceListViewCellFactory());
+            if(currentMaintenance != null){
                 currentMaintenanceList.getItems().add(currentMaintenance);
             }
         }).start();
@@ -70,8 +70,7 @@ public class MaintenanceAdder {
 
     @FXML
     private void addMaintenance() {
-        if (currentMaintenanceList.getItems().size() <= 1) {
-            currentMaintenanceList.autosize();
+        if (currentMaintenanceList.getItems().size() < 1) {
             currentMaintenanceList.refresh();
             Maintenance maintenance = (Maintenance) availableMaintenanceBox.getSelectionModel().getSelectedItem();
             availableMaintenanceBox.getItems().remove(maintenance);
@@ -81,13 +80,19 @@ public class MaintenanceAdder {
             errorText.setText("Може да има само един човек от поддръжка в склад");
         }
     }
-
+    // && !currentMaintenanceList.getSelectionModel().isEmpty()
     @FXML
     private void removeMaintenance() {
-        Maintenance maintenance = (Maintenance) currentMaintenanceList.getSelectionModel().getSelectedItem();
-        currentMaintenanceList.getItems().remove(maintenance);
-        availableMaintenanceBox.getItems().add(maintenance);
-        maintenance.setEmployed(false);
+        if(!currentMaintenanceList.getItems().isEmpty()){
+            currentMaintenanceList.getSelectionModel().selectFirst();
+            Maintenance maintenance = (Maintenance) currentMaintenanceList.getSelectionModel().getSelectedItem();
+            currentMaintenanceList.getItems().remove(maintenance);
+            availableMaintenanceBox.getItems().add(maintenance);
+            maintenance.setEmployed(false);
+        }
+        else{
+            errorText.setText("Няма хора за премахване");
+        }
     }
 
     @FXML
@@ -95,6 +100,7 @@ public class MaintenanceAdder {
         for (int i = 0; i < currentMaintenanceList.getItems().size(); i++) {
             Maintenance maintenance = (Maintenance) maintenanceRepository.getById(((Maintenance) currentMaintenanceList.getItems().get(i)).getMaintenanceId()).get();
             warehouse.setMaintenanceId(maintenance);
+            warehouse.getMaintenanceId().setEmployed(true);
             maintenanceRepository.update(maintenance);
         }
         warehouseRepository.update(warehouse);

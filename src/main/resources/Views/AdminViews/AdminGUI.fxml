@@ -54,7 +54,7 @@
                         </HBox>
                      </graphic>
                   </Button>
-                  <Button blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#warehousesOnAction" prefHeight="24.0" prefWidth="197.0" styleClass="btns">
+                  <Button fx:id="warehouseButton" blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#warehousesOnAction" prefHeight="24.0" prefWidth="197.0" styleClass="btns">
                      <graphic>
                         <HBox prefHeight="52.0" prefWidth="182.0" spacing="5.0">
                            <children>

@@ -1,6 +1,5 @@
 package KursovProektOOP2.controllers;
 
-import KursovProektOOP2.controllers.Admin.AccountInfo;
 import KursovProektOOP2.controllers.Agent.AgentFormular;
 import KursovProektOOP2.controllers.Owner.AgentRating;
 import KursovProektOOP2.data.entity.*;
@@ -31,6 +30,7 @@ public class WarehouseViewer {
     @FXML
     VBox Vbox;
     Stage stage = new Stage();
+    private WarehouseInfo wi = new WarehouseInfo();
     public final OwnerRepository ownerRepository = OwnerRepository.getInstance();
     public final WarehouseRepository warehouseRepository = WarehouseRepository.getInstance();
     public final AgentRepository agentRepository = AgentRepository.getInstance();
@@ -292,30 +292,26 @@ public class WarehouseViewer {
     }
 
     private void ContextForRooms(List<StorageRoom> warehouseRooms, Button button, int i) {
-        ContextMenu contextMenu = new ContextMenu();
+        ContextMenu contextMenuForRoom = new ContextMenu();
         MenuItem menuItem = new MenuItem("Изтрии");
-        contextMenu.getItems().add(menuItem);
-        button.setOnContextMenuRequested(event -> {
-            contextMenu.show(button, event.getScreenX(), event.getScreenY());
-        });
+        contextMenuForRoom.getItems().add(menuItem);
+        button.setContextMenu(contextMenuForRoom);
         menuItem.setOnAction((event) -> {
             roomRepository.delete(warehouseRooms.get(i));
+            Platform.runLater(() -> {
+
+            });
         });
     }
 
-    private WarehouseInfo wi = new WarehouseInfo();
-
     private void ContextForWarehouses(List<Warehouse> warehouse, AnchorPane w, int i) {
-        ContextMenu contextMenu = new ContextMenu();
+        ContextMenu contextMenuForWarehouse = new ContextMenu();
         MenuItem menuItem = new MenuItem("Изтрии");
         MenuItem menuItem1 = new MenuItem("Добави поддръжка");
-        contextMenu.getItems().addAll(menuItem, menuItem1);
+        contextMenuForWarehouse.getItems().addAll(menuItem, menuItem1);
         w.setOnContextMenuRequested(event -> {
-                contextMenu.show(w, event.getScreenX(), event.getScreenY());
+            contextMenuForWarehouse.show(w.getScene().getWindow(), event.getScreenX(), event.getScreenY());
         });
-        /*if(w.getChildren().getClass().equals(Button.class)){
-            contextMenu.hide();
-        }*/
         if (UserSession.getRoleID().getRoleName().equals("Admin")) {
             menuItem1.setVisible(false);
             menuItem.setOnAction((event) -> {
