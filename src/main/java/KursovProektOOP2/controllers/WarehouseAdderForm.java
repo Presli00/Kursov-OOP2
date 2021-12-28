@@ -115,14 +115,15 @@ public class WarehouseAdderForm {
             warehouse.setCityId((City) cityBox.getValue());
             warehouse.setStreet(streetTF.getText());
             warehouse.setNumberOfStorageRooms(Integer.parseInt(roomAmountTF.getText()));
-            warehouse.setMaintenanceId(null);
+            if (maintenanceBox.getSelectionModel().isEmpty()) {
+                warehouse.setMaintenanceId(null);
+            }
             warehouse.setOwnerId(owner);
             warehouse.setAgentsId(null);
             warehouseRepository.save(warehouse);
 
             owner.setWarehousesAmount(owner.getWarehousesAmount() + 1);
             ownerRepository.update(owner);
-            //maintenance.setEmployed(true);
             maintenanceRepository.update(maintenance);
             stage.close();
         }
@@ -147,10 +148,6 @@ public class WarehouseAdderForm {
             valid = false;
             errorMessage.append("Choose a city! ");
         }
-        /*if (maintenanceBox.getSelectionModel().isEmpty()) {
-            valid = false;
-            errorMessage.append("Choose maintenance! ");
-        }*/
         if (ownerBox.getSelectionModel().isEmpty()) {
             valid = false;
             errorMessage.append("Choose an owner! ");
