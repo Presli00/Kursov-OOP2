@@ -67,6 +67,7 @@ public class WarehouseRepository implements DAORepository{
             log.error("Warehouse delete error" + ex.getMessage());
         } finally {
             transaction.commit();
+            session.close();
         }
     }
 
@@ -100,6 +101,7 @@ public class WarehouseRepository implements DAORepository{
             log.error("Get warehouses failed: " + ex.getMessage());
         }finally {
             transaction.commit();
+            session.close();
         }
         return warehouses;
     }

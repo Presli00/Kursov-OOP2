@@ -4,12 +4,10 @@ import KursovProektOOP2.controllers.Admin.AccountInfo;
 import KursovProektOOP2.controllers.Agent.AgentFormular;
 import KursovProektOOP2.controllers.Owner.AgentRating;
 import KursovProektOOP2.data.entity.*;
-import KursovProektOOP2.data.repository.AgentRepository;
-import KursovProektOOP2.data.repository.OwnerRepository;
-import KursovProektOOP2.data.repository.RatingRepository;
-import KursovProektOOP2.data.repository.WarehouseRepository;
+import KursovProektOOP2.data.repository.*;
 import KursovProektOOP2.util.Panes;
 import KursovProektOOP2.util.UserSession;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,6 +17,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,17 +34,18 @@ public class WarehouseViewer {
     public final OwnerRepository ownerRepository = OwnerRepository.getInstance();
     public final WarehouseRepository warehouseRepository = WarehouseRepository.getInstance();
     public final AgentRepository agentRepository = AgentRepository.getInstance();
+    public final StorageRoomRepository roomRepository = StorageRoomRepository.getInstance();
 
     @FXML
     private void initialize() throws IOException {
         // warehouse viewer for owner
-        if(UserSession.getRoleID().getRoleName().equals("Admin")){ // warehouse viewer for admin with button for adding new warehouses
+        if (UserSession.getRoleID().getRoleName().equals("Admin")) { // warehouse viewer for admin with button for adding new warehouses
             ToolBar toolBar = new ToolBar();
             toolBar.setPrefHeight(45);
             toolBar.setPrefWidth(200);
             toolBar.setStyle("-fx-background-color: #4E97D1; -fx-background-radius: 20 ");
             Button addWarehouse = new Button("Добави Склад ");
-            addWarehouse.setOnAction(e->{
+            addWarehouse.setOnAction(e -> {
                 Parent root = null;
                 try {
                     root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/Views/SharedViews/WarehouseAdderForm.fxml")));
@@ -63,22 +63,19 @@ public class WarehouseViewer {
             toolBar.getItems().add(addWarehouse);
             Vbox.getChildren().add(toolBar);
             warehouseInfo(true, false);
-        }else warehouseInfo(false, UserSession.getRoleID().getRoleName().equals("Agent"));
-
-
+        } else warehouseInfo(false, UserSession.getRoleID().getRoleName().equals("Agent"));
 
         ScrollPane.widthProperty().addListener(event -> AnchorPane.setPrefWidth(ScrollPane.getWidth()));
         ScrollPane.heightProperty().addListener(event -> AnchorPane.setPrefHeight(ScrollPane.getHeight()));
     }
 
     public void warehouseInfo(boolean isAdmin, boolean isAgent) throws IOException {
-        if(isAdmin){ //show all warehouses if user is an admin
+        if (isAdmin) { //show all warehouses if user is an admin
             List<Warehouse> list = warehouseRepository.getAll();
-            for (int i = 0; i < list.size(); i++){ // load warehouses
+            for (int i = 0; i < list.size(); i++) { // load warehouses
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/SharedViews/WarehouseInfo.fxml"));
                 AnchorPane warehouse = loader.load();
                 WarehouseInfo controller = loader.getController();
-
                 controller.warehouseNameText.setText(list.get(i).getWarehouseName());
                 controller.ownerNameText.setText(list.get(i).getOwnerId().getUserId().getUsername());
                 controller.cityText.setText(list.get(i).getCityId().getCity());
@@ -86,11 +83,12 @@ public class WarehouseViewer {
                 controller.agentsVbox.getChildren().remove(controller.addAgentButton);
                 HBox row = new HBox();
                 row.setSpacing(10);
+                ContextForWarehouses(list, warehouse, i);
                 List<StorageRoom> roomList = new ArrayList<>(list.get(i).getRooms());
-                for(int j = 0; j < roomList.size(); j++){
+                for (int j = 0; j < roomList.size(); j++) {
 
-                    if(j % 5 == 0){
-                        if(list.get(i).getRooms().size() % 5 == 0 && j == list.get(i).getRooms().size()-1){ // if room size is 5 row will be added twice once here and once after the loop
+                    if (j % 5 == 0) {
+                        if (list.get(i).getRooms().size() % 5 == 0 && j == list.get(i).getRooms().size() - 1) { // if room size is 5 row will be added twice once here and once after the loop
                             break;
                         }
                         controller.roomVbox.getChildren().add(row);
@@ -99,12 +97,10 @@ public class WarehouseViewer {
                     }
                     dupli(roomList, row, j);
                 }
-
                 controller.roomVbox.getChildren().add(row); // ADD ROW TO VBOX
-
                 Vbox.getChildren().add(warehouse);
             }
-        }else if(isAgent) { //unfortunate code duplication
+        } else if (isAgent) { //unfortunate code duplication
             List<Warehouse> list = new ArrayList<>(((Agent) agentRepository.getById(UserSession.getAgent().getIdAgent()).get()).getWarehouses());
             for (int i = 0; i < list.size(); i++) { // load warehouses
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/SharedViews/WarehouseInfo.fxml"));
@@ -136,10 +132,10 @@ public class WarehouseViewer {
 
                 Vbox.getChildren().add(warehouse);
             }
-        }else{ // if user is a warehouse owner, show only his warehouses
+        } else { // if user is a warehouse owner, show only his warehouses
             Owner owner = ((Owner) ownerRepository.getById(UserSession.getOwner().getIdOwner()).get()); // get owner from db
             List<Warehouse> list = new ArrayList<>(owner.getWarehouses()); // get his warehouses and cast to list
-            for (int i = 0; i < list.size(); i++){ // code duplication :/
+            for (int i = 0; i < list.size(); i++) { // code duplication :/
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/SharedViews/WarehouseInfo.fxml"));
                 AnchorPane warehouse = loader.load();
                 WarehouseInfo controller = loader.getController();
@@ -151,11 +147,12 @@ public class WarehouseViewer {
                 controller.streetText.setText(list.get(i).getStreet());
                 HBox row = new HBox();
                 row.setSpacing(10);
+                ContextForWarehouses(list, warehouse, i);
                 List<StorageRoom> roomList = new ArrayList<>(list.get(i).getRooms());
-                for(int j = 0; j < roomList.size(); j++){
+                for (int j = 0; j < roomList.size(); j++) {
 
-                    if(j % 5 == 0){
-                        if(list.get(i).getRooms().size() % 5 == 0 && j == list.get(i).getRooms().size()-1){ // if room size is 5 row will be added twice once here and once after the loop
+                    if (j % 5 == 0) {
+                        if (list.get(i).getRooms().size() % 5 == 0 && j == list.get(i).getRooms().size() - 1) { // if room size is 5 row will be added twice once here and once after the loop
                             break;
                         }
                         controller.roomVbox.getChildren().add(row);
@@ -165,14 +162,14 @@ public class WarehouseViewer {
                     dupli(roomList, row, j);
                 }
                 // if the warehouse can hold more rooms and the user is an owner add +Button that adds new rooms
-                if(list.get(i).getRooms().size() < list.get(i).getNumberOfStorageRooms()){
+                if (list.get(i).getRooms().size() < list.get(i).getNumberOfStorageRooms()) {
                     Button addNewRoom = new Button("+");
                     addNewRoom.setPrefHeight(50);
                     addNewRoom.setPrefWidth(50);
                     addNewRoom.setStyle("-fx-font-family: Tahoma; -fx-font-size: 15px;");
 
                     int finalI = i;
-                    addNewRoom.setOnAction(e->{
+                    addNewRoom.setOnAction(e -> {
                         Parent root = null;
                         try {
                             FXMLLoader loader1 = new FXMLLoader(getClass().getResource("/Views/SharedViews/StorageRoomForm.fxml"));
@@ -198,9 +195,9 @@ public class WarehouseViewer {
                 HBox agentRow = new HBox();
                 agentRow.setSpacing(10);
                 List<Agent> agentList = new ArrayList<>(list.get(i).getAgentsId());
-                for(int j = 0; j < agentList.size(); j++){
-                    if(j % 3 == 0){
-                        if(agentList.size() % 3 == 0 && j == list.get(i).getAgentsId().size()-1){
+                for (int j = 0; j < agentList.size(); j++) {
+                    if (j % 3 == 0) {
+                        if (agentList.size() % 3 == 0 && j == list.get(i).getAgentsId().size() - 1) {
                             break;
                         }
                         controller.agentsVbox.getChildren().add(agentRow);
@@ -212,13 +209,13 @@ public class WarehouseViewer {
                     agent.setPrefWidth(100);
                     Tooltip tooltip = new Tooltip();
                     List<Rating> agentRating = new ArrayList<>(agentList.get(j).getReceivedRatings());
-                    tooltip.setText(String.format( "Rating: %1$s\n", agentRating.size() == 0 ? "No rating" : Panes.getRating(agentRating))
+                    tooltip.setText(String.format("Rating: %1$s\n", agentRating.size() == 0 ? "No rating" : Panes.getRating(agentRating))
                     );
                     agent.setTooltip(tooltip);
                     agent.setStyle("-fx-font-family: Tahoma; -fx-font-size: 15px;");
                     int finalJ = j;
-                    agent.setOnMouseClicked(e->{
-                        if(e.getClickCount() == 2){
+                    agent.setOnMouseClicked(e -> {
+                        if (e.getClickCount() == 2) {
                             Parent root = null;
                             try {
                                 FXMLLoader loader1 = new FXMLLoader(getClass().getResource("/Views/OwnerViews/AgentRating.fxml"));
@@ -248,14 +245,14 @@ public class WarehouseViewer {
 
     }
 
-    public void reloadWarehouseRooms(WarehouseInfo controller){
+    public void reloadWarehouseRooms(WarehouseInfo controller) {
         controller.roomVbox.getChildren().clear();
         List<StorageRoom> warehouseRooms = new ArrayList<>(((Warehouse) warehouseRepository.getById(controller.warehouse.getWarehouseId()).get()).getRooms());
         HBox row = new HBox();
         row.setSpacing(10);
-        for (int i = 0; i < warehouseRooms.size(); i++){
-            if(i % 5 == 0){
-                if(warehouseRooms.size() % 5 == 0 && i == warehouseRooms.size()-1){ // if room size is 5 row will be added twice once here and once after the loop
+        for (int i = 0; i < warehouseRooms.size(); i++) {
+            if (i % 5 == 0) {
+                if (warehouseRooms.size() % 5 == 0 && i == warehouseRooms.size() - 1) { // if room size is 5 row will be added twice once here and once after the loop
                     break;
                 }
                 controller.roomVbox.getChildren().add(row);
@@ -265,12 +262,12 @@ public class WarehouseViewer {
             dupli(warehouseRooms, row, i);
         }
         // if the warehouse can hold more rooms and the user is an owner add +Button that adds new rooms
-        if(warehouseRooms.size() < controller.warehouse.getNumberOfStorageRooms()){
+        if (warehouseRooms.size() < controller.warehouse.getNumberOfStorageRooms()) {
             Button addNewRoom = new Button("+");
             addNewRoom.setPrefHeight(50);
             addNewRoom.setPrefWidth(50);
             addNewRoom.setStyle("-fx-font-family: Tahoma; -fx-font-size: 15px;");
-            addNewRoom.setOnAction(e->{
+            addNewRoom.setOnAction(e -> {
                 Parent root = null;
                 try {
                     FXMLLoader loader1 = new FXMLLoader(getClass().getResource("/Views/SharedViews/StorageRoomForm.fxml"));
@@ -294,27 +291,64 @@ public class WarehouseViewer {
         controller.roomGridPane.setExpanded(true);
     }
 
+    private void ContextForRooms(List<StorageRoom> warehouseRooms, HBox row, int i) {
+        ContextMenu contextMenu = new ContextMenu();
+        MenuItem menuItem = new MenuItem("Изтрии");
+        contextMenu.getItems().add(menuItem);
+        row.setOnContextMenuRequested(event -> {
+            contextMenu.show(row, event.getScreenX(), event.getScreenY());
+        });
+        menuItem.setOnAction((event) -> {
+            roomRepository.delete(warehouseRooms.get(i));
+        });
+    }
+
+   private WarehouseInfo wi=new WarehouseInfo();
+
+    private void ContextForWarehouses(List<Warehouse> warehouse, AnchorPane w, int i) {
+        ContextMenu contextMenu = new ContextMenu();
+        MenuItem menuItem = new MenuItem("Изтрии");
+        MenuItem menuItem1 = new MenuItem("Добави поддръжка");
+        contextMenu.getItems().addAll(menuItem,menuItem1);
+        w.setOnContextMenuRequested(event -> {
+            contextMenu.show(w, event.getScreenX(), event.getScreenY());
+        });
+        if (UserSession.getRoleID().getRoleName().equals("Admin")) {
+            menuItem.setOnAction((event) -> {
+                warehouseRepository.delete(warehouse.get(i));
+            });
+        }
+        if (UserSession.getRoleID().getRoleName().equals("Owner")) {
+            menuItem1.setOnAction((event) -> {
+                wi.assignMaintenance(warehouse.get(i));
+            });
+        }
+    }
+
     private void dupli(List<StorageRoom> warehouseRooms, HBox row, int i) {
         Button room = new Button(String.format("%d", i + 1)); // room number
         room.setPrefHeight(50);
         room.setPrefWidth(50);
         Tooltip tooltip = new Tooltip();
-        tooltip.setText(String.format( "\nSize: %1$s\n" +
-                "%2$s\n"+
-                "%3$s\n"+
-                "%4$s\n", warehouseRooms.get(i).getSize()+" м3", warehouseRooms.get(i).getClimateId().getClimate(), warehouseRooms.get(i).getProductId().getType(), warehouseRooms.get(i).isRented() ? "Rented until " + warehouseRooms.get(i).getFormulars().get(warehouseRooms.get(i).getFormulars().size()-1).getPeriodEnd().toString() : "Free")
+        tooltip.setText(String.format("\nSize: %1$s\n" +
+                "%2$s\n" +
+                "%3$s\n" +
+                "%4$s\n", warehouseRooms.get(i).getSize() + " м3", warehouseRooms.get(i).getClimateId().getClimate(), warehouseRooms.get(i).getProductId().getType(), warehouseRooms.get(i).isRented() ? "Rented until " + warehouseRooms.get(i).getFormulars().get(warehouseRooms.get(i).getFormulars().size() - 1).getPeriodEnd().toString() : "Free")
         );
+        if (UserSession.getRoleID().getRoleName().equals("Owner")) {
+            ContextForRooms(warehouseRooms, row, i);
+        }
         room.setTooltip(tooltip);
-        if(UserSession.getRoleID().getRoleName().equals("Agent")){
-            room.setOnMouseClicked(e->{
-                if(e.getClickCount() == 2){
+        if (UserSession.getRoleID().getRoleName().equals("Agent")) {
+            room.setOnMouseClicked(e -> {
+                if (e.getClickCount() == 2) {
 
-                    if(warehouseRooms.get(i).isRented()){
+                    if (warehouseRooms.get(i).isRented()) {
                         Alert a = new Alert(Alert.AlertType.NONE);
                         a.setAlertType(Alert.AlertType.ERROR);
                         a.setContentText("Room is already Rented");
                         a.show();
-                    }else{
+                    } else {
                         Parent root = null;
                         try {
                             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/AgentViews/AgentFormular.fxml"));
@@ -336,19 +370,19 @@ public class WarehouseViewer {
                 }
             });
         }
-        if(warehouseRooms.get(i).getClimateId().getClimate().equals("Dry")){
+        if (warehouseRooms.get(i).getClimateId().getClimate().equals("Dry")) {
             room.setStyle("-fx-background-color: #EB931F");
         }
 
-        if(warehouseRooms.get(i).getClimateId().getClimate().equals("Cold")){
+        if (warehouseRooms.get(i).getClimateId().getClimate().equals("Cold")) {
             room.setStyle("-fx-background-color: #C5DAFF");
         }
 
-        if(warehouseRooms.get(i).getClimateId().getClimate().equals("Humid")){
+        if (warehouseRooms.get(i).getClimateId().getClimate().equals("Humid")) {
             room.setStyle("-fx-background-color: #928E64");
         }
 
-        if(warehouseRooms.get(i).getClimateId().getClimate().equals("Freezing")){
+        if (warehouseRooms.get(i).getClimateId().getClimate().equals("Freezing")) {
             room.setStyle("-fx-background-color: #0E9BD1");
         }
 

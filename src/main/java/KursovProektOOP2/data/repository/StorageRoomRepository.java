@@ -65,6 +65,7 @@ public class StorageRoomRepository implements DAORepository{
             log.error("Storage room delete error" + ex.getMessage());
         } finally {
             transaction.commit();
+            session.close();
         }
     }
 
@@ -98,6 +99,7 @@ public class StorageRoomRepository implements DAORepository{
             log.error("Get storage rooms failed: " + ex.getMessage());
         }finally {
             transaction.commit();
+            session.close();
         }
         return storageRooms;
     }

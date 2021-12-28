@@ -1,6 +1,7 @@
 package KursovProektOOP2.controllers;
 
 import KursovProektOOP2.controllers.Owner.AgentAdder;
+import KursovProektOOP2.controllers.Owner.MaintenanceAdder;
 import KursovProektOOP2.data.entity.Warehouse;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -49,19 +50,19 @@ public class WarehouseInfo {
     Stage stage = new Stage();
 
     @FXML
-    private void initialize(){
+    private void initialize() {
         titledPaneVbox.widthProperty().addListener(event -> {
-            Platform.runLater(()-> anchorPane.setPrefWidth(titledPaneVbox.getWidth()));
+            Platform.runLater(() -> anchorPane.setPrefWidth(titledPaneVbox.getWidth()));
         });
         titledPaneVbox.heightProperty().addListener(event -> {
-            Platform.runLater(()-> anchorPane.setPrefHeight(titledPaneVbox.getHeight()));
+            Platform.runLater(() -> anchorPane.setPrefHeight(titledPaneVbox.getHeight()));
         });
 
     }
 
     @FXML
-    private void viewRooms(){
-        if(roomGridPane.isExpanded()){
+    private void viewRooms() {
+        if (roomGridPane.isExpanded()) {
             warehouseInfoPane.setExpanded(true);
             roomGridPane.setExpanded(false);
             return;
@@ -71,7 +72,7 @@ public class WarehouseInfo {
     }
 
     @FXML
-    private void assignAgents(){
+    private void assignAgents() {
         Parent root = null;
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/OwnerViews/AgentAdder.fxml"));
@@ -88,4 +89,21 @@ public class WarehouseInfo {
         stage.show();
     }
 
+    @FXML
+    public void assignMaintenance(Warehouse w) {
+        Parent root = null;
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/OwnerViews/MaintenanceAdder.fxml"));
+            root = loader.load();
+            MaintenanceAdder controller = loader.getController();
+            controller.setWarehouseID(w.getWarehouseId());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setTitle("Add Maintenance");
+        stage.setResizable(false);
+        stage.show();
+    }
 }
