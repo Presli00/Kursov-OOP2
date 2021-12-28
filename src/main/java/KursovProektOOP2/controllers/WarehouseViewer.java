@@ -291,34 +291,39 @@ public class WarehouseViewer {
         controller.roomGridPane.setExpanded(true);
     }
 
-    private void ContextForRooms(List<StorageRoom> warehouseRooms, HBox row, int i) {
+    private void ContextForRooms(List<StorageRoom> warehouseRooms, Button button, int i) {
         ContextMenu contextMenu = new ContextMenu();
         MenuItem menuItem = new MenuItem("Изтрии");
         contextMenu.getItems().add(menuItem);
-        row.setOnContextMenuRequested(event -> {
-            contextMenu.show(row, event.getScreenX(), event.getScreenY());
+        button.setOnContextMenuRequested(event -> {
+            contextMenu.show(button, event.getScreenX(), event.getScreenY());
         });
         menuItem.setOnAction((event) -> {
             roomRepository.delete(warehouseRooms.get(i));
         });
     }
 
-   private WarehouseInfo wi=new WarehouseInfo();
+    private WarehouseInfo wi = new WarehouseInfo();
 
     private void ContextForWarehouses(List<Warehouse> warehouse, AnchorPane w, int i) {
         ContextMenu contextMenu = new ContextMenu();
         MenuItem menuItem = new MenuItem("Изтрии");
         MenuItem menuItem1 = new MenuItem("Добави поддръжка");
-        contextMenu.getItems().addAll(menuItem,menuItem1);
+        contextMenu.getItems().addAll(menuItem, menuItem1);
         w.setOnContextMenuRequested(event -> {
-            contextMenu.show(w, event.getScreenX(), event.getScreenY());
+                contextMenu.show(w, event.getScreenX(), event.getScreenY());
         });
+        /*if(w.getChildren().getClass().equals(Button.class)){
+            contextMenu.hide();
+        }*/
         if (UserSession.getRoleID().getRoleName().equals("Admin")) {
+            menuItem1.setVisible(false);
             menuItem.setOnAction((event) -> {
                 warehouseRepository.delete(warehouse.get(i));
             });
         }
         if (UserSession.getRoleID().getRoleName().equals("Owner")) {
+            menuItem.setVisible(false);
             menuItem1.setOnAction((event) -> {
                 wi.assignMaintenance(warehouse.get(i));
             });
@@ -336,7 +341,7 @@ public class WarehouseViewer {
                 "%4$s\n", warehouseRooms.get(i).getSize() + " м3", warehouseRooms.get(i).getClimateId().getClimate(), warehouseRooms.get(i).getProductId().getType(), warehouseRooms.get(i).isRented() ? "Rented until " + warehouseRooms.get(i).getFormulars().get(warehouseRooms.get(i).getFormulars().size() - 1).getPeriodEnd().toString() : "Free")
         );
         if (UserSession.getRoleID().getRoleName().equals("Owner")) {
-            ContextForRooms(warehouseRooms, row, i);
+            ContextForRooms(warehouseRooms, room, i);
         }
         room.setTooltip(tooltip);
         if (UserSession.getRoleID().getRoleName().equals("Agent")) {

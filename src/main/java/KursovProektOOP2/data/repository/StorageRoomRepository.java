@@ -2,9 +2,7 @@ package KursovProektOOP2.data.repository;
 
 import KursovProektOOP2.data.access.Connection;
 import KursovProektOOP2.data.entity.StorageRoom;
-import KursovProektOOP2.data.entity.User;
 import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -53,7 +51,6 @@ public class StorageRoomRepository implements DAORepository{
             session.close();
         }
     }
-
     @Override
     public void delete(Object obj) {
         Session session = Connection.openSession();

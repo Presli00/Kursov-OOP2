@@ -1767,3 +1767,5 @@ Caused by: java.sql.SQLException: Table 'warehouse.hibernate_sequence' doesn't e
 [JavaFX Application Thread] ERROR KursovProektOOP2.data.repository.WarehouseRepository  - Warehouse delete errororg.hibernate.HibernateException: Illegal attempt to associate a collection with two open sessions. Collection : [KursovProektOOP2.data.entity.Warehouse.agentsId#5]
 [JavaFX Application Thread] ERROR KursovProektOOP2.data.repository.WarehouseRepository  - Warehouse delete errororg.hibernate.HibernateException: Illegal attempt to associate a collection with two open sessions. Collection : [KursovProektOOP2.data.entity.Warehouse.agentsId#5]
 [JavaFX Application Thread] ERROR KursovProektOOP2.data.repository.MaintenanceRepository  - Maintenance update errorUnknown entity: java.util.LinkedList
+[JavaFX Application Thread] ERROR KursovProektOOP2.data.repository.MaintenanceRepository  - Maintenance update errorUnknown entity: java.util.LinkedList
+[JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Login unsuccessfulNo entity found for query
