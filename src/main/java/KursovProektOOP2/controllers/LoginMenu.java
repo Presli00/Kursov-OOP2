@@ -60,12 +60,14 @@ public class LoginMenu {
                 closeLoginMenu();
                 UserSession.getInstance(result);
                 Panes.loadOwner();
+                Panes.checkForExpiringFormulars(true);
                 Panes.openWindow("/Views/OwnerViews/OwnerGUI.fxml", OwnerGUI.class);
             }
             if(result.getRoleId().getRoleId() == 3){ // LOAD AGENT VIEW
                 closeLoginMenu();
                 UserSession.getInstance(result);
                 Panes.loadAgent();
+                Panes.checkForExpiringFormulars(false);
                 Panes.openWindow("/Views/AgentViews/WarehouseAgentGUI.fxml", WarehouseAgentGUI.class);
             }
 

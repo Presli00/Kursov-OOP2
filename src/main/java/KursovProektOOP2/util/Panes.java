@@ -5,10 +5,8 @@ import KursovProektOOP2.controllers.Admin.AdminGUI;
 import KursovProektOOP2.controllers.Agent.WarehouseAgentGUI;
 import KursovProektOOP2.controllers.Owner.OwnerGUI;
 import KursovProektOOP2.data.access.Connection;
-import KursovProektOOP2.data.entity.Agent;
-import KursovProektOOP2.data.entity.Owner;
-import KursovProektOOP2.data.entity.Rating;
-import KursovProektOOP2.data.entity.Usernotifications;
+import KursovProektOOP2.data.entity.*;
+import KursovProektOOP2.data.repository.*;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -26,6 +24,11 @@ import org.hibernate.Transaction;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Timestamp;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.Temporal;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Panes {
@@ -39,13 +42,9 @@ public class Panes {
         contentAnchorPane.getChildren().add(ap);
         ap.setPrefWidth(contentAnchorPane.getWidth()); // SET SIZE OF VIEW
         ap.setPrefHeight(contentAnchorPane.getHeight());
-        contentAnchorPane.widthProperty().addListener(event -> {
-            ap.setPrefWidth(contentAnchorPane.getWidth());
-        });
+        contentAnchorPane.widthProperty().addListener(event -> ap.setPrefWidth(contentAnchorPane.getWidth()));
 
-        contentAnchorPane.heightProperty().addListener(event -> {
-            ap.setPrefHeight(contentAnchorPane.getHeight());
-        });
+        contentAnchorPane.heightProperty().addListener(event -> ap.setPrefHeight(contentAnchorPane.getHeight()));
     }
 
     public static double getRating(List<Rating> list){
@@ -110,39 +109,6 @@ public class Panes {
         }
     }
 
-
-
-
-
-
-    /*static void loadRooms() {
-        Session session = Connection.openSession();
-        Transaction transaction = session.beginTransaction();
-        String Warehouse_QUERY = "SELECT w FROM Warehouse w WHERE rooms.storageRoomId=:roomID";
-        try {
-            Warehouse result = (Warehouse) session.createQuery(Warehouse_QUERY).setParameter("roomID", UserSession.getUserID()).getSingleResult();
-            UserSession.setOwnerObject(result);
-        } catch (Exception ex) {
-            log.error("Notifications retrieval unsuccessful " + "\n" + ex.getMessage());
-        } finally {
-            transaction.commit();
-        }
-    }*/
-
-    public static void loadWarehouses() {
-        Session session = Connection.openSession();
-        Transaction transaction = session.beginTransaction();
-        String OWNER_QUERY = "SELECT o FROM Owner o WHERE userId.userId = :userID";
-        try {
-            Owner result = (Owner) session.createQuery(OWNER_QUERY).setParameter("userID", UserSession.getUserID()).getSingleResult();
-            //UserSession.setOwnerObject(result);
-        } catch (Exception ex) {
-            log.error("Notifications retrieval unsuccessful " + "\n" + ex.getMessage());
-        } finally {
-            transaction.commit();
-        }
-    }
-
     public static void loadOwner(){
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
@@ -183,13 +149,62 @@ public class Panes {
         contentAnchorPane.getChildren().add(sp);
         sp.setPrefWidth(contentAnchorPane.getWidth()); // SET SIZE OF VIEW
         sp.setPrefHeight(contentAnchorPane.getHeight());
-        contentAnchorPane.widthProperty().addListener(event -> {
-            sp.setPrefWidth(contentAnchorPane.getWidth());
-        });
+        contentAnchorPane.widthProperty().addListener(event -> sp.setPrefWidth(contentAnchorPane.getWidth()));
 
-        contentAnchorPane.heightProperty().addListener(event -> {
-            sp.setPrefHeight(contentAnchorPane.getHeight());
-        });
+        contentAnchorPane.heightProperty().addListener(event -> sp.setPrefHeight(contentAnchorPane.getHeight()));
     }
 
+    public static void checkForExpiringFormulars(boolean isOwner){
+        Date date=new Date();
+        if(isOwner){
+            Owner owner = (Owner) OwnerRepository.getInstance().getById(UserSession.getOwner().getIdOwner()).get();
+            List<Warehouse> warehouses = new ArrayList<>(owner.getWarehouses());
+            for (Warehouse w : warehouses){ // go through warehouses
+                for (StorageRoom room : w.getRooms()){ // go through rooms of warehouse
+                    if(room.getFormulars().size() != 0){
+                        if(room.isRented() && room.getFormulars().get(room.getFormulars().size()-1).getPeriodEnd().before(new Timestamp(date.getTime()))){ // if last formular's ending date is before the current time it has passed
+                            room.setRented(false);
+                            StorageRoomRepository.getInstance().update(room);
+                        }
+                        if(room.isRented() && ChronoUnit.DAYS.between(new Timestamp(date.getTime()).toLocalDateTime(), room.getFormulars().get(room.getFormulars().size()-1).getPeriodEnd().toLocalDateTime()) <= 3 && !room.getFormulars().get(room.getFormulars().size()-1).isNotifOwner()){ //if the days between today and formular are 3 or less AND notifSent is false send notification
+                            Usernotifications notification = new Usernotifications();
+                            notification.setIdFromUser(owner.getUserId());
+                            notification.setNotificationName("Договор за стая от склад: " + w.getWarehouseName() + "\nИзтича скоро " + room.getFormulars().get(room.getFormulars().size()-1).getPeriodEnd());
+                            notification.setNotifTimeStamp(new Timestamp(System.currentTimeMillis()));
+                            owner.getUserId().getUsernotifications().add(notification);
+                            OwnerRepository.getInstance().update(owner);
+                            UserNotificationRepository.getInstance().save(notification);
+                            room.getFormulars().get(room.getFormulars().size()-1).setNotifOwner(true);
+                            FormularRepository.getInstance().update(room.getFormulars().get(room.getFormulars().size()-1));
+                        }
+                    }
+                }
+            }
+        }else{
+            Agent agent = (Agent) AgentRepository.getInstance().getById(UserSession.getAgent().getIdAgent()).get();
+
+            List<Warehouse> warehouses = new ArrayList<>(agent.getWarehouses());
+            for (Warehouse w : warehouses){ // go through warehouses
+                for (StorageRoom room : w.getRooms()){ // go through rooms of warehouse
+                    if(room.getFormulars().size() != 0){ // if there are any formulars
+                        if(room.isRented() && room.getFormulars().get(room.getFormulars().size()-1).getPeriodEnd().before(new Timestamp(date.getTime()))){ // if last formular's ending date is before the current time it has passed
+                            room.setRented(false);
+                            StorageRoomRepository.getInstance().update(room);
+                        }
+                        if(room.isRented() && ChronoUnit.DAYS.between(new Timestamp(date.getTime()).toLocalDateTime(), room.getFormulars().get(room.getFormulars().size()-1).getPeriodEnd().toLocalDateTime()) <= 3 && !room.getFormulars().get(room.getFormulars().size()-1).isNotifAgent()){ //if the days between today and formular are 3 or less AND notifSent is false send notification
+                            Usernotifications notification = new Usernotifications();
+                            notification.setIdFromUser(agent.getIdFromUser());
+                            notification.setNotificationName("Договор за стая от склад: " + w.getWarehouseName() + "\nИзтича скоро " + room.getFormulars().get(room.getFormulars().size()-1).getPeriodEnd());
+                            notification.setNotifTimeStamp(new Timestamp(System.currentTimeMillis()));
+                            agent.getIdFromUser().getUsernotifications().add(notification);
+                            AgentRepository.getInstance().update(agent);
+                            UserNotificationRepository.getInstance().save(notification);
+                            room.getFormulars().get(room.getFormulars().size()-1).setNotifAgent(true);
+                            FormularRepository.getInstance().update(room.getFormulars().get(room.getFormulars().size()-1));
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

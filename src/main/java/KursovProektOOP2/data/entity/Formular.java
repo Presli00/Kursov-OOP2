@@ -14,6 +14,10 @@ public class Formular implements Serializable {
     @OneToOne
     @JoinColumn(name = "Renter_id", nullable = false)
     private RenterInformation renterId;
+    @Column(name = "Notif_owner", nullable = false)
+    private boolean notifOwner;
+    @Column(name = "Notif_agent", nullable = false)
+    private boolean notifAgent;
     @Column(name = "Period_begin", nullable = false)
     private Timestamp periodBegin;
     @Column(name = "Period_end", nullable = false)
@@ -71,6 +75,22 @@ public class Formular implements Serializable {
 
     public void setStorageRoom(StorageRoom storageRoom) {
         this.storageRoom = storageRoom;
+    }
+
+    public boolean isNotifOwner() {
+        return notifOwner;
+    }
+
+    public void setNotifOwner(boolean notifOwner) {
+        this.notifOwner = notifOwner;
+    }
+
+    public boolean isNotifAgent() {
+        return notifAgent;
+    }
+
+    public void setNotifAgent(boolean notifAgent) {
+        this.notifAgent = notifAgent;
     }
 
     @Override
