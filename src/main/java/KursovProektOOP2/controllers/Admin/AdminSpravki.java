@@ -32,8 +32,9 @@ public class AdminSpravki {
     }
 
     @FXML
-    private void agentSpravka(){
-
+    private void agentSpravka() throws IOException {
+        ScrollPane sp = FXMLLoader.load(getClass().getResource("/Views/Spravki/RatingSpravka.fxml")); //LOAD VIEW
+        Panes.setAndClearScrollPane(sp, AnchorPane);
     }
 
     @FXML

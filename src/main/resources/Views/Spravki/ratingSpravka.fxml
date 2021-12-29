@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<ScrollPane fx:id="scrolPane" fitToHeight="true" fitToWidth="true" prefHeight="617.0" prefWidth="1100.0" style="-fx-background-color: #D9DDDC;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="KursovProektOOP2.controllers.Spravki.RatingSpravka">
+   <content>
+      <AnchorPane fx:id="anchorPane" prefHeight="399.0" prefWidth="585.0" style="-fx-background-color: #D9DDDC;">
+         <children>
+            <VBox fx:id="vBox" prefHeight="399.0" prefWidth="585.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <padding>
+                  <Insets left="5.0" right="5.0" top="5.0" />
+               </padding>
+               <children>
+                  <TableView fx:id="table" prefHeight="393.0" prefWidth="945.0" VBox.vgrow="ALWAYS">
+                     <columns>
+                        <TableColumn fx:id="number" prefWidth="51.0" resizable="false" text="№" />
+                        <TableColumn fx:id="username" prefWidth="161.0" resizable="false" text="Потребителско име" />
+                        <TableColumn fx:id="firstName" prefWidth="145.0" resizable="false" text="Име" />
+                        <TableColumn fx:id="lastName" minWidth="8.0" prefWidth="143.0" resizable="false" text="Фамилия" />
+                        <TableColumn fx:id="email" minWidth="0.0" prefWidth="182.0" resizable="false" text="Е-мейл" />
+                        <TableColumn fx:id="phone" prefWidth="160.0" resizable="false" text="Телефонен номер" />
+                        <TableColumn fx:id="dealAmount" prefWidth="144.0" resizable="false" text="Сключени сделки" />
+                        <TableColumn fx:id="rating" prefWidth="99.0" resizable="false" text="Рейтинг" />
+                     </columns>
+                  </TableView>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </content>
+</ScrollPane>

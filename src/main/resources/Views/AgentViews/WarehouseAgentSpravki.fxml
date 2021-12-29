@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane fx:controller="KursovProektOOP2.controllers.Agent.WarehouseAgentSpravki" fx:id="AnchorPane" prefHeight="398.0" prefWidth="598.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="AnchorPane" prefHeight="398.0" prefWidth="598.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="KursovProektOOP2.controllers.Agent.WarehouseAgentSpravki">
     <children>
         <GridPane prefHeight="398.0" prefWidth="598.0" vgap="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <columnConstraints>
@@ -25,7 +25,7 @@
                 </AnchorPane>
                 <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                     <children>
-                        <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="585.0" styleClass="SpravkiButtons" stylesheets="@../../Styles/SpravkiStyles.css" text="Рейтинги на агенти" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <Button mnemonicParsing="false" onAction="#agentSpravka" prefHeight="80.0" prefWidth="585.0" styleClass="SpravkiButtons" stylesheets="@../../Styles/SpravkiStyles.css" text="Рейтинги на агенти" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                     </children>
                 </AnchorPane>
                 <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">

@@ -16,4 +16,9 @@ public class WarehouseAgentSpravki {
         ScrollPane sp = FXMLLoader.load(getClass().getResource("/Views/Spravki/formularsSpravki.fxml")); //LOAD VIEW
         Panes.setAndClearScrollPane(sp, AnchorPane);
     }
+    @FXML
+    private void agentSpravka() throws IOException{
+        ScrollPane sp = FXMLLoader.load(getClass().getResource("/Views/Spravki/RatingSpravka.fxml")); //LOAD VIEW
+        Panes.setAndClearScrollPane(sp, AnchorPane);
+    }
 }
