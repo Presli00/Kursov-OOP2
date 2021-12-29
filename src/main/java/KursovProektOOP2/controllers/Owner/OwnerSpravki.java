@@ -13,26 +13,9 @@ public class OwnerSpravki {
     @FXML
     AnchorPane anchorPane;
 
-   /* @FXML
-    public void ownWarehouses() throws IOException {
-        ScrollPane sp = FXMLLoader.load(getClass().getResource("/Views/Spravki/WarehousesToBeRented.fxml"));
-        Panes.setAndClearScrollPane(sp, (AnchorPane) anchorPane.getParent().lookup("#ContentAnchorPane"));
-    }
     @FXML
-    public void agents(){
-        Platform.runLater(()->{
-            ScrollPane sp = null;
-            try {
-                sp = FXMLLoader.load(getClass().getResource("/Views/Spravki/Agents.fxml"));
-                Panes.setAndClearScrollPane(sp, (AnchorPane) anchorPane.getParent().lookup("#ContentAnchorPane"));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
+    private void agentSpravka() throws IOException {
+        ScrollPane sp = FXMLLoader.load(getClass().getResource("/Views/Spravki/RatingSpravka.fxml")); //LOAD VIEW
+        Panes.setAndClearScrollPane(sp, anchorPane);
     }
-    @FXML
-    public void otherWarehouses() throws IOException {
-        ScrollPane sp = FXMLLoader.load(getClass().getResource("/Views/Spravki/OtherOwnersWarehouses.fxml"));
-        Panes.setAndClearScrollPane(sp, (AnchorPane) anchorPane.getParent().lookup("#ContentAnchorPane"));
-    }*/
 }
