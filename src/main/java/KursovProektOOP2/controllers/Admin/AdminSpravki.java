@@ -26,8 +26,9 @@ public class AdminSpravki {
     }
 
     @FXML
-    private void maintenanceSpravka(){
-
+    private void maintenanceSpravka()throws IOException{
+        ScrollPane sp = FXMLLoader.load(getClass().getResource("/Views/Spravki/MaintenanceSpravka.fxml")); //LOAD VIEW
+        Panes.setAndClearScrollPane(sp, AnchorPane);
     }
 
     @FXML

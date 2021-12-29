@@ -14,6 +14,8 @@ public class Maintenance implements Serializable {
     private String name;
     @Column(name = "isEmployed", nullable = false)
     private boolean isEmployed;
+    @OneToOne(mappedBy = "maintenanceId")
+    private Warehouse warehouse;
 
     public int getMaintenanceId() {
         return maintenanceId;
@@ -22,7 +24,6 @@ public class Maintenance implements Serializable {
     public void setMaintenanceId(int maintenanceId) {
         this.maintenanceId = maintenanceId;
     }
-
     public String getName() {
         return name;
     }
@@ -37,6 +38,14 @@ public class Maintenance implements Serializable {
 
     public void setEmployed(boolean employed) {
         isEmployed = employed;
+    }
+
+    public Warehouse getWarehouse() {
+        return warehouse;
+    }
+
+    public void setWarehouse(Warehouse warehouse) {
+        this.warehouse = warehouse;
     }
 
     @Override
