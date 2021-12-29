@@ -13,12 +13,6 @@ public class AdminSpravki {
     @FXML
     AnchorPane AnchorPane;
 
-    private void clearPane(){
-        if (!AnchorPane.getChildren().isEmpty()) {
-            AnchorPane.getChildren().clear();
-        }
-    }
-
     @FXML
     private void formularsSpravka() throws IOException {
         ScrollPane sp = FXMLLoader.load(getClass().getResource("/Views/Spravki/formularsSpravki.fxml")); //LOAD VIEW
@@ -38,7 +32,8 @@ public class AdminSpravki {
     }
 
     @FXML
-    private void warehouseSpravka(){
-
+    private void warehouseSpravka() throws IOException {
+        ScrollPane sp = FXMLLoader.load(getClass().getResource("/Views/Spravki/OtherOwnersWarehouses.fxml")); //LOAD VIEW
+        Panes.setAndClearScrollPane(sp, AnchorPane);
     }
 }

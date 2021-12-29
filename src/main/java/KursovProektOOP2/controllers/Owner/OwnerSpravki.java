@@ -18,4 +18,10 @@ public class OwnerSpravki {
         ScrollPane sp = FXMLLoader.load(getClass().getResource("/Views/Spravki/RatingSpravka.fxml")); //LOAD VIEW
         Panes.setAndClearScrollPane(sp, anchorPane);
     }
+
+    @FXML
+    private void warehouseSpravka() throws IOException{
+        ScrollPane sp = FXMLLoader.load(getClass().getResource("/Views/Spravki/OtherOwnersWarehouses.fxml")); //LOAD VIEW
+        Panes.setAndClearScrollPane(sp, anchorPane);
+    }
 }
