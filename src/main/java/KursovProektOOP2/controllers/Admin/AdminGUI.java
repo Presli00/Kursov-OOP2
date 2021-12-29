@@ -62,7 +62,6 @@ public class AdminGUI {
     public void SpravkiOnAction() throws IOException {
         AnchorPane ap = FXMLLoader.load(getClass().getResource("/Views/AdminViews/AdminSpravki.fxml")); //LOAD VIEW
         Panes.setAndClearAnchorPane(ap, ContentAnchorPane);
-
     }
 
     @FXML

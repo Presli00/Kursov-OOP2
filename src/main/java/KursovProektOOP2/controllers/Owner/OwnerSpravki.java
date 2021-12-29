@@ -13,7 +13,7 @@ public class OwnerSpravki {
     @FXML
     AnchorPane anchorPane;
 
-    @FXML
+   /* @FXML
     public void ownWarehouses() throws IOException {
         ScrollPane sp = FXMLLoader.load(getClass().getResource("/Views/Spravki/WarehousesToBeRented.fxml"));
         Panes.setAndClearScrollPane(sp, (AnchorPane) anchorPane.getParent().lookup("#ContentAnchorPane"));
@@ -34,5 +34,5 @@ public class OwnerSpravki {
     public void otherWarehouses() throws IOException {
         ScrollPane sp = FXMLLoader.load(getClass().getResource("/Views/Spravki/OtherOwnersWarehouses.fxml"));
         Panes.setAndClearScrollPane(sp, (AnchorPane) anchorPane.getParent().lookup("#ContentAnchorPane"));
-    }
+    }*/
 }
