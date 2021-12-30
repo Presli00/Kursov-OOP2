@@ -2,16 +2,17 @@ package KursovProektOOP2.controllers;
 
 import KursovProektOOP2.controllers.Agent.AgentFormular;
 import KursovProektOOP2.controllers.Owner.AgentRating;
+import KursovProektOOP2.controllers.Spravki.formularsSpravka;
 import KursovProektOOP2.data.entity.*;
 import KursovProektOOP2.data.repository.*;
 import KursovProektOOP2.util.Panes;
 import KursovProektOOP2.util.UserSession;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -54,6 +55,7 @@ public class WarehouseViewer {
                 }
                 assert root != null;
                 Scene scene = new Scene(root);
+                stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/PR Warehouses.png"))));
                 stage.setScene(scene);
                 stage.setTitle("Warehouse Form");
                 stage.setResizable(false);
@@ -229,6 +231,7 @@ public class WarehouseViewer {
                             }
                             assert root != null;
                             Scene scene = new Scene(root);
+                            stage.getIcons().add(new Image(getClass().getResourceAsStream("/Images/PR Warehouses.png")));
                             stage.setScene(scene);
                             stage.setTitle("Rate Agent");
                             stage.setResizable(false);
@@ -280,6 +283,7 @@ public class WarehouseViewer {
                     ex.printStackTrace();
                 }
                 Scene scene = new Scene(root);
+                stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/PR Warehouses.png"))));
                 stage.setScene(scene);
                 stage.setTitle("Storage Room Form");
                 stage.setResizable(false);
@@ -293,36 +297,51 @@ public class WarehouseViewer {
 
     private void ContextForRooms(List<StorageRoom> warehouseRooms, Button button, int i) {
         ContextMenu contextMenuForRoom = new ContextMenu();
-        MenuItem menuItem = new MenuItem("Изтрии");
+        MenuItem menuItem = new MenuItem("Изтрий");
         contextMenuForRoom.getItems().add(menuItem);
         button.setContextMenu(contextMenuForRoom);
-        menuItem.setOnAction((event) -> {
-            roomRepository.delete(warehouseRooms.get(i));
-            Platform.runLater(() -> {
+        menuItem.setOnAction((event) -> roomRepository.delete(warehouseRooms.get(i)));
+    }
 
-            });
+    private void ContextForAgentRooms(Button button, int id) {
+        ContextMenu contextMenuForAgentRoom = new ContextMenu();
+        MenuItem menuItem = new MenuItem("Виж история");
+        contextMenuForAgentRoom.getItems().add(menuItem);
+        button.setContextMenu(contextMenuForAgentRoom);
+        menuItem.setOnAction((event) -> {
+            Parent root = null;
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/Spravki/formularsSpravki.fxml"));
+                root = loader.load();
+                formularsSpravka controller = loader.getController();
+                controller.fromWarehouseViewer = true;
+                controller.roomID = id;
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            assert root != null;
+            Scene scene = new Scene(root);
+            stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/PR Warehouses.png"))));
+            stage.setScene(scene);
+            stage.setTitle("Room History");
+            stage.setResizable(false);
+            stage.show();
         });
     }
 
     private void ContextForWarehouses(List<Warehouse> warehouse, AnchorPane w, int i) {
         ContextMenu contextMenuForWarehouse = new ContextMenu();
-        MenuItem menuItem = new MenuItem("Изтрии");
+        MenuItem menuItem = new MenuItem("Изтрий");
         MenuItem menuItem1 = new MenuItem("Добави поддръжка");
         contextMenuForWarehouse.getItems().addAll(menuItem, menuItem1);
-        w.setOnContextMenuRequested(event -> {
-            contextMenuForWarehouse.show(w.getScene().getWindow(), event.getScreenX(), event.getScreenY());
-        });
+        w.setOnContextMenuRequested(event -> contextMenuForWarehouse.show(w.getScene().getWindow(), event.getScreenX(), event.getScreenY()));
         if (UserSession.getRoleID().getRoleName().equals("Admin")) {
             menuItem1.setVisible(false);
-            menuItem.setOnAction((event) -> {
-                warehouseRepository.delete(warehouse.get(i));
-            });
+            menuItem.setOnAction((event) -> warehouseRepository.delete(warehouse.get(i)));
         }
         if (UserSession.getRoleID().getRoleName().equals("Owner")) {
             menuItem.setVisible(false);
-            menuItem1.setOnAction((event) -> {
-                wi.assignMaintenance(warehouse.get(i));
-            });
+            menuItem1.setOnAction((event) -> wi.assignMaintenance(warehouse.get(i)));
         }
     }
 
@@ -341,6 +360,7 @@ public class WarehouseViewer {
         }
         room.setTooltip(tooltip);
         if (UserSession.getRoleID().getRoleName().equals("Agent")) {
+            ContextForAgentRooms(room, warehouseRooms.get(i).getStorageRoomId());
             room.setOnMouseClicked(e -> {
                 if (e.getClickCount() == 2) {
 
@@ -363,6 +383,7 @@ public class WarehouseViewer {
                         }
                         assert root != null;
                         Scene scene = new Scene(root);
+                        stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/PR Warehouses.png"))));
                         stage.setScene(scene);
                         stage.setTitle("Create Formular");
                         stage.setResizable(false);
