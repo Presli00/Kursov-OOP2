@@ -70,38 +70,38 @@ public class MaintenanceAdder {
 
     @FXML
     private void addMaintenance() {
-        if (currentMaintenanceList.getItems().size() < 1) {
-            currentMaintenanceList.refresh();
-            Maintenance maintenance = (Maintenance) availableMaintenanceBox.getSelectionModel().getSelectedItem();
-            availableMaintenanceBox.getItems().remove(maintenance);
-            currentMaintenanceList.getItems().add(maintenance);
-            maintenance.setEmployed(true);
-        } else {
-            errorText.setText("Може да има само един човек от поддръжка в склад");
+        if(availableMaintenanceBox.getSelectionModel().isEmpty()){
+            errorText.setText("Изберете поддръжка!");
+        }else {
+            if (currentMaintenanceList.getItems().size() < 1) {
+                currentMaintenanceList.refresh();
+                Maintenance maintenance = (Maintenance) availableMaintenanceBox.getSelectionModel().getSelectedItem();
+                availableMaintenanceBox.getItems().remove(maintenance);
+                currentMaintenanceList.getItems().add(maintenance);
+                maintenance.setEmployed(true);
+                maintenanceRepository.update(maintenance);
+                warehouse.setMaintenanceId(maintenance);
+                warehouseRepository.update(warehouse);
+            } else {
+                errorText.setText("Може да има само един човек от поддръжка в склад!");
+            }
         }
     }
     @FXML
     private void removeMaintenance() {
-        if(!currentMaintenanceList.getItems().isEmpty()){
-            currentMaintenanceList.getSelectionModel().selectFirst();
+        currentMaintenanceList.getSelectionModel().selectFirst();
+        if(currentMaintenanceList.getSelectionModel().getSelectedItem() != null){
             Maintenance maintenance = (Maintenance) currentMaintenanceList.getSelectionModel().getSelectedItem();
             currentMaintenanceList.getItems().remove(maintenance);
             availableMaintenanceBox.getItems().add(maintenance);
             maintenance.setEmployed(false);
+            maintenanceRepository.update(maintenance);
+            warehouse.setMaintenanceId(null);
+            warehouseRepository.update(warehouse);
         }
         else{
-            errorText.setText("Няма хора за премахване");
+            errorText.setText("Няма хора за премахване!");
         }
     }
 
-    @FXML
-    private void saveMaintenance() {
-        for (int i = 0; i < currentMaintenanceList.getItems().size(); i++) {
-            Maintenance maintenance = (Maintenance) maintenanceRepository.getById(((Maintenance) currentMaintenanceList.getItems().get(i)).getMaintenanceId()).get();
-            warehouse.setMaintenanceId(maintenance);
-            warehouse.getMaintenanceId().setEmployed(true);
-            maintenanceRepository.update(maintenance);
-        }
-        warehouseRepository.update(warehouse);
-    }
 }

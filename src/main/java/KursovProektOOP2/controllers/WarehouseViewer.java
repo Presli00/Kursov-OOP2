@@ -36,6 +36,7 @@ public class WarehouseViewer {
     public final WarehouseRepository warehouseRepository = WarehouseRepository.getInstance();
     public final AgentRepository agentRepository = AgentRepository.getInstance();
     public final StorageRoomRepository roomRepository = StorageRoomRepository.getInstance();
+    public final MaintenanceRepository maintenanceRepository = MaintenanceRepository.getInstance();
 
     @FXML
     private void initialize() throws IOException {
@@ -337,7 +338,15 @@ public class WarehouseViewer {
         w.setOnContextMenuRequested(event -> contextMenuForWarehouse.show(w.getScene().getWindow(), event.getScreenX(), event.getScreenY()));
         if (UserSession.getRoleID().getRoleName().equals("Admin")) {
             menuItem1.setVisible(false);
-            menuItem.setOnAction((event) -> warehouseRepository.delete(warehouse.get(i)));
+            menuItem.setOnAction((event) ->{
+                warehouseRepository.delete(warehouse.get(i));
+                Owner owner = (Owner) ownerRepository.getById(warehouse.get(i).getOwnerId().getIdOwner()).get();
+                owner.setWarehousesAmount(owner.getWarehousesAmount() - 1);
+                ownerRepository.update(owner);
+                Maintenance maintenance = (Maintenance) maintenanceRepository.getById(warehouse.get(i).getMaintenanceId().getMaintenanceId()).get();
+                maintenance.setEmployed(false);
+                maintenanceRepository.update(maintenance);
+            });
         }
         if (UserSession.getRoleID().getRoleName().equals("Owner")) {
             menuItem.setVisible(false);
