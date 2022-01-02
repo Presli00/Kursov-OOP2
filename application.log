@@ -1791,4 +1791,3 @@ No entity found for query
 [JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Login unsuccessfulNo entity found for query
 [JavaFX Application Thread] ERROR KursovProektOOP2.controllers.Main  - Login unsuccessfulNo entity found for query
 [JavaFX Application Thread] ERROR KursovProektOOP2.data.repository.MaintenanceRepository  - Maintenance update errorUnknown entity: java.util.LinkedList
-[JavaFX Application Thread] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper  - (conn=125) Column count doesn't match value count at row 1
