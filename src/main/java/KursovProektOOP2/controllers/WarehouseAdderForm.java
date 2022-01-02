@@ -2,6 +2,7 @@ package KursovProektOOP2.controllers;
 
 import KursovProektOOP2.data.entity.*;
 import KursovProektOOP2.data.repository.*;
+import KursovProektOOP2.data.services.WarehouseService;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -34,7 +35,7 @@ public class WarehouseAdderForm {
     List cities;
     List owners;
 
-    public final WarehouseRepository warehouseRepository = WarehouseRepository.getInstance();
+    public final WarehouseService warehouseService = WarehouseService.getInstance();
     public final MaintenanceRepository maintenanceRepository = MaintenanceRepository.getInstance();
     public final CityRepository cityRepository = CityRepository.getInstance();
     public final OwnerRepository ownerRepository = OwnerRepository.getInstance();
@@ -107,24 +108,13 @@ public class WarehouseAdderForm {
         if (validate()) { // if input is valid
             Owner obj = (Owner) ownerBox.getValue();
             Owner owner = ((Owner) ownerRepository.getById(obj.getIdOwner()).get());
-            //Maintenance maintenance = (Maintenance) maintenanceRepository.getById(((Maintenance) maintenanceBox.getValue()).getMaintenanceId()).get();
-
-            Warehouse warehouse = new Warehouse();
-            warehouse.setWarehouseId(0);
-            warehouse.setWarehouseName(warehouseNameTF.getText());
-            warehouse.setCityId((City) cityBox.getValue());
-            warehouse.setStreet(streetTF.getText());
-            warehouse.setNumberOfStorageRooms(Integer.parseInt(roomAmountTF.getText()));
-            if (maintenanceBox.getSelectionModel().isEmpty()) {
-                warehouse.setMaintenanceId(null);
+            if (maintenanceBox.getSelectionModel().isEmpty()){
+                warehouseService.addWarehouse(warehouseNameTF.getText(), (City) cityBox.getValue(), streetTF.getText(), Integer.parseInt(roomAmountTF.getText()), 1, true, owner);
+            }else{
+                warehouseService.addWarehouse(warehouseNameTF.getText(), (City) cityBox.getValue(), streetTF.getText(), Integer.parseInt(roomAmountTF.getText()), ((Maintenance) maintenanceBox.getValue()).getMaintenanceId(), false, owner);
             }
-            warehouse.setOwnerId(owner);
-            warehouse.setAgentsId(null);
-            warehouseRepository.save(warehouse);
-
             owner.setWarehousesAmount(owner.getWarehousesAmount() + 1);
             ownerRepository.update(owner);
-            maintenanceRepository.update(maintenance);
             stage.close();
         }
     }

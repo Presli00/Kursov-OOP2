@@ -5,6 +5,7 @@ import KursovProektOOP2.controllers.Agent.WarehouseAgentGUI;
 import KursovProektOOP2.controllers.Owner.OwnerGUI;
 import KursovProektOOP2.data.access.Connection;
 import KursovProektOOP2.data.entity.Usernotifications;
+import KursovProektOOP2.data.services.UserNotificationService;
 import KursovProektOOP2.util.Panes;
 import KursovProektOOP2.util.UserSession;
 import javafx.application.Platform;
@@ -33,7 +34,7 @@ public class NotificationViewer {
     List<Usernotifications> notifs;
     List<NotificationInfo> selected = new ArrayList<>();
     private static final Logger log = Logger.getLogger(Main.class);
-
+    public final UserNotificationService userNotificationService = UserNotificationService.getInstance();
 
     @FXML
     public void initialize() throws IOException {
@@ -75,18 +76,9 @@ public class NotificationViewer {
     public void MarkAsRead(){
         if(selected.size() > 0){ // if size is 0, do nothing
             for(int i = 0; i < selected.size(); i++){
-                Session session = Connection.openSession();
-                Transaction transaction = session.beginTransaction();
-                String UPDATE_QUERY = "UPDATE Usernotifications SET isRead = true WHERE idNotifications = :idNotif";
-                try{
-                    session.createQuery(UPDATE_QUERY).setParameter("idNotif", selected.get(i).id).executeUpdate();
-                    selected.get(i).notificationCheck.setSelected(false);
-                    selected.get(i).isReadDot.setVisible(false); // REMOVE DOT
-                }catch (Exception ex){
-                    log.error("Notifications marking unsuccessful " + "\n" + ex.getMessage());
-                }finally {
-                    transaction.commit();
-                }
+                userNotificationService.markAsRead(selected.get(i).id);
+                selected.get(i).notificationCheck.setSelected(false);
+                selected.get(i).isReadDot.setVisible(false); // REMOVE DOT
             }
             reload();
             selected.clear();
@@ -98,18 +90,8 @@ public class NotificationViewer {
     @FXML
     public void DeleteNotification(){
         if(selected.size() > 0){
-            for(int i = 0; i < selected.size(); i++){ // DELETE QUERY FOR EVERY SELECTED NOTIFICATION
-                Session session = Connection.openSession();
-                Transaction transaction = session.beginTransaction();
-                String DELETE_QUERY = "DELETE FROM Usernotifications WHERE idNotifications = :idNotif";
-                try{
-                    session.createQuery(DELETE_QUERY).setParameter("idNotif", selected.get(i).id).executeUpdate();
-
-                }catch (Exception ex){
-                    log.error("Notifications deletion unsuccessful " + "\n" + ex.getMessage());
-                }finally {
-                    transaction.commit();
-                }
+            for(int i = 0; i < selected.size(); i++){
+                userNotificationService.deleteNotif(selected.get(i).id);
             }
 
             reload();

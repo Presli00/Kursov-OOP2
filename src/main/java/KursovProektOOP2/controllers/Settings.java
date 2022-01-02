@@ -2,6 +2,7 @@ package KursovProektOOP2.controllers;
 
 import KursovProektOOP2.data.access.Connection;
 import KursovProektOOP2.data.entity.User;
+import KursovProektOOP2.data.services.UserService;
 import KursovProektOOP2.util.UserSession;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -53,52 +54,31 @@ public class Settings {
     @FXML
     Text updatedText;
 
-    private static final Logger log = Logger.getLogger(Main.class);
-    int currentUser = UserSession.getUserID();
+    public final UserService service = UserService.getInstance();
 
     public void initialize() {
-        Session session = Connection.openSession();
-        Transaction transaction = session.beginTransaction();
-        String CHANGE_QUERY = "SELECT u FROM User u WHERE userId='" + currentUser + "'"; //query to change the username
-
-        try {
-            User result = (User) session.createQuery(CHANGE_QUERY).getSingleResult();
-            usernameText.setText(result.getUsername());
-            phoneText.setText(result.getPhone());
-            emailText.setText(result.geteMail());
-            nameText.setText(result.getFirstName());
-            familyText.setText(result.getLastName());
-            roleText.setText(result.getRoleId().getRoleName());
-            createdText.setText(result.getCreatedDate().toString());
-            if(result.getUpdatedDate()==null){
-                updatedText.setText("Has not been updated yet");
-            }
-            else {
-                updatedText.setText(result.getUpdatedDate().toString());
-            }
-        } catch (Exception ex) {
-            log.error("User not found");
-        } finally {
-            transaction.commit();
+        usernameText.setText(UserSession.getUserName());
+        phoneText.setText(UserSession.getPhone());
+        emailText.setText(UserSession.geteMail());
+        nameText.setText(UserSession.getFirst_name());
+        familyText.setText(UserSession.getLast_name());
+        roleText.setText(UserSession.getRoleID().getRoleName());
+        createdText.setText(UserSession.getCreatedDate());
+        if(UserSession.getUpdatedDate()==null){
+            updatedText.setText("Has not been updated yet");
+        }
+        else {
+            updatedText.setText(UserSession.getUpdatedDate().toString());
         }
     }
 
     public void apply() {
-        Session session = Connection.openSession();
-        Transaction transaction = session.beginTransaction();
-        String CHANGE_QUERY = "SELECT u FROM User u WHERE userId='" + currentUser + "'"; //query to change the username
-        Date date=new Date();
-        try {
-            User result = (User) session.createQuery(CHANGE_QUERY).getSingleResult();
-            result.setUsername(usernameTF.getText());
-            result.setPassword(passwordTF.getText());
-            result.setUpdatedDate(new Timestamp(date.getTime()));
-            cancel();
-        } catch (Exception ex) {
-            log.error("Password didn't match");
-        } finally {
-            transaction.commit();
+        if(passwordCheck.isSelected()){
+            service.updateUser(usernameTF.getText(), passwordVisibleTF.getText());
+        }else{
+            service.updateUser(usernameTF.getText(), passwordTF.getText());
         }
+        cancel();
     }
 
     public void check() {

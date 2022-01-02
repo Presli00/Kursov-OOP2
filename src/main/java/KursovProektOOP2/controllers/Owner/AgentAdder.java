@@ -1,16 +1,14 @@
 package KursovProektOOP2.controllers.Owner;
 
 import KursovProektOOP2.data.entity.Agent;
-import KursovProektOOP2.data.entity.Usernotifications;
 import KursovProektOOP2.data.entity.Warehouse;
 import KursovProektOOP2.data.repository.AgentRepository;
-import KursovProektOOP2.data.repository.UserNotificationRepository;
 import KursovProektOOP2.data.repository.WarehouseRepository;
+import KursovProektOOP2.data.services.UserNotificationService;
 import KursovProektOOP2.util.AgentListViewCellFactory;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +22,7 @@ public class AgentAdder {
 
     public final AgentRepository agentRepository = AgentRepository.getInstance();
     public final WarehouseRepository warehouseRepository = WarehouseRepository.getInstance();
-    public final UserNotificationRepository userNotificationRepository = UserNotificationRepository.getInstance();
+    public final UserNotificationService userNotificationService = UserNotificationService.getInstance();
 
     @FXML
     private void initialize(){
@@ -85,13 +83,7 @@ public class AgentAdder {
         for(int i = 0; i < currentAgentsList.getItems().size(); i++){
             Agent agent = (Agent) agentRepository.getById(((Agent) currentAgentsList.getItems().get(i)).getIdAgent()).get();
             warehouse.getAgentsId().add(agent);
-            Usernotifications userNotif = new Usernotifications();
-            userNotif.setIdFromUser(agent.getIdFromUser());
-            userNotif.setNotificationName("Бяхте добавен като складов агент за  склад: " + warehouse.getWarehouseName() + "\nТой принадлежи на " + warehouse.getOwnerId().getUserId().getUsername());
-            userNotif.setNotifTimeStamp(new Timestamp(System.currentTimeMillis()));
-            agent.getIdFromUser().getUsernotifications().add(userNotif);
-            agentRepository.update(agent);
-            userNotificationRepository.save(userNotif);
+            userNotificationService.createAgentNotif(agent, warehouse);
         }
         warehouseRepository.update(warehouse);
     }

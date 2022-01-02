@@ -80,7 +80,6 @@ public class MaintenanceAdder {
             errorText.setText("Може да има само един човек от поддръжка в склад");
         }
     }
-    // && !currentMaintenanceList.getSelectionModel().isEmpty()
     @FXML
     private void removeMaintenance() {
         if(!currentMaintenanceList.getItems().isEmpty()){

@@ -2,6 +2,9 @@ package KursovProektOOP2.controllers.Agent;
 
 import KursovProektOOP2.data.entity.*;
 import KursovProektOOP2.data.repository.*;
+import KursovProektOOP2.data.services.FormularService;
+import KursovProektOOP2.data.services.RenterService;
+import KursovProektOOP2.data.services.UserNotificationService;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
@@ -43,9 +46,9 @@ public class AgentFormular {
     public final StorageRoomRepository storageRoomRepository = StorageRoomRepository.getInstance();
     public final OwnerRepository ownerRepository = OwnerRepository.getInstance();
     public final AgentRepository agentRepository = AgentRepository.getInstance();
-    public final RenterInformationRepository renterRepository = RenterInformationRepository.getInstance();
-    public final FormularRepository formularRepository = FormularRepository.getInstance();
-    public final UserNotificationRepository userNotificationRepository = UserNotificationRepository.getInstance();
+    public final RenterService renterService = RenterService.getInstance();
+    public final FormularService formularService = FormularService.getInstance();
+    public final UserNotificationService userNotificationService = UserNotificationService.getInstance();
 
     @FXML
     private void initialize(){
@@ -101,21 +104,9 @@ public class AgentFormular {
                 a.setContentText("Room is already Rented");
                 a.show();
             }else{
-                RenterInformation renter = new RenterInformation();
-                renter.setRenterId(0);
-                renter.setName(namesTF.getText());
-                renter.setPhone(phoneTF.getText());
-                renter.setCityId(cityBox.getValue());
-                renter.setStreet(addressTF.getText());
-                int id = renterRepository.saveAndReturnID(renter);
+                int id = renterService.addRenter(namesTF.getText(), phoneTF.getText(), cityBox.getValue(), addressTF.getText());
 
-                Formular formular = new Formular();
-                formular.setRenterId((RenterInformation) renterRepository.getById(id).get());
-                formular.setStorageRoom(room);
-                formular.setPeriodBegin(Timestamp.valueOf(startDate.getValue().atStartOfDay()));
-                formular.setPeriodEnd(Timestamp.valueOf(endDate.getValue().atStartOfDay()));
-                formular.setPrice(Double.parseDouble(priceTF.getText()));
-                formularRepository.save(formular);
+                Formular formular = formularService.createFormular(room, id, startDate.getValue(), endDate.getValue(), Double.parseDouble(priceTF.getText()));
 
                 agent.setDealAmount(agent.getDealAmount() + 1);
                 agentRepository.update(agent);
@@ -123,17 +114,7 @@ public class AgentFormular {
                 room.setRented(true);
                 storageRoomRepository.update(room);
 
-                Usernotifications ownerNotif = new Usernotifications();
-                ownerNotif.setIdFromUser(owner.getUserId());
-                ownerNotif.setNotificationName("Стая от склад "
-                        + room.getwarehouse().getWarehouseName()
-                        + "\n беше отдадена под наем от "
-                        + formular.getPeriodBegin().toString()
-                        + "\n до "
-                        + formular.getPeriodEnd().toString());
-                ownerNotif.setNotifTimeStamp(new Timestamp(System.currentTimeMillis()));
-                owner.getUserId().getUsernotifications().add(ownerNotif);
-                userNotificationRepository.save(ownerNotif);
+                userNotificationService.createOwnerNotif(owner, room, formular);
             }
 
             stage.close();

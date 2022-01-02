@@ -101,7 +101,7 @@ public class Panes {
         String NOTIFICATION_QUERY = "SELECT u FROM Usernotifications u WHERE idFromUser.userId = :userID";
         try {
             List<Usernotifications> notifications = session.createQuery(NOTIFICATION_QUERY).setParameter("userID", UserSession.getUserID()).getResultList();
-            UserSession.setNotifications(notifications); // Setting it here since we can't execute another query in the login session (i think lol)
+            UserSession.setNotifications(notifications);
         } catch (Exception ex) {
             log.error("Notifications retrieval unsuccessful " + "\n" + ex.getMessage());
         } finally {

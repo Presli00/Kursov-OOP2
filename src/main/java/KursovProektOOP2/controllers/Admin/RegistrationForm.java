@@ -1,15 +1,19 @@
 package KursovProektOOP2.controllers.Admin;
 
+import KursovProektOOP2.data.entity.Climate;
 import KursovProektOOP2.data.entity.Role;
 import KursovProektOOP2.data.entity.User;
 import KursovProektOOP2.data.repository.RoleRepository;
 import KursovProektOOP2.data.repository.UserRepository;
+import KursovProektOOP2.data.services.UserService;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import javafx.util.StringConverter;
 import org.apache.commons.lang3.RandomStringUtils;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -38,36 +42,20 @@ public class RegistrationForm {
     @FXML
     Label validationLabel;
 
-    public final UserRepository repository = UserRepository.getInstance();
+    public final UserService service = UserService.getInstance();
     public final RoleRepository roleRepository = RoleRepository.getInstance();
     List<Role> roles = roleRepository.getAll();
 
     public void Register(){
         Stage stage = (Stage) registerButton.getScene().getWindow();
         if(validate()){
-            User user = new User();
-            user.setUserId(0);
-            user.setUsername(usernameTF.getText());
-            user.setFirstName(firstNameTF.getText());
-            user.setLastName(lastNameTF.getText());
-            user.seteMail(emailTF.getText());
-            user.setPhone(phoneTF.getText());
             if(passwordCheck.isSelected()){
-                user.setPassword(passwordVisibleTF.getText());
+                service.addUser(usernameTF.getText(), firstNameTF.getText(), lastNameTF.getText(), emailTF.getText(),
+                        phoneTF.getText(), passwordVisibleTF.getText(), true, (Role) roleTF.getValue());
             }else{
-                user.setPassword(passwordTF.getText());
+                service.addUser(usernameTF.getText(), firstNameTF.getText(), lastNameTF.getText(), emailTF.getText(),
+                        phoneTF.getText(), passwordTF.getText(), false, (Role) roleTF.getValue());
             }
-            if(roleTF.getValue() == roleTF.getItems().get(0)){
-                user.setRoleId(roles.get(0));
-            }else if(roleTF.getValue() == roleTF.getItems().get(1)){
-                user.setRoleId(roles.get(1));
-            }else{
-                user.setRoleId(roles.get(2));
-            }
-            Date date = new Date();
-            user.setCreatedDate(new Timestamp(date.getTime()));
-            user.setUpdatedDate(null);
-            repository.save(user);
             stage.close();
         }
     }
@@ -114,9 +102,22 @@ public class RegistrationForm {
 
     @FXML
     public void initialize(){ //Add items to combobox
-        roleTF.getItems().add("Admin");
-        roleTF.getItems().add("Warehouse Owner");
-        roleTF.getItems().add("Warehouse Agent");
+        List<Role> roleList = new ArrayList<>(roleRepository.getAll());
+        for (int i = 0; i < roleList.size(); i++) {
+            roleTF.getItems().add(roleList.get(i));
+        }
+
+        roleTF.setConverter(new StringConverter<Role>() {
+            @Override
+            public String toString(Role Role) {
+                return Role.getRoleName();
+            }
+
+            @Override
+            public Role fromString(final String string) {
+                return (Role) roleTF.getItems().stream().filter(Role -> ((Role) Role).getRoleName().equals(string)).findFirst().orElse(null);
+            }
+        });
     }
 
     public void check() {

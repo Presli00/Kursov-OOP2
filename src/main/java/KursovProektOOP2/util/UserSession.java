@@ -2,6 +2,7 @@ package KursovProektOOP2.util;
 
 import KursovProektOOP2.data.entity.*;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 public class UserSession {
@@ -25,6 +26,10 @@ public class UserSession {
 
     public static int getUserID() {
         return user.getUserId();
+    }
+
+    public static User getUser() {
+        return user;
     }
 
     public static String getUserName() {
@@ -59,8 +64,28 @@ public class UserSession {
         return user.getLastName();
     }
 
+    public static String getPhone() {
+        return user.getPhone();
+    }
+
+    public static String geteMail() {
+        return user.geteMail();
+    }
+
+    public static String getCreatedDate() {
+        return user.getCreatedDate().toString();
+    }
+
+    public static Timestamp getUpdatedDate() {
+        return user.getUpdatedDate();
+    }
+
     public static void setNotifications(List<Usernotifications> notifications) {
         UserSession.notifications = notifications;
+    }
+
+    public static void setUpdatedDate(Timestamp timestamp) {
+        UserSession.getUser().setUpdatedDate(timestamp);
     }
 
     public static List<Usernotifications> getNotifications() {
