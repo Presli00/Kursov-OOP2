@@ -6,6 +6,8 @@ import KursovProektOOP2.data.entity.StorageRoom;
 import KursovProektOOP2.data.entity.Warehouse;
 import KursovProektOOP2.data.repository.FormularRepository;
 import KursovProektOOP2.data.repository.StorageRoomRepository;
+import KursovProektOOP2.data.services.FormularService;
+import KursovProektOOP2.data.services.WarehouseService;
 import KursovProektOOP2.models.FormularModel;
 import KursovProektOOP2.util.AgentListViewCellFactory;
 import javafx.collections.FXCollections;
@@ -37,8 +39,8 @@ public class formularsSpravka {
     public boolean fromWarehouseViewer;
     public int roomID;
     List<Formular> formularEntities;
-    public final FormularRepository formularRepository = FormularRepository.getInstance();
-    public final StorageRoomRepository roomRepository = StorageRoomRepository.getInstance();
+    public final FormularService formularService = FormularService.getInstance();
+    public final WarehouseService warehouseService = WarehouseService.getInstance();
 
     @FXML
     private void initialize(){
@@ -49,9 +51,9 @@ public class formularsSpravka {
                 e.printStackTrace();
             }
             if(fromWarehouseViewer){
-                formularEntities = new ArrayList<>(((StorageRoom) roomRepository.getById(roomID).get()).getFormulars());
+                formularEntities = new ArrayList<>(warehouseService.getStorageRoomByID(roomID).getFormulars());
             }else{
-                formularEntities = new ArrayList<>(formularRepository.getAll());
+                formularEntities = new ArrayList<>(formularService.getAllFormulars());
             }
             ObservableList<FormularModel> formularModels = FXCollections.observableArrayList();
             for (int i = 0; i < formularEntities.size(); i++) {

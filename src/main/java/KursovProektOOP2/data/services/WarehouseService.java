@@ -1,16 +1,17 @@
 package KursovProektOOP2.data.services;
 
-import KursovProektOOP2.data.entity.City;
-import KursovProektOOP2.data.entity.Maintenance;
-import KursovProektOOP2.data.entity.Owner;
-import KursovProektOOP2.data.entity.Warehouse;
-import KursovProektOOP2.data.repository.AgentRepository;
+import KursovProektOOP2.controllers.Main;
+import KursovProektOOP2.data.entity.*;
 import KursovProektOOP2.data.repository.MaintenanceRepository;
+import KursovProektOOP2.data.repository.StorageRoomRepository;
 import KursovProektOOP2.data.repository.WarehouseRepository;
+
+import java.util.List;
 
 public class WarehouseService {
     public final MaintenanceRepository maintenanceRepository = MaintenanceRepository.getInstance();
     public final WarehouseRepository repository = WarehouseRepository.getInstance();
+    public final StorageRoomRepository storageRoomRepository = StorageRoomRepository.getInstance();
 
     public static WarehouseService getInstance(){
         return WarehouseService.WarehouseServiceHolder.INSTANCE;
@@ -40,4 +41,61 @@ public class WarehouseService {
         repository.save(warehouse);
     }
 
+    public void setRoomRented(StorageRoom room, boolean bool){
+        room.setRented(bool);
+        storageRoomRepository.update(room);
+    }
+
+    public List<Warehouse> getAllWarehouses(){
+        return repository.getAll();
+    }
+
+    public StorageRoom getStorageRoomByID(int id){
+        return (StorageRoom) storageRoomRepository.getById(id).get();
+    }
+
+    public Warehouse getWarehouseByID(int id){
+        return (Warehouse) repository.getById(id).get();
+    }
+
+    public Maintenance getMaintenanceByID(int id){
+        return (Maintenance) maintenanceRepository.getById(id).get();
+    }
+
+    public List<Maintenance> getAllMaintenance(){
+        return maintenanceRepository.getAll();
+    }
+
+    public void updateWarehouse(Warehouse warehouse){
+        repository.update(warehouse);
+    }
+
+    public void setWarehouseMaintenance(Warehouse warehouse, Maintenance maintenance){
+        warehouse.setMaintenanceId(maintenance);
+        repository.update(warehouse);
+    }
+
+    public void setEmploymentStatusMaintenance(Maintenance maintenance, boolean bool){
+        maintenance.setEmployed(bool);
+        maintenanceRepository.update(maintenance);
+    }
+
+    public void createNewRoom(double size, Climate climate, ProductType productType, Warehouse warehouse){
+        StorageRoom room = new StorageRoom();
+        room.setStorageRoomId(0);
+        room.setSize(size);
+        room.setClimateId(climate);
+        room.setProductId(productType);
+        room.setRented(false);
+        room.setwarehouse(warehouse);
+        storageRoomRepository.save(room);
+    }
+
+    public void deleteRoom(StorageRoom room){
+        storageRoomRepository.delete(room);
+    }
+
+    public void deleteWarehouse(Warehouse warehouse){
+        repository.delete(warehouse);
+    }
 }

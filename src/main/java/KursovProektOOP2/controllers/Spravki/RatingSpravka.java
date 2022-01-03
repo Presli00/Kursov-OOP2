@@ -1,12 +1,9 @@
 package KursovProektOOP2.controllers.Spravki;
 
 import KursovProektOOP2.data.entity.Agent;
-import KursovProektOOP2.data.entity.Formular;
 import KursovProektOOP2.data.entity.Rating;
-import KursovProektOOP2.data.repository.AgentRepository;
-import KursovProektOOP2.data.repository.FormularRepository;
+import KursovProektOOP2.data.services.UserService;
 import KursovProektOOP2.models.AgentModel;
-import KursovProektOOP2.models.FormularModel;
 import KursovProektOOP2.util.Panes;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -39,11 +36,11 @@ public class RatingSpravka {
     @FXML
     TableColumn rating;
 
-    public final AgentRepository agentRepository = AgentRepository.getInstance();
+    public final UserService userService = UserService.getInstance();
 
     @FXML
     private void initialize(){
-        List<Agent> agentEntities = new ArrayList<>(agentRepository.getAll());
+        List<Agent> agentEntities = new ArrayList<>(userService.getAllAgents());
         ObservableList<AgentModel> agentModels = FXCollections.observableArrayList();
         for (int i = 0; i < agentEntities.size(); i++) {
             List<Rating> agentRating = new ArrayList<>(agentEntities.get(i).getReceivedRatings());

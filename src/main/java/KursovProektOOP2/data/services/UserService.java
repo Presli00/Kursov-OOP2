@@ -2,8 +2,13 @@ package KursovProektOOP2.data.services;
 
 import KursovProektOOP2.controllers.Main;
 import KursovProektOOP2.data.access.Connection;
+import KursovProektOOP2.data.entity.Agent;
+import KursovProektOOP2.data.entity.Owner;
 import KursovProektOOP2.data.entity.Role;
 import KursovProektOOP2.data.entity.User;
+import KursovProektOOP2.data.repository.AgentRepository;
+import KursovProektOOP2.data.repository.OwnerRepository;
+import KursovProektOOP2.data.repository.RoleRepository;
 import KursovProektOOP2.data.repository.UserRepository;
 import KursovProektOOP2.util.UserSession;
 import org.apache.log4j.Logger;
@@ -12,9 +17,13 @@ import org.hibernate.Transaction;
 
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
 
 public class UserService {
     public final UserRepository repository = UserRepository.getInstance();
+    public final OwnerRepository ownerRepository = OwnerRepository.getInstance();
+    public final AgentRepository agentRepository = AgentRepository.getInstance();
+    public final RoleRepository roleRepository = RoleRepository.getInstance();
 
     public static UserService getInstance(){
         return UserService.UserServiceHolder.INSTANCE;
@@ -62,5 +71,44 @@ public class UserService {
         } finally {
             transaction.commit();
         }
+    }
+
+    public List<User> getAllUsers(){
+        return repository.getAll();
+    }
+
+    public List<Owner> getAllOwners(){
+        return ownerRepository.getAll();
+    }
+
+    public List<Agent> getAllAgents(){
+        return agentRepository.getAll();
+    }
+
+    public List<Role> getAllRoles(){
+        return roleRepository.getAll();
+    }
+
+    public Owner getOwnerByID(int id){
+        return (Owner) ownerRepository.getById(id).get();
+    }
+
+    public Agent getAgentByID(int id){
+        return (Agent) agentRepository.getById(id).get();
+    }
+
+    public void increaseAgentDeals(Agent agent){
+        agent.setDealAmount(agent.getDealAmount() + 1);
+        agentRepository.update(agent);
+    }
+
+    public void increaseOwnerWarehouses(Owner owner){
+        owner.setWarehousesAmount(owner.getWarehousesAmount() + 1);
+        ownerRepository.update(owner);
+    }
+
+    public void decreaseOwnerWarehouses(Owner owner){
+        owner.setWarehousesAmount(owner.getWarehousesAmount() - 1);
+        ownerRepository.update(owner);
     }
 }

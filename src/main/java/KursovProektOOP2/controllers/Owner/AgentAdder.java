@@ -2,9 +2,9 @@ package KursovProektOOP2.controllers.Owner;
 
 import KursovProektOOP2.data.entity.Agent;
 import KursovProektOOP2.data.entity.Warehouse;
-import KursovProektOOP2.data.repository.AgentRepository;
-import KursovProektOOP2.data.repository.WarehouseRepository;
 import KursovProektOOP2.data.services.UserNotificationService;
+import KursovProektOOP2.data.services.UserService;
+import KursovProektOOP2.data.services.WarehouseService;
 import KursovProektOOP2.util.AgentListViewCellFactory;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
@@ -20,8 +20,8 @@ public class AgentAdder {
     private int warehouseID;
     Warehouse warehouse;
 
-    public final AgentRepository agentRepository = AgentRepository.getInstance();
-    public final WarehouseRepository warehouseRepository = WarehouseRepository.getInstance();
+    public final UserService userService = UserService.getInstance();
+    public final WarehouseService warehouseService = WarehouseService.getInstance();
     public final UserNotificationService userNotificationService = UserNotificationService.getInstance();
 
     @FXML
@@ -32,8 +32,8 @@ public class AgentAdder {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            warehouse = (Warehouse)warehouseRepository.getById(warehouseID).get();
-            List<Agent> allAgents = agentRepository.getAll();
+            warehouse = warehouseService.getWarehouseByID(warehouseID);
+            List<Agent> allAgents = userService.getAllAgents();
             List<Agent> currentAgents = new ArrayList<>(warehouse.getAgentsId());
             for(int i = 0; i < currentAgents.size(); i++){
                 Agent current = currentAgents.get(i);
@@ -81,10 +81,10 @@ public class AgentAdder {
     private void saveAgents(){
         warehouse.getAgentsId().clear(); // clear so we don't have duplicates or old values
         for(int i = 0; i < currentAgentsList.getItems().size(); i++){
-            Agent agent = (Agent) agentRepository.getById(((Agent) currentAgentsList.getItems().get(i)).getIdAgent()).get();
+            Agent agent = userService.getAgentByID(((Agent) currentAgentsList.getItems().get(i)).getIdAgent());
             warehouse.getAgentsId().add(agent);
             userNotificationService.createAgentNotif(agent, warehouse);
         }
-        warehouseRepository.update(warehouse);
+        warehouseService.updateWarehouse(warehouse);
     }
 }

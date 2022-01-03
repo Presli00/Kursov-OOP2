@@ -1,14 +1,13 @@
 package KursovProektOOP2.controllers;
 
 import KursovProektOOP2.data.entity.*;
-import KursovProektOOP2.data.repository.*;
+import KursovProektOOP2.data.services.CityService;
+import KursovProektOOP2.data.services.UserService;
 import KursovProektOOP2.data.services.WarehouseService;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
-import org.hibernate.Session;
 
 import java.util.List;
 
@@ -36,9 +35,8 @@ public class WarehouseAdderForm {
     List owners;
 
     public final WarehouseService warehouseService = WarehouseService.getInstance();
-    public final MaintenanceRepository maintenanceRepository = MaintenanceRepository.getInstance();
-    public final CityRepository cityRepository = CityRepository.getInstance();
-    public final OwnerRepository ownerRepository = OwnerRepository.getInstance();
+    public final CityService cityService = CityService.getInstance();
+    public final UserService userService = UserService.getInstance();
 
 
     @FXML
@@ -107,14 +105,13 @@ public class WarehouseAdderForm {
         Stage stage = (Stage) addWarehouseButton.getScene().getWindow();
         if (validate()) { // if input is valid
             Owner obj = (Owner) ownerBox.getValue();
-            Owner owner = ((Owner) ownerRepository.getById(obj.getIdOwner()).get());
+            Owner owner = userService.getOwnerByID(obj.getIdOwner());
             if (maintenanceBox.getSelectionModel().isEmpty()){
                 warehouseService.addWarehouse(warehouseNameTF.getText(), (City) cityBox.getValue(), streetTF.getText(), Integer.parseInt(roomAmountTF.getText()), 1, true, owner);
             }else{
                 warehouseService.addWarehouse(warehouseNameTF.getText(), (City) cityBox.getValue(), streetTF.getText(), Integer.parseInt(roomAmountTF.getText()), ((Maintenance) maintenanceBox.getValue()).getMaintenanceId(), false, owner);
             }
-            owner.setWarehousesAmount(owner.getWarehousesAmount() + 1);
-            ownerRepository.update(owner);
+            userService.increaseOwnerWarehouses(owner);
             stage.close();
         }
     }
@@ -152,15 +149,15 @@ public class WarehouseAdderForm {
     }
 
     public void getAllMaintenance() {
-        maintenance = maintenanceRepository.getAll();
+        maintenance = warehouseService.getAllMaintenance();
     }
 
     public void getAllCities() {
-        cities = cityRepository.getAll();
+        cities = cityService.getAllCities();
     }
 
     public void getAllOwners() {
-        owners = ownerRepository.getAll();
+        owners = userService.getAllOwners();
     }
 
 

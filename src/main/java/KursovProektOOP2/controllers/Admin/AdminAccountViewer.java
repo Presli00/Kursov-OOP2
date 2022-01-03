@@ -1,13 +1,10 @@
 package KursovProektOOP2.controllers.Admin;
 
-import KursovProektOOP2.controllers.Admin.AccountInfo;
 import KursovProektOOP2.data.entity.Agent;
 import KursovProektOOP2.data.entity.Owner;
 import KursovProektOOP2.data.entity.Rating;
 import KursovProektOOP2.data.entity.User;
-import KursovProektOOP2.data.repository.AgentRepository;
-import KursovProektOOP2.data.repository.OwnerRepository;
-import KursovProektOOP2.data.repository.UserRepository;
+import KursovProektOOP2.data.services.UserService;
 import KursovProektOOP2.util.Panes;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -35,9 +32,7 @@ public class AdminAccountViewer {
     VBox Vbox;
     Stage stage = new Stage();
 
-    public final UserRepository repository = UserRepository.getInstance();
-    public final OwnerRepository ownerRepository = OwnerRepository.getInstance();
-    public final AgentRepository agentRepository = AgentRepository.getInstance();
+    public final UserService userService = UserService.getInstance();
     List users;
     List owners;
     List agents;
@@ -138,12 +133,12 @@ public class AdminAccountViewer {
     }
 
     public void getAllUsers(){
-        users = repository.getAll(); //get all users from database
+        users = userService.getAllUsers(); //get all users from database
     }
     public void getAllOwners(){
-        owners = ownerRepository.getAll();
+        owners = userService.getAllOwners();
     }
     public void getAllAgents(){
-        agents = agentRepository.getAll();
+        agents = userService.getAllAgents();
     }
 }

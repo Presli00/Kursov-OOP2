@@ -5,6 +5,8 @@ import KursovProektOOP2.controllers.Owner.AgentRating;
 import KursovProektOOP2.controllers.Spravki.formularsSpravka;
 import KursovProektOOP2.data.entity.*;
 import KursovProektOOP2.data.repository.*;
+import KursovProektOOP2.data.services.UserService;
+import KursovProektOOP2.data.services.WarehouseService;
 import KursovProektOOP2.util.Panes;
 import KursovProektOOP2.util.UserSession;
 import javafx.fxml.FXML;
@@ -32,11 +34,8 @@ public class WarehouseViewer {
     VBox Vbox;
     Stage stage = new Stage();
     private WarehouseInfo wi = new WarehouseInfo();
-    public final OwnerRepository ownerRepository = OwnerRepository.getInstance();
-    public final WarehouseRepository warehouseRepository = WarehouseRepository.getInstance();
-    public final AgentRepository agentRepository = AgentRepository.getInstance();
-    public final StorageRoomRepository roomRepository = StorageRoomRepository.getInstance();
-    public final MaintenanceRepository maintenanceRepository = MaintenanceRepository.getInstance();
+    public final UserService userService = UserService.getInstance();
+    public final WarehouseService warehouseService = WarehouseService.getInstance();
 
     @FXML
     private void initialize() throws IOException {
@@ -74,7 +73,7 @@ public class WarehouseViewer {
 
     public void warehouseInfo(boolean isAdmin, boolean isAgent) throws IOException {
         if (isAdmin) { //show all warehouses if user is an admin
-            List<Warehouse> list = warehouseRepository.getAll();
+            List<Warehouse> list = warehouseService.getAllWarehouses();
             for (int i = 0; i < list.size(); i++) { // load warehouses
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/SharedViews/WarehouseInfo.fxml"));
                 AnchorPane warehouse = loader.load();
@@ -104,7 +103,8 @@ public class WarehouseViewer {
                 Vbox.getChildren().add(warehouse);
             }
         } else if (isAgent) { //unfortunate code duplication
-            List<Warehouse> list = new ArrayList<>(((Agent) agentRepository.getById(UserSession.getAgent().getIdAgent()).get()).getWarehouses());
+
+            List<Warehouse> list = new ArrayList<>(userService.getAgentByID(UserSession.getAgent().getIdAgent()).getWarehouses());
             for (int i = 0; i < list.size(); i++) { // load warehouses
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/SharedViews/WarehouseInfo.fxml"));
                 AnchorPane warehouse = loader.load();
@@ -136,7 +136,8 @@ public class WarehouseViewer {
                 Vbox.getChildren().add(warehouse);
             }
         } else { // if user is a warehouse owner, show only his warehouses
-            Owner owner = ((Owner) ownerRepository.getById(UserSession.getOwner().getIdOwner()).get()); // get owner from db
+
+            Owner owner = userService.getOwnerByID(UserSession.getOwner().getIdOwner()); // get owner from db
             List<Warehouse> list = new ArrayList<>(owner.getWarehouses()); // get his warehouses and cast to list
             for (int i = 0; i < list.size(); i++) { // code duplication :/
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/SharedViews/WarehouseInfo.fxml"));
@@ -251,7 +252,7 @@ public class WarehouseViewer {
 
     public void reloadWarehouseRooms(WarehouseInfo controller) {
         controller.roomVbox.getChildren().clear();
-        List<StorageRoom> warehouseRooms = new ArrayList<>(((Warehouse) warehouseRepository.getById(controller.warehouse.getWarehouseId()).get()).getRooms());
+        List<StorageRoom> warehouseRooms = new ArrayList<>(warehouseService.getWarehouseByID(controller.warehouse.getWarehouseId()).getRooms());
         HBox row = new HBox();
         row.setSpacing(10);
         for (int i = 0; i < warehouseRooms.size(); i++) {
@@ -301,7 +302,7 @@ public class WarehouseViewer {
         MenuItem menuItem = new MenuItem("Изтрий");
         contextMenuForRoom.getItems().add(menuItem);
         button.setContextMenu(contextMenuForRoom);
-        menuItem.setOnAction((event) -> roomRepository.delete(warehouseRooms.get(i)));
+        menuItem.setOnAction((event) -> warehouseService.deleteRoom(warehouseRooms.get(i)));
     }
 
     private void ContextForAgentRooms(Button button, int id) {
@@ -339,13 +340,11 @@ public class WarehouseViewer {
         if (UserSession.getRoleID().getRoleName().equals("Admin")) {
             menuItem1.setVisible(false);
             menuItem.setOnAction((event) ->{
-                warehouseRepository.delete(warehouse.get(i));
-                Owner owner = (Owner) ownerRepository.getById(warehouse.get(i).getOwnerId().getIdOwner()).get();
-                owner.setWarehousesAmount(owner.getWarehousesAmount() - 1);
-                ownerRepository.update(owner);
-                Maintenance maintenance = (Maintenance) maintenanceRepository.getById(warehouse.get(i).getMaintenanceId().getMaintenanceId()).get();
-                maintenance.setEmployed(false);
-                maintenanceRepository.update(maintenance);
+                warehouseService.deleteWarehouse(warehouse.get(i));
+                Owner owner = userService.getOwnerByID(warehouse.get(i).getOwnerId().getIdOwner());
+                userService.decreaseOwnerWarehouses(owner);
+                Maintenance maintenance = warehouseService.getMaintenanceByID(warehouse.get(i).getMaintenanceId().getMaintenanceId());
+                warehouseService.setEmploymentStatusMaintenance(maintenance, false);
             });
         }
         if (UserSession.getRoleID().getRoleName().equals("Owner")) {

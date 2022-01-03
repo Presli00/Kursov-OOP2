@@ -3,6 +3,7 @@ package KursovProektOOP2.controllers.Spravki;
 import KursovProektOOP2.data.entity.Owner;
 import KursovProektOOP2.data.entity.Warehouse;
 import KursovProektOOP2.data.repository.OwnerRepository;
+import KursovProektOOP2.data.services.UserService;
 import KursovProektOOP2.models.OwnerModel;
 import KursovProektOOP2.util.UserSession;
 import javafx.collections.FXCollections;
@@ -33,11 +34,11 @@ public class WarehousesSpravki {
     @FXML
     TableColumn address;
 
-    public final OwnerRepository ownerRepository = OwnerRepository.getInstance();
+    public final UserService userService = UserService.getInstance();
 
     @FXML
     private void initialize(){
-        List<Owner> ownerEntities = new ArrayList<>(ownerRepository.getAll());
+        List<Owner> ownerEntities = new ArrayList<>(userService.getAllOwners());
         ObservableList<OwnerModel> ownerModels = FXCollections.observableArrayList();
 
         for (int i = 0; i < ownerEntities.size(); i++) {

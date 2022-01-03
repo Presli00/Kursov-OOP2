@@ -1,10 +1,6 @@
 package KursovProektOOP2.controllers.Admin;
 
-import KursovProektOOP2.data.entity.Climate;
 import KursovProektOOP2.data.entity.Role;
-import KursovProektOOP2.data.entity.User;
-import KursovProektOOP2.data.repository.RoleRepository;
-import KursovProektOOP2.data.repository.UserRepository;
 import KursovProektOOP2.data.services.UserService;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -12,9 +8,7 @@ import javafx.stage.Stage;
 import javafx.util.StringConverter;
 import org.apache.commons.lang3.RandomStringUtils;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class RegistrationForm {
@@ -43,8 +37,7 @@ public class RegistrationForm {
     Label validationLabel;
 
     public final UserService service = UserService.getInstance();
-    public final RoleRepository roleRepository = RoleRepository.getInstance();
-    List<Role> roles = roleRepository.getAll();
+
 
     public void Register(){
         Stage stage = (Stage) registerButton.getScene().getWindow();
@@ -102,7 +95,7 @@ public class RegistrationForm {
 
     @FXML
     public void initialize(){ //Add items to combobox
-        List<Role> roleList = new ArrayList<>(roleRepository.getAll());
+        List<Role> roleList = new ArrayList<>(service.getAllRoles());
         for (int i = 0; i < roleList.size(); i++) {
             roleTF.getItems().add(roleList.get(i));
         }

@@ -1,7 +1,6 @@
 package KursovProektOOP2.controllers.Agent;
 
 import KursovProektOOP2.controllers.LoginMenu;
-import KursovProektOOP2.controllers.Main;
 import KursovProektOOP2.util.Panes;
 import KursovProektOOP2.util.UserSession;
 import javafx.application.Platform;
@@ -13,7 +12,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import org.apache.log4j.Logger;
 
 import java.io.IOException;
 import java.util.Timer;
@@ -39,8 +37,6 @@ public class WarehouseAgentGUI {
     @FXML
     public ImageView exclamationMark;
     public Timer agentTimer = new Timer();
-    private static final Logger log = Logger.getLogger(Main.class);
-
 
     @FXML
     public void initialize() {

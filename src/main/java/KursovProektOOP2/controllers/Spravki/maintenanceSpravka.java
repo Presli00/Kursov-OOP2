@@ -1,8 +1,8 @@
 package KursovProektOOP2.controllers.Spravki;
 
-import KursovProektOOP2.data.entity.Formular;
 import KursovProektOOP2.data.entity.Maintenance;
 import KursovProektOOP2.data.repository.MaintenanceRepository;
+import KursovProektOOP2.data.services.WarehouseService;
 import KursovProektOOP2.models.MaintenanceModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,8 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class maintenanceSpravka {
-@FXML
-TableView<MaintenanceModel> table;
+    @FXML
+    TableView<MaintenanceModel> table;
     @FXML
     TableColumn number;
     @FXML
@@ -28,26 +28,27 @@ TableView<MaintenanceModel> table;
     @FXML
     TableColumn employeed;
 
-    public final MaintenanceRepository maintenanceRepository=MaintenanceRepository.getInstance();
-@FXML
-private void initialize(){
-    List<Maintenance> maintenanceEntities = new ArrayList<>(maintenanceRepository.getAll());
-    ObservableList<MaintenanceModel> maintenanceModels = FXCollections.observableArrayList();
-    for (int i = 0; i < maintenanceEntities.size(); i++) {
-        maintenanceModels.add(new MaintenanceModel(i + 1,maintenanceEntities.get(i).getName(),
-                maintenanceEntities.get(i).getWarehouse() == null ? "" : maintenanceEntities.get(i).getWarehouse().getWarehouseName(),
-                maintenanceEntities.get(i).getWarehouse()== null ? "" : maintenanceEntities.get(i).getWarehouse().getCityId().getCity(),
-                maintenanceEntities.get(i).isEmployed() ? "Да": "Не"));
+    public final WarehouseService warehouseService = WarehouseService.getInstance();
+
+    @FXML
+    private void initialize() {
+        List<Maintenance> maintenanceEntities = new ArrayList<>(warehouseService.getAllMaintenance());
+        ObservableList<MaintenanceModel> maintenanceModels = FXCollections.observableArrayList();
+        for (int i = 0; i < maintenanceEntities.size(); i++) {
+            maintenanceModels.add(new MaintenanceModel(i + 1, maintenanceEntities.get(i).getName(),
+                    maintenanceEntities.get(i).getWarehouse() == null ? "" : maintenanceEntities.get(i).getWarehouse().getWarehouseName(),
+                    maintenanceEntities.get(i).getWarehouse() == null ? "" : maintenanceEntities.get(i).getWarehouse().getCityId().getCity(),
+                    maintenanceEntities.get(i).isEmployed() ? "Да" : "Не"));
+
+        }
+        number.setCellValueFactory(new PropertyValueFactory<>("id"));
+        maintenanceName.setCellValueFactory(new PropertyValueFactory<>("maintenanceName"));
+        works.setCellValueFactory(new PropertyValueFactory<>("worksIn"));
+        city.setCellValueFactory(new PropertyValueFactory<>("City"));
+        employeed.setCellValueFactory(new PropertyValueFactory<>("isEmployeed"));
+        for (int i = 0; i < maintenanceModels.size(); i++) {
+            table.getItems().add(maintenanceModels.get(i));
+        }
 
     }
-    number.setCellValueFactory(new PropertyValueFactory<>("id"));
-    maintenanceName.setCellValueFactory(new PropertyValueFactory<>("maintenanceName"));
-    works.setCellValueFactory(new PropertyValueFactory<>("worksIn"));
-    city.setCellValueFactory(new PropertyValueFactory<>("City"));
-    employeed.setCellValueFactory(new PropertyValueFactory<>("isEmployeed"));
-    for (int i = 0; i < maintenanceModels.size(); i++) {
-        table.getItems().add(maintenanceModels.get(i));
-    }
-
-}
 }

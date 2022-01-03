@@ -5,6 +5,9 @@ import KursovProektOOP2.data.repository.ClimateRepository;
 import KursovProektOOP2.data.repository.ProductTypeRepository;
 import KursovProektOOP2.data.repository.StorageRoomRepository;
 import KursovProektOOP2.data.repository.WarehouseRepository;
+import KursovProektOOP2.data.services.ClimateService;
+import KursovProektOOP2.data.services.ProductTypeService;
+import KursovProektOOP2.data.services.WarehouseService;
 import KursovProektOOP2.util.UserSession;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -35,15 +38,14 @@ public class StorageRoomForm {
     public WarehouseViewer inst;
     public WarehouseInfo winst;
 
-    public final ClimateRepository climateRepository = ClimateRepository.getInstance();
-    public final ProductTypeRepository productTypeRepository = ProductTypeRepository.getInstance();
-    public final WarehouseRepository warehouseRepository = WarehouseRepository.getInstance();
-    public final StorageRoomRepository storageRoomRepository = StorageRoomRepository.getInstance();
+    public final ClimateService climateService = ClimateService.getInstance();
+    public final ProductTypeService productTypeService = ProductTypeService.getInstance();
+    public final WarehouseService warehouseService = WarehouseService.getInstance();
 
     @FXML
     private void initialize(){
-        List<Climate> climates = climateRepository.getAll();
-        List<ProductType> productTypes = productTypeRepository.getAll();
+        List<Climate> climates = climateService.getAllClimates();
+        List<ProductType> productTypes = productTypeService.getAllProductTypes();
         for (int i = 0; i < climates.size(); i++) {
             climateBox.getItems().add(climates.get(i));
         }
@@ -80,15 +82,7 @@ public class StorageRoomForm {
     public void addRoom(){
         Stage stage = (Stage) addRoomButton.getScene().getWindow();
         if (validate()) { // if input is valid
-            StorageRoom room = new StorageRoom();
-            room.setStorageRoomId(0);
-            room.setSize(Double.parseDouble(sizeTF.getText()));
-            room.setClimateId((Climate) climateBox.getValue());
-            room.setProductId((ProductType) productBox.getValue());
-            room.setRented(false);
-            Warehouse warehouse = (Warehouse) warehouseRepository.getById(warehouseID).get();
-            room.setwarehouse(warehouse);
-            storageRoomRepository.save(room);
+            warehouseService.createNewRoom(Double.parseDouble(sizeTF.getText()), (Climate) climateBox.getValue(),(ProductType) productBox.getValue(), warehouseService.getWarehouseByID(warehouseID));
             stage.close();
             Platform.runLater(()->{
                 inst.reloadWarehouseRooms(winst);

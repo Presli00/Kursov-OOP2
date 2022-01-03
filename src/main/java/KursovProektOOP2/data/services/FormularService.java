@@ -8,6 +8,7 @@ import KursovProektOOP2.data.repository.RenterInformationRepository;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.util.List;
 
 public class FormularService {
     public final FormularRepository repository = FormularRepository.getInstance();
@@ -30,5 +31,9 @@ public class FormularService {
         formular.setPrice(price);
         repository.save(formular);
         return formular;
+    }
+
+    public List<Formular> getAllFormulars(){
+        return repository.getAll();
     }
 }

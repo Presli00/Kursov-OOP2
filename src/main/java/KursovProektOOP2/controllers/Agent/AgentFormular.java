@@ -1,20 +1,14 @@
 package KursovProektOOP2.controllers.Agent;
 
 import KursovProektOOP2.data.entity.*;
-import KursovProektOOP2.data.repository.*;
-import KursovProektOOP2.data.services.FormularService;
-import KursovProektOOP2.data.services.RenterService;
-import KursovProektOOP2.data.services.UserNotificationService;
+import KursovProektOOP2.data.services.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
-import java.sql.Timestamp;
 import java.time.LocalDate;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 public class AgentFormular {
@@ -42,17 +36,16 @@ public class AgentFormular {
     public int ownerID;
     public int agentID;
 
-    public final CityRepository cityRepository = CityRepository.getInstance();
-    public final StorageRoomRepository storageRoomRepository = StorageRoomRepository.getInstance();
-    public final OwnerRepository ownerRepository = OwnerRepository.getInstance();
-    public final AgentRepository agentRepository = AgentRepository.getInstance();
+    public final CityService cityService = CityService.getInstance();
+    public final WarehouseService warehouseService = WarehouseService.getInstance();
+    public final UserService userService = UserService.getInstance();
     public final RenterService renterService = RenterService.getInstance();
     public final FormularService formularService = FormularService.getInstance();
     public final UserNotificationService userNotificationService = UserNotificationService.getInstance();
 
     @FXML
     private void initialize(){
-        cities = cityRepository.getAll();
+        cities = cityService.getAllCities();
         for (City city : cities) {
             cityBox.getItems().add(city);
         }
@@ -93,9 +86,9 @@ public class AgentFormular {
         Stage stage = (Stage) createFormularButton.getScene().getWindow();
         if (validate()) { // if input is valid
 
-            StorageRoom room = (StorageRoom) storageRoomRepository.getById(roomID).get();
-            Owner owner = (Owner) ownerRepository.getById(ownerID).get();
-            Agent agent = (Agent) agentRepository.getById(agentID).get();
+            StorageRoom room = warehouseService.getStorageRoomByID(roomID);
+            Owner owner = userService.getOwnerByID(ownerID);
+            Agent agent = userService.getAgentByID(agentID);
 
             if(room.isRented()){
                 stage.close();
@@ -108,11 +101,9 @@ public class AgentFormular {
 
                 Formular formular = formularService.createFormular(room, id, startDate.getValue(), endDate.getValue(), Double.parseDouble(priceTF.getText()));
 
-                agent.setDealAmount(agent.getDealAmount() + 1);
-                agentRepository.update(agent);
+                userService.increaseAgentDeals(agent);
 
-                room.setRented(true);
-                storageRoomRepository.update(room);
+                warehouseService.setRoomRented(room, true);
 
                 userNotificationService.createOwnerNotif(owner, room, formular);
             }

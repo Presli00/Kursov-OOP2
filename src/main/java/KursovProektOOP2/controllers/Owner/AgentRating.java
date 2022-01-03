@@ -1,6 +1,5 @@
 package KursovProektOOP2.controllers.Owner;
 
-import KursovProektOOP2.controllers.Main;
 import KursovProektOOP2.data.access.Connection;
 import KursovProektOOP2.data.entity.Agent;
 import KursovProektOOP2.data.entity.Owner;
@@ -8,13 +7,14 @@ import KursovProektOOP2.data.entity.Rating;
 import KursovProektOOP2.data.repository.AgentRepository;
 import KursovProektOOP2.data.repository.OwnerRepository;
 import KursovProektOOP2.data.repository.RatingRepository;
+import KursovProektOOP2.data.services.RatingService;
+import KursovProektOOP2.data.services.UserService;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.layout.HBox;
 import javafx.scene.shape.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -27,10 +27,8 @@ public class AgentRating {
     public int ownerID;
     public int agentID;
 
-    public final AgentRepository agentRepository = AgentRepository.getInstance();
-    public final OwnerRepository ownerRepository = OwnerRepository.getInstance();
-    public final RatingRepository ratingRepository = RatingRepository.getInstance();
-    private static final Logger log = Logger.getLogger(Main.class);
+    public final UserService userService = UserService.getInstance();
+    public final RatingService ratingService = RatingService.getInstance();
 
     @FXML
     private void initialize(){
@@ -50,25 +48,10 @@ public class AgentRating {
             star.getStyleClass().add("star");
             star.setOnMouseClicked(e->{
                 Stage stage = (Stage) star.getScene().getWindow();
-                Owner owner = (Owner) ownerRepository.getById(ownerID).get();
-                Agent agent = (Agent) agentRepository.getById(agentID).get();
+                Owner owner = userService.getOwnerByID(ownerID);
+                Agent agent = userService.getAgentByID(agentID);
 
-                Session session = Connection.openSession();
-                Transaction transaction = session.beginTransaction();
-                String RATING_QUERY = "SELECT u FROM Rating u WHERE idOwner = " + ownerID + " AND Agentobj = " + agentID;
-                Rating rating;
-                try {
-                    rating = (Rating) session.createQuery(RATING_QUERY).getSingleResult();
-                } catch (Exception ex) {
-                    rating = new Rating();
-                } finally {
-                    transaction.commit();
-                    session.close();
-                }
-                rating.setRating(Double.parseDouble(star.getId()));
-                rating.setIdAgent(agent);
-                rating.setIdOwner(owner);
-                ratingRepository.save(rating);
+                ratingService.createOrUpdateRating(agent, owner, Double.parseDouble(star.getId()));
                 stage.close();
             });
             Group root = new Group(star);

@@ -2,8 +2,7 @@ package KursovProektOOP2.controllers.Owner;
 
 import KursovProektOOP2.data.entity.Maintenance;
 import KursovProektOOP2.data.entity.Warehouse;
-import KursovProektOOP2.data.repository.MaintenanceRepository;
-import KursovProektOOP2.data.repository.WarehouseRepository;
+import KursovProektOOP2.data.services.WarehouseService;
 import KursovProektOOP2.util.MaintenanceListViewCellFactory;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
@@ -22,8 +21,7 @@ public class MaintenanceAdder {
     Text errorText;
     private int warehouseID;
     Warehouse warehouse;
-    public final MaintenanceRepository maintenanceRepository = MaintenanceRepository.getInstance();
-    public final WarehouseRepository warehouseRepository = WarehouseRepository.getInstance();
+    public final WarehouseService warehouseService = WarehouseService.getInstance();
 
     @FXML
     private void initialize() {
@@ -33,12 +31,13 @@ public class MaintenanceAdder {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            warehouse = (Warehouse) warehouseRepository.getById(warehouseID).get();
-            List<Maintenance> allMaintenance = maintenanceRepository.getAll();
+            warehouse = warehouseService.getWarehouseByID(warehouseID);
+            List<Maintenance> allMaintenance = warehouseService.getAllMaintenance();
             Maintenance currentMaintenance = warehouse.getMaintenanceId();
-            for (int i = 0; i < allMaintenance.size(); i++) {
+            for (int i = 0; i < allMaintenance.size(); ++i) {
                     if (allMaintenance.get(i).isEmployed()) {
                         allMaintenance.remove(i);
+                        i=-1; // reset counter otherwise loop will skip maintenance when size shrinks
                     }
             }
             for (int i = 0; i < allMaintenance.size(); i++) {
@@ -78,10 +77,8 @@ public class MaintenanceAdder {
                 Maintenance maintenance = (Maintenance) availableMaintenanceBox.getSelectionModel().getSelectedItem();
                 availableMaintenanceBox.getItems().remove(maintenance);
                 currentMaintenanceList.getItems().add(maintenance);
-                maintenance.setEmployed(true);
-                maintenanceRepository.update(maintenance);
-                warehouse.setMaintenanceId(maintenance);
-                warehouseRepository.update(warehouse);
+                warehouseService.setEmploymentStatusMaintenance(maintenance, true);
+                warehouseService.setWarehouseMaintenance(warehouse, maintenance);
             } else {
                 errorText.setText("Може да има само един човек от поддръжка в склад!");
             }
@@ -94,10 +91,8 @@ public class MaintenanceAdder {
             Maintenance maintenance = (Maintenance) currentMaintenanceList.getSelectionModel().getSelectedItem();
             currentMaintenanceList.getItems().remove(maintenance);
             availableMaintenanceBox.getItems().add(maintenance);
-            maintenance.setEmployed(false);
-            maintenanceRepository.update(maintenance);
-            warehouse.setMaintenanceId(null);
-            warehouseRepository.update(warehouse);
+            warehouseService.setEmploymentStatusMaintenance(maintenance, false);
+            warehouseService.setWarehouseMaintenance(warehouse, null);
         }
         else{
             errorText.setText("Няма хора за премахване!");

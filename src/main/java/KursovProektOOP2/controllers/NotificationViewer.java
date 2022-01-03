@@ -3,7 +3,6 @@ package KursovProektOOP2.controllers;
 import KursovProektOOP2.controllers.Admin.AdminGUI;
 import KursovProektOOP2.controllers.Agent.WarehouseAgentGUI;
 import KursovProektOOP2.controllers.Owner.OwnerGUI;
-import KursovProektOOP2.data.access.Connection;
 import KursovProektOOP2.data.entity.Usernotifications;
 import KursovProektOOP2.data.services.UserNotificationService;
 import KursovProektOOP2.util.Panes;
@@ -15,9 +14,6 @@ import javafx.scene.Parent;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-import org.apache.log4j.Logger;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -33,7 +29,6 @@ public class NotificationViewer {
 
     List<Usernotifications> notifs;
     List<NotificationInfo> selected = new ArrayList<>();
-    private static final Logger log = Logger.getLogger(Main.class);
     public final UserNotificationService userNotificationService = UserNotificationService.getInstance();
 
     @FXML

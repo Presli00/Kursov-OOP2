@@ -7,6 +7,7 @@ import KursovProektOOP2.controllers.Owner.OwnerGUI;
 import KursovProektOOP2.data.access.Connection;
 import KursovProektOOP2.data.entity.*;
 import KursovProektOOP2.data.repository.*;
+import KursovProektOOP2.data.services.UserService;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -157,7 +158,7 @@ public class Panes {
     public static void checkForExpiringFormulars(boolean isOwner){
         Date date=new Date();
         if(isOwner){
-            Owner owner = (Owner) OwnerRepository.getInstance().getById(UserSession.getOwner().getIdOwner()).get();
+            Owner owner = UserService.getInstance().getOwnerByID(UserSession.getOwner().getIdOwner());
             List<Warehouse> warehouses = new ArrayList<>(owner.getWarehouses());
             for (Warehouse w : warehouses){ // go through warehouses
                 for (StorageRoom room : w.getRooms()){ // go through rooms of warehouse
@@ -181,7 +182,7 @@ public class Panes {
                 }
             }
         }else{
-            Agent agent = (Agent) AgentRepository.getInstance().getById(UserSession.getAgent().getIdAgent()).get();
+            Agent agent = UserService.getInstance().getAgentByID(UserSession.getAgent().getIdAgent());
 
             List<Warehouse> warehouses = new ArrayList<>(agent.getWarehouses());
             for (Warehouse w : warehouses){ // go through warehouses
